@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#2CABEC"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/icon.png">
+  <link rel="mask-icon" href="/images/icon.png" color="#2CABEC">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blank-null.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"changyan","storage":true,"lazyload":false,"nav":null,"activeClass":"changyan"},"stickytabs":true,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="egg.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="egg.js笔记">
+<meta property="og:url" content="https://blank-null.github.io/2023/10/11/egg-js%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="bLanK&#39;s blog">
+<meta property="og:description" content="egg.js">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-10-11T03:21:41.000Z">
+<meta property="article:modified_time" content="2023-10-11T14:02:43.816Z">
+<meta property="article:author" content="bLank-L">
+<meta property="article:tag" content="egg.js">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://blank-null.github.io/2023/10/11/egg-js%E7%AC%94%E8%AE%B0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blank-null.github.io/2023/10/11/egg-js%E7%AC%94%E8%AE%B0/","path":"2023/10/11/egg-js笔记/","title":"egg.js笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>egg.js笔记 | bLanK's blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="bLanK's blog" type="application/atom+xml">
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">bLanK's blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">攻无不克，战无不胜</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#app-%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="nav-text">&#x2F;app 文件夹</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#controller"><span class="nav-text">&#x2F;controller</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E5%99%A8%E9%87%8C%E7%9A%84this"><span class="nav-text">控制器里的this</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#home-js"><span class="nav-text">home.js</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#post%E8%AF%B7%E6%B1%82%E7%9A%84%E5%AE%89%E5%85%A8%E9%AA%8C%E8%AF%81"><span class="nav-text">post请求的安全验证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%AE%9A%E5%90%91"><span class="nav-text">重定向</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#service"><span class="nav-text">&#x2F;service</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#public"><span class="nav-text">&#x2F;public</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#router-js"><span class="nav-text">router.js</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#restful-Api"><span class="nav-text">restful Api</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#config"><span class="nav-text">&#x2F;config</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#config-default-js"><span class="nav-text">config.default.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#plugin-js"><span class="nav-text">plugin.js</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="nav-text">中间件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E5%8F%91%E5%B8%83"><span class="nav-text">项目打包发布</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#nunjucks%E6%8F%92%E4%BB%B6%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E"><span class="nav-text">nunjucks插件模板引擎</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cors%E8%B7%A8%E5%9F%9F%E6%8F%92%E4%BB%B6"><span class="nav-text">cors跨域插件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Json-Web-Token%E6%8F%92%E4%BB%B6"><span class="nav-text">Json Web Token插件</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="bLank-L"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">bLank-L</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">63</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/bLanK-NULL" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;bLanK-NULL" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+<!-- CloudCalendar -->
+<div class="widget-wrap" style="width: 90%;margin-left: auto;margin-right: auto; opacity: 0.97;">
+	<div class="widget" id="CloudCalendar"></div>
+</div>
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2023/10/11/egg-js%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="bLank-L">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="egg.js笔记 | bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          egg.js笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-10-11 11:21:41 / 修改时间：22:02:43" itemprop="dateCreated datePublished" datetime="2023-10-11T11:21:41+08:00">2023-10-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="egg.js笔记" href="/2023/10/11/egg-js%E7%AC%94%E8%AE%B0/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::0a1d3665761a36599ecffed8df2cf3ca" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>6.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>12 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>egg.js</p>
+<span id="more"></span>
+
+<h1 id="app-文件夹"><a href="#app-文件夹" class="headerlink" title="&#x2F;app 文件夹"></a>&#x2F;app 文件夹</h1><h2 id="controller"><a href="#controller" class="headerlink" title="&#x2F;controller"></a>&#x2F;controller</h2><blockquote>
+<ol>
+<li>响应数据或渲染模板</li>
+<li>与用户数据交互</li>
+<li>与路由建立对应关系</li>
+</ol>
+</blockquote>
+<h3 id="控制器里的this"><a href="#控制器里的this" class="headerlink" title="控制器里的this"></a>控制器里的this</h3><p>控制器里的  <code>this.app === this.ctx.app</code></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span> </span><br><span class="line">	ctx<span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">		request<span class="punctuation">,</span></span><br><span class="line">		response<span class="punctuation">,</span></span><br><span class="line">		app<span class="punctuation">,</span></span><br><span class="line">        originalUrl<span class="punctuation">,</span></span><br><span class="line">        req<span class="punctuation">,</span></span><br><span class="line">        res<span class="punctuation">,</span></span><br><span class="line">        socket</span><br><span class="line">	<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">	app<span class="punctuation">,</span></span><br><span class="line">	config<span class="punctuation">,</span></span><br><span class="line">    service</span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="home-js"><a href="#home-js" class="headerlink" title="home.js"></a>home.js</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&#x27;use strict&#x27;</span>;</span><br><span class="line"><span class="comment">//1. 导入 Controller 是egg提供的控制器类</span></span><br><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">Controller</span> &#125; = <span class="built_in">require</span>(<span class="string">&#x27;egg&#x27;</span>);</span><br><span class="line"><span class="comment">//2. 继承 自己定义一个控制器</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">HomeController</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Controller</span> &#123;</span><br><span class="line">  <span class="keyword">async</span> <span class="title function_">index</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; ctx &#125; = <span class="variable language_">this</span>;</span><br><span class="line">    <span class="comment">// ctx.body = &#x27;hi, egg&#x27;;</span></span><br><span class="line">    ctx.<span class="property">body</span> = <span class="string">&#x27;&lt;h1&gt;hello world!!!&lt;/h1&gt;&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//3. 暴露</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="title class_">HomeController</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ol>
+<li><p>里面的async index方法即为 index页面</p>
+</li>
+<li><p>请求参数解析&#x3D;&#x3D;&#x3D; koa2</p>
+<p>但是解析post请求参数不需要koa-body</p>
+</li>
+</ol>
+</blockquote>
+<h4 id="post请求的安全验证"><a href="#post请求的安全验证" class="headerlink" title="post请求的安全验证"></a>post请求的安全验证</h4><blockquote>
+<p>为了防止 CSRF跨站请求伪造</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">config.<span class="property">security</span> = &#123;</span><br><span class="line">    <span class="attr">csrf</span>: &#123;</span><br><span class="line">        <span class="attr">enable</span>: <span class="literal">false</span>, <span class="comment">//关闭此安全检查</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果不关闭则<code>403: invalid csrf token</code></li>
+</ul>
+<h4 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="property">ctx</span>.<span class="title function_">redirect</span>(<span class="string">&#x27;url&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="service"><a href="#service" class="headerlink" title="&#x2F;service"></a>&#x2F;service</h2><blockquote>
+<p>对复杂业务场景进行封装：</p>
+<pre><code> 1. 保持controller逻辑简介
+ 2. service中的业务逻辑可以被复用
+</code></pre>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// /app/service/myService.js</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Service</span> = <span class="built_in">require</span>(<span class="string">&#x27;egg&#x27;</span>).<span class="property">Service</span>;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyService</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Service</span> &#123;</span><br><span class="line">    <span class="keyword">async</span> <span class="title function_">fun</span>(<span class="params"></span>) &#123; </span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="title class_">MyService</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//调用</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">ctx</span>.<span class="property">service</span>.<span class="property">myService</span>.<span class="title function_">fun</span>()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h2 id="public"><a href="#public" class="headerlink" title="&#x2F;public"></a>&#x2F;public</h2><blockquote>
+<p>静态文件目录</p>
+</blockquote>
+<ul>
+<li>目录下存在 index.html，可以通过<code>localhost:7001/public/index.html</code> 访问</li>
+</ul>
+<h2 id="router-js"><a href="#router-js" class="headerlink" title="router.js"></a>router.js</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app 是整个egg的实例对象, 从中结构出router和controller</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="function">(<span class="params">app</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; router, controller &#125; = app;</span><br><span class="line">  router.<span class="title function_">get</span>(<span class="string">&#x27;/&#x27;</span>, controller.<span class="property">home</span>.<span class="property">index</span>);</span><br><span class="line">  router.<span class="title function_">get</span>(<span class="string">&#x27;/news&#x27;</span>, controller.<span class="property">news</span>.<span class="property">list</span>);</span><br><span class="line">  router.<span class="title function_">get</span>(<span class="string">&#x27;/fruits&#x27;</span>, controller.<span class="property">fruits</span>.<span class="property">index</span>);</span><br><span class="line">  router.<span class="title function_">get</span>(<span class="string">&#x27;/fruits/:id&#x27;</span>, controller.<span class="property">fruits</span>.<span class="property">getId</span>)</span><br><span class="line">    </span><br><span class="line">  <span class="comment">//restful api</span></span><br><span class="line">  router.<span class="title function_">resources</span>(<span class="string">&#x27;fruits&#x27;</span>,<span class="string">&#x27;/fruits&#x27;</span>,controller.<span class="property">fruits</span>) <span class="comment">//具体到fruits控制器就可以了</span></span><br><span class="line">  </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="restful-Api"><a href="#restful-Api" class="headerlink" title="restful Api"></a>restful Api</h3><table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Path</th>
+<th>Route Name</th>
+<th>Controller.Action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Get</td>
+<td>&#x2F;posts</td>
+<td>posts</td>
+<td>app.controllers.posts.index</td>
+</tr>
+<tr>
+<td>Get</td>
+<td>&#x2F;posts&#x2F;new</td>
+<td>new_post</td>
+<td>app.controllers.posts.new</td>
+</tr>
+<tr>
+<td>Get</td>
+<td>&#x2F;post&#x2F;:id</td>
+<td>post</td>
+<td>app.controllers.posts.show</td>
+</tr>
+<tr>
+<td>Get</td>
+<td>&#x2F;post&#x2F;:id&#x2F;edit</td>
+<td>edit_post</td>
+<td>app.controllers.post.edit</td>
+</tr>
+<tr>
+<td>Post</td>
+<td>&#x2F;posts</td>
+<td>posts</td>
+<td>app.controllers.posts.create</td>
+</tr>
+<tr>
+<td>Put</td>
+<td>&#x2F;posts&#x2F;:id</td>
+<td>posts</td>
+<td>app.controllers.posts.update</td>
+</tr>
+<tr>
+<td>Delete</td>
+<td>&#x2F;posts&#x2F;:id</td>
+<td>posts</td>
+<td>app.controllers.posts.destroy</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>需要在controllers&#x2F;posts.js 下存在 <code>index/new/show/edit/create/update/destroy</code>等方法</p>
+</blockquote>
+<h1 id="config"><a href="#config" class="headerlink" title="&#x2F;config"></a>&#x2F;config</h1><h2 id="config-default-js"><a href="#config-default-js" class="headerlink" title="config.default.js"></a>config.default.js</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="function"><span class="params">appInfo</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * built-in config</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@type</span> &#123;<span class="type">Egg.EggAppConfig</span>&#125;</span></span><br><span class="line"><span class="comment">   **/</span></span><br><span class="line">  <span class="keyword">const</span> config = <span class="built_in">exports</span> = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// use for cookie sign key, should change to your own and keep security</span></span><br><span class="line">  config.<span class="property">keys</span> = appInfo.<span class="property">name</span> + <span class="string">&#x27;_252238Lzy...&#x27;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// add your middleware config here  （所有路由都生效！！！， 想要单独在某路由上生效，请在控制器里写）</span></span><br><span class="line">  config.<span class="property">middleware</span> = [];</span><br><span class="line"></span><br><span class="line">  <span class="comment">// add your user config here</span></span><br><span class="line">  <span class="keyword">const</span> userConfig = &#123;</span><br><span class="line">    <span class="comment">// myAppName: &#x27;egg&#x27;,</span></span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  config.<span class="property">security</span> = &#123;</span><br><span class="line">    <span class="attr">csrf</span>: &#123;</span><br><span class="line">      <span class="attr">enable</span>: <span class="literal">false</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  config.<span class="property">view</span> = &#123;</span><br><span class="line">    <span class="attr">defaultViewEngine</span>: <span class="string">&#x27;nunjucks&#x27;</span>,</span><br><span class="line">    <span class="attr">mapping</span>: &#123;</span><br><span class="line">      <span class="string">&#x27;.tpl&#x27;</span>: <span class="string">&#x27;nunjucks&#x27;</span>,</span><br><span class="line">      <span class="string">&#x27;.html&#x27;</span>: <span class="string">&#x27;nunjucks&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//数据库</span></span><br><span class="line">  config.<span class="property">mysql</span> = &#123;</span><br><span class="line">    <span class="comment">// 单数据库信息配置</span></span><br><span class="line">    <span class="attr">client</span>: &#123;</span><br><span class="line">      <span class="attr">host</span>: <span class="string">&#x27;localhost&#x27;</span>,</span><br><span class="line">      <span class="attr">port</span>: <span class="string">&#x27;3306&#x27;</span>,</span><br><span class="line">      <span class="attr">user</span>: <span class="string">&#x27;root&#x27;</span>,</span><br><span class="line">      <span class="attr">password</span>: <span class="string">&#x27;252238Lzy&#x27;</span>,</span><br><span class="line">      <span class="attr">database</span>: <span class="string">&#x27;mytest&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">//多源</span></span><br><span class="line">    <span class="comment">// clients: &#123;</span></span><br><span class="line">    <span class="comment">//   db1: &#123;</span></span><br><span class="line">    <span class="comment">//     host: &#x27;localhost&#x27;,</span></span><br><span class="line">    <span class="comment">//     port: &#x27;3306&#x27;,</span></span><br><span class="line">    <span class="comment">//     user: &#x27;root&#x27;,</span></span><br><span class="line">    <span class="comment">//     password: &#x27;252238Lzy&#x27;,</span></span><br><span class="line">    <span class="comment">//     database: &#x27;mytest&#x27;,</span></span><br><span class="line">    <span class="comment">//   &#125;,</span></span><br><span class="line">    <span class="comment">//   db2: &#123;</span></span><br><span class="line">    <span class="comment">//     host: &#x27;localhost&#x27;,</span></span><br><span class="line">    <span class="comment">//     port: &#x27;3307&#x27;,</span></span><br><span class="line">    <span class="comment">//     user: &#x27;root&#x27;,</span></span><br><span class="line">    <span class="comment">//     password: &#x27;123456&#x27;,</span></span><br><span class="line">    <span class="comment">//     database: &#x27;api_gateway&#x27;,</span></span><br><span class="line">    <span class="comment">//   &#125;</span></span><br><span class="line">    <span class="comment">// &#125;,</span></span><br><span class="line">    <span class="comment">// //所有数据库配置默认</span></span><br><span class="line">    <span class="comment">// default: &#123;&#125;,</span></span><br><span class="line">    <span class="comment">// 是否加载到 app 上，默认开启</span></span><br><span class="line">    <span class="attr">app</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">// 是否加载到 agent 上，默认关闭</span></span><br><span class="line">    <span class="attr">agent</span>: <span class="literal">false</span>,</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  config.<span class="property">cors</span> = &#123;</span><br><span class="line">    <span class="comment">// 任何地址都可以访问</span></span><br><span class="line">    <span class="attr">origin</span>: <span class="string">&quot;*&quot;</span>,</span><br><span class="line">    <span class="comment">// 指定地址才可以访问</span></span><br><span class="line">    <span class="comment">// origin: &#x27;http://localhost:8080&#x27;,</span></span><br><span class="line">    <span class="attr">allowMethods</span>: <span class="string">&#x27;GET,PUT,POST,DELETE&#x27;</span>,</span><br><span class="line">    <span class="attr">allowHeaders</span>: <span class="string">&#x27;Authorization,Content-Type&#x27;</span>,</span><br><span class="line">    <span class="comment">// cookie跨域配置</span></span><br><span class="line">    <span class="attr">credentials</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  config.<span class="property">jwt</span> = &#123;</span><br><span class="line">    <span class="attr">secret</span>: <span class="string">&quot;blank_lzy&quot;</span>,</span><br><span class="line">    <span class="attr">expiredIn</span>: <span class="string">&#x27;1d&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    ...config,</span><br><span class="line">    ...userConfig,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="plugin-js"><a href="#plugin-js" class="headerlink" title="plugin.js"></a>plugin.js</h2><h1 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h1><blockquote>
+<p>洋葱模型</p>
+</blockquote>
+<ol>
+<li><pre><code class="js">// 在app/middleware/checkToken.js 1.编写
+function checkToken(options) &#123;
+    return async function (ctx, next) &#123; 
+        
+        const decode = ctx.app.jwt.verify(token, ctx.app.config.jwt.secret)
+        await next()
+        ...
+    &#125;
+&#125;
+//暴露出去
+module.exports = checkToken
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2. ```js</span><br><span class="line">   // 在config.default.js 2.注册</span><br><span class="line">   // 元素顺序是中间件的执行顺序</span><br><span class="line">   config.middleware = [&#x27;checkToken&#x27;]</span><br><span class="line">   config.checkToken: &#123;</span><br><span class="line">       ... //配置</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><pre><code class="js">// 在 router.js 3.使用中间件
+router.resources(&#39;students&#39;,&#39;/students&#39;,app.middleware.checkToken(), controller.students)
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt; 1.  options :  是 app.config.checkToken</span><br><span class="line">&gt; 2.  使用中间件时可以传递参数`app.middleware.checkToken(&#123;expiredIn:&#x27;7d&#x27;&#125;) ` 被`options`接收</span><br><span class="line">&gt; 3.  中间件里怎么用插件： `ctx.app.jwt`</span><br><span class="line"></span><br><span class="line">### 中间件里的ctx </span><br><span class="line"></span><br><span class="line">可以看到和控制器里this里的ctx一样</span><br><span class="line"></span><br><span class="line">```json</span><br><span class="line">&#123;</span><br><span class="line">    request,</span><br><span class="line">    response,</span><br><span class="line">    app,</span><br><span class="line">    originalUrl,</span><br><span class="line">    req,</span><br><span class="line">    res,</span><br><span class="line">    socket</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ol>
+<h1 id="项目打包发布"><a href="#项目打包发布" class="headerlink" title="项目打包发布"></a>项目打包发布</h1><ol>
+<li><pre><code class="bash">npm run build
+#	把dist内的文件都复制到服务器public目录下
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2. 我们要访问的首页是`localhost:7001/public/index.html` ，但是相关打包文件的请求地址却是`http://localhost:7001/js/chunk-vendors.3c79a5b3.js` 会报404，因为文件在`... :7001/public/js/...`</span><br><span class="line"></span><br><span class="line">   ```js</span><br><span class="line">   // config.default.js</span><br><span class="line">   const path = require(&#x27;path&#x27;)</span><br><span class="line">     //设置静态文件路径</span><br><span class="line">   config.static = &#123;</span><br><span class="line">       prefix: &#x27;/&#x27;,</span><br><span class="line">       dir: path.join(appInfo.baseDir, &#x27;app/public&#x27;)</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><p>访问地址变成了<code>localhost:7001/index.html</code></p>
+</li>
+</ol>
+<blockquote>
+<p>服务器运行方式除了 <code>npm run dev</code> 还有 <code>npm start</code></p>
+</blockquote>
+<h1 id="nunjucks插件模板引擎"><a href="#nunjucks插件模板引擎" class="headerlink" title="nunjucks插件模板引擎"></a>nunjucks插件模板引擎</h1><ol>
+<li><pre><code class="bash">npm i --save egg-view-nunjucks
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2. 在plugin.js 和 config.default.js 中配置</span><br><span class="line"></span><br><span class="line">   ```js</span><br><span class="line">   //plugin.js</span><br><span class="line">   module.exports = &#123;</span><br><span class="line">     nunjucks: &#123;</span><br><span class="line">       enable: true,</span><br><span class="line">       package: &#x27;egg-view-nunjucks&#x27;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;;</span><br><span class="line"></span><br><span class="line">   //config.default.js</span><br><span class="line">   module.exports = appInfo =&gt; &#123;</span><br><span class="line">       ...</span><br><span class="line">      config.view = &#123;</span><br><span class="line">       defaultViewEngine: &#x27;nunjucks&#x27;,</span><br><span class="line">       // mapping: &#123;</span><br><span class="line">       //   &#x27;.tpl&#x27;: &#x27;nunjucks&#x27;</span><br><span class="line">       // &#125;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><p>在 &#x2F;app&#x2F;view 下创建index.html</p>
+</li>
+<li><p>在controller 下某个控制器</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">await</span> ctx.<span class="title function_">render</span>(<span class="string">&#x27;index&#x27;</span>，&#123;<span class="attr">params</span>: <span class="string">&#x27;参数&#x27;</span>&#125;) <span class="comment">//启用模板, 传参给模板</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="cors跨域插件"><a href="#cors跨域插件" class="headerlink" title="cors跨域插件"></a>cors跨域插件</h1><ol>
+<li><pre><code class="bash">npm i --save egg-cors
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2. ```js</span><br><span class="line">   //plugin.js </span><br><span class="line">   cors: &#123;</span><br><span class="line">       enable: true,</span><br><span class="line">       package: &#x27;egg-cors&#x27;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   //config.default.js</span><br><span class="line">   config.cors = &#123;</span><br><span class="line">     // 任何地址都可以访问</span><br><span class="line">     origin:&quot;*&quot;,</span><br><span class="line">     // 指定地址才可以访问</span><br><span class="line">     // origin: &#x27;http://localhost:8080&#x27;,</span><br><span class="line">     allowMethods: &#x27;GET,PUT,POST,DELETE&#x27;,</span><br><span class="line">     allowHeaders: &#x27;Authorization,Content-Type&#x27;,</span><br><span class="line">     // cookie跨域配置</span><br><span class="line">     credentials: true</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ol>
+<h1 id="Json-Web-Token插件"><a href="#Json-Web-Token插件" class="headerlink" title="Json Web Token插件"></a>Json Web Token插件</h1><ol>
+<li><pre><code class="bash">npm i --save egg-jwt
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2. ```js</span><br><span class="line">   //plugin.js</span><br><span class="line">   jwt: &#123;</span><br><span class="line">       enable: true,</span><br><span class="line">       package: &#x27;egg-jwt&#x27;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   //config.default.js</span><br><span class="line">   config.jwt = &#123;</span><br><span class="line">       secret: &#x27;private_key&#x27;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><pre><code class="js">//使用
+//1. 签名
+let token = this.app.jwt.sign(userInfo, this.app.config.jwt.secret, &#123; expiresIn: &#39;1d&#39;&#125;)
+//2. 解密
+let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
+</code></pre>
+</li>
+</ol>
+<blockquote>
+<p>当token错误或过期，verify会直接报错，推荐用try-catch包裹起来</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="bLank-L 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="bLank-L 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>bLank-L
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://blank-null.github.io/2023/10/11/egg-js%E7%AC%94%E8%AE%B0/" title="egg.js笔记">https://blank-null.github.io/2023/10/11/egg-js笔记/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/egg-js/" rel="tag"># egg.js</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/10/11/TS%E7%AC%94%E8%AE%B0/" rel="prev" title="TS笔记">
+                  <i class="fa fa-angle-left"></i> TS笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/10/11/koa2%E7%AC%94%E8%AE%B0/" rel="next" title="koa2笔记">
+                  koa2笔记 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS" sid="0a1d3665761a36599ecffed8df2cf3ca"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">bLank-L</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">127k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:51</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="500" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<!-- calendar widget -->
+{% if theme.CloudCalendar.enable %}
+    <script src="{{ theme.CloudCalendar.calendarCdn }}"></script>
+    <script src="{{ theme.CloudCalendar.langCdn }}"></script>
+    <script>
+    $(function() {
+        $('#CloudCalendar').aCalendar('{{ theme.CloudCalendar.language }}',
+            $.extend(
+                '', {
+                    single:{{ theme.CloudCalendar.single }},
+                    root:'{{ theme.CloudCalendar.root }}'
+                }
+            )
+        );
+    });
+    </script>
+{% endif %}
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: 'unset',
+  left: '32px',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cywV9cKcy","appkey":"557a4cba0c3c88fe4338e6ffae25f9d4","count":true}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
+
+</body>
+</html>

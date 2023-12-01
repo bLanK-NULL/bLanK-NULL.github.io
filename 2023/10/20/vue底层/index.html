@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#2CABEC"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/icon.png">
+  <link rel="mask-icon" href="/images/icon.png" color="#2CABEC">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blank-null.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"changyan","storage":true,"lazyload":false,"nav":null,"activeClass":"changyan"},"stickytabs":true,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="响应式effecteffect是一个‘桶’， 他收集并触发指定方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue底层">
+<meta property="og:url" content="https://blank-null.github.io/2023/10/20/vue%E5%BA%95%E5%B1%82/index.html">
+<meta property="og:site_name" content="bLanK&#39;s blog">
+<meta property="og:description" content="响应式effecteffect是一个‘桶’， 他收集并触发指定方法">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blank-null.github.io/2023/10/20/vue%E5%BA%95%E5%B1%82/effect.png">
+<meta property="og:image" content="https://blank-null.github.io/2023/10/20/vue%E5%BA%95%E5%B1%82/effect2.png">
+<meta property="og:image" content="https://blank-null.github.io/2023/10/20/vue%E5%BA%95%E5%B1%82/compiler.png">
+<meta property="article:published_time" content="2023-10-20T04:20:16.000Z">
+<meta property="article:modified_time" content="2023-11-16T05:46:37.130Z">
+<meta property="article:author" content="bLank-L">
+<meta property="article:tag" content="vue">
+<meta property="article:tag" content="reactive">
+<meta property="article:tag" content="ref">
+<meta property="article:tag" content="AST">
+<meta property="article:tag" content="diff">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blank-null.github.io/2023/10/20/vue%E5%BA%95%E5%B1%82/effect.png">
+
+
+<link rel="canonical" href="https://blank-null.github.io/2023/10/20/vue%E5%BA%95%E5%B1%82/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blank-null.github.io/2023/10/20/vue%E5%BA%95%E5%B1%82/","path":"2023/10/20/vue底层/","title":"vue底层"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>vue底层 | bLanK's blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="bLanK's blog" type="application/atom+xml">
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">bLanK's blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">攻无不克，战无不胜</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%93%8D%E5%BA%94%E5%BC%8F"><span class="nav-text">响应式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#effect"><span class="nav-text">effect</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reactive"><span class="nav-text">reactive</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ref"><span class="nav-text">ref</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF"><span class="nav-text">模板</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#keepAlive"><span class="nav-text">keepAlive</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Teleport"><span class="nav-text">Teleport</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transition"><span class="nav-text">Transition</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BC%96%E8%BE%91%E5%99%A8"><span class="nav-text">编辑器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BFDSL"><span class="nav-text">模板DSL</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#diff%E7%AE%97%E6%B3%95"><span class="nav-text">diff算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#v-for-key-%E7%9A%84%E6%84%8F%E4%B9%89"><span class="nav-text">v-for key 的意义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#diff-%E7%AE%97%E6%B3%95%E4%BA%94%E5%A4%A7%E6%AD%A5%E9%AA%A4"><span class="nav-text">diff 算法五大步骤</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="bLank-L"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">bLank-L</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">63</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/bLanK-NULL" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;bLanK-NULL" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+<!-- CloudCalendar -->
+<div class="widget-wrap" style="width: 90%;margin-left: auto;margin-right: auto; opacity: 0.97;">
+	<div class="widget" id="CloudCalendar"></div>
+</div>
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2023/10/20/vue%E5%BA%95%E5%B1%82/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="bLank-L">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="vue底层 | bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          vue底层
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-10-20 12:20:16" itemprop="dateCreated datePublished" datetime="2023-10-20T12:20:16+08:00">2023-10-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-11-16 13:46:37" itemprop="dateModified" datetime="2023-11-16T13:46:37+08:00">2023-11-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/vue/" itemprop="url" rel="index"><span itemprop="name">vue</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="vue底层" href="/2023/10/20/vue%E5%BA%95%E5%B1%82/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::58648633d3e1022452cbe03089f5e1b7" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>7.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>14 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="响应式"><a href="#响应式" class="headerlink" title="响应式"></a>响应式</h1><h2 id="effect"><a href="#effect" class="headerlink" title="effect"></a>effect</h2><p>effect是一个‘桶’， 他收集并触发指定方法</p>
+<p><img src="/2023/10/20/vue%E5%BA%95%E5%B1%82/effect.png"><br><img src="/2023/10/20/vue%E5%BA%95%E5%B1%82/effect2.png"></p>
+<span id="more"></span>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 1. </span></span><br><span class="line"><span class="comment"> * effect 函数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> fn 执行方法</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns</span> 以 ReactiveEffect 实例为 this 的执行函数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">effect</span>(<span class="params">fn</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> _effect = <span class="keyword">new</span> <span class="title class_">ReactiveEffect</span>(fn)</span><br><span class="line">    _effect.<span class="title function_">run</span>()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 2. </span></span><br><span class="line"><span class="comment"> * 响应性触发依赖时的执行类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ReactiveEffect</span> &#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">fn</span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">fn</span> = fn</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">run</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="comment">//告诉全局当前执行的 ReactiveEffect 的实例</span></span><br><span class="line">        activeEffect = <span class="variable language_">this</span></span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="title function_">fn</span>()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> activeEffect <span class="comment">//当前副作用</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="reactive"><a href="#reactive" class="headerlink" title="reactive"></a>reactive</h2><blockquote>
+<p>reactive 只能监听复杂数据类型，因为proxy只能监听负责数据类型的getter和setter</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">reactive</span>(<span class="params">obj</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Proxy</span>(obj, &#123;</span><br><span class="line">        <span class="title function_">get</span>(<span class="params">target, key, recv</span>)&#123;</span><br><span class="line">            <span class="keyword">const</span> res = <span class="title class_">Reflect</span>.<span class="title function_">get</span>(...<span class="variable language_">arguments</span>)</span><br><span class="line">            <span class="comment">//收集依赖</span></span><br><span class="line">            <span class="title function_">track</span>(target, key)</span><br><span class="line">            <span class="keyword">return</span> res</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="title function_">set</span>(<span class="params">target, key, newValue, recv</span>)&#123;</span><br><span class="line">            <span class="keyword">const</span> res = <span class="title class_">Reflect</span>.<span class="title function_">set</span>(...<span class="variable language_">arguments</span>)</span><br><span class="line">            <span class="comment">//触发依赖</span></span><br><span class="line">            <span class="title function_">trigger</span>(target, key)</span><br><span class="line">            <span class="keyword">return</span> res</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h2><blockquote>
+<p>那么ref怎么监听原始值类型？</p>
+</blockquote>
+<p>利用了get 和 set 标记语法</p>
+<ol>
+<li>ref 接收任意数据</li>
+<li>ref 返回RefImpl实例</li>
+<li>利用get和set监听</li>
+</ol>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">RefImpl</span> &#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">value</span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">_value</span> = value </span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">dep</span> = <span class="literal">null</span> <span class="comment">//存放相关副作用</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">get</span> <span class="title function_">value</span>() &#123;</span><br><span class="line">        <span class="comment">//收集依赖</span></span><br><span class="line">        <span class="keyword">if</span>(activeEffect)&#123;</span><br><span class="line">            <span class="comment">//在实例里以set集合形式存放依赖</span></span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">dep</span> || (<span class="variable language_">this</span>.<span class="property">dep</span> = <span class="keyword">new</span> <span class="title class_">Set</span>())</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">dep</span>.<span class="title function_">add</span>(activeEffect)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">_value</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">set</span> <span class="title function_">value</span>(<span class="params">newValue</span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">_value</span> = newValue</span><br><span class="line">        <span class="comment">//触发依赖</span></span><br><span class="line">        <span class="keyword">if</span>(<span class="variable language_">this</span>.<span class="property">dep</span>) &#123;</span><br><span class="line">            <span class="title function_">triggerEffects</span>(<span class="variable language_">this</span>.<span class="property">dep</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">ref</span>(<span class="params">value</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">RefImpl</span>(value)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">triggerEffects</span>(<span class="params">dep</span>) &#123;</span><br><span class="line">    <span class="comment">//执行副作用, dep集合里装的是一个个ReactiveEffect 实例</span></span><br><span class="line">    dep.<span class="title function_">forEach</span>(<span class="function"><span class="params">_effect</span> =&gt;</span> &#123;</span><br><span class="line">        _effect.<span class="title function_">run</span>()</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> activeEffect = <span class="literal">null</span>;    <span class="comment">//当前执行的副作用实例</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 测试一下！</span></span><br><span class="line"><span class="keyword">let</span> myname = <span class="title function_">ref</span>(<span class="string">&#x27;blank&#x27;</span>)</span><br><span class="line"><span class="title function_">effect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;响应式：&#x27;</span>,myname.<span class="property">value</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">    myname.<span class="property">value</span> = <span class="string">&#x27;lzy&#x27;</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;修改完毕...&#x27;</span>)</span><br><span class="line">&#125;,<span class="number">1000</span>)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">响应式： blank</span></span><br><span class="line"><span class="comment">响应式： lzy</span></span><br><span class="line"><span class="comment">修改完毕...  </span></span><br><span class="line"><span class="comment">/*</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>上述effect函数和activeEffect都是简化后的，没有判断该副作用到底依赖了谁</p>
+</blockquote>
+<h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><h2 id="keepAlive"><a href="#keepAlive" class="headerlink" title="keepAlive"></a>keepAlive</h2><p>保活，避免组件被不断创建和销毁</p>
+<p>原理：</p>
+<ul>
+<li>组件被卸载时：不去真正卸载，而是存在一个容器中</li>
+<li>组件被挂载时：从容其中取出挂载</li>
+</ul>
+<h2 id="Teleport"><a href="#Teleport" class="headerlink" title="Teleport"></a>Teleport</h2><p>把插槽内容渲染到其他地方</p>
+<p>原理：</p>
+<ul>
+<li>把Teleport组件的渲染逻辑从渲染器中抽离</li>
+<li>在指定地方进行渲染</li>
+</ul>
+<h2 id="Transition"><a href="#Transition" class="headerlink" title="Transition"></a>Transition</h2><p>实现动画</p>
+<p>原理：</p>
+<ul>
+<li>DOM挂载时，将动效附加到DOM元素</li>
+<li>被卸载时，等动效执行结束后，执行卸载DOM操作</li>
+</ul>
+<h1 id="编辑器"><a href="#编辑器" class="headerlink" title="编辑器"></a>编辑器</h1><h2 id="模板DSL"><a href="#模板DSL" class="headerlink" title="模板DSL"></a>模板DSL</h2><p>把template模板编译为render函数</p>
+<p><img src="/2023/10/20/vue%E5%BA%95%E5%B1%82/compiler.png"></p>
+<p>三大流程：</p>
+<ol>
+<li>通过 parse 方法进行解析，得到 AST（抽象语法树）</li>
+<li>通过 transform 方法对 AST 进行转化，得到 JavaScript AST(大部分和AST相同)</li>
+<li>通过 generate 方法根据 AST 生成 render 函数</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-if</span>=<span class="string">&quot;isShow&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;m-title&quot;</span>&gt;</span>hello world<span class="tag">&lt;/<span class="name">p</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>得到的AST如下</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span> <span class="comment">// NodeTypes.ROOT</span></span><br><span class="line">  <span class="attr">&quot;children&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="comment">// NodeTypes.ELEMENT</span></span><br><span class="line">      <span class="attr">&quot;ns&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;tag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;div&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;tagType&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;props&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="number">7</span><span class="punctuation">,</span> <span class="comment">// NodeTypes.DIRECTIVE</span></span><br><span class="line">          <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;if&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;exp&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="number">4</span><span class="punctuation">,</span> <span class="comment">// NodeTypes.SIMPLE_EXPRESSION</span></span><br><span class="line">            <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;isShow&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;isStatic&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;constType&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;loc&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">              <span class="attr">&quot;start&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="attr">&quot;column&quot;</span><span class="punctuation">:</span> <span class="number">12</span><span class="punctuation">,</span> <span class="attr">&quot;line&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span> <span class="attr">&quot;offset&quot;</span><span class="punctuation">:</span> <span class="number">12</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">              <span class="attr">&quot;end&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="attr">&quot;column&quot;</span><span class="punctuation">:</span> <span class="number">18</span><span class="punctuation">,</span> <span class="attr">&quot;line&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span> <span class="attr">&quot;offset&quot;</span><span class="punctuation">:</span> <span class="number">18</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">              <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;isShow&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">          <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;modifiers&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;loc&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;start&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="attr">&quot;column&quot;</span><span class="punctuation">:</span> <span class="number">6</span><span class="punctuation">,</span> <span class="attr">&quot;line&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span> <span class="attr">&quot;offset&quot;</span><span class="punctuation">:</span> <span class="number">6</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;end&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="attr">&quot;column&quot;</span><span class="punctuation">:</span> <span class="number">19</span><span class="punctuation">,</span> <span class="attr">&quot;line&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span> <span class="attr">&quot;offset&quot;</span><span class="punctuation">:</span> <span class="number">19</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;v-if=&quot;</span>isShow<span class="string">&quot;&quot;</span></span><br><span class="line">          <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">      <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;isSelfClosing&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;children&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="comment">// NodeTypes.ELEMENT</span></span><br><span class="line">          <span class="attr">&quot;ns&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;tag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;p&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;tagType&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;props&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">            <span class="punctuation">&#123;</span></span><br><span class="line">              <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="number">6</span><span class="punctuation">,</span> <span class="comment">// NodeTypes.ATTRIBUTE</span></span><br><span class="line">              <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;class&quot;</span><span class="punctuation">,</span></span><br><span class="line">              <span class="attr">&quot;value&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span> <span class="comment">// NodeTypes.TEXT</span></span><br><span class="line">                <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;title&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;loc&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                  <span class="attr">&quot;start&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="attr">&quot;column&quot;</span><span class="punctuation">:</span> <span class="number">12</span><span class="punctuation">,</span> <span class="attr">&quot;line&quot;</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">,</span> <span class="attr">&quot;offset&quot;</span><span class="punctuation">:</span> <span class="number">32</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">                  <span class="attr">&quot;end&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="attr">&quot;column&quot;</span><span class="punctuation">:</span> <span class="number">19</span><span class="punctuation">,</span> <span class="attr">&quot;line&quot;</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">,</span> <span class="attr">&quot;offset&quot;</span><span class="punctuation">:</span> <span class="number">39</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">                  <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span>title<span class="string">&quot;&quot;</span></span><br><span class="line">                <span class="punctuation">&#125;</span></span><br><span class="line">              <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">              <span class="attr">&quot;loc&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;start&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="attr">&quot;column&quot;</span><span class="punctuation">:</span> <span class="number">6</span><span class="punctuation">,</span> <span class="attr">&quot;line&quot;</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">,</span> <span class="attr">&quot;offset&quot;</span><span class="punctuation">:</span> <span class="number">26</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;end&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="attr">&quot;column&quot;</span><span class="punctuation">:</span> <span class="number">19</span><span class="punctuation">,</span> <span class="attr">&quot;line&quot;</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">,</span> <span class="attr">&quot;offset&quot;</span><span class="punctuation">:</span> <span class="number">39</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;class=&quot;</span>title<span class="string">&quot;&quot;</span></span><br><span class="line">              <span class="punctuation">&#125;</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">          <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;isSelfClosing&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;children&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">            <span class="punctuation">&#123;</span></span><br><span class="line">              <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span> <span class="comment">// NodeTypes.ELEMENT</span></span><br><span class="line">              <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;hello world&quot;</span><span class="punctuation">,</span></span><br><span class="line">              <span class="attr">&quot;loc&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;start&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="attr">&quot;column&quot;</span><span class="punctuation">:</span> <span class="number">20</span><span class="punctuation">,</span> <span class="attr">&quot;line&quot;</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">,</span> <span class="attr">&quot;offset&quot;</span><span class="punctuation">:</span> <span class="number">40</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;end&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="attr">&quot;column&quot;</span><span class="punctuation">:</span> <span class="number">31</span><span class="punctuation">,</span> <span class="attr">&quot;line&quot;</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">,</span> <span class="attr">&quot;offset&quot;</span><span class="punctuation">:</span> <span class="number">51</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;hello world&quot;</span></span><br><span class="line">              <span class="punctuation">&#125;</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">          <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;loc&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;start&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="attr">&quot;column&quot;</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">,</span> <span class="attr">&quot;line&quot;</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">,</span> <span class="attr">&quot;offset&quot;</span><span class="punctuation">:</span> <span class="number">23</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;end&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="attr">&quot;column&quot;</span><span class="punctuation">:</span> <span class="number">35</span><span class="punctuation">,</span> <span class="attr">&quot;line&quot;</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">,</span> <span class="attr">&quot;offset&quot;</span><span class="punctuation">:</span> <span class="number">55</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&lt;p class=&quot;</span>title<span class="string">&quot;&gt;hello world&lt;/p&gt;&quot;</span></span><br><span class="line">          <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">      <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;loc&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;start&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="attr">&quot;column&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="attr">&quot;line&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span> <span class="attr">&quot;offset&quot;</span><span class="punctuation">:</span> <span class="number">1</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;end&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="attr">&quot;column&quot;</span><span class="punctuation">:</span> <span class="number">7</span><span class="punctuation">,</span> <span class="attr">&quot;line&quot;</span><span class="punctuation">:</span> <span class="number">4</span><span class="punctuation">,</span> <span class="attr">&quot;offset&quot;</span><span class="punctuation">:</span> <span class="number">64</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&lt;div v-if=&quot;</span>isShow<span class="string">&quot;&gt;\n  &lt;p class=&quot;</span>title<span class="string">&quot;&gt;hello world&lt;/p&gt;  \n&lt;/div&gt;&quot;</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;helpers&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;components&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;directives&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;hoists&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;imports&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;cached&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;temps&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;loc&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;start&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="attr">&quot;column&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="attr">&quot;line&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="attr">&quot;offset&quot;</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;end&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="attr">&quot;column&quot;</span><span class="punctuation">:</span> <span class="number">5</span><span class="punctuation">,</span> <span class="attr">&quot;line&quot;</span><span class="punctuation">:</span> <span class="number">5</span><span class="punctuation">,</span> <span class="attr">&quot;offset&quot;</span><span class="punctuation">:</span> <span class="number">69</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;\n&lt;div v-if=&quot;</span>isShow<span class="string">&quot;&gt;\n  &lt;p class=&quot;</span>title<span class="string">&quot;&gt;hello world&lt;/p&gt;  \n&lt;/div&gt;\n    &quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="diff算法"><a href="#diff算法" class="headerlink" title="diff算法"></a>diff算法</h1><p>本质是一个对比算法，旧DOM更新为新DOM时怎么提高效率</p>
+<p><strong>但是不是DOM更新了就会触发diff，而是DOM挂载、卸载或变换顺序才会触发diff</strong></p>
+<p>原本两个树的完全的 diff 算法是一个时间复杂度为 O(n3) , Vue 进行了优化转换成 <strong>O(n)</strong> 复杂度的问题(只比较同级不考虑跨级问题)</p>
+<h2 id="v-for-key-的意义"><a href="#v-for-key-的意义" class="headerlink" title="v-for key 的意义"></a>v-for key 的意义</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 原本 item = [&#123;id=1,title=&#x27;a&#x27;&#125;,&#123;id=2,title=&#x27;b&#x27;&#125;,&#123;id=3,title=&#x27;c&#x27;&#125;] --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">&#x27;item in items&#x27;</span> <span class="attr">:key</span>=<span class="string">&#x27;item.id&#x27;</span>&gt;</span>&#123;&#123;item.title&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span> </span><br><span class="line"><span class="comment">&lt;!-- 修改后 item = [&#123;id=1, title=&#x27;a&#x27;&#125;,&#123;id=2, title=&#x27;b&#x27;&#125;,&#123;id=4, title=&#x27;d&#x27;&#125;] --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>此时diff算法开始工作，</p>
+<p>首先，怎么比较？<code>isSameVNodeTyppe(n1: VNode, n2: VNode)</code> 方法通过比较n1和n2的<code>type</code>和<code>key</code>,如果都相等就说明没有变化，无需挂载卸载DOM元素</p>
+<ul>
+<li>type 是AST中的type，表示节点类型</li>
+<li>key 则是 v-for 中的key</li>
+</ul>
+<p>上述情况可知，第三个li变了需要更新</p>
+<h2 id="diff-算法五大步骤"><a href="#diff-算法五大步骤" class="headerlink" title="diff 算法五大步骤"></a>diff 算法五大步骤</h2><ol>
+<li><p>sync from start：自前向后的对比</p>
+<ul>
+<li>把两组 dom 自前开始，相同的 dom 节点（vnode）完成对比处理</li>
+</ul>
+</li>
+<li><p>sync from end：自后向前的对比</p>
+<ul>
+<li>把两组 dom 自后开始，相同的 dom 节点（vnode）完成对比处理</li>
+</ul>
+</li>
+<li><p>common sequence + mount：新节点多于旧节点，需要挂载</p>
+</li>
+<li><p>common sequence + unmount：旧节点多于新节点，需要卸载</p>
+</li>
+<li><p>unknown sequence：乱序</p>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//前者是一组旧DOM的key数组 后者是更新后新DOM的key数组</span></span><br><span class="line">oldChildren= [<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">newChildren= [<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1-经过阶段1： </span></span><br><span class="line"><span class="comment">(0,1,2,) 3,4</span></span><br><span class="line"><span class="comment">(0,1,2,)5,9,3,4</span></span><br><span class="line"><span class="comment">此时 i = 3 代表下标，oldChildrenEnd = 4, newChildrenEnd = 6</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">2- 经过阶段2：</span></span><br><span class="line"><span class="comment">(0,1,2,) (3,4)</span></span><br><span class="line"><span class="comment">(0,1,2,)5,6,(3,4)</span></span><br><span class="line"><span class="comment">此时 i = 3 , oldChildrenEnd = 2, newChildrenEnd = 4</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">3- if (i &gt; oldChildrenEnd) 进入阶段3:</span></span><br><span class="line"><span class="comment">while(i&lt;=newChildrenEnd)&#123;</span></span><br><span class="line"><span class="comment">    patch(normalize(newChildren[i]))    //1. VNode挂载到DOM 2. 根据新旧VNode跟新DOM</span></span><br><span class="line"><span class="comment">    i++</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">此时 i = 5, newChildrenEnd = 4</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">4- else if (i &gt; newChildrenEnd) </span></span><br><span class="line"><span class="comment">不进入阶段4</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">5- else </span></span><br><span class="line"><span class="comment">不进入阶段5</span></span><br></pre></td></tr></table></figure>
+
+<p>阶段5是最复杂的，单独考虑一个进入阶段5的例子</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">oldChildren= [a, b, c, d, e, f, g]</span><br><span class="line">newChildren= [a, b, e, d, c, h, f, g]</span><br><span class="line">...</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">a b [c d e] f g</span></span><br><span class="line"><span class="comment">a b [e d c h] f g</span></span><br><span class="line"><span class="comment">5- 进入阶段5</span></span><br><span class="line"><span class="comment">根据newChildren 生成一个map （key, index） ,如下</span></span><br><span class="line"><span class="comment">map &#123;&lt;e, 2&gt;, &lt;d, 3&gt;, &lt;c, 4&gt;,&lt;h, 5&gt;&#125;</span></span><br><span class="line"><span class="comment">旧节点可能在newChildren里也可能不在，</span></span><br><span class="line"><span class="comment">    如果不在就卸载</span></span><br><span class="line"><span class="comment">    如果在 就根据map得到newIndex</span></span><br><span class="line"><span class="comment">        再对比newIndex和oldIndex 决定要不要移动</span></span><br><span class="line"><span class="comment">            如果要移动会生成一个最长递增子序列，便于移动</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="bLank-L 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="bLank-L 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>bLank-L
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://blank-null.github.io/2023/10/20/vue%E5%BA%95%E5%B1%82/" title="vue底层">https://blank-null.github.io/2023/10/20/vue底层/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/vue/" rel="tag"># vue</a>
+              <a href="/tags/reactive/" rel="tag"># reactive</a>
+              <a href="/tags/ref/" rel="tag"># ref</a>
+              <a href="/tags/AST/" rel="tag"># AST</a>
+              <a href="/tags/diff/" rel="tag"># diff</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/10/21/%E7%BC%96%E7%A0%81/" rel="prev" title="编码">
+                  <i class="fa fa-angle-left"></i> 编码
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/10/17/git%E7%9A%84%E4%BD%BF%E7%94%A8/" rel="next" title="git的使用">
+                  git的使用 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS" sid="58648633d3e1022452cbe03089f5e1b7"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">bLank-L</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">127k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:51</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="500" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<!-- calendar widget -->
+{% if theme.CloudCalendar.enable %}
+    <script src="{{ theme.CloudCalendar.calendarCdn }}"></script>
+    <script src="{{ theme.CloudCalendar.langCdn }}"></script>
+    <script>
+    $(function() {
+        $('#CloudCalendar').aCalendar('{{ theme.CloudCalendar.language }}',
+            $.extend(
+                '', {
+                    single:{{ theme.CloudCalendar.single }},
+                    root:'{{ theme.CloudCalendar.root }}'
+                }
+            )
+        );
+    });
+    </script>
+{% endif %}
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: 'unset',
+  left: '32px',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cywV9cKcy","appkey":"557a4cba0c3c88fe4338e6ffae25f9d4","count":true}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#2CABEC"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/icon.png">
+  <link rel="mask-icon" href="/images/icon.png" color="#2CABEC">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blank-null.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"changyan","storage":true,"lazyload":false,"nav":null,"activeClass":"changyan"},"stickytabs":true,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="安装hexo框架 下载 node.js  （如果有可以跳过）  安装 cnpm （全局安装，淘宝镜像源） 1npm install -g cnpm --registry&#x3D;https:&#x2F;&#x2F;registry.npm.taobao.org  安装 hexo  1cnpm install -g hexo-cli">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于Hexo的博客">
+<meta property="og:url" content="https://blank-null.github.io/2020/12/30/%E5%9F%BA%E4%BA%8EHexo%E7%9A%84%E5%8D%9A%E5%AE%A2/index.html">
+<meta property="og:site_name" content="bLanK&#39;s blog">
+<meta property="og:description" content="安装hexo框架 下载 node.js  （如果有可以跳过）  安装 cnpm （全局安装，淘宝镜像源） 1npm install -g cnpm --registry&#x3D;https:&#x2F;&#x2F;registry.npm.taobao.org  安装 hexo  1cnpm install -g hexo-cli">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-12-30T10:01:31.000Z">
+<meta property="article:modified_time" content="2023-10-11T03:21:09.460Z">
+<meta property="article:author" content="bLank-L">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="blog">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://blank-null.github.io/2020/12/30/%E5%9F%BA%E4%BA%8EHexo%E7%9A%84%E5%8D%9A%E5%AE%A2/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blank-null.github.io/2020/12/30/%E5%9F%BA%E4%BA%8EHexo%E7%9A%84%E5%8D%9A%E5%AE%A2/","path":"2020/12/30/基于Hexo的博客/","title":"基于Hexo的博客"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>基于Hexo的博客 | bLanK's blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="bLanK's blog" type="application/atom+xml">
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">bLanK's blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">攻无不克，战无不胜</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85hexo%E6%A1%86%E6%9E%B6"><span class="nav-text">安装hexo框架</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%90%AD%E5%BB%BAblog"><span class="nav-text">搭建blog</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E5%88%B0github"><span class="nav-text">部署到github</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9B%B4%E6%8D%A2%E4%B8%BB%E9%A2%98"><span class="nav-text">更换主题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE-SSH-%E4%BD%BF%E7%94%A8-hexo-deploy-%E6%97%B6%E5%85%8D%E8%BE%93%E7%94%A8%E6%88%B7%E5%90%8D%E5%AF%86%E7%A0%81"><span class="nav-text">设置 SSH 使用 hexo deploy 时免输用户名密码</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-%E7%94%9F%E6%88%90-SSH-%E5%AF%86%E9%92%A5"><span class="nav-text">1. 生成 SSH 密钥</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-%E8%AE%BE%E7%BD%AE-Github-%E9%A1%B9%E7%9B%AE%E7%9A%84-SSH-keys"><span class="nav-text">2. 设置 Github 项目的 SSH keys</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-%E4%BF%AE%E6%94%B9%E5%8D%9A%E5%AE%A2Git%E8%BF%9C%E7%A8%8B%E6%8F%90%E4%BA%A4%E5%9C%B0%E5%9D%80"><span class="nav-text">3.修改博客Git远程提交地址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-%E4%BF%AE%E6%94%B9hexo%E6%A0%B9%E7%9B%AE%E5%BD%95%E4%B8%8B-config-yml%E4%B8%AD%E7%9A%84%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E8%AE%BE%E7%BD%AE"><span class="nav-text">4.修改hexo根目录下_config.yml中的远程仓库设置</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Md%E6%A0%BC%E5%BC%8F%E6%96%87%E6%A1%A3%E5%86%99%E4%BD%9C"><span class="nav-text">Md格式文档写作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAcategories-%E3%80%81tags-%E9%80%89%E9%A1%B9"><span class="nav-text">创建categories 、tags 选项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#note"><span class="nav-text">note</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tabs"><span class="nav-text">tabs</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E2%80%93%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8%E9%81%87%E5%88%B0%E7%9A%84BUG"><span class="nav-text">更新–日常使用遇到的BUG</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="bLank-L"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">bLank-L</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">63</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/bLanK-NULL" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;bLanK-NULL" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+<!-- CloudCalendar -->
+<div class="widget-wrap" style="width: 90%;margin-left: auto;margin-right: auto; opacity: 0.97;">
+	<div class="widget" id="CloudCalendar"></div>
+</div>
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2020/12/30/%E5%9F%BA%E4%BA%8EHexo%E7%9A%84%E5%8D%9A%E5%AE%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="bLank-L">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="基于Hexo的博客 | bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          基于Hexo的博客
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-12-30 18:01:31" itemprop="dateCreated datePublished" datetime="2020-12-30T18:01:31+08:00">2020-12-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-10-11 11:21:09" itemprop="dateModified" datetime="2023-10-11T11:21:09+08:00">2023-10-11</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="基于Hexo的博客" href="/2020/12/30/%E5%9F%BA%E4%BA%8EHexo%E7%9A%84%E5%8D%9A%E5%AE%A2/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::fc112dfe84e9477d80817d63578f9d01" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>7 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="安装hexo框架"><a href="#安装hexo框架" class="headerlink" title="安装hexo框架"></a>安装hexo框架</h1><ol>
+<li><p>下载 node.js  （如果有可以跳过）</p>
+</li>
+<li><p>安装 cnpm （全局安装，淘宝镜像源）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装 hexo </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install -g hexo-cli</span><br></pre></td></tr></table></figure></li>
+</ol>
+<span id="more"></span>
+
+<h1 id="搭建blog"><a href="#搭建blog" class="headerlink" title="搭建blog"></a>搭建blog</h1><ol>
+<li><p>新建blog目录，进入该目录，<u>之后操作全在该目录下！</u></p>
+</li>
+<li><p>初始化hexo</p>
+</li>
+</ol>
+   <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><p>关于hexo的一些操作 (四个步骤按顺序执行后即可在4000端口看到本地的效果)</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>/预览 hexo s</span><br><span class="line"><span class="number">2</span>/新建 hexo n <span class="string">&quot;标题&quot;</span></span><br><span class="line"><span class="number">3</span>/清理 hexo clean</span><br><span class="line"><span class="number">4</span>/生成 hexo g </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>坑：</strong>“标题”中有些特别的符号不能用，例如英文下的[]</li>
+</ul>
+</li>
+</ol>
+<h1 id="部署到github"><a href="#部署到github" class="headerlink" title="部署到github"></a>部署到github</h1><ol>
+<li>先去github新建仓库</li>
+</ol>
+<ul>
+<li><strong>坑：</strong>仓库名必须是  自己的用户名.github.io</li>
+</ul>
+<ol start="2">
+<li><p>blog目录下安装一个插件</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install <span class="literal">--save</span> hexo<span class="literal">-deployer-git</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置blog目录下的 _config.yml 文件</p>
+<blockquote>
+<p>在 #Deployment 下的 deploy: </p>
+<p>​	type: ‘git’</p>
+<p>​	repo: ‘自己的仓库地址不是网址’</p>
+<p>​	branch: ‘master’</p>
+</blockquote>
+<ul>
+<li><strong>坑：</strong>注意冒号后的英文空格</li>
+</ul>
+</li>
+<li><p>部署到远端</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">5</span>/部署 hexo d</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h1><ol>
+<li>先把主题下载到本地</li>
+</ol>
+   <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone 主题的仓库地址 目录</span><br><span class="line"><span class="comment">#例如 git clone https://github.com/jerryc127/hexo-theme-butterfly.git themes/butterfly</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>配置 _config.yml 文件</li>
+</ol>
+<blockquote>
+<p>在 #Extensions 下</p>
+<p>​	theme: butterfly</p>
+</blockquote>
+<p>   这里的butterfly及1.中的butterfly目录</p>
+<ol start="3">
+<li>在本地预览</li>
+</ol>
+   <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo s	</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><p>部署到远端 （反应不一定很快）</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><strong>坑：</strong>如果更换主题遇到任何问题，请在blog目录下安装以下插件</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install <span class="literal">--save</span> hexo<span class="literal">-renderer-jade</span> hexo<span class="literal">-generator-feed</span> hexo<span class="literal">-generator-sitemap</span> hexo<span class="literal">-browsersync</span> hexo<span class="literal">-generator-archive</span></span><br><span class="line">npm install <span class="literal">--save</span> hexo<span class="literal">-deployer-git</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="设置-SSH-使用-hexo-deploy-时免输用户名密码"><a href="#设置-SSH-使用-hexo-deploy-时免输用户名密码" class="headerlink" title="设置 SSH 使用 hexo deploy 时免输用户名密码"></a>设置 SSH 使用 hexo deploy 时免输用户名密码</h1><p>原文：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/a7167e26b086">https://www.jianshu.com/p/a7167e26b086</a></p>
+<p>SSH 验证就是我们键入命令 <code>hexo deploy</code> 以后，当那些需要提交的内容显示完成过后会弹出的一个小窗口提示我们输入用户名、密码。此处我们设置ssh公钥，实现<code>hexo deploy</code>时免密登陆。</p>
+<h6 id="1-生成-SSH-密钥"><a href="#1-生成-SSH-密钥" class="headerlink" title="1. 生成 SSH 密钥"></a>1. 生成 SSH 密钥</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br></pre></td></tr></table></figure>
+
+<p>使用 <code>ssh-keygen</code> 生成密钥</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;your_email@example.com&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>后面的三次输入均可使用默认值，<code>Enter回车</code>跳过</p>
+<p>密钥生成成功</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Your identification has been saved <span class="keyword">in</span> /home/you/.ssh/id_rsa.</span><br><span class="line">Your public key has been saved <span class="keyword">in</span> /home/you/.ssh/id_rsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">…………………此处是密钥内容…………………… your_email@example.com</span><br></pre></td></tr></table></figure>
+
+<h6 id="2-设置-Github-项目的-SSH-keys"><a href="#2-设置-Github-项目的-SSH-keys" class="headerlink" title="2. 设置 Github 项目的 SSH keys"></a>2. 设置 Github 项目的 SSH keys</h6><p>！如何设置自行搜索，很简单</p>
+<p>接下来测试配置是否成功</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@Gitee.com</span><br></pre></td></tr></table></figure>
+
+<p>如果出现以下内容即表示配置完成并且成功！</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">The authenticity of host <span class="string">&#x27;gitee.com (xx.xx.xx.xx)&#x27;</span> can<span class="string">&#x27;t be established.</span></span><br><span class="line"><span class="string">ECDSA key fingerprint is SHA256:FQGC9Kn/eye1W8icdBgrQp+KkGYoFgbVr17bmjey0Wc.</span></span><br><span class="line"><span class="string">ECDSA key fingerprint is MD5:27:e5:d3:f7:2a:9e:eb:6c:93:cd:1f:c1:47:a3:54:b1.</span></span><br><span class="line"><span class="string">Are you sure you want to continue connecting (yes/no)? yes</span></span><br><span class="line"><span class="string">Warning: Permanently added &#x27;</span>gitee.com,xx.xx.xx.xx<span class="string">&#x27; (ECDSA) to the list of known hosts.</span></span><br><span class="line"><span class="string">Hi xxx! You&#x27;</span>ve successfully authenticated, but GITEE.COM does not provide shell access.</span><br></pre></td></tr></table></figure>
+
+<h6 id="3-修改博客Git远程提交地址"><a href="#3-修改博客Git远程提交地址" class="headerlink" title="3.修改博客Git远程提交地址"></a>3.修改博客Git远程提交地址</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改 https 协议为 ssh 协议(仓库的ssh地址)</span></span><br><span class="line">git remote set-url origin git@gitee.com:xxx/xxx.git</span><br></pre></td></tr></table></figure>
+
+<h6 id="4-修改hexo根目录下-config-yml中的远程仓库设置"><a href="#4-修改hexo根目录下-config-yml中的远程仓库设置" class="headerlink" title="4.修改hexo根目录下_config.yml中的远程仓库设置"></a>4.修改hexo根目录下<code>_config.yml</code>中的远程仓库设置</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/deployment.html</span></span><br><span class="line"></span><br><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repo: git@gitee.com:xxx/xxx.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+<p>最后部署到远程就可以了</p>
+<p>注：如果使用的是码云作为远程仓库部署，还需要在对应仓库的服务中手动部署一下</p>
+<h1 id="Md格式文档写作"><a href="#Md格式文档写作" class="headerlink" title="Md格式文档写作"></a>Md格式文档写作</h1><h2 id="创建categories-、tags-选项"><a href="#创建categories-、tags-选项" class="headerlink" title="创建categories 、tags 选项"></a>创建categories 、tags 选项</h2><blockquote>
+<p>categories、tags 配置是通用的</p>
+</blockquote>
+<ol>
+<li><p>生成categories page</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page categories</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>找到生成的 <code>/categories/index.md</code>。添加 <code>type: &quot;categories&quot;</code> </p>
+</li>
+<li><p>categories 赋予文章</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">title: </span><br><span class="line">data: </span><br><span class="line">categories: </span><br><span class="line"><span class="bullet">   -</span> 分类1</span><br><span class="line"><span class="bullet">   -</span> 分类2</span><br><span class="line">tags: </span><br><span class="line"><span class="bullet">   -</span> 标签1</span><br><span class="line"><span class="bullet">   -</span> 标签2</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="note"><a href="#note" class="headerlink" title="note"></a>note</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;% note default %&#125;default&#123;% endnote %&#125;</span><br><span class="line">&#123;% note primary %&#125;primary&#123;% endnote %&#125;</span><br><span class="line">&#123;% note success %&#125;success&#123;% endnote %&#125;</span><br><span class="line">&#123;% note info %&#125;info&#123;% endnote %&#125;</span><br><span class="line">&#123;% note warning %&#125;warning&#123;% endnote %&#125;</span><br><span class="line">&#123;% note danger %&#125;danger&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="note default"><p>default</p>
+</div>
+<div class="note primary"><p>primary</p>
+</div>
+<div class="note success"><p>success</p>
+</div>
+<div class="note info"><p>info</p>
+</div>
+<div class="note warning"><p>warning</p>
+</div>
+<div class="note danger"><p>danger</p>
+</div>
+
+<h2 id="tabs"><a href="#tabs" class="headerlink" title="tabs"></a>tabs</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;% tabs name %&#125;</span><br><span class="line">&lt;!-- tab --&gt;</span><br><span class="line"><span class="strong">**This is Tab 1.**</span></span><br><span class="line">&lt;!-- endtab --&gt;</span><br><span class="line">&lt;!-- tab --&gt;</span><br><span class="line"><span class="strong">**This is Tab 2.**</span></span><br><span class="line">&lt;!-- endtab --&gt;</span><br><span class="line">&lt;!-- tab --&gt;</span><br><span class="line"><span class="strong">**This is Tab 3.**</span></span><br><span class="line">&lt;!-- endtab --&gt;</span><br><span class="line">&#123;% endtabs %&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="tabs" id="name"><ul class="nav-tabs"><li class="tab active"><a href="#name-1">name 1</a></li><li class="tab"><a href="#name-2">name 2</a></li><li class="tab"><a href="#name-3">name 3</a></li></ul><div class="tab-content"><div class="tab-pane active" id="name-1"><p><strong>This is Tab 1.</strong></p></div><div class="tab-pane" id="name-2"><p><strong>This is Tab 2.</strong></p></div><div class="tab-pane" id="name-3"><p><strong>This is Tab 3.</strong></p></div></div></div>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>遇到任何问题，要善于运用搜索引擎，网上相关解决方法很多。当然也欢迎留言、讨论，一起进步吧！</p>
+<h1 id="更新–日常使用遇到的BUG"><a href="#更新–日常使用遇到的BUG" class="headerlink" title="更新–日常使用遇到的BUG"></a>更新–日常使用遇到的BUG</h1><p>这里我放一下常见的问题</p>
+<ol>
+<li><p><strong>md图片相对路径</strong> </p>
+<p>一、不要用md的语法插入图片。而是用 </p>
+<p>其中，asset_img 不动，imgurl就是图片名别漏了后缀，descript图片描述可省略。</p>
+<p>二、在&#x2F;source&#x2F;_posts&#x2F;下建一个同名路径，图片放里面</p>
+</li>
+<li><p><strong>添加评论功能</strong></p>
+<p>文档错了那一大段代码不是markdown而是yml，也就是说YAML不需要写那些，而是在主题配置文件中搜索comments 找到如下部分。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">comments:</span></span><br><span class="line">  <span class="comment"># Up to two comments system, the first will be shown as default</span></span><br><span class="line">  <span class="comment"># Choose: Disqus/Disqusjs/Livere/Gitalk/Valine/Waline/Utterances/Facebook Comments/Twikoo</span></span><br><span class="line">  <span class="attr">use:</span></span><br><span class="line">  <span class="comment"># - Valine</span></span><br><span class="line">  <span class="comment"># - Disqus</span></span><br><span class="line">  <span class="attr">text:</span> <span class="literal">true</span> <span class="comment"># Display the comment name next to the button</span></span><br><span class="line">  <span class="comment"># lazyload: The comment system will be load when comment element enters the browser&#x27;s viewport.</span></span><br><span class="line">  <span class="comment"># If you set it to true, the comment count will be invalid</span></span><br><span class="line">  <span class="attr">lazyload:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">count:</span> <span class="literal">false</span> <span class="comment"># Display comment count in top_img</span></span><br></pre></td></tr></table></figure>
+
+<p>在use后面加入你选择的评论系统</p>
+</li>
+<li><p><strong>添加搜索系统</strong></p>
+<p>文档没有细说，需要自行百度，这些都很简单。记住一点，要改hexo框架的_config.yml文件，把url: 后面的网址改成你自己的网址。不然搜索到内容后点击会进错误的网址。</p>
+</li>
+<li><p>分享功能 sharejs</p>
+<p>其实这里没有bug，但是。举个例子，用qq方式分享。扫描二维码进入的是你当前页面的地址，是<u>自动</u>的。所以你在本地端口4000预览的时候测试分享功能手机是扫不出来的，因为手机进不了localhost:4000。<u>你要去github部署的网站上测试该功能</u>。注意一下。</p>
+</li>
+<li><p>首页文章只显示摘要（next主题）</p>
+<p>在正文md文档中，想要作为摘要的地方后用<code>&lt;!-- more --&gt;</code>分割</p>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="bLank-L 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="bLank-L 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>bLank-L
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://blank-null.github.io/2020/12/30/%E5%9F%BA%E4%BA%8EHexo%E7%9A%84%E5%8D%9A%E5%AE%A2/" title="基于Hexo的博客">https://blank-null.github.io/2020/12/30/基于Hexo的博客/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/hexo/" rel="tag"># hexo</a>
+              <a href="/tags/blog/" rel="tag"># blog</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/10/10/%E8%BF%AD%E4%BB%A3%E5%99%A8-%E7%94%9F%E6%88%90%E5%99%A8/" rel="prev" title="迭代器&生成器">
+                  <i class="fa fa-angle-left"></i> 迭代器&生成器
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/12/30/hello-world/" rel="next" title="Hello World">
+                  Hello World <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS" sid="fc112dfe84e9477d80817d63578f9d01"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">bLank-L</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">127k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:51</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="500" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<!-- calendar widget -->
+{% if theme.CloudCalendar.enable %}
+    <script src="{{ theme.CloudCalendar.calendarCdn }}"></script>
+    <script src="{{ theme.CloudCalendar.langCdn }}"></script>
+    <script>
+    $(function() {
+        $('#CloudCalendar').aCalendar('{{ theme.CloudCalendar.language }}',
+            $.extend(
+                '', {
+                    single:{{ theme.CloudCalendar.single }},
+                    root:'{{ theme.CloudCalendar.root }}'
+                }
+            )
+        );
+    });
+    </script>
+{% endif %}
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: 'unset',
+  left: '32px',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cywV9cKcy","appkey":"557a4cba0c3c88fe4338e6ffae25f9d4","count":true}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
+
+</body>
+</html>

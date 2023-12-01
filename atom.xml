@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>bLanK&#39;s blog</title>
+  
+  <subtitle>攻无不克，战无不胜</subtitle>
+  <link href="https://blank-null.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://blank-null.github.io/"/>
+  <updated>2023-12-01T04:48:14.074Z</updated>
+  <id>https://blank-null.github.io/</id>
+  
+  <author>
+    <name>bLank-L</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>content-type一些疑惑</title>
+    <link href="https://blank-null.github.io/2023/12/01/content-type%E4%B8%80%E4%BA%9B%E7%96%91%E6%83%91/"/>
+    <id>https://blank-null.github.io/2023/12/01/content-type%E4%B8%80%E4%BA%9B%E7%96%91%E6%83%91/</id>
+    <published>2023-12-01T03:58:29.000Z</published>
+    <updated>2023-12-01T04:48:14.074Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;相信很初学者在使用&lt;code&gt;body-parser&lt;/code&gt;时感到疑惑&lt;/p&gt;
+&lt;p&gt;我们先说说他的作用，其实很简单，就是把HTTP请求里的请求体传参解析出来&lt;/p&gt;
+&lt;p&gt;我们在使用接口测试工具时(例如：&lt;code&gt;postman&lt;/code&gt; &lt;code&gt;Apip</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="https://blank-null.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="http" scheme="https://blank-null.github.io/tags/http/"/>
+    
+    <category term="content-type" scheme="https://blank-null.github.io/tags/content-type/"/>
+    
+    <category term="body-parser" scheme="https://blank-null.github.io/tags/body-parser/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IntersectionObserver</title>
+    <link href="https://blank-null.github.io/2023/11/24/IntersectionObserver/"/>
+    <id>https://blank-null.github.io/2023/11/24/IntersectionObserver/</id>
+    <published>2023-11-24T13:06:54.000Z</published>
+    <updated>2023-11-24T13:32:13.548Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;l</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="https://blank-null.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="IntersectionObserver" scheme="https://blank-null.github.io/tags/IntersectionObserver/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MutationObserver</title>
+    <link href="https://blank-null.github.io/2023/11/24/MutationObserver/"/>
+    <id>https://blank-null.github.io/2023/11/24/MutationObserver/</id>
+    <published>2023-11-24T11:55:40.000Z</published>
+    <updated>2023-11-24T13:58:41.768Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;MutationObserver 用于观察&lt;strong&gt;DOM&lt;/strong&gt;的任何变动&lt;/p&gt;
+&lt;p&gt;但是DOM的变动是同步的，而此方法是&lt;strong&gt;异步微任务&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;构造函数&quot;&gt;&lt;a href=&quot;#构造函数&quot; class=&quot;h</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="https://blank-null.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="MutationObserver" scheme="https://blank-null.github.io/tags/MutationObserver/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue插槽的本质</title>
+    <link href="https://blank-null.github.io/2023/11/16/vue%E6%8F%92%E6%A7%BD%E7%9A%84%E6%9C%AC%E8%B4%A8/"/>
+    <id>https://blank-null.github.io/2023/11/16/vue%E6%8F%92%E6%A7%BD%E7%9A%84%E6%9C%AC%E8%B4%A8/</id>
+    <published>2023-11-16T05:46:55.000Z</published>
+    <updated>2023-11-16T07:23:39.408Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;插槽本质就是函数&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;父组件内通过&lt;code&gt;&amp;lt;Child&amp;gt;&amp;lt;/Child&amp;gt;&lt;/code&gt; 方式是实例化子组件时如果使用了插槽，如下:&lt;/p&gt;
+&lt;figure class=&quot;highli</summary>
+      
+    
+    
+    
+    <category term="vue" scheme="https://blank-null.github.io/categories/vue/"/>
+    
+    
+    <category term="插槽" scheme="https://blank-null.github.io/tags/%E6%8F%92%E6%A7%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>浅谈node模块引入与加载机制</title>
+    <link href="https://blank-null.github.io/2023/11/07/%E6%B5%85%E8%B0%88node%E6%A8%A1%E5%9D%97%E5%BC%95%E5%85%A5%E4%B8%8E%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/"/>
+    <id>https://blank-null.github.io/2023/11/07/%E6%B5%85%E8%B0%88node%E6%A8%A1%E5%9D%97%E5%BC%95%E5%85%A5%E4%B8%8E%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/</id>
+    <published>2023-11-07T13:15:30.000Z</published>
+    <updated>2023-11-07T13:28:57.870Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;模块种类&quot;&gt;&lt;a href=&quot;#模块种类&quot; class=&quot;headerlink&quot; title=&quot;模块种类&quot;&gt;&lt;/a&gt;模块种类&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;核心模块: &lt;code&gt;path url file http&lt;/code&gt; 等&lt;ul&gt;
+&lt;li&gt;优先级高，重名时</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="https://blank-null.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="npm" scheme="https://blank-null.github.io/tags/npm/"/>
+    
+    <category term="import" scheme="https://blank-null.github.io/tags/import/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>函数柯里化 Currying</title>
+    <link href="https://blank-null.github.io/2023/11/05/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96-Currying/"/>
+    <id>https://blank-null.github.io/2023/11/05/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96-Currying/</id>
+    <published>2023-11-05T07:04:07.000Z</published>
+    <updated>2023-11-05T08:06:07.277Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;什么是函数柯里化&quot;&gt;&lt;a href=&quot;#什么是函数柯里化&quot; class=&quot;headerlink&quot; title=&quot;什么是函数柯里化&quot;&gt;&lt;/a&gt;什么是函数柯里化&lt;/h1&gt;&lt;p&gt;是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="https://blank-null.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="柯里化" scheme="https://blank-null.github.io/tags/%E6%9F%AF%E9%87%8C%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>浅谈Service Worker</title>
+    <link href="https://blank-null.github.io/2023/11/05/%E6%B5%85%E8%B0%88Service-Worker/"/>
+    <id>https://blank-null.github.io/2023/11/05/%E6%B5%85%E8%B0%88Service-Worker/</id>
+    <published>2023-11-05T06:50:34.000Z</published>
+    <updated>2023-11-05T06:54:41.313Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;很好的一篇博客&lt;a href=&quot;https://www.cnblogs.com/jaycethanks/p/16502676.html#1-service-worker-%E7%AE%80%E4%BB%8B&quot;&gt;Service Worker&lt;/a&gt;&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="https://blank-null.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="Service Worker" scheme="https://blank-null.github.io/tags/Service-Worker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>webpack学习</title>
+    <link href="https://blank-null.github.io/2023/11/05/webpack%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://blank-null.github.io/2023/11/05/webpack%E5%AD%A6%E4%B9%A0/</id>
+    <published>2023-11-05T06:49:32.000Z</published>
+    <updated>2023-11-05T06:51:23.903Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;webpack&quot;&gt;&lt;a href=&quot;#webpack&quot; class=&quot;headerlink&quot; title=&quot;webpack&quot;&gt;&lt;/a&gt;webpack&lt;/h1&gt;&lt;p&gt;webpack本身&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;支持CommonJs语法&lt;/li&gt;
+&lt;li&gt;只能编译js json, &lt;ul&gt;
+&lt;li&gt;js的es语法,这样可以让浏览器识别es语法,但是对于ES6老浏览器不支持，需要用babel转成ES5&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="技术" scheme="https://blank-null.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="webpack" scheme="https://blank-null.github.io/tags/webpack/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【小玩意】-省略文字显示-vue插件</title>
+    <link href="https://blank-null.github.io/2023/10/30/%E3%80%90%E5%B0%8F%E7%8E%A9%E6%84%8F%E3%80%91-%E7%9C%81%E7%95%A5%E6%96%87%E5%AD%97%E6%98%BE%E7%A4%BA-vue%E6%8F%92%E4%BB%B6/"/>
+    <id>https://blank-null.github.io/2023/10/30/%E3%80%90%E5%B0%8F%E7%8E%A9%E6%84%8F%E3%80%91-%E7%9C%81%E7%95%A5%E6%96%87%E5%AD%97%E6%98%BE%E7%A4%BA-vue%E6%8F%92%E4%BB%B6/</id>
+    <published>2023-10-30T03:10:17.000Z</published>
+    <updated>2023-10-30T03:11:19.193Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;hr&gt;
+&lt;h2 id=&quot;title-vue插件-显示省略号内容date-2023-09-25-15-05-38tags&quot;&gt;&lt;a href=&quot;#title-vue插件-显示省略号内容date-2023-09-25-15-05-38tags&quot; class=&quot;headerlink&quot; </summary>
+      
+    
+    
+    
+    
+    <category term="vue" scheme="https://blank-null.github.io/tags/vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【小玩意】--伪数组迭代器</title>
+    <link href="https://blank-null.github.io/2023/10/24/%E3%80%90%E5%B0%8F%E7%8E%A9%E6%84%8F%E3%80%91-%E4%BC%AA%E6%95%B0%E7%BB%84%E8%BF%AD%E4%BB%A3%E5%99%A8/"/>
+    <id>https://blank-null.github.io/2023/10/24/%E3%80%90%E5%B0%8F%E7%8E%A9%E6%84%8F%E3%80%91-%E4%BC%AA%E6%95%B0%E7%BB%84%E8%BF%AD%E4%BB%A3%E5%99%A8/</id>
+    <published>2023-10-24T11:32:52.000Z</published>
+    <updated>2023-10-24T11:43:01.000Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;对象是没有迭代器的，所以对于伪数组有迭代器需求的情况我可以手动在Object原型上定义一个迭代器，用于迭代伪数组&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=</summary>
+      
+    
+    
+    
+    <category term="小玩意" scheme="https://blank-null.github.io/categories/%E5%B0%8F%E7%8E%A9%E6%84%8F/"/>
+    
+    
+    <category term="迭代器" scheme="https://blank-null.github.io/tags/%E8%BF%AD%E4%BB%A3%E5%99%A8/"/>
+    
+    <category term="生成器" scheme="https://blank-null.github.io/tags/%E7%94%9F%E6%88%90%E5%99%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【小玩意】--3d卡片效果</title>
+    <link href="https://blank-null.github.io/2023/10/24/%E3%80%90%E5%B0%8F%E7%8E%A9%E6%84%8F%E3%80%91-3d%E5%8D%A1%E7%89%87%E6%95%88%E6%9E%9C/"/>
+    <id>https://blank-null.github.io/2023/10/24/%E3%80%90%E5%B0%8F%E7%8E%A9%E6%84%8F%E3%80%91-3d%E5%8D%A1%E7%89%87%E6%95%88%E6%9E%9C/</id>
+    <published>2023-10-24T11:30:07.000Z</published>
+    <updated>2023-10-24T11:34:45.046Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;模仿steam卡牌效果，鼠标悬浮会把卡牌按压进去的效果&lt;/p&gt;
+&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span cl</summary>
+      
+    
+    
+    
+    <category term="小玩意" scheme="https://blank-null.github.io/categories/%E5%B0%8F%E7%8E%A9%E6%84%8F/"/>
+    
+    
+    <category term="3d" scheme="https://blank-null.github.io/tags/3d/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>node.js基本使用</title>
+    <link href="https://blank-null.github.io/2023/10/24/node-js%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/"/>
+    <id>https://blank-null.github.io/2023/10/24/node-js%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</id>
+    <published>2023-10-24T11:27:25.000Z</published>
+    <updated>2023-10-24T11:28:55.657Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;node中模块分为：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;内置模块：fs，path，os，http&lt;/li&gt;
+&lt;li&gt;自定义&lt;/li&gt;
+&lt;li&gt;第三方&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="node.js" scheme="https://blank-null.github.io/categories/node-js/"/>
+    
+    
+    <category term="node.js" scheme="https://blank-null.github.io/tags/node-js/"/>
+    
+    <category term="fs" scheme="https://blank-null.github.io/tags/fs/"/>
+    
+    <category term="path" scheme="https://blank-null.github.io/tags/path/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>delete使用</title>
+    <link href="https://blank-null.github.io/2023/10/23/delete%E4%BD%BF%E7%94%A8/"/>
+    <id>https://blank-null.github.io/2023/10/23/delete%E4%BD%BF%E7%94%A8/</id>
+    <published>2023-10-23T02:48:45.000Z</published>
+    <updated>2023-10-23T02:49:46.581Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;如果你试图删除的属性不存在，那么 delete 将不会起任何作用，但仍会返回 true。&lt;/li&gt;
+&lt;li&gt;delete 只影响自身属性&lt;/li&gt;
+&lt;li&gt;configurable：false的属性不可以delete&lt;/li&gt;
+&lt;li&gt;delete 函数参数永远</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="https://blank-null.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="delete" scheme="https://blank-null.github.io/tags/delete/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>浅聊WeakMap与Map</title>
+    <link href="https://blank-null.github.io/2023/10/22/%E6%B5%85%E8%81%8AWeakMap/"/>
+    <id>https://blank-null.github.io/2023/10/22/%E6%B5%85%E8%81%8AWeakMap/</id>
+    <published>2023-10-22T07:58:12.000Z</published>
+    <updated>2023-10-22T10:37:39.881Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;说到WeakMap不得不说Map了，他们的相同之处在于都是用一个key 对应一个 value&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="技术" scheme="https://blank-null.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="WeakMap" scheme="https://blank-null.github.io/tags/WeakMap/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深拷贝</title>
+    <link href="https://blank-null.github.io/2023/10/22/%E6%B7%B1%E6%8B%B7%E8%B4%9D/"/>
+    <id>https://blank-null.github.io/2023/10/22/%E6%B7%B1%E6%8B%B7%E8%B4%9D/</id>
+    <published>2023-10-21T16:08:21.000Z</published>
+    <updated>2023-10-22T10:34:25.363Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;一个自己写的不成熟deepClone函数&quot;&gt;&lt;a href=&quot;#一个自己写的不成熟deepClone函数&quot; class=&quot;headerlink&quot; title=&quot;一个自己写的不成熟deepClone函数&quot;&gt;&lt;/a&gt;一个自己写的不成熟deepClone函数&lt;/h1&gt;&lt;</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="https://blank-null.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="深拷贝" scheme="https://blank-null.github.io/tags/%E6%B7%B1%E6%8B%B7%E8%B4%9D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CommonJs</title>
+    <link href="https://blank-null.github.io/2023/10/21/CommonJs/"/>
+    <id>https://blank-null.github.io/2023/10/21/CommonJs/</id>
+    <published>2023-10-21T15:40:51.000Z</published>
+    <updated>2023-10-24T12:25:27.297Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;require的伪代码如下：&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="技术" scheme="https://blank-null.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="commonjs" scheme="https://blank-null.github.io/tags/commonjs/"/>
+    
+    <category term="require" scheme="https://blank-null.github.io/tags/require/"/>
+    
+    <category term="module.exports" scheme="https://blank-null.github.io/tags/module-exports/"/>
+    
+    <category term="exports" scheme="https://blank-null.github.io/tags/exports/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>编码</title>
+    <link href="https://blank-null.github.io/2023/10/21/%E7%BC%96%E7%A0%81/"/>
+    <id>https://blank-null.github.io/2023/10/21/%E7%BC%96%E7%A0%81/</id>
+    <published>2023-10-21T06:26:19.000Z</published>
+    <updated>2023-10-21T06:50:05.320Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;聊聊一些编码&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="GBK" scheme="https://blank-null.github.io/tags/GBK/"/>
+    
+    <category term="UTF" scheme="https://blank-null.github.io/tags/UTF/"/>
+    
+    <category term="Unicode" scheme="https://blank-null.github.io/tags/Unicode/"/>
+    
+    <category term="ASCII" scheme="https://blank-null.github.io/tags/ASCII/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue底层</title>
+    <link href="https://blank-null.github.io/2023/10/20/vue%E5%BA%95%E5%B1%82/"/>
+    <id>https://blank-null.github.io/2023/10/20/vue%E5%BA%95%E5%B1%82/</id>
+    <published>2023-10-20T04:20:16.000Z</published>
+    <updated>2023-11-16T05:46:37.130Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;响应式&quot;&gt;&lt;a href=&quot;#响应式&quot; class=&quot;headerlink&quot; title=&quot;响应式&quot;&gt;&lt;/a&gt;响应式&lt;/h1&gt;&lt;h2 id=&quot;effect&quot;&gt;&lt;a href=&quot;#effect&quot; class=&quot;headerlink&quot; title=&quot;effect&quot;&gt;&lt;/a&gt;effect&lt;/h2&gt;&lt;p&gt;effect是一个‘桶’， 他收集并触发指定方法&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2023/10/20/vue%E5%BA%95%E5%B1%82/effect.png&quot;&gt;&lt;br&gt;&lt;img src=&quot;/2023/10/20/vue%E5%BA%95%E5%B1%82/effect2.png&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="vue" scheme="https://blank-null.github.io/categories/vue/"/>
+    
+    
+    <category term="vue" scheme="https://blank-null.github.io/tags/vue/"/>
+    
+    <category term="reactive" scheme="https://blank-null.github.io/tags/reactive/"/>
+    
+    <category term="ref" scheme="https://blank-null.github.io/tags/ref/"/>
+    
+    <category term="AST" scheme="https://blank-null.github.io/tags/AST/"/>
+    
+    <category term="diff" scheme="https://blank-null.github.io/tags/diff/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>git的使用</title>
+    <link href="https://blank-null.github.io/2023/10/17/git%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>https://blank-null.github.io/2023/10/17/git%E7%9A%84%E4%BD%BF%E7%94%A8/</id>
+    <published>2023-10-17T12:19:53.000Z</published>
+    <updated>2023-10-18T02:07:34.949Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;git-基本使用&quot;&gt;&lt;a href=&quot;#git-基本使用&quot; class=&quot;headerlink&quot; title=&quot;git 基本使用&quot;&gt;&lt;/a&gt;git 基本使用&lt;/h1&gt;&lt;p&gt;git 分为 3 个区&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;工作区 —— 存放文件&lt;/li&gt;
+&lt;li&gt;暂存区 —— 工作区变更，提交到暂存区&lt;/li&gt;
+&lt;li&gt;版本库 —— 暂存区的内容，提交到版本库&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="技术" scheme="https://blank-null.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="git" scheme="https://blank-null.github.io/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>http详解</title>
+    <link href="https://blank-null.github.io/2023/10/16/http%E8%AF%A6%E8%A7%A3/"/>
+    <id>https://blank-null.github.io/2023/10/16/http%E8%AF%A6%E8%A7%A3/</id>
+    <published>2023-10-16T02:31:47.000Z</published>
+    <updated>2023-10-19T12:06:21.153Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;http-1-0&quot;&gt;&lt;a href=&quot;#http-1-0&quot; class=&quot;headerlink&quot; title=&quot;http 1.0&quot;&gt;&lt;/a&gt;http 1.0&lt;/h1&gt;&lt;p&gt;默认关闭&lt;code&gt;keepalive&lt;/code&gt;，每次请求都建立一次tcp连接，服务器处理后立即断开tcp连接&lt;/p&gt;
+&lt;p&gt;服务器不记录客户的任何请求（&lt;strong&gt;无状态&lt;/strong&gt;）&lt;/p&gt;
+&lt;p&gt;但是，可以借助session和cookie来做身份认证&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;问题：http1.0有队头阻塞， 即没收到第一个请求对应的响应 就不能发送第二个请求&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="技术" scheme="https://blank-null.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="http" scheme="https://blank-null.github.io/tags/http/"/>
+    
+  </entry>
+  
+</feed>

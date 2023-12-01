@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#2CABEC"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/icon.png">
+  <link rel="mask-icon" href="/images/icon.png" color="#2CABEC">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blank-null.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"changyan","storage":true,"lazyload":false,"nav":null,"activeClass":"changyan"},"stickytabs":true,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Ts笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TS笔记">
+<meta property="og:url" content="https://blank-null.github.io/2023/10/11/TS%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="bLanK&#39;s blog">
+<meta property="og:description" content="Ts笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-10-11T03:25:41.000Z">
+<meta property="article:modified_time" content="2023-10-16T06:21:26.224Z">
+<meta property="article:author" content="bLank-L">
+<meta property="article:tag" content="TS">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://blank-null.github.io/2023/10/11/TS%E7%AC%94%E8%AE%B0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blank-null.github.io/2023/10/11/TS%E7%AC%94%E8%AE%B0/","path":"2023/10/11/TS笔记/","title":"TS笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>TS笔记 | bLanK's blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="bLanK's blog" type="application/atom+xml">
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">bLanK's blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">攻无不克，战无不胜</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%B1%BB%E5%9E%8B%E6%8E%A8%E6%96%AD"><span class="nav-text">一、类型推断</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%B1%BB%E5%9E%8B%E6%96%AD%E8%A8%80-%E6%B3%A8%E8%A7%A3-as"><span class="nav-text">二、类型断言&#x2F;注解 as</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#html%E5%85%83%E7%B4%A0"><span class="nav-text">html元素</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E7%B1%BB%E5%9E%8B%E5%9F%BA%E7%A1%80-%E8%81%94%E5%90%88%E7%B1%BB%E5%9E%8B-%E5%87%BD%E6%95%B0"><span class="nav-text">三、类型基础&amp;联合类型&amp;函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E7%B1%BB%E5%9E%8B"><span class="nav-text">复杂类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3"><span class="nav-text">接口</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%9B%E5%9E%8B%E6%8E%A5%E5%8F%A3"><span class="nav-text">泛型接口</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%AB%E5%90%8D-type"><span class="nav-text">别名 type</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B3%9B%E5%9E%8B"><span class="nav-text">泛型 &lt;T&gt;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="nav-text">基本使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%BA%A6%E6%9D%9F"><span class="nav-text">添加约束</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E4%B8%AA%E5%8F%98%E9%87%8F"><span class="nav-text">多个变量</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#class%E4%B8%AD%E4%BD%BF%E7%94%A8ts"><span class="nav-text">class中使用ts</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="nav-text">修饰符</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#any-%E7%B1%BB%E5%9E%8B"><span class="nav-text">any 类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%90%E8%A1%8Cts%E6%96%87%E4%BB%B6"><span class="nav-text">运行ts文件</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="bLank-L"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">bLank-L</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">63</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/bLanK-NULL" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;bLanK-NULL" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+<!-- CloudCalendar -->
+<div class="widget-wrap" style="width: 90%;margin-left: auto;margin-right: auto; opacity: 0.97;">
+	<div class="widget" id="CloudCalendar"></div>
+</div>
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2023/10/11/TS%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="bLank-L">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="TS笔记 | bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          TS笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-10-11 11:25:41" itemprop="dateCreated datePublished" datetime="2023-10-11T11:25:41+08:00">2023-10-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-10-16 14:21:26" itemprop="dateModified" datetime="2023-10-16T14:21:26+08:00">2023-10-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="TS笔记" href="/2023/10/11/TS%E7%AC%94%E8%AE%B0/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::08c480a7cece09c680b052c858fc040d" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>8 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>Ts笔记</p>
+<span id="more"></span>
+
+<h1 id="一、类型推断"><a href="#一、类型推断" class="headerlink" title="一、类型推断"></a>一、类型推断</h1><p>发生在没有指定类型时，会根据初始值自动推断变量类型</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;asdasdasds&#x27;</span></span><br><span class="line">str = <span class="number">0</span> <span class="comment">//报错： Type &#x27;number&#x27; is not assignable to type &#x27;string&#x27;.</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="二、类型断言-注解-as"><a href="#二、类型断言-注解-as" class="headerlink" title="二、类型断言&#x2F;注解 as"></a>二、类型断言&#x2F;注解 as</h1><p>有些时候编译器不能推断出变量的类型，</p>
+<p>但我们非常确定变量是某种类型时 : <code>as number/string/...</code></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">const</span> result = arr.<span class="title function_">find</span>(<span class="function"><span class="params">item</span>=&gt;</span> &#123;</span><br><span class="line">    item&gt; <span class="number">2</span></span><br><span class="line">&#125;) <span class="keyword">as</span> <span class="built_in">number</span>  </span><br></pre></td></tr></table></figure>
+
+<h3 id="html元素"><a href="#html元素" class="headerlink" title="html元素"></a>html元素</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    HTMLAnchorElement,  &lt;a&gt;</span></span><br><span class="line"><span class="comment">    HTMLPargraphElement, &lt;p&gt;</span></span><br><span class="line"><span class="comment">    HTMLDivElement       &lt;div&gt;</span></span><br><span class="line"><span class="comment">    HTMLImageElement    &lt;img&gt;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">const</span> a  = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#id&#x27;</span>) <span class="keyword">as</span> <span class="title class_">HTMLAnchorElement</span></span><br><span class="line">a &amp;&amp; a.<span class="property">href</span> <span class="comment">//这样才知道a有href属性</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="三、类型基础-联合类型-函数"><a href="#三、类型基础-联合类型-函数" class="headerlink" title="三、类型基础&amp;联合类型&amp;函数"></a>三、类型基础&amp;联合类型&amp;函数</h1><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//基础类型</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">v1</span>: <span class="built_in">string</span> = <span class="string">&#x27;asd&#x27;</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">v2</span>: <span class="built_in">number</span> = <span class="number">123</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">v3</span>: <span class="built_in">boolean</span> = <span class="literal">true</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">v4</span>: <span class="literal">null</span> = <span class="literal">null</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">v5</span>: <span class="literal">undefined</span> = <span class="literal">undefined</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">v6</span>: <span class="built_in">symbol</span> = <span class="title class_">Symbol</span>(<span class="number">123</span>)</span><br><span class="line"><span class="keyword">let</span> <span class="attr">v7</span>: bigInt = <span class="title class_">BigInt</span>(<span class="string">&quot;223565679085&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//联合类型</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">str</span>: <span class="built_in">string</span> | <span class="literal">null</span> = <span class="literal">null</span>        <span class="comment">//str可能是string类型也可能是null类型</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">num</span>: <span class="number">1</span> | <span class="number">2</span> | <span class="number">3</span> = <span class="number">2</span>；   			<span class="comment">//限制值为 1或2或3</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">arr</span>: (<span class="built_in">number</span> | <span class="built_in">string</span>)[] = [<span class="number">1</span>,<span class="number">2</span>,<span class="string">&#x27;asd&#x27;</span>]	<span class="comment">//数组里有可能同时两种类型，提示只有两者类型共有的方法</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//函数</span></span><br><span class="line"><span class="comment">//void 专门用在函数返回值</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">MyFn</span>(<span class="params">a: <span class="built_in">number</span>, b: <span class="built_in">string</span></span>):<span class="built_in">void</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> a+b   <span class="comment">//报错 void没有返回值</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">MyFn</span>(<span class="params">a: <span class="built_in">number</span>, b: <span class="built_in">string</span>, C?: <span class="built_in">boolean</span>, ...rest: <span class="built_in">number</span>[]</span>):<span class="built_in">string</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> a+b   <span class="comment">//ok</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> f = <span class="title class_">MyFn</span>(<span class="number">20</span>, <span class="string">&#x27;a&#x27;</span>, <span class="literal">true</span>, <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="复杂类型"><a href="#复杂类型" class="headerlink" title="复杂类型"></a>复杂类型</h1><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数组 ---2种方式</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">arr</span>: <span class="built_in">number</span>[] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="keyword">let</span> <span class="attr">arr1</span>: <span class="title class_">Array</span>&lt;<span class="built_in">string</span>&gt; = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>]</span><br><span class="line"><span class="comment">//元组</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">tup</span>: [<span class="built_in">number</span>, <span class="built_in">string</span>, <span class="built_in">number</span>?] = [<span class="number">1</span>, <span class="string">&#x27;a&#x27;</span>, <span class="number">2</span>] 	<span class="comment">//可选可以[1, &#x27;a&#x27;]</span></span><br><span class="line">tup[<span class="number">0</span>] = <span class="string">&#x27;a&#x27;</span> 			<span class="comment">//报错</span></span><br><span class="line"><span class="comment">//枚举</span></span><br><span class="line"><span class="comment">/*用来定义一些固定的值， </span></span><br><span class="line"><span class="comment">1. 可以通过下标直接访问</span></span><br><span class="line"><span class="comment">2. 默认从0下标开始</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">数字型枚举 </span></span><br><span class="line"><span class="comment"> 打印MyEnum</span></span><br><span class="line"><span class="comment">&#123;</span></span><br><span class="line"><span class="comment">  &#x27;0&#x27;: &#x27;up&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;1&#x27;: &#x27;down&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;2&#x27;: &#x27;left&#x27;,</span></span><br><span class="line"><span class="comment">  &#x27;3&#x27;: &#x27;right&#x27;,</span></span><br><span class="line"><span class="comment">  up: 0,</span></span><br><span class="line"><span class="comment">  down: 1,</span></span><br><span class="line"><span class="comment">  left: 2,</span></span><br><span class="line"><span class="comment">  right: 3</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">MyEnum</span> &#123;</span><br><span class="line">    <span class="string">&#x27;up&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;down&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;left&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;right&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">MyEnum</span>.<span class="property">up</span> <span class="comment">//0</span></span><br><span class="line"><span class="title class_">MyEnum</span>[<span class="number">0</span>] <span class="comment">//up</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">3. 属性可以不打引号</span></span><br><span class="line"><span class="comment">4. 可以指定下标，下面的属性会自动推断</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">MyEnum</span> &#123;</span><br><span class="line">     up = <span class="number">100</span>，</span><br><span class="line">     down</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">5. 可以进行字符型枚举</span></span><br><span class="line"><span class="comment">    !失去了MyEnum[UP]==&#x27;up&#x27;的能力</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">MyEnum</span> &#123;</span><br><span class="line">     up = <span class="string">&#x27;UP&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">MyEnum</span>.<span class="property">up</span> <span class="comment">// UP</span></span><br><span class="line"><span class="title class_">MyEnum</span>[<span class="string">&#x27;up&#x27;</span>] <span class="comment">// UP</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h1><blockquote>
+<ul>
+<li>interface 只能定义对象, 也可以是实例对象</li>
+<li>必须实现接口里面的所有内容，且不能多不能少</li>
+<li>定义对象优先interface</li>
+</ul>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="built_in">string</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="built_in">number</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*继承</span></span><br><span class="line"><span class="comment">1. 父接口所有属性方法不用再写一遍，</span></span><br><span class="line"><span class="comment">2. 不可以重写父类方法</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Itman</span> <span class="keyword">extends</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    <span class="attr">skill</span>: <span class="built_in">string</span>[],</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="attr">p1</span>: <span class="title class_">Itman</span> = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;blank&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">21</span>,</span><br><span class="line">    <span class="attr">skill</span>: [<span class="string">&#x27;js&#x27;</span>,<span class="string">&#x27;vue&#x27;</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="泛型接口"><a href="#泛型接口" class="headerlink" title="泛型接口"></a>泛型接口</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Student</span>&lt;T&gt; &#123;</span><br><span class="line">    <span class="attr">id</span>: T</span><br><span class="line">    <span class="attr">name</span>: <span class="built_in">string</span> </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> stu : <span class="title class_">Student</span>&lt;<span class="built_in">number</span>&gt; = &#123;</span><br><span class="line">    <span class="attr">id</span>: <span class="number">0x110</span>,</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;blank&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(stu);</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="别名-type"><a href="#别名-type" class="headerlink" title="别名 type"></a>别名 type</h1><blockquote>
+<ul>
+<li>type 可以定义所有类型</li>
+</ul>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//值别名</span></span><br><span class="line"><span class="keyword">type</span> b = <span class="number">0</span> | <span class="number">1</span></span><br><span class="line"><span class="comment">//类型别名</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">MyType</span> = <span class="built_in">string</span> | <span class="built_in">number</span></span><br><span class="line"><span class="keyword">type</span> myType2 = <span class="built_in">string</span> &amp; <span class="built_in">number</span></span><br><span class="line"><span class="comment">//--- 函数别名</span></span><br><span class="line"><span class="keyword">type</span> fnType = <span class="function">(<span class="params">a: <span class="built_in">number</span>, bb: <span class="built_in">number</span></span>)=&gt;</span> <span class="built_in">number</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">fn</span>: fnType = <span class="function">(<span class="params">a, b</span>)=&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> a+b</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//--- 对象别名</span></span><br><span class="line"><span class="keyword">type</span> student = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="built_in">string</span>,</span><br><span class="line">    <span class="attr">height</span>: <span class="built_in">number</span>,</span><br><span class="line">    girlfriend?: student,</span><br><span class="line">    <span class="attr">study</span>: <span class="function">(<span class="params">subject: <span class="built_in">string</span></span>) =&gt;</span> <span class="built_in">string</span>,</span><br><span class="line">    <span class="attr">back</span>: <span class="function">()=&gt;</span><span class="built_in">void</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">stu</span>: student = &#123;...&#125;</span><br><span class="line">stu.<span class="property">girlfriend</span>?.<span class="property">name</span>  <span class="comment">//对于可省略属性需要加 ?.</span></span><br><span class="line"></span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型 &lt;T&gt;"></a>泛型 &lt;T&gt;</h1><h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> myFn&lt;T&gt;(<span class="attr">a</span>: T, <span class="attr">b</span>: T): T[] &#123;</span><br><span class="line">    <span class="keyword">return</span> [a,b]</span><br><span class="line">&#125;</span><br><span class="line">myFn&lt;<span class="built_in">number</span>&gt;(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"><span class="title function_">myFn</span>(<span class="string">&#x27;a&#x27;</span>,<span class="number">2</span>) <span class="comment">//报错： 不写指明T，会根据第一个参数推断T</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="添加约束"><a href="#添加约束" class="headerlink" title="添加约束"></a>添加约束</h2><ol>
+<li>泛型T可以继承接口，必须实现接口所有属性、方法，可以超出接口没有的</li>
+</ol>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">ILength</span> &#123;</span><br><span class="line">    <span class="attr">length</span>: <span class="built_in">number</span>,</span><br><span class="line">    <span class="attr">sayHi</span>: <span class="function">() =&gt;</span> <span class="built_in">void</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// T 继承了ILength， 所以T必须有ILength所有属性、方法</span></span><br><span class="line"><span class="keyword">function</span> getId&lt;T <span class="keyword">extends</span> <span class="title class_">ILength</span>&gt;(<span class="attr">val</span>: T) &#123;</span><br><span class="line">	val.<span class="property">length</span></span><br><span class="line">	val.<span class="title function_">sayHi</span>()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//T 可以有超出 ILength的属性、方法</span></span><br><span class="line"><span class="keyword">let</span> so = &#123;</span><br><span class="line">    <span class="attr">length</span>: <span class="number">123</span>,</span><br><span class="line">    <span class="title function_">sayHi</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;sayhi&quot;</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">father</span>: <span class="string">&#x27;lzy&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">getId</span>(so)</span><br></pre></td></tr></table></figure>
+
+<h2 id="多个变量"><a href="#多个变量" class="headerlink" title="多个变量"></a>多个变量</h2><p><code>K extends Keyof T</code> 即 Son类型限定了 传入的变量只能是Father类型的键</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> getProp&lt;T, K <span class="keyword">extends</span> keyof T&gt;(<span class="attr">obj</span>: T, <span class="attr">key</span>: K) &#123;</span><br><span class="line">    <span class="keyword">return</span> obj[key]</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">getProp</span>(&#123;<span class="attr">name</span>: <span class="string">&#x27;lzy&#x27;</span>&#125;, <span class="string">&#x27;name&#x27;</span>))</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">getProp</span>(&#123;<span class="attr">name</span>: <span class="string">&#x27;lzy&#x27;</span>&#125;, <span class="string">&#x27;age&#x27;</span>)) <span class="comment">//报错</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="class中使用ts"><a href="#class中使用ts" class="headerlink" title="class中使用ts"></a>class中使用ts</h1><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">ILength</span> &#123;</span><br><span class="line">    <span class="attr">length</span>: <span class="built_in">number</span>,</span><br><span class="line">    <span class="attr">sayHi</span>: <span class="function">() =&gt;</span> <span class="built_in">void</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//实现多个接口</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">A</span> <span class="keyword">implements</span> <span class="title class_">ILength</span>,B&#123;</span><br><span class="line">    <span class="comment">//定义实例属性，必须要在下面得到初始化值</span></span><br><span class="line">    <span class="attr">length</span>: <span class="built_in">number</span>;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">length:<span class="built_in">number</span></span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">length</span> = length</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">sayHi</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;hi&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> a = <span class="keyword">new</span> <span class="title function_">A</span>(<span class="number">123</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h2><ul>
+<li>public: 公有的可以在任何地方可以被访问和修改(类中属性和方法默认为publish)</li>
+<li>private: 私有的仅在当前类可访问和修改</li>
+<li>protected: 仅当前类与子类(继承类)可以访问和修改</li>
+<li>readonly: 只读修饰符, 仅可访问不可修改</li>
+</ul>
+<h1 id="any-类型"><a href="#any-类型" class="headerlink" title="any 类型"></a>any 类型</h1><blockquote>
+<ol>
+<li>失去了只能提示</li>
+<li>隐式any：<ol>
+<li>函数参数不定义类型</li>
+<li>定义变量不定义类型也不给初始值</li>
+</ol>
+</li>
+</ol>
+</blockquote>
+<h1 id="运行ts文件"><a href="#运行ts文件" class="headerlink" title="运行ts文件"></a>运行ts文件</h1><ol>
+<li><pre><code class="bash">tsc demo.ts
+# 生成一个demo.js 文件
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">2. 在node环境执行</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">ts-node demo.ts</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="bLank-L 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="bLank-L 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>bLank-L
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://blank-null.github.io/2023/10/11/TS%E7%AC%94%E8%AE%B0/" title="TS笔记">https://blank-null.github.io/2023/10/11/TS笔记/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/TS/" rel="tag"># TS</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/10/11/nginx/" rel="prev" title="nginx">
+                  <i class="fa fa-angle-left"></i> nginx
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/10/11/egg-js%E7%AC%94%E8%AE%B0/" rel="next" title="egg.js笔记">
+                  egg.js笔记 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS" sid="08c480a7cece09c680b052c858fc040d"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">bLank-L</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">127k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:51</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="500" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<!-- calendar widget -->
+{% if theme.CloudCalendar.enable %}
+    <script src="{{ theme.CloudCalendar.calendarCdn }}"></script>
+    <script src="{{ theme.CloudCalendar.langCdn }}"></script>
+    <script>
+    $(function() {
+        $('#CloudCalendar').aCalendar('{{ theme.CloudCalendar.language }}',
+            $.extend(
+                '', {
+                    single:{{ theme.CloudCalendar.single }},
+                    root:'{{ theme.CloudCalendar.root }}'
+                }
+            )
+        );
+    });
+    </script>
+{% endif %}
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: 'unset',
+  left: '32px',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cywV9cKcy","appkey":"557a4cba0c3c88fe4338e6ffae25f9d4","count":true}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
+
+</body>
+</html>

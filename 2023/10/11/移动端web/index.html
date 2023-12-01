@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#2CABEC"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/icon.png">
+  <link rel="mask-icon" href="/images/icon.png" color="#2CABEC">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blank-null.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"changyan","storage":true,"lazyload":false,"nav":null,"activeClass":"changyan"},"stickytabs":true,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="移动端web">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动端web">
+<meta property="og:url" content="https://blank-null.github.io/2023/10/11/%E7%A7%BB%E5%8A%A8%E7%AB%AFweb/index.html">
+<meta property="og:site_name" content="bLanK&#39;s blog">
+<meta property="og:description" content="移动端web">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-10-11T03:11:57.000Z">
+<meta property="article:modified_time" content="2023-10-12T01:42:44.425Z">
+<meta property="article:author" content="bLank-L">
+<meta property="article:tag" content="flex">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://blank-null.github.io/2023/10/11/%E7%A7%BB%E5%8A%A8%E7%AB%AFweb/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blank-null.github.io/2023/10/11/%E7%A7%BB%E5%8A%A8%E7%AB%AFweb/","path":"2023/10/11/移动端web/","title":"移动端web"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>移动端web | bLanK's blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="bLanK's blog" type="application/atom+xml">
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">bLanK's blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">攻无不克，战无不胜</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83"><span class="nav-text">CSS代码规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#meta%E8%A7%86%E5%8F%A3%E6%A0%87%E7%AD%BE"><span class="nav-text">meta视口标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-text">CSS初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E6%AE%8A%E6%A0%B7%E5%BC%8F"><span class="nav-text">特殊样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%E7%BC%A9%E6%94%BE-background-size"><span class="nav-text">背景缩放 background-size</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%E9%A2%9C%E8%89%B2%E7%BA%BF%E6%80%A7%E6%B8%90%E5%8F%98-webkit-linear-gradient"><span class="nav-text">背景颜色线性渐变 -webkit-linear-gradient</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B"><span class="nav-text">移动端技术选型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%81%E5%BC%8F%E5%B8%83%E5%B1%80"><span class="nav-text">流式布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flex%E5%B8%83%E5%B1%80"><span class="nav-text">flex布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#less-rem-%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2-%E5%B8%83%E5%B1%80"><span class="nav-text">less+rem+媒体查询 布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flexible-js-rem-%E5%B8%83%E5%B1%80"><span class="nav-text">flexible.js+rem 布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%93%8D%E5%BA%94%E5%BC%8F%E5%BC%80%E5%8F%91"><span class="nav-text">响应式开发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bootstrap-%E4%BD%BF%E7%94%A8"><span class="nav-text">Bootstrap 使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98"><span class="nav-text">项目实战</span></a></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="bLank-L"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">bLank-L</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">63</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/bLanK-NULL" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;bLanK-NULL" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+<!-- CloudCalendar -->
+<div class="widget-wrap" style="width: 90%;margin-left: auto;margin-right: auto; opacity: 0.97;">
+	<div class="widget" id="CloudCalendar"></div>
+</div>
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2023/10/11/%E7%A7%BB%E5%8A%A8%E7%AB%AFweb/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="bLank-L">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="移动端web | bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          移动端web
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-10-11 11:11:57" itemprop="dateCreated datePublished" datetime="2023-10-11T11:11:57+08:00">2023-10-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-10-12 09:42:44" itemprop="dateModified" datetime="2023-10-12T09:42:44+08:00">2023-10-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="移动端web" href="/2023/10/11/%E7%A7%BB%E5%8A%A8%E7%AB%AFweb/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::660e0a260d9737e6146594944c2506a4" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>5.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>10 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>移动端web</p>
+<span id="more"></span>
+
+<h3 id="CSS代码规范"><a href="#CSS代码规范" class="headerlink" title="CSS代码规范"></a>CSS代码规范</h3><ul>
+<li>类名语义化，全部小写，用下划线分割 “_”</li>
+<li>类名嵌套层次尽量不超过三层</li>
+<li>尽量避免直接使用 元素选择器</li>
+<li>避免使用 id选择器</li>
+<li>避免使用 *选择器 和 !important</li>
+<li>属性书写顺序<ul>
+<li>布局定位属性：display &#x2F; position &#x2F; float &#x2F; clear &#x2F; visibility &#x2F; overflow</li>
+<li>尺寸属性：width &#x2F; height &#x2F; margin &#x2F; padding &#x2F; border &#x2F; background</li>
+<li>文本属性：color &#x2F; font &#x2F; text-decoration &#x2F; text-align &#x2F; vertical-align</li>
+<li>其他属性：content &#x2F; cursor &#x2F; border-radius &#x2F; box-shadow &#x2F; text-shadow</li>
+</ul>
+</li>
+</ul>
+<h3 id="meta视口标签"><a href="#meta视口标签" class="headerlink" title="meta视口标签"></a>meta视口标签</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meate</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">meate</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">mete标签<u>content</u>属性的属性</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">width</td>
+<td>viewport宽度，可设置为device-width</td>
+</tr>
+<tr>
+<td align="left">initial-scale</td>
+<td>初始缩放比例，大于0的数字</td>
+</tr>
+<tr>
+<td align="left">minimum-scale</td>
+<td>最小缩放比例，大于0的数字</td>
+</tr>
+<tr>
+<td align="left">maximum-scale</td>
+<td>最大缩放比例，大于0的数字</td>
+</tr>
+<tr>
+<td align="left">user-scalable</td>
+<td>用户是否可以缩放，yes或no（1或0）</td>
+</tr>
+</tbody></table>
+<h3 id="CSS初始化"><a href="#CSS初始化" class="headerlink" title="CSS初始化"></a>CSS初始化</h3><p>移动端CSS初始化推荐使用 <a target="_blank" rel="noopener" href="https://necolas.github.io/normalize.css/">normalize.css</a></p>
+<h3 id="特殊样式"><a href="#特殊样式" class="headerlink" title="特殊样式"></a>特殊样式</h3><p>移动端需要添加的特殊样式</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 1. 清除 点击高亮效果  transparent为透明*/</span></span><br><span class="line">-webkit-tap-highlight-<span class="attribute">color</span>: transparent;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 2. 禁用 长按页面时弹出菜单*/</span></span><br><span class="line"><span class="selector-tag">img</span>,<span class="selector-tag">a</span> &#123;-webkit-touch-callout: none;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 3. ios系统 需要该属性才能自定义样式*/</span></span><br><span class="line">-webkit-appearance: none;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 4. 盒子模型 boder-size: border-box;*/</span></span><br><span class="line"><span class="attribute">box-sizing</span>: border-box;</span><br></pre></td></tr></table></figure>
+
+<h3 id="背景缩放-background-size"><a href="#背景缩放-background-size" class="headerlink" title="背景缩放 background-size"></a>背景缩放 background-size</h3><p><strong>二倍图</strong></p>
+<blockquote>
+<p>一般为了避免移动端图片自动放大2倍造成图片模糊，都是放2倍像素的图，再指定缩小50% ，同理也有三倍图、四倍图</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">background-size</span>: 宽度 高度;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>单位：长度|百分比|cover|contain<ul>
+<li>百分比  是以父级盒子为参考</li>
+<li>cover 扩展至背景图完全覆盖区域</li>
+<li>contain 扩展至背景图比例最大且不超过区域</li>
+</ul>
+</li>
+</ul>
+<h3 id="背景颜色线性渐变-webkit-linear-gradient"><a href="#背景颜色线性渐变-webkit-linear-gradient" class="headerlink" title="背景颜色线性渐变 -webkit-linear-gradient"></a>背景颜色线性渐变 -webkit-linear-gradient</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">background</span>: <span class="built_in">-webkit-linear-gradient</span>(起始方向, 颜色<span class="number">1</span>, 颜色<span class="number">2</span>, ...);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>开始方向：可以是 方位名词、度数（默认top）</li>
+</ul>
+<h2 id="移动端技术选型"><a href="#移动端技术选型" class="headerlink" title="移动端技术选型"></a>移动端技术选型</h2><table>
+<thead>
+<tr>
+<th>1.单独制作移动端页面（主流）</th>
+<th>2.响应式页面兼容移动端</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>流式布局（百分比布局）</td>
+<td>媒体查询</td>
+</tr>
+<tr>
+<td>flex弹性布局（强烈推荐）</td>
+<td>bootstarp</td>
+</tr>
+<tr>
+<td>less+rem+媒体查询布局</td>
+<td></td>
+</tr>
+<tr>
+<td>混合布局</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="流式布局"><a href="#流式布局" class="headerlink" title="流式布局"></a>流式布局</h3><p>通过盒子宽度设置为百分比来根据屏幕的宽度进行伸缩，不受固定像素影响</p>
+<ul>
+<li>max-width: 200px 最大宽度</li>
+<li>min-width:  100px 最小宽度</li>
+</ul>
+<h3 id="flex布局"><a href="#flex布局" class="headerlink" title="flex布局"></a>flex布局</h3><ul>
+<li><p>特点：</p>
+<table>
+<thead>
+<tr>
+<th>传统布局</th>
+<th>flex布局</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>兼容性好</td>
+<td>PC端兼容差</td>
+</tr>
+<tr>
+<td>布局繁琐</td>
+<td>布局极其简单</td>
+</tr>
+<tr>
+<td>在移动端的局限性</td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+<li><p><strong>原理</strong>：通过给<u>父盒子</u>添加felx属性，来控制子盒子的位置和排列方式</p>
+<ul>
+<li>任何容器都可以指定为flex布局，display: flex;</li>
+<li>设置为flex布局之后，不再有块级、行内元素之分</li>
+<li>当父盒子设为flex布局后，<u>子元素的float、clear、vertical-align 失效</u></li>
+<li>flex布局 &#x3D; 伸缩布局 &#x3D; 弹性布局 &#x3D; 伸缩盒布局 &#x3D; 弹性盒布局</li>
+</ul>
+</li>
+<li><p><strong>常见<u>父项</u>属性</strong>：</p>
+<ul>
+<li><p><strong>flex-direction</strong>：设置<em>主轴方向</em>，另一个就是<em>侧轴方向</em></p>
+<ul>
+<li><p>默认主轴方向：水平向右 <strong>→</strong> ；默认侧轴方向：竖直向下 <strong>↓</strong></p>
+</li>
+<li><table>
+<thead>
+<tr>
+<th>属性值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>row</td>
+<td>从左到右 → （默认）</td>
+</tr>
+<tr>
+<td>row-reverse</td>
+<td>从右到左 ←</td>
+</tr>
+<tr>
+<td>column</td>
+<td>从上到下 ↓</td>
+</tr>
+<tr>
+<td>column-reverse</td>
+<td>从下到上 ↑</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+</li>
+<li><p><strong>flex-wrap</strong>：设置子元素是否换行</p>
+<ul>
+<li><table>
+<thead>
+<tr>
+<th>属性值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>nowrap</td>
+<td>不换行（默认，<u>如果装不开会缩小子元素宽度</u>）</td>
+</tr>
+<tr>
+<td>wrap</td>
+<td>换行</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+</li>
+<li><p><strong>flex-flow</strong>：复合属性，相当于同时设置了 flex-direction 和 flex-wrap</p>
+</li>
+<li><p><strong>justify-content</strong>：设置主轴上的子元素排列方式</p>
+<ul>
+<li><table>
+<thead>
+<tr>
+<th>属性值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>flex-start</td>
+<td>从头部开始（默认）</td>
+</tr>
+<tr>
+<td>flex-end</td>
+<td>从尾部开始</td>
+</tr>
+<tr>
+<td>center</td>
+<td>在主轴居中对齐</td>
+</tr>
+<tr>
+<td>space-around</td>
+<td>平分剩余空间</td>
+</tr>
+<tr>
+<td>space-between</td>
+<td>先两边贴边再平分剩余空间</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+</li>
+<li><p><strong>align-items</strong>：设置侧轴上的子元素排列方式（单行时用)</p>
+<ul>
+<li><table>
+<thead>
+<tr>
+<th>属性值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>flex-start</td>
+<td>从上到下 ↓</td>
+</tr>
+<tr>
+<td>flex-end</td>
+<td>从下到上 ↑</td>
+</tr>
+<tr>
+<td>center</td>
+<td>挤在一起居中（垂直居中）</td>
+</tr>
+<tr>
+<td>stretch</td>
+<td>拉伸（默认值）（要先去掉子元素height，否则不起作用）</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+</li>
+<li><p><strong>align-content</strong>：设置侧轴上的子元素的排列方式（换行时用，单行时无效）</p>
+<ul>
+<li>属性值比 justify-content 多了一个 stretch</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>常见<u>子项</u>属性</strong> </p>
+<ul>
+<li><p><strong>flex</strong>：定义子项目分配<u>剩余</u>空间，用来表示占多少份数</p>
+<ul>
+<li>属性值：浮点数</li>
+</ul>
+</li>
+<li><p><strong>align-self</strong>：控制单个项目在侧轴上的排列方式</p>
+<ul>
+<li><p>可覆盖 align-items 属性</p>
+</li>
+<li><p>属性值除了align-items的还有</p>
+<table>
+<thead>
+<tr>
+<th>属性值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>auto</td>
+<td>继承父盒子的 align-items 属性（默认）</td>
+</tr>
+<tr>
+<td>baseline</td>
+<td>项目位于父盒子基线上</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+</li>
+<li><p><strong>order</strong>：定义项目的排列顺序</p>
+<ul>
+<li>数值越小越靠前，默认0</li>
+<li>属性值：数字</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="less-rem-媒体查询-布局"><a href="#less-rem-媒体查询-布局" class="headerlink" title="less+rem+媒体查询 布局"></a>less+rem+媒体查询 布局</h3><ul>
+<li><p><strong>rem单位</strong>（root em）是一个相对单位，相对于html元素的 font-size 大小</p>
+</li>
+<li><p><strong>媒体查询</strong>（Media Query）是CSS3新语法</p>
+<ul>
+<li><p>@media 可以针对不同的屏幕尺寸设置不同的样式</p>
+</li>
+<li><p>语法规范 </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> mediatype <span class="keyword">and</span>|<span class="keyword">not</span>|<span class="keyword">only</span> (media-feature) &#123;&#125;</span><br><span class="line"><span class="comment">/*例：@media screen and (min-width: 10px) and (max-width: 20px) &#123;&#125; */</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>mediatype</strong> 查询类型 </p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>解释说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>all</td>
+<td>用于所有设备</td>
+</tr>
+<tr>
+<td>print</td>
+<td>用于打印机、打印预览</td>
+</tr>
+<tr>
+<td>screen</td>
+<td>用于 电脑、平板、手机</td>
+</tr>
+</tbody></table>
+</li>
+<li><p><strong>and|not|only</strong> 关键字</p>
+<p>关键字将媒体类型或多个媒体特性连接到一起作为媒体查询的条件</p>
+<ul>
+<li>and：可以将多个媒体特性连接到一起，相当于“且”</li>
+<li>not： 排除某个媒体类型，相当于“非”，可省略</li>
+<li>only：指定某个特定的媒体类型，可省略</li>
+</ul>
+</li>
+<li><p><strong>media-feature</strong> 媒体特性\媒体功能</p>
+<ul>
+<li>width：定义输出设备中页面课件区域宽度</li>
+<li>min-width：定义输出设备最小可见区域宽度</li>
+<li>max-width：定义射出设备最大可见区域宽度</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>引入资源</strong> </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;&quot; media=&quot;mediatype and|not|only (media-feature)&quot;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Less</strong> </p>
+<p>文件后缀 .less ，css预处理器，Less中文网址：<a target="_blank" rel="noopener" href="http://lesscss.cn/">http://lesscss.cn</a> </p>
+<ul>
+<li><p>Less 变量</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@变量名: 值;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Less 编译</p>
+<p>通过Easy LESS插件，保存后自动生成同名css后缀的文件，用link引入</p>
+</li>
+<li><p>Less 嵌套</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">    <span class="selector-tag">a</span> &#123;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#000</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-tag">&amp;</span><span class="selector-pseudo">:hover</span> &#123; <span class="comment">// 此时 &amp; 符号代表div，即div:hover</span></span><br><span class="line">        <span class="attribute">color</span>: red;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Less 运算</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span> + <span class="number">5</span>;</span><br><span class="line">    <span class="attribute">height</span>: (<span class="number">100px</span> / <span class="number">10px</span> ); <span class="comment">//除法需要括号或者 ./ 代替 / </span></span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1em</span>+<span class="number">0.5px</span>+<span class="number">1rem</span> solid black; <span class="comment">//一次运算多个单位只取第一个</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Less 导入</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@import</span> <span class="string">&quot;路径&quot;</span>; 		 <span class="comment">// 与css导入法相同</span></span><br><span class="line"><span class="keyword">@import</span> url(<span class="string">路径</span>)；	<span class="comment">// 两种方法均可</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>​</p>
+<h3 id="flexible-js-rem-布局"><a href="#flexible-js-rem-布局" class="headerlink" title="flexible.js+rem 布局"></a>flexible.js+rem 布局</h3><p>淘宝推出的移动端适配库</p>
+<ul>
+<li>不需要写不同屏幕的媒体查询</li>
+<li>原理是把当前设备划分为10等分</li>
+<li>要引入js文件，去github下载</li>
+</ul>
+</li>
+</ul>
+<h3 id="响应式开发"><a href="#响应式开发" class="headerlink" title="响应式开发"></a>响应式开发</h3><p>原理：需要一个父级作为<strong>布局容器</strong>，使用媒体查询针对不同宽度的设备进行布局</p>
+<table>
+<thead>
+<tr>
+<th align="left">设备划分</th>
+<th align="left">尺寸区间</th>
+<th>布局容器的width尺寸划分</th>
+<th>bootstrap类前缀</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">超小屏幕（手机）</td>
+<td align="left">&lt; 768px</td>
+<td>100%</td>
+<td>.col-xs-</td>
+</tr>
+<tr>
+<td align="left">小屏设备（平板）</td>
+<td align="left">&gt;&#x3D; 768px &lt;992px</td>
+<td>750px</td>
+<td>.col-sm-</td>
+</tr>
+<tr>
+<td align="left">中等屏幕 (桌面显示器)</td>
+<td align="left">&gt;&#x3D; 992px &lt; 1200 px</td>
+<td>970px</td>
+<td>.col-md-</td>
+</tr>
+<tr>
+<td align="left">宽屏设备（大桌面显示器）</td>
+<td align="left">&gt;&#x3D; 1200 px</td>
+<td>1170px</td>
+<td>.col-lg-</td>
+</tr>
+</tbody></table>
+<h3 id="Bootstrap-使用"><a href="#Bootstrap-使用" class="headerlink" title="Bootstrap 使用"></a>Bootstrap 使用</h3><ul>
+<li><strong>步骤</strong></li>
+</ul>
+<ol>
+<li><p>创建文件夹</p>
+</li>
+<li><p>创建html骨架结构</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 要求当前网页使用IE浏览器最高版本的内核来渲染 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1&quot;</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Bootstrap 101 Template<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- Bootstrap --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">&quot;https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css&quot;</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- HTML5 shiv 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 --&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 --&gt;</span></span><br><span class="line">  <span class="comment">&lt;!--[if lt IE 9]&gt;</span></span><br><span class="line"><span class="comment">    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js&quot;&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="comment">    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js&quot;&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="comment">  &lt;![endif]--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>引入相关样式文件</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">&quot;bootstrap/css/bootstrap.min.css&quot;</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span>&gt;</span> </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>书写内容</p>
+</li>
+</ol>
+<ul>
+<li><strong>布局容器</strong></li>
+</ul>
+<p>bootstrap预定义了.container类（响应式）和 .container-fluid类（流式）</p>
+<ul>
+<li><strong>栅格系统</strong><ul>
+<li><p>随着屏幕或视口（viewport）尺寸的增加，系统会自动分为最多12列，通过一系列的 .row 与 .col-xs- 等 的组合来创建页面。</p>
+</li>
+<li><p>row必须放到container布局容器里</p>
+</li>
+<li><p>需要给列添加类前缀，例如   .col-xs- 1 , 1 代表占用12份中的1份，xs代表设备大小在xs以及xs以上的都生效</p>
+</li>
+<li><p>每一行中列大于12 ，<u>多余的 列会换行</u></p>
+</li>
+<li><p><u>每一列默认15px的左右padding，而 .row 有 -15px的左右margin</u></p>
+<ul>
+<li>列嵌套时，最好加一个 .row 这样可以抵消父级的 padding</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>列偏移</strong> col-<code>md</code>-offset-<code>1</code><ul>
+<li>原理：给这一列添加 <u>margin-left</u> ，值为1份</li>
+</ul>
+</li>
+<li><strong>列排序</strong> col-<code>md</code>-pull-<code>1</code>  、col-<code>md</code>-push-<code>1</code> <ul>
+<li>原理：相对定位的 left 和 right </li>
+<li>不能同时具有 pull和 push ， 以前面的为准</li>
+<li>pull向左移动，push向右移动</li>
+</ul>
+</li>
+<li><strong>隐藏 \ 显示</strong> <ul>
+<li>.hidden-xs、.hidden-sm、.hidden-md、.hidden-lg 实现对应设备下隐藏</li>
+<li>.visible-xs、.visible-sm、.visible-md、.visible-lg 实现对应设备下隐藏</li>
+<li>原理：display: none!important; 和 display: block!important;</li>
+</ul>
+</li>
+<li><strong>字体图标</strong><ul>
+<li>原理：before伪元素</li>
+<li>使用方法：1.文档中的组件中找到字体图标的名称; 2.直接添加到class中</li>
+</ul>
+</li>
+<li><strong>清除浮动</strong><ul>
+<li>原理：双伪元素清除浮动</li>
+<li>使用方法：直接在class中加 clearfix</li>
+</ul>
+</li>
+</ul>
+<h2 id="项目实战"><a href="#项目实战" class="headerlink" title="项目实战"></a>项目实战</h2><ul>
+<li>开发平台<ul>
+<li>摹客</li>
+<li>蓝湖（收费）</li>
+</ul>
+</li>
+<li>swiper轮播图插件<ul>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV14J4114768?p=484&spm_id_from=pageDriver">学习网址</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="bLank-L 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="bLank-L 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>bLank-L
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://blank-null.github.io/2023/10/11/%E7%A7%BB%E5%8A%A8%E7%AB%AFweb/" title="移动端web">https://blank-null.github.io/2023/10/11/移动端web/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/flex/" rel="tag"># flex</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/10/11/vue2%E7%AC%94%E8%AE%B0/" rel="prev" title="vue2笔记">
+                  <i class="fa fa-angle-left"></i> vue2笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/10/11/toString-valueOf/" rel="next" title="toString & valueOf">
+                  toString & valueOf <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS" sid="660e0a260d9737e6146594944c2506a4"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">bLank-L</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">127k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:51</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="500" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<!-- calendar widget -->
+{% if theme.CloudCalendar.enable %}
+    <script src="{{ theme.CloudCalendar.calendarCdn }}"></script>
+    <script src="{{ theme.CloudCalendar.langCdn }}"></script>
+    <script>
+    $(function() {
+        $('#CloudCalendar').aCalendar('{{ theme.CloudCalendar.language }}',
+            $.extend(
+                '', {
+                    single:{{ theme.CloudCalendar.single }},
+                    root:'{{ theme.CloudCalendar.root }}'
+                }
+            )
+        );
+    });
+    </script>
+{% endif %}
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: 'unset',
+  left: '32px',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cywV9cKcy","appkey":"557a4cba0c3c88fe4338e6ffae25f9d4","count":true}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#2CABEC"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/icon.png">
+  <link rel="mask-icon" href="/images/icon.png" color="#2CABEC">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blank-null.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"changyan","storage":true,"lazyload":false,"nav":null,"activeClass":"changyan"},"stickytabs":true,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="一、Koa2安装创建一个空白目录，然后进入终端，并在终端对koa进行安装： 12345# 项目初始化npm init -y# 安装koa2 npm i koa2 -S">
+<meta property="og:type" content="article">
+<meta property="og:title" content="koa2笔记">
+<meta property="og:url" content="https://blank-null.github.io/2023/10/11/koa2%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="bLanK&#39;s blog">
+<meta property="og:description" content="一、Koa2安装创建一个空白目录，然后进入终端，并在终端对koa进行安装： 12345# 项目初始化npm init -y# 安装koa2 npm i koa2 -S">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://segmentfault.com/img/bV6DZG/view?w=478&h=435">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3663059-b6acea9ec3f0a8f9.jpg?imageMogr2/auto-orient/strip|imageView2/2/w/883/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3663059-03622ea2a9ffce2a.jpg?imageMogr2/auto-orient/strip|imageView2/2/w/814/format/webp">
+<meta property="article:published_time" content="2023-10-11T03:19:01.000Z">
+<meta property="article:modified_time" content="2023-10-11T03:19:57.555Z">
+<meta property="article:author" content="bLank-L">
+<meta property="article:tag" content="koa2">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://segmentfault.com/img/bV6DZG/view?w=478&h=435">
+
+
+<link rel="canonical" href="https://blank-null.github.io/2023/10/11/koa2%E7%AC%94%E8%AE%B0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blank-null.github.io/2023/10/11/koa2%E7%AC%94%E8%AE%B0/","path":"2023/10/11/koa2笔记/","title":"koa2笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>koa2笔记 | bLanK's blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="bLanK's blog" type="application/atom+xml">
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">bLanK's blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">攻无不克，战无不胜</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81Koa2%E5%AE%89%E8%A3%85"><span class="nav-text">一、Koa2安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%85%A5%E5%8F%A3%E6%96%87%E4%BB%B6"><span class="nav-text">二、入口文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="nav-text">基本使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%B4%8B%E8%91%B1%E6%A8%A1%E5%9E%8B"><span class="nav-text">三、洋葱模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E8%B7%AF%E7%94%B1%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="nav-text">四、路由基本使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E8%A7%A3%E6%9E%90"><span class="nav-text">路由解析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#koa-body-%E4%B8%8E-koa-bodyparse%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">koa-body 与 koa-bodyparse的区别</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E8%B7%AF%E7%94%B1%E6%8B%86%E5%88%86"><span class="nav-text">五、路由拆分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E5%88%9B%E5%BB%BA-router-%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="nav-text">1、创建 router 文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E8%B7%AF%E7%94%B1%E9%87%8D%E5%AE%9A%E5%90%91"><span class="nav-text">2、路由重定向</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81404%E6%97%A0%E6%95%88%E8%B7%AF%E7%94%B1"><span class="nav-text">3、404无效路由</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E7%BB%9F%E4%B8%80%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="nav-text">六、统一异常处理（可选）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80"><span class="nav-text">方法一</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E9%9D%9E%E5%8E%9F%E7%94%9F%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="nav-text">1. 非原生异常处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%8E%9F%E7%94%9F%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="nav-text">2. 原生异常处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C"><span class="nav-text">方法二</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E6%93%8D%E4%BD%9Cmysql%E5%87%BD%E6%95%B0%E5%B0%81%E8%A3%85"><span class="nav-text">七、操作mysql函数封装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E5%90%8E%E7%AB%AF%E5%85%81%E8%AE%B8%E8%B7%A8%E5%9F%9F"><span class="nav-text">八、后端允许跨域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%9D%E3%80%81%E8%AF%BB%E5%8F%96%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6"><span class="nav-text">九、读取静态资源文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E3%80%81mysql%E5%BD%95%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="nav-text">十、mysql录入数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%B8%80%E3%80%81POST%E8%AF%B7%E6%B1%82"><span class="nav-text">十一、POST请求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E5%BB%BA%E8%A1%A8"><span class="nav-text">1、建表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81form%E8%A1%A8%E5%8D%95%E9%A1%B5%E9%9D%A2"><span class="nav-text">2、form表单页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E5%AE%89%E8%A3%85%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="nav-text">3、安装中间件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#JWT"><span class="nav-text">JWT</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A4%E8%AF%81%E6%B5%81%E7%A8%8B"><span class="nav-text">认证流程</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F"><span class="nav-text">注意</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8-1"><span class="nav-text">基本使用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81%E6%B7%BB%E5%8A%A0post%E6%8E%A5%E5%8F%A3"><span class="nav-text">4、添加post接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5%E3%80%81%E7%99%BB%E5%BD%95%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%86%8C"><span class="nav-text">5、登录与自动注册</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81%E9%83%A8%E7%BD%B2%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A"><span class="nav-text">十二、部署到服务器上</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%81%E4%B8%89%E3%80%81-koa%E4%B8%8Eexpress"><span class="nav-text">十三、 koa与express</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#axios"><span class="nav-text">axios</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%A6%E6%88%AA%E5%99%A8"><span class="nav-text">拦截器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82%E5%8F%96%E6%B6%88"><span class="nav-text">请求取消</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#post%E6%96%B9%E6%B3%95%E5%BA%8F%E5%88%97%E5%8C%96"><span class="nav-text">post方法序列化</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="bLank-L"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">bLank-L</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">63</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/bLanK-NULL" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;bLanK-NULL" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+<!-- CloudCalendar -->
+<div class="widget-wrap" style="width: 90%;margin-left: auto;margin-right: auto; opacity: 0.97;">
+	<div class="widget" id="CloudCalendar"></div>
+</div>
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2023/10/11/koa2%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="bLank-L">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="koa2笔记 | bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          koa2笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-10-11 11:19:01 / 修改时间：11:19:57" itemprop="dateCreated datePublished" datetime="2023-10-11T11:19:01+08:00">2023-10-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="koa2笔记" href="/2023/10/11/koa2%E7%AC%94%E8%AE%B0/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::473bec2ade5082d051f4de48505046e4" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>16k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>29 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一、Koa2安装"><a href="#一、Koa2安装" class="headerlink" title="一、Koa2安装"></a>一、Koa2安装</h2><p>创建一个空白目录，然后进入终端，并在终端对koa进行安装：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 项目初始化</span><br><span class="line">npm init -y</span><br><span class="line"></span><br><span class="line"># 安装koa2 </span><br><span class="line">npm i koa2 -S </span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二、入口文件"><a href="#二、入口文件" class="headerlink" title="二、入口文件"></a>二、入口文件</h2><p>在项目根目录创建 <code>index.js</code> 文件，并在上一步操作中生成的 <code>package.json</code> 里配置：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;test&quot;</span><span class="punctuation">:</span> <span class="string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;start&quot;</span><span class="punctuation">:</span> <span class="string">&quot;node index.js&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><ul>
+<li><strong>app.use</strong>  <ul>
+<li>use 传入的中间件被放入一个middleware 缓存队列中（数组），这个队列会经由 <code>koa-compose</code> 进行串联</li>
+<li>会返回自身this，可以链式调用</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// index.js</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Koa</span> = <span class="built_in">require</span>(<span class="string">&#x27;koa2&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> <span class="title class_">Koa</span>();</span><br><span class="line"><span class="keyword">const</span> port = <span class="number">9000</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">	解释下面这段代码：</span></span><br><span class="line"><span class="comment">	app.use()方法是：将给定的中间件方法添加到此应用程序。简单说就是调用中间件</span></span><br><span class="line"><span class="comment">	app.use() 返回 this, 因此可以链式表达</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">app.<span class="title function_">use</span>(<span class="keyword">async</span> (ctx)=&gt;&#123;</span><br><span class="line">    <span class="comment">// ctx.body是ctx.response.body的简写</span></span><br><span class="line">    ctx.<span class="property">body</span> = <span class="string">&quot;Hello, Koa&quot;</span>;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(port, <span class="function">()=&gt;</span>&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Server is running at http://localhost:&#x27;</span>+port);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>然后运行 <code>npm start</code> ，并在浏览器输入 <code>http://localhost:9000/</code> 即可看到页面效果。</p>
+<h2 id="三、洋葱模型"><a href="#三、洋葱模型" class="headerlink" title="三、洋葱模型"></a>三、洋葱模型</h2><ul>
+<li><code>middleWare</code>： 就是一个个独立的函数</li>
+</ul>
+<p>学Koa必须要了解 <code>洋葱模型</code> :</p>
+<img src="https://segmentfault.com/img/bV6DZG/view?w=478&h=435" style="1px solid">
+
+<p><code>Koa</code> 和 <code>Express</code> 都会使用到中间件，Express的中间件是顺序执行，从第一个中间件执行到最后一个中间件，发出响应：</p>
+<img src="https://upload-images.jianshu.io/upload_images/3663059-b6acea9ec3f0a8f9.jpg?imageMogr2/auto-orient/strip|imageView2/2/w/883/format/webp" style="border: 1px solid">
+
+<p>Koa是从第一个中间件开始执行，遇到 <code>next</code> 进入下一个中间件，一直执行到最后一个中间件，在逆序，执行上一个中间件 <code>next</code> 之后的代码，一直到第一个中间件执行结束才发出响应。</p>
+<img src="https://upload-images.jianshu.io/upload_images/3663059-03622ea2a9ffce2a.jpg?imageMogr2/auto-orient/strip|imageView2/2/w/814/format/webp" style="border: 1px solid">
+
+<p>对于这个洋葱模型，我们用代码来解释一下。假如把上面的代码改写成：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">Koa</span> = <span class="built_in">require</span>(<span class="string">&#x27;koa2&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> <span class="title class_">Koa</span>();</span><br><span class="line"><span class="keyword">const</span> port = <span class="number">9000</span>;</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">use</span>(<span class="keyword">async</span> (ctx, next)=&gt;&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">await</span> <span class="title function_">next</span>();</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">1</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">use</span>(<span class="keyword">async</span> (ctx, next)=&gt;&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">2</span>)</span><br><span class="line">    <span class="keyword">await</span> <span class="title function_">next</span>();</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">2</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">use</span>(<span class="keyword">async</span> (ctx)=&gt;&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">3</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(port, <span class="function">()=&gt;</span>&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Server is running at http://localhost:&#x27;</span>+port);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>那么在浏览器刷新后，控制台得到的顺序是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">2</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+
+<p>现在可以看到，我们通过 <code>next</code>可以先运行下个中间件，等中间件结束后，再继续运行当前 <code>next()</code> 之后的代码。</p>
+<h2 id="四、路由基本使用"><a href="#四、路由基本使用" class="headerlink" title="四、路由基本使用"></a>四、路由基本使用</h2><p>当需要匹配不同路由时，可以安装：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i koa-router</span><br></pre></td></tr></table></figure>
+
+<p>将 <code>index.js</code> 修改：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">Koa</span> = <span class="built_in">require</span>(<span class="string">&#x27;koa2&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> <span class="title class_">Koa</span>();</span><br><span class="line"><span class="comment">//导入中间件</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Router</span> = <span class="built_in">require</span>(<span class="string">&#x27;koa-router&#x27;</span>);</span><br><span class="line"><span class="comment">//实例化路由中间件</span></span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> <span class="title class_">Router</span>();</span><br><span class="line"><span class="comment">//初始化时 定义前缀</span></span><br><span class="line"><span class="comment">//const router = new Router(&#123;prefix: &#x27;/user&#x27;&#125;)</span></span><br><span class="line"><span class="keyword">const</span> port = <span class="number">9000</span>;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	ctx.url === ctx.request.url</span></span><br><span class="line"><span class="comment">	ctx.method === ctx.request.method</span></span><br><span class="line"><span class="comment">	ctx.body === ctx.response.body</span></span><br><span class="line"><span class="comment">	ctx.status === ctx.response.status</span></span><br><span class="line"><span class="comment">	ctx.throw(404) //抛出404</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">router.<span class="title function_">get</span>(<span class="string">&#x27;/&#x27;</span>, <span class="keyword">async</span> (ctx)=&gt;&#123;</span><br><span class="line">    ctx.<span class="property">body</span> = <span class="string">&quot;首页&quot;</span>;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//使用路由中间件</span></span><br><span class="line"><span class="comment">//router.allowedMethods() 帮助返回401或501</span></span><br><span class="line">app.<span class="title function_">use</span>(router.<span class="title function_">routes</span>()).<span class="title function_">use</span>(router.<span class="title function_">allowedMethods</span>());</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(port, <span class="function">()=&gt;</span>&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Server is running at http://localhost:&#x27;</span>+port);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>此时，到浏览器刷新并在地址栏最后添加 <code>/list</code> 即可得到首页和列表页。</p>
+<p>备注：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 调用router.routes()来组装匹配好的路由，返回一个合并好的中间件</span></span><br><span class="line"><span class="comment">// 调用router.allowedMethods()获得一个中间件，当发送了不符合的请求时，会返回 `405 Method Not Allowed` 或 `501 Not Implemented`</span></span><br><span class="line"></span><br><span class="line">allowedMethods方法可以做以下配置：</span><br><span class="line">app.<span class="title function_">use</span>(router.<span class="title function_">allowedMethods</span>(&#123; </span><br><span class="line">    <span class="comment">// throw: true, // 抛出错误，代替设置响应头状态</span></span><br><span class="line">    <span class="comment">// notImplemented: () =&gt; &#x27;不支持当前请求所需要的功能&#x27;,</span></span><br><span class="line">    <span class="comment">// methodNotAllowed: () =&gt; &#x27;不支持的请求方式&#x27;</span></span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
+
+<h3 id="路由解析"><a href="#路由解析" class="headerlink" title="路由解析"></a>路由解析</h3><ul>
+<li><p>GET请求参数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// http://localhost:9000/user/123/hello</span></span><br><span class="line"><span class="comment">//1. get+params 获取路由中的参数</span></span><br><span class="line">router.<span class="title function_">get</span>(<span class="string">&#x27;/user/:id&#x27;</span>, <span class="function">(<span class="params">ctx</span>)=&gt;</span> &#123;</span><br><span class="line">   <span class="keyword">const</span> res = &#123;...ctx.<span class="property">params</span>&#125;</span><br><span class="line">    ctx.<span class="property">body</span> = res</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// http://localhost:9000/user2?canshu1=111&amp;canshu2=222</span></span><br><span class="line"><span class="comment">//2. get+query 获取url中的参数</span></span><br><span class="line">router.<span class="title function_">get</span>(<span class="string">&#x27;/user2&#x27;</span>, <span class="function">(<span class="params">ctx</span>)=&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> res = &#123;...ctx.<span class="property">query</span>&#125;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;res&#x27;</span>,res);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">    ctx.<span class="property">body</span> = res</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>POST请求参数 </p>
+<ul>
+<li>参数在请求体中, 利用中间件来解析请求体</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install koa-body </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//index.js</span></span><br><span class="line"><span class="keyword">const</span> &#123;koaBody&#125; = <span class="built_in">require</span>(<span class="string">&#x27;koa-body&#x27;</span>)</span><br><span class="line">app.<span class="title function_">use</span>(<span class="title function_">koaBody</span>())</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>ctx.request.body</code> 来获取参数</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// http://localhost:9000/post/a</span></span><br><span class="line"><span class="comment">/* urlencoded参数为：  param1:123</span></span><br><span class="line"><span class="comment">					param2:canshu2</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">router.<span class="title function_">post</span>(<span class="string">&#x27;/post/a&#x27;</span>,<span class="function">(<span class="params">ctx</span>)=&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> req = ctx.<span class="property">request</span>.<span class="property">body</span></span><br><span class="line">    ctx.<span class="property">body</span> = req</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="koa-body-与-koa-bodyparse的区别"><a href="#koa-body-与-koa-bodyparse的区别" class="headerlink" title="koa-body 与 koa-bodyparse的区别"></a>koa-body 与 koa-bodyparse的区别</h4><p>koa-body和koa-bodyparser都是Koa框架的中间件，用于解析HTTP请求中的请求体。</p>
+<ul>
+<li><code>koa-body</code>解析的是JSON格式的请求体</li>
+<li><code>koa-bodyparser</code>支持多种请求体的格式，例如JSON、form、text、CSV等</li>
+</ul>
+<h2 id="五、路由拆分"><a href="#五、路由拆分" class="headerlink" title="五、路由拆分"></a>五、路由拆分</h2><p>有时候我们需要拆分路由，比如：</p>
+<p>列表页下所有的子路由（即前端请求的api）与首页所有的子路由想分开处理，那么就需要拆分路由。</p>
+<h3 id="1、创建-router-文件夹"><a href="#1、创建-router-文件夹" class="headerlink" title="1、创建 router 文件夹"></a>1、创建 <code>router</code> 文件夹</h3><p>创建router文件夹，并在其中创建：<code>index.js</code> （路由总入口文件）、<code>home.js</code> （首页总路由文件）、<code>list.js</code> （列表页总路由文件）：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"># index.<span class="property">js</span></span><br><span class="line"><span class="keyword">const</span> router = <span class="built_in">require</span>(<span class="string">&#x27;./router/index&#x27;</span>)</span><br><span class="line">app.<span class="title function_">use</span>(router.<span class="title function_">routes</span>(), router.<span class="title function_">allowedMethods</span>());</span><br><span class="line"></span><br><span class="line"># index.<span class="property">js</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Router</span> = <span class="built_in">require</span>(<span class="string">&#x27;koa-router&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> <span class="title class_">Router</span>();</span><br><span class="line"><span class="keyword">const</span> home = <span class="built_in">require</span>(<span class="string">&#x27;./home&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> list = <span class="built_in">require</span>(<span class="string">&#x27;./list&#x27;</span>)</span><br><span class="line"></span><br><span class="line">router.<span class="title function_">use</span>(<span class="string">&#x27;/home&#x27;</span>, home.<span class="title function_">routes</span>(), home.<span class="title function_">allowedMethods</span>());</span><br><span class="line">router.<span class="title function_">use</span>(<span class="string">&#x27;/list&#x27;</span>, list.<span class="title function_">routes</span>(), list.<span class="title function_">allowedMethods</span>());</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = router;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># home.<span class="property">js</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Router</span> = <span class="built_in">require</span>(<span class="string">&#x27;koa-router&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> home = <span class="keyword">new</span> <span class="title class_">Router</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这里的 &#x27;/&#x27; 就是指向 index.js 中的 /home</span></span><br><span class="line">home.<span class="title function_">get</span>(<span class="string">&#x27;/&#x27;</span>, <span class="keyword">async</span> (ctx) =&gt; &#123;</span><br><span class="line">        ctx.<span class="property">body</span> = <span class="string">&quot;首页&quot;</span>;</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = home;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># list.<span class="property">js</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Router</span> = <span class="built_in">require</span>(<span class="string">&#x27;koa-router&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> list = <span class="keyword">new</span> <span class="title class_">Router</span>();</span><br><span class="line"></span><br><span class="line">list.<span class="title function_">get</span>(<span class="string">&#x27;/&#x27;</span>, <span class="keyword">async</span> (ctx)=&gt;&#123;</span><br><span class="line">    ctx.<span class="property">body</span> = <span class="string">&quot;列表页&quot;</span>;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = list;</span><br></pre></td></tr></table></figure>
+
+<p>到浏览器刷新 <code>localhost:9000/home</code> 与 <code>localhost:9000/list</code> 即可得到首页与列表页。</p>
+<h3 id="2、路由重定向"><a href="#2、路由重定向" class="headerlink" title="2、路由重定向"></a>2、路由重定向</h3><p>那么有同学会问了，如果我想直接从 <code>localhost:9000</code> 重定向到 <code>localhost:9000/home</code> 该怎么办？</p>
+<p>我们可以在 <code>router/index.js</code> 中做如下配置：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">router.<span class="title function_">use</span>(<span class="string">&#x27;/home&#x27;</span>, home.<span class="title function_">routes</span>(), home.<span class="title function_">allowedMethods</span>());</span><br><span class="line">...</span><br><span class="line">router.<span class="title function_">redirect</span>(<span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;/home&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、404无效路由"><a href="#3、404无效路由" class="headerlink" title="3、404无效路由"></a>3、404无效路由</h3><p>如果被访问到无效路由，那么我们可以统一返回404页面：</p>
+<p>在 <code>router</code> 下 <code>errorPage.js</code> :</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">Router</span> = <span class="built_in">require</span>(<span class="string">&#x27;koa-router&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> errorPage = <span class="keyword">new</span> <span class="title class_">Router</span>();</span><br><span class="line"></span><br><span class="line">errorPage.<span class="title function_">get</span>(<span class="string">&#x27;/&#x27;</span>, <span class="keyword">async</span> (ctx) =&gt; &#123;</span><br><span class="line">    ctx.<span class="property">body</span> = <span class="string">&quot;访问页面不存在&quot;</span>;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = errorPage;</span><br></pre></td></tr></table></figure>
+
+<p>在 <code>index.js</code> 中引用：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 匹配不到页面的全部跳转去404</span></span><br><span class="line">app.<span class="title function_">use</span>(<span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">    <span class="keyword">await</span> <span class="title function_">next</span>();</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">parseInt</span>(ctx.<span class="property">status</span>) === <span class="number">404</span>) &#123;</span><br><span class="line">        ctx.<span class="property">response</span>.<span class="title function_">redirect</span>(<span class="string">&quot;/404&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">app.<span class="title function_">use</span>(router.<span class="title function_">routes</span>(), router.<span class="title function_">allowedMethods</span>());</span><br></pre></td></tr></table></figure>
+
+<h2 id="六、统一异常处理（可选）"><a href="#六、统一异常处理（可选）" class="headerlink" title="六、统一异常处理（可选）"></a>六、统一异常处理（可选）</h2><h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><h4 id="1-非原生异常处理"><a href="#1-非原生异常处理" class="headerlink" title="1. 非原生异常处理"></a>1. 非原生异常处理</h4><ul>
+<li>404 : 请求资源找不到，或者<code>ctx.body</code>为空</li>
+<li>500: 服务器运行时错误❌</li>
+<li><code>ctx.throw()</code>手动抛出 或者直接<code>throw()</code><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ctx.<span class="keyword">throw</span>([status], [msg], [properties])</span><br><span class="line"><span class="comment">//[status]： 响应码</span></span><br><span class="line"><span class="comment">//[msg]: 响应消息</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//解决不能被app.on 捕获到的问题</span></span><br><span class="line"><span class="comment">//不要与原生on/emit同时使用</span></span><br><span class="line"><span class="keyword">const</span> error = <span class="built_in">require</span>(<span class="string">&#x27;koa-json-error&#x27;</span>)</span><br><span class="line">app.<span class="title function_">use</span>(<span class="title function_">error</span>())</span><br><span class="line"><span class="comment">//返回json格式</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<pre><code> * 生产环境避免抛出stack
+</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 跨平台</span></span><br><span class="line">npm i cross-env </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//package.json中</span></span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;test&quot;</span><span class="punctuation">:</span> <span class="string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;start&quot;</span><span class="punctuation">:</span> <span class="string">&quot;node index.js&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;prod&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cross-env NODE_ENV=production node src/&quot;</span> <span class="comment">//生产环境变量NODE_ENV</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">use</span>(<span class="title function_">error</span>(&#123;     <span class="comment">//高级使用（配合生产环境，避免暴露stack）</span></span><br><span class="line">    <span class="comment">/*format: (err)=&gt; &#123;</span></span><br><span class="line"><span class="comment">        return &#123;code: err.status, message: err.message, stack: err.stack&#125;</span></span><br><span class="line"><span class="comment">    &#125;,*/</span> </span><br><span class="line">    <span class="attr">postFormat</span>: <span class="function">(<span class="params">err, obj</span>)=&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> &#123;stack, ...rest&#125; = obj</span><br><span class="line">        <span class="keyword">return</span> process.<span class="property">env</span>.<span class="property">NODE_ENV</span> == <span class="string">&#x27;production&#x27;</span>? <span class="attr">rest</span>: obj</span><br><span class="line">    &#125;</span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
+<h4 id="2-原生异常处理"><a href="#2-原生异常处理" class="headerlink" title="2. 原生异常处理"></a>2. 原生异常处理</h4><ul>
+<li><code>on</code>监听异常</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//监听错误（ctx.app.emit(&#x27;error&#x27;, &#123;&#125;)）,捕获到错误后浏览器状态码为200</span></span><br><span class="line"></span><br><span class="line">app.<span class="title function_">on</span>(<span class="string">&#x27;error&#x27;</span>, <span class="function">(<span class="params">error,ctx</span>)=&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">error</span>(error);</span><br><span class="line">    ctx.<span class="property">body</span> = error</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>emit </code>抛出错误</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ctx.<span class="property">app</span>.<span class="title function_">emit</span>(<span class="string">&#x27;error&#x27;</span>,&#123;<span class="attr">code</span>: <span class="number">404</span>,<span class="attr">message</span>: <span class="string">&#x27;resouse not found&#x27;</span>, &#125;,ctx)</span><br><span class="line"><span class="comment">//ctx.throw 无法被on监听</span></span><br><span class="line">ctx.<span class="keyword">throw</span>(<span class="number">402</span>)</span><br></pre></td></tr></table></figure>
+
+<p>  ​</p>
+<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><p>作为后端开发，我们经常需要统一异常处理，避免每次都要自己手写404或200进行返回，因此我们可以创建 <code>utils/errorHandler.js</code> ：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 统一异常处理</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="function">(<span class="params">app</span>) =&gt;</span> &#123;</span><br><span class="line">    app.<span class="title function_">use</span>(<span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">        <span class="keyword">let</span> status = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">let</span> fileName = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            <span class="keyword">await</span> <span class="title function_">next</span>();</span><br><span class="line">            status = ctx.<span class="property">status</span>;</span><br><span class="line">        &#125;<span class="keyword">catch</span>(err)&#123;</span><br><span class="line">            <span class="comment">//console.log(err);</span></span><br><span class="line">            status = <span class="number">500</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(status &gt;= <span class="number">400</span>)&#123;</span><br><span class="line">            <span class="keyword">switch</span>(status)&#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">400</span>:</span><br><span class="line">                <span class="keyword">case</span> <span class="number">404</span>:</span><br><span class="line">                <span class="keyword">case</span> <span class="number">500</span>:</span><br><span class="line">                    fileName = status;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="attr">default</span>:</span><br><span class="line">                    fileName = <span class="string">&quot;other&quot;</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        ctx.<span class="property">response</span>.<span class="property">status</span> = status;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(fileName);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后在 <code>index.js</code> 中引入：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> errorHandler = <span class="built_in">require</span>(<span class="string">&#x27;./utils/errorHandler.js&#x27;</span>);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">use</span>(router.<span class="title function_">routes</span>(), router.<span class="title function_">allowedMethods</span>());</span><br><span class="line">...</span><br><span class="line"><span class="title function_">errorHandler</span>(app);</span><br></pre></td></tr></table></figure>
+
+<p>其实这一块不写关系也不大，但最好还是加上。</p>
+<h2 id="七、操作mysql函数封装"><a href="#七、操作mysql函数封装" class="headerlink" title="七、操作mysql函数封装"></a>七、操作mysql函数封装</h2><p>这里已经给大家直接封装好了一个库，专门用来操作mysql的。至于mysql的学习，将在独立的mysql教程中呈现。</p>
+<p>首先，项目内安装 <code>mysql</code>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add mysql</span><br></pre></td></tr></table></figure>
+
+<p>在<code>/src/utils/db.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mysql = <span class="built_in">require</span>(<span class="string">&#x27;mysql&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> pool = mysql.<span class="title function_">createPool</span>(&#123;</span><br><span class="line">    <span class="attr">host</span>: <span class="string">&#x27;localhost&#x27;</span>,</span><br><span class="line">    <span class="attr">port</span>: <span class="number">3306</span>,</span><br><span class="line">    <span class="attr">database</span>: <span class="string">&#x27;mytest&#x27;</span>,</span><br><span class="line">    <span class="attr">user</span>: <span class="string">&#x27;root&#x27;</span>,</span><br><span class="line">    <span class="attr">password</span>: <span class="string">&#x27;252238Lzy&#x27;</span>,</span><br><span class="line">    <span class="attr">multipleStatements</span>: <span class="literal">true</span> <span class="comment">//允许一次执行多条sql</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> query = <span class="keyword">function</span> (<span class="params">sql, callback</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        pool.<span class="title function_">getConnection</span>(<span class="keyword">function</span> (<span class="params">err, connection</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (err) <span class="title function_">reject</span>(err)</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                connection.<span class="title function_">query</span>(sql, <span class="keyword">function</span> (<span class="params">err, rows</span>) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (err) <span class="title function_">reject</span>(err)</span><br><span class="line">                    <span class="keyword">else</span> <span class="title function_">resolve</span>(rows)</span><br><span class="line">                    connection.<span class="title function_">release</span>()</span><br><span class="line">                &#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = query</span><br></pre></td></tr></table></figure>
+
+<p>在 <code>/src/sql/userSql.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> query = <span class="built_in">require</span>(<span class="string">&#x27;../utils/db&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> findUser = <span class="keyword">function</span> (<span class="params">id</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> _sql = <span class="string">`select * from users where id=<span class="subst">$&#123;id&#125;</span>`</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">query</span>(_sql)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">    findUser</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="八、后端允许跨域"><a href="#八、后端允许跨域" class="headerlink" title="八、后端允许跨域"></a>八、后端允许跨域</h2><p>前端想跨域，可以设置proxy。如果后端允许跨域，可以如下操作：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 安装koa2-cors</span></span><br><span class="line">cnpm i koa2-cors</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> cors = <span class="built_in">require</span>(<span class="string">&#x27;koa2-cors&#x27;</span>)</span><br><span class="line">app.<span class="title function_">use</span>(<span class="title function_">cors</span>())</span><br></pre></td></tr></table></figure>
+
+<h2 id="九、读取静态资源文件"><a href="#九、读取静态资源文件" class="headerlink" title="九、读取静态资源文件"></a>九、读取静态资源文件</h2><p>首先，在项目的根目录下创建 <code>assets</code> 后，将图片资源文件夹 <code>images</code> 放到其中，并且执行以下操作：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 安装koa-static</span></span><br><span class="line">cnpm install koa-<span class="keyword">static</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 引入</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">static</span> = <span class="built_in">require</span>(<span class="string">&#x27;koa-static&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取静态资源文件夹</span></span><br><span class="line">app.<span class="title function_">use</span>(<span class="title function_">static</span>(path.<span class="title function_">join</span>(__dirname+<span class="string">&#x27;/assets&#x27;</span>)));</span><br><span class="line">...</span><br><span class="line">app.<span class="title function_">use</span>(router.<span class="title function_">routes</span>(), router.<span class="title function_">allowedMethods</span>())</span><br></pre></td></tr></table></figure>
+
+<p>假设其中有一张图片叫做 <code>banner1.png</code>，那么我们打开浏览器，访问：<code>http://localhost:5050/images/banner1.png</code> 即可得到图片。这里注意：</p>
+<blockquote>
+<p>路径上不需要写assets，因为我们已经指定了访问资源时， <a target="_blank" rel="noopener" href="http://localhost:5050/">http://localhost:5050</a> 自动指向 assets 文件夹。</p>
+</blockquote>
+<p>由此，我们知道数据库中图片的地址只需要填写 <code>/images/banner1.png</code> 即可。</p>
+<h2 id="十、mysql录入数据"><a href="#十、mysql录入数据" class="headerlink" title="十、mysql录入数据"></a>十、mysql录入数据</h2><p>请参考当前目录下的《Chapter2-mysql2操作.md》。</p>
+<h2 id="十一、POST请求"><a href="#十一、POST请求" class="headerlink" title="十一、POST请求"></a>十一、POST请求</h2><p>我们以登录举例讲post请求。</p>
+<p>这里规定：前端发送 账号+密码 到后端，如果账号不存在于数据库，则注册账号。</p>
+<p>如果账号存在于数据库中，则验证密码。</p>
+<p>验证密码通过或注册账号成功，都返回token给前端。</p>
+<h3 id="1、建表"><a href="#1、建表" class="headerlink" title="1、建表"></a>1、建表</h3><p>设定字段为account和pwd</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> users (</span><br><span class="line">	id <span class="type">INT</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">PRIMARY</span> KEY AUTO_INCREMENT,</span><br><span class="line">	account <span class="type">VARCHAR</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;账号&#x27;</span>,</span><br><span class="line">	pwd <span class="type">VARCHAR</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;密码&#x27;</span>,</span><br><span class="line">  token LONGTEXT <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;令牌&#x27;</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、form表单页面"><a href="#2、form表单页面" class="headerlink" title="2、form表单页面"></a>2、form表单页面</h3><p>在 <code>assets</code> 下创建 <code>index.html</code> ：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;account&quot;</span>&gt;</span>账号<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">value</span>=<span class="string">&quot;&quot;</span> <span class="attr">name</span>=<span class="string">&quot;account&quot;</span> <span class="attr">class</span>=<span class="string">&quot;account&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;请输入账号&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;pwd&quot;</span>&gt;</span>密码<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;&quot;</span> <span class="attr">name</span>=<span class="string">&quot;pwd&quot;</span> <span class="attr">class</span>=<span class="string">&quot;pwd&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;请输入密码&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;btn&quot;</span>&gt;</span>登录/注册<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    $(<span class="string">&#x27;.btn&#x27;</span>).<span class="title function_">click</span>(<span class="function">()=&gt;</span>&#123;</span></span><br><span class="line"><span class="language-javascript">        $.<span class="title function_">ajax</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">url</span>: <span class="string">&quot;/login/register&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">method</span>: <span class="string">&quot;POST&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">data</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">account</span>: $(<span class="string">&#x27;.account&#x27;</span>).<span class="title function_">val</span>(),</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">pwd</span>: $(<span class="string">&#x27;.pwd&#x27;</span>).<span class="title function_">val</span>()</span></span><br><span class="line"><span class="language-javascript">            &#125;,</span></span><br><span class="line"><span class="language-javascript">            <span class="title function_">success</span>(<span class="params">res</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">                <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span></span><br><span class="line"><span class="language-javascript">            &#125;,</span></span><br><span class="line"><span class="language-javascript">            <span class="title function_">error</span>(<span class="params">err</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">                <span class="variable language_">console</span>.<span class="title function_">log</span>(err)</span></span><br><span class="line"><span class="language-javascript">            &#125;</span></span><br><span class="line"><span class="language-javascript">        &#125;)</span></span><br><span class="line"><span class="language-javascript">    &#125;)</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在浏览器直接访问 <code>http://localhost:5050/index.html</code> 即可进入表单页。</p>
+<h3 id="3、安装中间件"><a href="#3、安装中间件" class="headerlink" title="3、安装中间件"></a>3、安装中间件</h3><p>安装 <code>koa-bodyparser</code> 与 <code>jsonwebtoken</code> 中间件:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// koa-bodyparser用于获取post请求数据</span></span><br><span class="line">cnpm install koa-bodyparser --save</span><br><span class="line"></span><br><span class="line"><span class="comment">// jsonwebtoken用于生成token</span></span><br><span class="line">cnpm install jsonwebtoken --save</span><br></pre></td></tr></table></figure>
+
+<h4 id="JWT"><a href="#JWT" class="headerlink" title="JWT"></a>JWT</h4><h5 id="认证流程"><a href="#认证流程" class="headerlink" title="认证流程"></a>认证流程</h5><ol>
+<li><p>前端把表单数据发送给服务器（同过post+http，最好是SSL+https）</p>
+</li>
+<li><p>服务器把token当作登录成功的返回</p>
+</li>
+<li><p>浏览器把token存在<code>localStorage</code>或者<code>sessionStorage</code>或者<code>cookie</code>中，退出登录时让浏览器删除token</p>
+<ul>
+<li>以后每次进入页面（main.js中）先从本地读取token，若存在则修改vuex中登陆状态</li>
+</ul>
+</li>
+<li><p>前端在每次请求时将token放入http Header中的Authorization位。</p>
+<ul>
+<li><p>Authorization: Bearer token </p>
+<ul>
+<li>符合w3c规范，指明认证规范</li>
+</ul>
+</li>
+<li><p>解决XSS 跨站脚本攻击 和XSRF问题 跨站点请求伪造</p>
+</li>
+</ul>
+</li>
+<li><p>后端检查：签名正确，token是否过期</p>
+</li>
+<li><p>后端解析出token中包含的用户id来进行操作</p>
+</li>
+</ol>
+<h6 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h6><ol>
+<li><code>jwt</code>生成的token由 <code>head.payload.signature</code>组成<ol>
+<li>header:  保存签名算法</li>
+<li>payload： 存放数据</li>
+<li>signature：根据header、payload、密钥加密得出</li>
+</ol>
+</li>
+<li>密钥存在服务器中，只有服务器知道</li>
+</ol>
+<h5 id="基本使用-1"><a href="#基本使用-1" class="headerlink" title="基本使用"></a>基本使用</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> jwt = <span class="built_in">require</span>(<span class="string">&#x27;jsonwebtoken&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用了callback会当作异步函数，不用则是同步函数返回token值</span></span><br><span class="line"><span class="keyword">const</span> token = jwt.<span class="title function_">sign</span>(&#123; account &#125;, private_key [, &#123; <span class="attr">expiresIn</span>: <span class="string">&#x27;30s&#x27;</span> &#125;, callback])</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> info = jwt.<span class="title function_">verify</span>(token, private_key)</span><br><span class="line"><span class="comment">//访问： info.account</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4、添加post接口"><a href="#4、添加post接口" class="headerlink" title="4、添加post接口"></a>4、添加post接口</h3><p>在 <code>router/login.js</code> 中加入：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> bodyParser = <span class="built_in">require</span>(<span class="string">&#x27;koa-bodyparser&#x27;</span>)</span><br><span class="line"></span><br><span class="line">login.<span class="title function_">use</span>(<span class="title function_">bodyParser</span>());</span><br><span class="line"></span><br><span class="line">login.<span class="title function_">post</span>(<span class="string">&#x27;/register&#x27;</span>, <span class="keyword">async</span> (ctx)=&gt;&#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(ctx.<span class="property">request</span>.<span class="property">body</span>);		<span class="comment">// 可以打印得到数据</span></span><br><span class="line">	ctx.<span class="property">response</span>.<span class="property">body</span> = <span class="string">&quot;登录或注册&quot;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="5、登录与自动注册"><a href="#5、登录与自动注册" class="headerlink" title="5、登录与自动注册"></a>5、登录与自动注册</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">Router</span> = <span class="built_in">require</span>(<span class="string">&#x27;koa-router&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> login = <span class="keyword">new</span> <span class="title class_">Router</span>()</span><br><span class="line"><span class="keyword">const</span> bodyParser = <span class="built_in">require</span>(<span class="string">&#x27;koa-bodyparser&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> db = <span class="built_in">require</span>(<span class="string">&#x27;../utils/db&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> jwt = <span class="built_in">require</span>(<span class="string">&#x27;jsonwebtoken&#x27;</span>)</span><br><span class="line"></span><br><span class="line">login.<span class="title function_">get</span>(<span class="string">&#x27;/&#x27;</span>, <span class="keyword">async</span> (ctx) =&gt; &#123;</span><br><span class="line">	ctx.<span class="property">response</span>.<span class="property">body</span> = <span class="string">&quot;登录页面&quot;</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">login.<span class="title function_">use</span>(<span class="title function_">bodyParser</span>());</span><br><span class="line"></span><br><span class="line">login.<span class="title function_">post</span>(<span class="string">&#x27;/register&#x27;</span>, <span class="keyword">async</span> (ctx) =&gt; &#123;</span><br><span class="line">	<span class="keyword">let</span> myaccount = ctx.<span class="property">request</span>.<span class="property">body</span>.<span class="property">account</span>;</span><br><span class="line">	<span class="keyword">let</span> mypwd = ctx.<span class="property">request</span>.<span class="property">body</span>.<span class="property">pwd</span>;</span><br><span class="line">	<span class="keyword">let</span> sql = <span class="string">`SELECT * FROM users WHERE account=&#x27;<span class="subst">$&#123;myaccount&#125;</span>&#x27;`</span>;</span><br><span class="line">	<span class="keyword">let</span> result = <span class="keyword">await</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> db.<span class="title function_">query</span>(sql, <span class="function">(<span class="params">err, data</span>) =&gt;</span> &#123;</span><br><span class="line">			<span class="keyword">if</span> (err) <span class="keyword">throw</span> err;</span><br><span class="line">			<span class="keyword">if</span> (data.<span class="property">length</span> &gt; <span class="number">0</span>) &#123;</span><br><span class="line">				<span class="title function_">resolve</span>(data);</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="title function_">resolve</span>(<span class="literal">false</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">if</span> (result) &#123;</span><br><span class="line">		<span class="comment">// 能找到对应的账号</span></span><br><span class="line">		<span class="keyword">if</span> (result[<span class="number">0</span>].<span class="property">pwd</span> == mypwd) &#123;</span><br><span class="line">			<span class="comment">// 账号密码正确，返回token</span></span><br><span class="line">			ctx.<span class="property">body</span> = &#123;</span><br><span class="line">				<span class="attr">token</span>: result[<span class="number">0</span>],</span><br><span class="line">				<span class="attr">msg</span>: <span class="string">&#x27;登录成功&#x27;</span>,</span><br><span class="line">				<span class="attr">account</span>: myaccount</span><br><span class="line">			&#125;;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="comment">// 密码错误</span></span><br><span class="line">			ctx.<span class="property">body</span> = &#123;</span><br><span class="line">				<span class="attr">msg</span>: <span class="string">&#x27;密码错误&#x27;</span>,</span><br><span class="line">				<span class="attr">account</span>: myaccount</span><br><span class="line">			&#125;;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">// 找不到对应的账号，直接插入一个</span></span><br><span class="line">		<span class="keyword">let</span> result1 = <span class="keyword">await</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">			<span class="comment">// 生成token</span></span><br><span class="line">			<span class="keyword">const</span> token = jwt.<span class="title function_">sign</span>(&#123; <span class="attr">myaccount</span>: myaccount, <span class="attr">mypwd</span>: mypwd &#125;, <span class="string">&#x27;secret&#x27;</span>, &#123; <span class="attr">expiresIn</span>: <span class="number">3600</span> &#125;)</span><br><span class="line">			<span class="keyword">return</span> db.<span class="title function_">query</span>(<span class="string">`INSERT INTO users (account, pwd, token) values (&#x27;<span class="subst">$&#123;myaccount&#125;</span>&#x27;, &#x27;<span class="subst">$&#123;mypwd&#125;</span>&#x27;, &#x27;<span class="subst">$&#123;token&#125;</span>&#x27;)`</span>, <span class="function">(<span class="params">error, datas</span>) =&gt;</span> &#123;</span><br><span class="line">				<span class="keyword">if</span> (error) <span class="keyword">throw</span> error;</span><br><span class="line">				<span class="comment">// 已插入数据，返回用户名与token</span></span><br><span class="line">				<span class="keyword">let</span> obj = &#123;</span><br><span class="line">					token,</span><br><span class="line">					<span class="attr">msg</span>: <span class="string">&#x27;登录成功&#x27;</span>,</span><br><span class="line">					<span class="attr">account</span>: myaccount</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="title function_">resolve</span>(obj)</span><br><span class="line">			&#125;)</span><br><span class="line">		&#125;)</span><br><span class="line">		<span class="keyword">if</span> (result1) &#123;</span><br><span class="line">			ctx.<span class="property">body</span> = result1;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = login;</span><br></pre></td></tr></table></figure>
+
+<p>此时，前端做这个post请求后，就会得到相应的数据。</p>
+<h2 id="十二、部署到服务器上"><a href="#十二、部署到服务器上" class="headerlink" title="十二、部署到服务器上"></a>十二、部署到服务器上</h2><p>部署需要先购买服务器，下载filezilla软件。</p>
+<p>服务器上需要安装node 、mysql、pm2</p>
+<p>具体教程请参考下面这篇文章</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/yh8899abc/article/details/105201742">https://blog.csdn.net/yh8899abc/article/details/105201742</a></p>
+<h1 id="十三、-koa与express"><a href="#十三、-koa与express" class="headerlink" title="十三、 koa与express"></a>十三、 koa与express</h1><p>主要优点： </p>
+<ol>
+<li>koa解决了回调地狱问题</li>
+<li>拥抱async&#x2F;await</li>
+</ol>
+<h1 id="axios"><a href="#axios" class="headerlink" title="axios"></a>axios</h1><p>需要封装部分：</p>
+<pre><code>   1. 基本全局配置： baseURL， timeout 等等
+    2. Token
+      3. 响应统一处理（错误处理）
+      4. 封装请求方法： 对接口的请求封装为一个个函数
+</code></pre>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">axios.<span class="title function_">get</span>().<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//res.data 是响应体</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="拦截器"><a href="#拦截器" class="headerlink" title="拦截器"></a>拦截器</h2><ol>
+<li>判断页面需不需要token &#x3D;&gt; 通过vue路由守卫</li>
+<li>向服务器发送该页面相关的数据请求 </li>
+<li>服务器验证token的正确性<ol>
+<li>正确 &#x3D;&gt;  返回该用户数据</li>
+<li>错误 &#x3D;&gt;  返回401状态码，前端检测状态码跳转回登陆页面</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">axios.<span class="property">interceptors</span>.<span class="property">request</span>.<span class="title function_">use</span>(<span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;请求拦截成功&#x27;</span>,config);</span><br><span class="line">    <span class="keyword">throw</span> <span class="string">&#x27;throw了一个错误&#x27;</span></span><br><span class="line">&#125;， error=&gt; &#123;</span><br><span class="line">    	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;请求拦截失败&quot;</span>，error)</span><br><span class="line">    &#125;）</span><br><span class="line"></span><br><span class="line">axios.<span class="property">interceptors</span>.<span class="property">response</span>.<span class="title function_">use</span>(<span class="function"><span class="params">response</span>=&gt;</span> &#123;</span><br><span class="line">         <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;响应拦截成功&#x27;</span>，response)</span><br><span class="line">     &#125;, <span class="function"><span class="params">error</span>=&gt;</span> &#123;</span><br><span class="line">         <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;响应拦截失败&quot;</span>, error)</span><br><span class="line">     &#125;)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">请求拦截成功</span></span><br><span class="line"><span class="comment">响应拦截失败 throw了一个错误</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">/*请求拦截器抛出异常后，或者没有return config</span></span><br><span class="line"><span class="comment">  请求不会发送至服务器！*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//移除拦截器</span></span><br><span class="line"><span class="keyword">const</span> myInterceptor = axios.<span class="property">interceptors</span>.<span class="property">request</span>.<span class="title function_">use</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;&#125;)</span><br><span class="line">axios.<span class="property">interceptors</span>.<span class="property">request</span>.<span class="title function_">eject</span>(myInterceptor)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">axios.<span class="property">interceptors</span>.<span class="property">request</span>.<span class="title function_">use</span>(<span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;请求拦截器成功&#x27;</span>,config); </span><br><span class="line">    <span class="keyword">const</span> token = store.<span class="property">state</span>.<span class="property">token</span></span><br><span class="line">    <span class="keyword">if</span> (token)</span><br><span class="line">        config.<span class="property">headers</span>[<span class="string">&#x27;Authorization&#x27;</span>] = token</span><br><span class="line">    <span class="comment">//profile页面需要token</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(config.<span class="property">url</span>==<span class="string">&#x27;http://localhost:9000/profile&#x27;</span>)&#123;</span><br><span class="line">        router.<span class="title function_">replace</span>(&#123; <span class="attr">name</span>: <span class="string">&#x27;login&#x27;</span> &#125;)</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;拦截-没有token,重定向回login&#x27;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;请求数据&#x27;</span>,config.<span class="property">data</span>)</span><br><span class="line">    <span class="keyword">return</span> config;</span><br><span class="line"></span><br><span class="line">&#125;, <span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;请求拦截器失败&#x27;</span>,error); </span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(error)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">axios.<span class="property">interceptors</span>.<span class="property">response</span>.<span class="title function_">use</span>(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;请求拦截器成功&quot;</span>,response)</span><br><span class="line">    <span class="keyword">if</span> (response.<span class="property">status</span> === <span class="number">200</span> || response.<span class="property">code</span> === <span class="number">200</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">resolve</span>(response)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(response)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, <span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;响应拦截器失败&#x27;</span>,error);</span><br><span class="line">    <span class="keyword">let</span> status = error.<span class="property">status</span> || error.<span class="property">code</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (status) &#123;</span><br><span class="line">        <span class="keyword">switch</span> (status) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">401</span>: router.<span class="title function_">replace</span>(&#123;</span><br><span class="line">                <span class="attr">path</span>: <span class="string">&#x27;/login&#x27;</span>,</span><br><span class="line">                <span class="attr">name</span>: <span class="string">&#x27;login&#x27;</span>,</span><br><span class="line">                <span class="attr">params</span>: &#123;</span><br><span class="line">                    <span class="attr">message</span>: <span class="string">&#x27;请重新登录&#x27;</span>,</span><br><span class="line">                    <span class="attr">redirect</span>: router.<span class="property">currentRoute</span>.<span class="property">fullPath</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;); <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">403</span>:</span><br><span class="line">                <span class="title function_">alert</span>(<span class="string">&#x27;登录过期请重新登录&#x27;</span>)</span><br><span class="line">                <span class="variable language_">localStorage</span>.<span class="title function_">removeItem</span>(<span class="string">&#x27;token&#x27;</span>)</span><br><span class="line">                store.<span class="title function_">commit</span>(<span class="string">&#x27;loginSuccess&#x27;</span>)</span><br><span class="line">                router.<span class="title function_">replace</span>(&#123;</span><br><span class="line">                    <span class="attr">path</span>: <span class="string">&#x27;/login&#x27;</span>,</span><br><span class="line">                    <span class="attr">name</span>: <span class="string">&#x27;login&#x27;</span>,</span><br><span class="line">                    <span class="attr">params</span>: &#123;</span><br><span class="line">                        <span class="attr">redirect</span>: router.<span class="property">currentRoute</span>.<span class="property">fullPath</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">404</span>:</span><br><span class="line">                <span class="title function_">alert</span>(<span class="string">&#x27;404请求不存在&#x27;</span>)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="attr">default</span>:</span><br><span class="line">                <span class="title function_">alert</span>(<span class="string">&#x27;响应拦截器拦截失败&#x27;</span>)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="请求取消"><a href="#请求取消" class="headerlink" title="请求取消"></a>请求取消</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方法一(已弃用)</span></span><br><span class="line"><span class="keyword">let</span> cancel = <span class="literal">null</span>;</span><br><span class="line">axios.<span class="title function_">get</span>(<span class="string">&#x27;url&#x27;</span>,&#123;</span><br><span class="line">    <span class="attr">params</span>: &#123;&#125;,</span><br><span class="line">    <span class="attr">cancelToken</span>: <span class="keyword">new</span> axios.<span class="title class_">CancelToken</span>(<span class="function"><span class="params">c</span>=&gt;</span>&#123;</span><br><span class="line">        cancel = c; <span class="comment">//拿到取消请求方法</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;).<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span> &#123;</span><br><span class="line">    cancel = <span class="literal">null</span>; <span class="comment">//初试化cancel</span></span><br><span class="line">&#125;).<span class="title function_">catch</span>(<span class="params">err</span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(err)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//调用取消</span></span><br><span class="line"><span class="title function_">cancel</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">//方法二</span></span><br><span class="line"><span class="keyword">const</span> controller = <span class="keyword">new</span> <span class="title class_">AbortController</span>();</span><br><span class="line">axios.<span class="title function_">get</span>(<span class="string">&#x27;url&#x27;</span>,&#123;</span><br><span class="line">    <span class="attr">signal</span>: controller.<span class="property">signal</span></span><br><span class="line">&#125;).<span class="title function_">catch</span>(<span class="params">err</span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(err)</span><br><span class="line">&#125;</span><br><span class="line">	<span class="comment">//调用取消</span></span><br><span class="line">controller.<span class="title function_">abort</span>()</span><br></pre></td></tr></table></figure>
+
+<h2 id="post方法序列化"><a href="#post方法序列化" class="headerlink" title="post方法序列化"></a>post方法序列化</h2><p>序列化，就是将对象 序列化成URL的形式，以&amp;进行拼接。</p>
+<p>为什么？ because：提交时候是直接以原始数据格式存储在body中的，而不是以键值对的形式附加到url中，所以服务端是无法直接识别的。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="bLank-L 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="bLank-L 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>bLank-L
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://blank-null.github.io/2023/10/11/koa2%E7%AC%94%E8%AE%B0/" title="koa2笔记">https://blank-null.github.io/2023/10/11/koa2笔记/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/koa2/" rel="tag"># koa2</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/10/11/egg-js%E7%AC%94%E8%AE%B0/" rel="prev" title="egg.js笔记">
+                  <i class="fa fa-angle-left"></i> egg.js笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/10/11/vue3%E7%AC%94%E8%AE%B0/" rel="next" title="vue3笔记">
+                  vue3笔记 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS" sid="473bec2ade5082d051f4de48505046e4"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">bLank-L</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">127k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:51</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="500" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<!-- calendar widget -->
+{% if theme.CloudCalendar.enable %}
+    <script src="{{ theme.CloudCalendar.calendarCdn }}"></script>
+    <script src="{{ theme.CloudCalendar.langCdn }}"></script>
+    <script>
+    $(function() {
+        $('#CloudCalendar').aCalendar('{{ theme.CloudCalendar.language }}',
+            $.extend(
+                '', {
+                    single:{{ theme.CloudCalendar.single }},
+                    root:'{{ theme.CloudCalendar.root }}'
+                }
+            )
+        );
+    });
+    </script>
+{% endif %}
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: 'unset',
+  left: '32px',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cywV9cKcy","appkey":"557a4cba0c3c88fe4338e6ffae25f9d4","count":true}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
+
+</body>
+</html>
