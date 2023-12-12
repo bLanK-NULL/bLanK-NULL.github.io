@@ -167,6 +167,55 @@
       </tags>
   </entry>
   <entry>
+    <title>content-type一些疑惑</title>
+    <url>/2023/12/01/content-type%E4%B8%80%E4%BA%9B%E7%96%91%E6%83%91/</url>
+    <content><![CDATA[<p>相信很初学者在使用<code>body-parser</code>时感到疑惑</p>
+<p>我们先说说他的作用，其实很简单，就是把HTTP请求里的请求体传参解析出来</p>
+<p>我们在使用接口测试工具时(例如：<code>postman</code> <code>Apipost</code>)</p>
+<p><img src="/2023/12/01/content-type%E4%B8%80%E4%BA%9B%E7%96%91%E6%83%91/jietu.png" alt="ApiPost"></p>
+<p>可以看到请求体传参有 <code>content-type</code> 分别是 <code>multipart/form-data</code> 和 <code>application/x-www-form-urlencoded</code></p>
+<p><strong>multipart&#x2F;form-data</strong></p>
+<ul>
+<li>一般传送<em>文件</em>或者<em>二进制数据</em>，也可以传文本</li>
+<li>数据以多个part形式传输</li>
+<li>会指定一个boundary来分割不同part</li>
+</ul>
+<figure class="highlight http"><table><tr><td class="code"><pre><span class="line"><span class="attribute">Content-Type</span><span class="punctuation">: </span>multipart/form-data; boundary=</span><br><span class="line">--------------------------460532464492192001772468</span><br><span class="line"><span class="attribute">Content-Disposition</span><span class="punctuation">: </span>form-data; name=&quot;foo&quot;</span><br><span class="line"></span><br><span class="line">this is part 1.</span><br><span class="line">--------------------------460532464492192001772468</span><br><span class="line"><span class="attribute">Content-Disposition</span><span class="punctuation">: </span>form-data; name=&quot;baz&quot;</span><br><span class="line"></span><br><span class="line">this is part 2</span><br><span class="line">--------------------------460532464492192001772468</span><br></pre></td></tr></table></figure>
+
+<p><strong>application&#x2F;x-www-form-urlencoded</strong></p>
+<ul>
+<li>一般传输<em>文本</em></li>
+<li>格式是<code>key=value&amp;key2=value2</code>，其实和<em>query参数一样</em>，只是后者在请求头，前者在请求体里</li>
+<li>字符会经过<em>URL编码</em> <ol>
+<li>转成ASCII码</li>
+<li>用16进制表示</li>
+<li>每个字节前加%</li>
+<li>如果字符不能转成ASCII码，则转成UTF-8编码，<a href="/2023/10/21/%E7%BC%96%E7%A0%81">关于编码详见此处</a><blockquote>
+<p>Eg:  “中”在UTF-8编码中表示为0xE4B8AD –&gt; %E4%B8%AD</p>
+</blockquote>
+</li>
+</ol>
+</li>
+</ul>
+<p><strong>raw</strong></p>
+<ul>
+<li>一般传输图片、视频、音频</li>
+<li>表示原始未经处理的二进制数据，没有特定编码方式</li>
+</ul>
+<h2 id="body-parser"><a href="#body-parser" class="headerlink" title="body-parser"></a>body-parser</h2><p>我们再说回<code>body-parser</code></p>
+<p>它支持解析<code>urlencoded</code>而不支持<code>form-data</code> </p>
+<p>如果想要解析<code>form-data</code>可以使用<code>busboy</code></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>http</tag>
+        <tag>content-type</tag>
+        <tag>body-parser</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>delete使用</title>
     <url>/2023/10/23/delete%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<ol>
@@ -398,7 +447,7 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
 <li>绿: 已经提交到暂存区</li>
 <li>无: 都被 git 管理起来了</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git status <span class="comment"># 查看文件状态（红）</span></span><br><span class="line"></span><br><span class="line">git add . <span class="comment"># 工作区-&gt; 暂存区（变绿）</span></span><br><span class="line"></span><br><span class="line">git rest HEAD <span class="comment"># 把暂存区 -&gt; 工作区（由红红变绿）</span></span><br><span class="line"></span><br><span class="line">git checkout . <span class="comment">#工作区 变更撤回</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git status <span class="comment"># 查看文件状态（红）</span></span><br><span class="line"></span><br><span class="line">git add . <span class="comment"># 工作区-&gt; 暂存区（变绿）</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">git rest HEAD <span class="comment"># 把  工作区 &lt;- 暂存区（由绿变红）</span></span><br><span class="line">git checkout . <span class="comment">#工作区 变更撤回</span></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit -m <span class="string">&#x27;注释&#x27;</span> <span class="comment"># 暂存区 -&gt; 版本库</span></span><br><span class="line"></span><br><span class="line">git <span class="built_in">log</span>  <span class="comment"># 查看版本库 详细</span></span><br></pre></td></tr></table></figure>
 
@@ -3851,55 +3900,6 @@ if(&quot;serviceWorker&quot; in navigator) &#123;
       </categories>
       <tags>
         <tag>webpack</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>content-type一些疑惑</title>
-    <url>/2023/12/01/content-type%E4%B8%80%E4%BA%9B%E7%96%91%E6%83%91/</url>
-    <content><![CDATA[<p>相信很初学者在使用<code>body-parser</code>时感到疑惑</p>
-<p>我们先说说他的作用，其实很简单，就是把HTTP请求里的请求体传参解析出来</p>
-<p>我们在使用接口测试工具时(例如：<code>postman</code> <code>Apipost</code>)</p>
-<p><img src="/2023/12/01/content-type%E4%B8%80%E4%BA%9B%E7%96%91%E6%83%91/jietu.jpg" alt="ApiPost"></p>
-<p>可以看到请求体传参有 <code>content-type</code> 分别是 <code>multipart/form-data</code> 和 <code>application/x-www-form-urlencoded</code></p>
-<p><strong>multipart&#x2F;form-data</strong></p>
-<ul>
-<li>一般传送<em>文件</em>或者<em>二进制数据</em>，也可以传文本</li>
-<li>数据以多个part形式传输</li>
-<li>会指定一个boundary来分割不同part</li>
-</ul>
-<figure class="highlight http"><table><tr><td class="code"><pre><span class="line"><span class="attribute">Content-Type</span><span class="punctuation">: </span>multipart/form-data; boundary=</span><br><span class="line">--------------------------460532464492192001772468</span><br><span class="line"><span class="attribute">Content-Disposition</span><span class="punctuation">: </span>form-data; name=&quot;foo&quot;</span><br><span class="line"></span><br><span class="line">this is part 1.</span><br><span class="line">--------------------------460532464492192001772468</span><br><span class="line"><span class="attribute">Content-Disposition</span><span class="punctuation">: </span>form-data; name=&quot;baz&quot;</span><br><span class="line"></span><br><span class="line">this is part 2</span><br><span class="line">--------------------------460532464492192001772468</span><br></pre></td></tr></table></figure>
-
-<p><strong>application&#x2F;x-www-form-urlencoded</strong></p>
-<ul>
-<li>一般传输<em>文本</em></li>
-<li>格式是<code>key=value&amp;key2=value2</code>，其实和<em>query参数一样</em>，只是后者在请求头，前者在请求体里</li>
-<li>字符会经过<em>URL编码</em> <ol>
-<li>转成ASCII码</li>
-<li>用16进制表示</li>
-<li>每个字节前加%</li>
-<li>如果字符不能转成ASCII码，则转成UTF-8编码，<a href="/2023/10/21/%E7%BC%96%E7%A0%81">关于编码详见此处</a><blockquote>
-<p>Eg:  “中”在UTF-8编码中表示为0xE4B8AD –&gt; %E4%B8%AD</p>
-</blockquote>
-</li>
-</ol>
-</li>
-</ul>
-<p><strong>raw</strong></p>
-<ul>
-<li>一般传输图片、视频、音频</li>
-<li>表示原始未经处理的二进制数据，没有特定编码方式</li>
-</ul>
-<h2 id="body-parser"><a href="#body-parser" class="headerlink" title="body-parser"></a>body-parser</h2><p>我们再说回<code>body-parser</code></p>
-<p>它支持解析<code>urlencoded</code>而不支持<code>form-data</code> </p>
-<p>如果想要解析<code>form-data</code>可以使用<code>busboy</code></p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>http</tag>
-        <tag>content-type</tag>
-        <tag>body-parser</tag>
       </tags>
   </entry>
 </search>
