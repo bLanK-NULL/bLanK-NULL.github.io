@@ -1041,6 +1041,7 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
 <li>setInterval()</li>
 <li>setImmediate()</li>
 <li>requestAnimationFrame()</li>
+<li>postMessage()</li>
 </ul>
 </li>
 <li><p>常见微任务</p>
@@ -3967,10 +3968,16 @@ if(&quot;serviceWorker&quot; in navigator) &#123;
     <title>标签间通信</title>
     <url>/2023/12/22/%E6%A0%87%E7%AD%BE%E9%97%B4%E9%80%9A%E4%BF%A1/</url>
     <content><![CDATA[<ol>
-<li>本地存储监听<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//监听 同源 localStorage 的修改  </span></span><br><span class="line"><span class="variable language_">window</span>.<span class="property">onStorage</span> = <span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e.<span class="property">data</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>BroadcastChannel.postMessage</li>
+<li>本地存储监听<blockquote>
+<p>监听 <strong>同源</strong> localStorage 的修改</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">onStorage</span> = <span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e.<span class="property">data</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>BroadcastChannel.postMessage<blockquote>
+<p><strong>同源</strong></p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//标签1</span></span><br><span class="line"><span class="keyword">const</span> bc = <span class="keyword">new</span> <span class="title class_">BroadcastChannel</span>(<span class="string">&#x27;common channel&#x27;</span>) </span><br><span class="line">bc.<span class="title function_">postMessage</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line"><span class="comment">//标签2</span></span><br><span class="line"><span class="keyword">const</span> bc = <span class="keyword">new</span> <span class="title class_">BroadcastChannel</span>(<span class="string">&#x27;common channel&#x27;</span>)  </span><br><span class="line">bc.<span class="property">onmessage</span> = <span class="function">(<span class="params">e</span>)=&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e.<span class="property">data</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+详见 <a href="/2023/12/24/%E5%87%A0%E7%A7%8DpostMessage/#BroadcastChannel-postMessage">🔗几种postMessage</a></li>
 </ol>
-<p>详见 <a href="/2023/12/24/%E5%87%A0%E7%A7%8DpostMessage/#BroadcastChannel-postMessage">🔗几种postMessage</a></p>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -3978,6 +3985,30 @@ if(&quot;serviceWorker&quot; in navigator) &#123;
       <tags>
         <tag>标签</tag>
         <tag>通信</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>nextTick原理与作用</title>
+    <url>/2023/12/24/nextTick%E5%8E%9F%E7%90%86%E4%B8%8E%E4%BD%9C%E7%94%A8/</url>
+    <content><![CDATA[<h1 id="nextTick-作用"><a href="#nextTick-作用" class="headerlink" title="nextTick 作用"></a>nextTick 作用</h1><p>在一轮里，对一个数据进行多次修改时，不会每次都渲染而是一轮结束时渲染。<br>nextTick里的回调会在当前轮次渲染结束后在执行</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title function_">nextTick</span>(<span class="function">()=&gt;</span> &#123;&#125;)</span><br><span class="line"><span class="title function_">nextTick</span>().<span class="title function_">then</span>()</span><br></pre></td></tr></table></figure>
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><ol>
+<li>在<code>updated生命周期</code>之后立即执行</li>
+<li>为了避免不必要的计算，数据更新会放入微队列，vue会在下一个<code>tick</code>里执行已去重的任务</li>
+<li>nextTick本身不会主动触发渲染</li>
+</ol>
+<h2 id="兼容"><a href="#兼容" class="headerlink" title="兼容"></a>兼容</h2><ol>
+<li>promise</li>
+<li>MutationObserver</li>
+<li>setInterval</li>
+<li>setTimeout</li>
+</ol>
+]]></content>
+      <categories>
+        <category>vue</category>
+      </categories>
+      <tags>
+        <tag>nextTick</tag>
       </tags>
   </entry>
 </search>

@@ -6,7 +6,7 @@
   <link href="https://blank-null.github.io/atom.xml" rel="self"/>
   
   <link href="https://blank-null.github.io/"/>
-  <updated>2023-12-23T19:22:32.016Z</updated>
+  <updated>2023-12-24T09:15:36.846Z</updated>
   <id>https://blank-null.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>nextTick原理与作用</title>
+    <link href="https://blank-null.github.io/2023/12/24/nextTick%E5%8E%9F%E7%90%86%E4%B8%8E%E4%BD%9C%E7%94%A8/"/>
+    <id>https://blank-null.github.io/2023/12/24/nextTick%E5%8E%9F%E7%90%86%E4%B8%8E%E4%BD%9C%E7%94%A8/</id>
+    <published>2023-12-24T08:27:17.000Z</published>
+    <updated>2023-12-24T09:15:36.846Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;nextTick-作用&quot;&gt;&lt;a href=&quot;#nextTick-作用&quot; class=&quot;headerlink&quot; title=&quot;nextTick 作用&quot;&gt;&lt;/a&gt;nextTick 作用&lt;/h1&gt;&lt;p&gt;在一轮里，对一个数据进行多次修改时，不会每次都渲染而是一轮结束时渲染</summary>
+      
+    
+    
+    
+    <category term="vue" scheme="https://blank-null.github.io/categories/vue/"/>
+    
+    
+    <category term="nextTick" scheme="https://blank-null.github.io/tags/nextTick/"/>
+    
+  </entry>
   
   <entry>
     <title>几种postMessage</title>
@@ -41,13 +63,16 @@
     <link href="https://blank-null.github.io/2023/12/22/%E6%A0%87%E7%AD%BE%E9%97%B4%E9%80%9A%E4%BF%A1/"/>
     <id>https://blank-null.github.io/2023/12/22/%E6%A0%87%E7%AD%BE%E9%97%B4%E9%80%9A%E4%BF%A1/</id>
     <published>2023-12-22T11:15:34.000Z</published>
-    <updated>2023-12-23T19:22:58.885Z</updated>
+    <updated>2023-12-24T08:16:54.272Z</updated>
     
     
       
       
     <summary type="html">&lt;ol&gt;
-&lt;li&gt;本地存储监听&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br</summary>
+&lt;li&gt;本地存储监听&lt;blockquote&gt;
+&lt;p&gt;监听 &lt;strong&gt;同源&lt;/strong&gt; localStorage 的修改&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;</summary>
       
     
     
@@ -467,34 +492,6 @@
     <category term="Unicode" scheme="https://blank-null.github.io/tags/Unicode/"/>
     
     <category term="ASCII" scheme="https://blank-null.github.io/tags/ASCII/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue底层</title>
-    <link href="https://blank-null.github.io/2023/10/20/vue%E5%BA%95%E5%B1%82/"/>
-    <id>https://blank-null.github.io/2023/10/20/vue%E5%BA%95%E5%B1%82/</id>
-    <published>2023-10-20T04:20:16.000Z</published>
-    <updated>2023-12-13T06:56:36.118Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;响应式&quot;&gt;&lt;a href=&quot;#响应式&quot; class=&quot;headerlink&quot; title=&quot;响应式&quot;&gt;&lt;/a&gt;响应式&lt;/h1&gt;&lt;h2 id=&quot;effect&quot;&gt;&lt;a href=&quot;#effect&quot; class=&quot;headerlink&quot; title=&quot;effect&quot;&gt;&lt;/a&gt;effect&lt;/h2&gt;&lt;p&gt;effect是一个‘桶’， 他收集并触发指定方法&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/2023/10/20/vue%E5%BA%95%E5%B1%82/effect.png&quot;&gt;&lt;br&gt;&lt;img src=&quot;/2023/10/20/vue%E5%BA%95%E5%B1%82/effect2.png&quot;&gt;&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="vue" scheme="https://blank-null.github.io/categories/vue/"/>
-    
-    
-    <category term="vue" scheme="https://blank-null.github.io/tags/vue/"/>
-    
-    <category term="reactive" scheme="https://blank-null.github.io/tags/reactive/"/>
-    
-    <category term="ref" scheme="https://blank-null.github.io/tags/ref/"/>
-    
-    <category term="AST" scheme="https://blank-null.github.io/tags/AST/"/>
-    
-    <category term="diff" scheme="https://blank-null.github.io/tags/diff/"/>
     
   </entry>
   
