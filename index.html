@@ -152,7 +152,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -192,6 +192,185 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2024/02/11/v-model/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="bLank-L">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/02/11/v-model/" class="post-title-link" itemprop="url">v-model</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-02-11 23:24:44" itemprop="dateCreated datePublished" datetime="2024-02-11T23:24:44+08:00">2024-02-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-02-12 01:21:20" itemprop="dateModified" datetime="2024-02-12T01:21:20+08:00">2024-02-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="v-model" href="/2024/02/11/v-model/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::8e7a905e6cbe790722d20de22027793f" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="在原生上实现v-model效果"><a href="#在原生上实现v-model效果" class="headerlink" title="在原生上实现v-model效果"></a>在原生上实现v-model效果</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;number&quot;</span> <span class="attr">:value</span>=<span class="string">&quot;msg&quot;</span> @<span class="attr">input</span>=<span class="string">&quot;(e) =&gt; &#123; msg = parseInt(e.target.value) &#125;&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>事件第一个参数是事件对象</p>
+</blockquote>
+<h2 id="Vue3-4以前-在组件上实现v-model效果"><a href="#Vue3-4以前-在组件上实现v-model效果" class="headerlink" title="Vue3.4以前 在组件上实现v-model效果"></a>Vue3.4以前 在组件上实现v-model效果</h2><ul>
+<li>自定义事件<ul>
+<li>事件名为 <code>update:value</code></li>
+</ul>
+</li>
+<li></li>
+</ul>
+<p><strong>App.vue</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Comp</span> <span class="attr">:value</span>=<span class="string">&quot;msg&quot;</span> @<span class="attr">update:value</span>=<span class="string">&quot;val =&gt; msg = val&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">Comp</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>Comp.vue</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">:value</span>=<span class="string">&quot;props.value&quot;</span> @<span class="attr">input</span>=<span class="string">&quot;emits(&#x27;update:value&#x27;, $event.target.value)&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">input</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Vue3-4-defineModel"><a href="#Vue3-4-defineModel" class="headerlink" title="Vue3.4 defineModel"></a>Vue3.4 defineModel</h2><blockquote>
+<p>帮助我们封装组件</p>
+</blockquote>
+<ul>
+<li>可以同步</li>
+<li>一个组件可以同时使用多个v-model</li>
+<li>宏指令<ul>
+<li>用于setup语法糖里</li>
+<li>编译时</li>
+</ul>
+</li>
+</ul>
+<p><strong>App.vue</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Computer</span> <span class="attr">v-model:first-num</span>=<span class="string">&quot;val1&quot;</span> <span class="attr">v-model:second-num</span>=<span class="string">&quot;val2&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">Computer</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>Computer.vue</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">const</span> firstNum = <span class="title function_">defineModel</span>(<span class="string">&#x27;firstNum&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript"><span class="keyword">const</span> secondNum = <span class="title function_">defineModel</span>(<span class="string">&#x27;secondNum&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript"><span class="comment">//如果父组件的v-model没有arg v-model=&quot;val&quot; ， 则 const val = defineModel() </span></span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;number&quot;</span> <span class="attr">v-model.number</span>=<span class="string">&quot;firstNum&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">input</span>&gt;</span> +</span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;number&quot;</span> <span class="attr">v-model.number</span>=<span class="string">&quot;secondNum&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">input</span>&gt;</span> =</span><br><span class="line">      &#123;&#123; firstNum + secondNum &#125;&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="自定义指令手写v-mode"><a href="#自定义指令手写v-mode" class="headerlink" title="自定义指令手写v-mode"></a>自定义指令手写v-mode</h2><p><strong>Question</strong></p>
+<ol>
+<li>为什么不能用 <code>binding.value</code>  <ul>
+<li>因为binding.value <text style="color:red">是值而不是引用</text>，不能实现 view—&gt;model 层的流动</li>
+</ul>
+</li>
+<li>为什么要用  <code>toRef(binding.instance, binding.arg)</code><ol>
+<li>首先不能 <code>binding.instance[binding.arg]</code> 它会被解包成值类型</li>
+<li>所以创建一个ref， 它与 外部传进来的ref 保持同步</li>
+</ol>
+</li>
+<li>为什么要<code>defineExpose(&#123;msg&#125;)</code><ul>
+<li>setup语法糖要手动暴露自身内部变量 </li>
+<li><code>defineExpose</code>暴露出去的变量才会挂载到<code>binding.instance</code> 即这个组件实例上</li>
+</ul>
+</li>
+</ol>
+<p><strong>已解决</strong></p>
+<ol>
+<li>双向绑定</li>
+<li>同时使用多个v-oh-model</li>
+</ol>
+<blockquote>
+<p>依然无法解决的问题</p>
+<ol>
+<li><strong>写法不同</strong> 必须要加args，但是value可以省略。 写成：v-oh-model:msg </li>
+<li><strong>defineExpose</strong> <code>&lt;script setup&gt;</code> 下必须要手动暴露</li>
+</ol>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">setup</span> <span class="attr">lang</span>=<span class="string">&#x27;ts&#x27;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">import</span> &#123; ref, toRef, watchEffect &#125; <span class="keyword">from</span> <span class="string">&quot;vue&quot;</span></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">const</span> <span class="title class_">VOhModel</span> = &#123;</span></span><br><span class="line"><span class="language-javascript">  <span class="title function_">mounted</span>(<span class="params">el, binding</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">const</span> _val = <span class="title function_">toRef</span>(binding.<span class="property">instance</span>, binding.<span class="property">arg</span>)</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// model ---&gt; view</span></span></span><br><span class="line"><span class="language-javascript">    el.<span class="property">$onWatchEffect</span> = <span class="title function_">watchEffect</span>(<span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">      el.<span class="property">value</span> = _val.<span class="property">value</span></span></span><br><span class="line"><span class="language-javascript">    &#125;)</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// view ---&gt; model</span></span></span><br><span class="line"><span class="language-javascript">    el.<span class="property">$onInput</span> = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">      _val.<span class="property">value</span> = el.<span class="property">value</span></span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">    el.<span class="title function_">addEventListener</span>(<span class="string">&#x27;input&#x27;</span>, el.<span class="property">$onInput</span>)</span></span><br><span class="line"><span class="language-javascript">  &#125;,</span></span><br><span class="line"><span class="language-javascript">  <span class="title function_">unmounted</span>(<span class="params">el, binding</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    el.<span class="title function_">removeEventListener</span>(<span class="string">&#x27;input&#x27;</span>, el.<span class="property">$onInput</span>)</span></span><br><span class="line"><span class="language-javascript">    el.$onWatchEffect()</span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript">&#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">const</span> msg = <span class="title function_">ref</span>(<span class="string">&quot;Hello Vue.js&quot;</span>)</span></span><br><span class="line"><span class="language-javascript"><span class="title function_">defineExpose</span>(&#123; msg &#125;)</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">v-oh-model:msg</span>=<span class="string">&quot;msg&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123; msg &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;msg += 1&quot;</span>&gt;</span> + <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>根据这次体验，我感觉自动解包有时候真是副作用。<br>或许这就是Vue的设计模式，但是也确实限制了程序员的发挥。</p>
+<p>如果这里能直接拿到msg变量的引用，哪还需要这么麻烦</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1299,114 +1478,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2023/11/05/%E6%B5%85%E8%B0%88Service-Worker/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="bLank-L">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="bLanK's blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | bLanK's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/11/05/%E6%B5%85%E8%B0%88Service-Worker/" class="post-title-link" itemprop="url">浅谈Service Worker</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2023-11-05 14:50:34 / 修改时间：14:54:41" itemprop="dateCreated datePublished" datetime="2023-11-05T14:50:34+08:00">2023-11-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Changyan：</span>
-    
-    <a title="浅谈Service Worker" href="/2023/11/05/%E6%B5%85%E8%B0%88Service-Worker/#SOHUCS" itemprop="discussionUrl">
-      <span id="sourceId::17b572a21b2e712babb1375e219bb4ff" class="cy_cmt_count" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>20</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>很好的一篇博客<a target="_blank" rel="noopener" href="https://www.cnblogs.com/jaycethanks/p/16502676.html#1-service-worker-%E7%AE%80%E4%BB%8B">Service Worker</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1419,7 +1490,7 @@
 
   <div class="copyright">
     &copy; 
-    <span itemprop="copyrightYear">2023</span>
+    <span itemprop="copyrightYear">2024</span>
     <span class="with-love">
       <i class="fa fa-heart"></i>
     </span>
@@ -1430,13 +1501,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">130k</span>
+    <span title="站点总字数">133k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:57</span>
+    <span title="站点阅读时长">4:01</span>
   </span>
 </div>
 <div class="busuanzi-count">

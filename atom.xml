@@ -6,7 +6,7 @@
   <link href="https://blank-null.github.io/atom.xml" rel="self"/>
   
   <link href="https://blank-null.github.io/"/>
-  <updated>2023-12-24T09:15:36.846Z</updated>
+  <updated>2024-02-11T17:21:20.872Z</updated>
   <id>https://blank-null.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>v-model</title>
+    <link href="https://blank-null.github.io/2024/02/11/v-model/"/>
+    <id>https://blank-null.github.io/2024/02/11/v-model/</id>
+    <published>2024-02-11T15:24:44.000Z</published>
+    <updated>2024-02-11T17:21:20.872Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;在原生上实现v-model效果&quot;&gt;&lt;a href=&quot;#在原生上实现v-model效果&quot; class=&quot;headerlink&quot; title=&quot;在原生上实现v-model效果&quot;&gt;&lt;/a&gt;在原生上实现v-model效果&lt;/h2&gt;&lt;figure class=&quot;highli</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="https://blank-null.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="vue" scheme="https://blank-null.github.io/tags/vue/"/>
+    
+  </entry>
   
   <entry>
     <title>nextTick原理与作用</title>
@@ -469,29 +491,6 @@
     <category term="module.exports" scheme="https://blank-null.github.io/tags/module-exports/"/>
     
     <category term="exports" scheme="https://blank-null.github.io/tags/exports/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>编码</title>
-    <link href="https://blank-null.github.io/2023/10/21/%E7%BC%96%E7%A0%81/"/>
-    <id>https://blank-null.github.io/2023/10/21/%E7%BC%96%E7%A0%81/</id>
-    <published>2023-10-21T06:26:19.000Z</published>
-    <updated>2023-10-21T06:50:05.320Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;聊聊一些编码&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="GBK" scheme="https://blank-null.github.io/tags/GBK/"/>
-    
-    <category term="UTF" scheme="https://blank-null.github.io/tags/UTF/"/>
-    
-    <category term="Unicode" scheme="https://blank-null.github.io/tags/Unicode/"/>
-    
-    <category term="ASCII" scheme="https://blank-null.github.io/tags/ASCII/"/>
     
   </entry>
   
