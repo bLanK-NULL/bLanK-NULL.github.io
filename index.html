@@ -152,18 +152,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">44</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">67</span>
+        <span class="site-state-item-count">71</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -192,6 +192,269 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2024/03/05/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91html-css%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="bLank-L">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/03/05/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91html-css%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">【综合】html+css基础</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-03-05 14:08:24 / 修改时间：17:36:48" itemprop="dateCreated datePublished" datetime="2024-03-05T14:08:24+08:00">2024-03-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BB%BC%E5%90%88/" itemprop="url" rel="index"><span itemprop="name">综合</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="【综合】html+css基础" href="/2024/03/05/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91html-css%E5%9F%BA%E7%A1%80/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::f7dacb0cefc3447f26db52490e6d7014" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>313</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <span id="more"></span>
+
+<h1 id="1-行级元素和块级元素"><a href="#1-行级元素和块级元素" class="headerlink" title="1. 行级元素和块级元素"></a>1. 行级元素和块级元素</h1><h2 id="行级元素"><a href="#行级元素" class="headerlink" title="行级元素"></a>行级元素</h2><ol>
+<li>不会独占一行</li>
+<li>不能包括块级元素</li>
+<li><strong>宽高由内容决定，无法设置</strong></li>
+<li><strong>上下margin和上下padding 不起作用</strong></li>
+</ol>
+<h2 id="块级元素"><a href="#块级元素" class="headerlink" title="块级元素"></a>块级元素</h2><ol>
+<li>独占一行</li>
+<li>可以包含块级和行级元素</li>
+</ol>
+<h2 id="行内块"><a href="#行内块" class="headerlink" title="行内块"></a>行内块</h2><blockquote>
+<p>行内块元素之间有空隙，怎么解决？</p>
+<ol>
+<li>移除代码标签之间的空格</li>
+<li>负margin</li>
+<li><code>font-size: 0</code></li>
+<li><code>letter-spacing: - px </code></li>
+<li><code>word-spacing: - px</code></li>
+</ol>
+</blockquote>
+<h1 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h1><ul>
+<li>行内+行内块<ul>
+<li><code>vertical-align: middle</code> 可以对其图片和表格单元内容</li>
+<li><code>line-height</code>  单行文本</li>
+</ul>
+</li>
+<li>flex<ul>
+<li><code>align-items: center</code></li>
+<li><code>align-self: center</code></li>
+</ul>
+</li>
+<li>grid<ul>
+<li><code>align-items: center</code></li>
+<li><code>align-self: center</code></li>
+</ul>
+</li>
+<li>定位+translate</li>
+<li></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2024/03/02/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3BFC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="bLank-L">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/03/02/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3BFC/" class="post-title-link" itemprop="url">深入理解BFC</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-03-02 14:59:36 / 修改时间：21:27:45" itemprop="dateCreated datePublished" datetime="2024-03-02T14:59:36+08:00">2024-03-02</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="深入理解BFC" href="/2024/03/02/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3BFC/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::d28bab845af68de529bcf6d014c695b9" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>237</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="普通流"><a href="#普通流" class="headerlink" title="普通流"></a>普通流</h1><h2 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a>BFC</h2><blockquote>
+<p> 可以看作是一个独立的布局区域</p>
+</blockquote>
+<h3 id="触发条件"><a href="#触发条件" class="headerlink" title="触发条件"></a>触发条件</h3><ol>
+<li><code>&lt;html&gt;</code></li>
+<li><code>float: !none</code></li>
+<li><code>position: absolute | fixed</code></li>
+<li><code>display: inline-block | table ...</code></li>
+<li><code>overflow: !(visible | clip) &amp;&amp; 是块级元素</code></li>
+<li><code>containe: layout | content | paint</code></li>
+<li>多列容器 <code>column-count | column-width</code></li>
+</ol>
+<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><ol>
+<li>避免margin塌陷 （包括水平和垂直）</li>
+<li>清除浮动</li>
+<li>避免被浮动元素覆盖</li>
+</ol>
+<h1 id="浮动流"><a href="#浮动流" class="headerlink" title="浮动流"></a>浮动流</h1><h1 id="绝对定位"><a href="#绝对定位" class="headerlink" title="绝对定位"></a>绝对定位</h1>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1232,252 +1495,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2023/11/07/%E6%B5%85%E8%B0%88node%E6%A8%A1%E5%9D%97%E5%BC%95%E5%85%A5%E4%B8%8E%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="bLank-L">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="bLanK's blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | bLanK's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/11/07/%E6%B5%85%E8%B0%88node%E6%A8%A1%E5%9D%97%E5%BC%95%E5%85%A5%E4%B8%8E%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/" class="post-title-link" itemprop="url">浅谈node模块引入与加载机制</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2023-11-07 21:15:30 / 修改时间：21:28:57" itemprop="dateCreated datePublished" datetime="2023-11-07T21:15:30+08:00">2023-11-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Changyan：</span>
-    
-    <a title="浅谈node模块引入与加载机制" href="/2023/11/07/%E6%B5%85%E8%B0%88node%E6%A8%A1%E5%9D%97%E5%BC%95%E5%85%A5%E4%B8%8E%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/#SOHUCS" itemprop="discussionUrl">
-      <span id="sourceId::39992f8ddaad89c2d00ed5c52d6d4d48" class="cy_cmt_count" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>324</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="模块种类"><a href="#模块种类" class="headerlink" title="模块种类"></a>模块种类</h1><ol>
-<li>核心模块: <code>path url file http</code> 等<ul>
-<li>优先级高，重名时优先加载</li>
-<li>直接导入模块名，不需要写路径 <code>require(&#39;moduleName&#39;)</code></li>
-</ul>
-</li>
-<li>文件模块: <ul>
-<li>引入可分为三种<ul>
-<li>绝对路径 <code>require(&#39;/moduleName&#39;)</code></li>
-<li>相对路径 <code>require(&#39;./dir/moduleName&#39;)</code></li>
-<li><strong>第三方加载方式</strong> <code>require(&#39;moduleName&#39;)</code></li>
-</ul>
-</li>
-<li>如果不加拓展名，则按照 <code>.js .json .node</code> 顺序为其加上拓展名</li>
-</ul>
-</li>
-</ol>
-<h1 id="加载机制"><a href="#加载机制" class="headerlink" title="加载机制"></a>加载机制</h1><ol>
-<li>优先从缓存中加载</li>
-<li>对于 <code>require(&#39;moduleName&#39;)</code> 方式导入先当作核心模块加载，如果没有则<strong>再当作第三方模块加载</strong></li>
-</ol>
-<blockquote>
-<p>第三方模块加载会一层一层的向外查找。</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2023/11/05/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96-Currying/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="bLank-L">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="bLanK's blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | bLanK's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/11/05/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96-Currying/" class="post-title-link" itemprop="url">函数柯里化 Currying</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2023-11-05 15:04:07 / 修改时间：16:06:07" itemprop="dateCreated datePublished" datetime="2023-11-05T15:04:07+08:00">2023-11-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Changyan：</span>
-    
-    <a title="函数柯里化 Currying" href="/2023/11/05/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96-Currying/#SOHUCS" itemprop="discussionUrl">
-      <span id="sourceId::722ba958a591bc0aff1492a1cbc34937" class="cy_cmt_count" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.2k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="什么是函数柯里化"><a href="#什么是函数柯里化" class="headerlink" title="什么是函数柯里化"></a>什么是函数柯里化</h1><p>是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术</p>
-<h1 id="实际应用"><a href="#实际应用" class="headerlink" title="实际应用"></a>实际应用</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 函数封装后</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">check</span>(<span class="params">reg, txt</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> reg.<span class="title function_">test</span>(txt)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 即使是相同的正则表达式，也需要重新传递一次</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">check</span>(<span class="regexp">/\d+/g</span>, <span class="string">&#x27;test1&#x27;</span>)); <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">check</span>(<span class="regexp">/\d+/g</span>, <span class="string">&#x27;testtest&#x27;</span>)); <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">check</span>(<span class="regexp">/[a-z]+/g</span>, <span class="string">&#x27;test&#x27;</span>)); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>Currying后</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">curryingCheck</span>(<span class="params">reg</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">function</span> (<span class="params">txt</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> reg.<span class="title function_">test</span>(txt)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 正则表达式通过闭包保存了起来</span></span><br><span class="line"><span class="keyword">var</span> hasNumber = <span class="title function_">curryingCheck</span>(<span class="regexp">/\d+/g</span>)</span><br><span class="line"><span class="keyword">var</span> hasLetter = <span class="title function_">curryingCheck</span>(<span class="regexp">/[a-z]+/g</span>)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">hasNumber</span>(<span class="string">&#x27;test1&#x27;</span>)); <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">hasNumber</span>(<span class="string">&#x27;testtest&#x27;</span>));  <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">hasLetter</span>(<span class="string">&#x27;21212&#x27;</span>)); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="经典面试题"><a href="#经典面试题" class="headerlink" title="经典面试题"></a>经典面试题</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">写一个add函数 要求: </span><br><span class="line">add(1)(2) == 3</span><br><span class="line">add(1)(2)(3) == 6;</span><br><span class="line">add(1, 2)(3) == 6; </span><br><span class="line">tip: </span><br><span class="line">    由add(1)(2)(3)可知 add(1)(2) 应该是返回函数的</span><br><span class="line">    但是又add(1)(2) == 3 ，可知 里面有隐式转换，重写toString()</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">//空参数默认为0</span></span><br><span class="line">    <span class="comment">//这个数组利用了闭包的特性，所有加数都会push进这个数组</span></span><br><span class="line">    <span class="keyword">const</span> _args = <span class="variable language_">arguments</span>.<span class="property">length</span> ? [...<span class="variable language_">arguments</span>] : [<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">_adder</span>(<span class="params"></span>) &#123;</span><br><span class="line">        _args.<span class="title function_">push</span>(...<span class="variable language_">arguments</span> || <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> _adder</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//隐式转换时调用toString()</span></span><br><span class="line">    _adder.<span class="property">toString</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> _args.<span class="title function_">reduce</span>(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a + b)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//返回一个函数是一定的</span></span><br><span class="line">    <span class="keyword">return</span> _adder</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">add</span>(<span class="number">1</span>, <span class="number">2</span>)(<span class="number">3</span>, <span class="number">4</span>).<span class="title function_">toString</span>());</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1501,13 +1518,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">135k</span>
+    <span title="站点总字数">136k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:05</span>
+    <span title="站点阅读时长">4:07</span>
   </span>
 </div>
 <div class="busuanzi-count">

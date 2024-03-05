@@ -586,7 +586,7 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
   <entry>
     <title>http详解</title>
     <url>/2023/10/16/http%E8%AF%A6%E8%A7%A3/</url>
-    <content><![CDATA[<h1 id="http-1-0"><a href="#http-1-0" class="headerlink" title="http 1.0"></a>http 1.0</h1><p>默认关闭<code>keepalive</code>，每次请求都建立一次tcp连接，服务器处理后立即断开tcp连接</p>
+    <content><![CDATA[<h1 id="http-1-0"><a href="#http-1-0" class="headerlink" title="http 1.0"></a>http 1.0</h1><p>默认关闭 <code>keepalive</code>，每次请求都建立一次tcp连接，服务器处理后立即断开tcp连接</p>
 <p>服务器不记录客户的任何请求（<strong>无状态</strong>）</p>
 <p>但是，可以借助session和cookie来做身份认证</p>
 <blockquote>
@@ -594,7 +594,7 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
 </blockquote>
 <span id="more"></span>
 
-<h1 id="http-1-1"><a href="#http-1-1" class="headerlink" title="http 1.1"></a>http 1.1</h1><p>默认<code>流水线</code> <code>keepalive|持久连接</code></p>
+<h1 id="http-1-1"><a href="#http-1-1" class="headerlink" title="http 1.1"></a>http 1.1</h1><p>默认 <code>流水线</code> <code>keepalive|持久连接</code></p>
 <blockquote>
 <p>流水线模式解决了队头阻塞</p>
 </blockquote>
@@ -612,16 +612,25 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
 </ol>
 </li>
 <li>长轮询: 设定一个时间比较长的超时时间，服务器收到请求后，先不响应，而是等待用户完成扫码操作，再响应。</li>
-<li>这种简单的请求可以用如上方法，但是如果是游戏场景呢？</li>
+<li></li>
 </ol>
+<p>这种简单的请求可以用如上方法，但是如果是游戏场景呢？</p>
 <p>websocket解决了，全双工。</p>
 <p>http1.1 半双工</p>
 <h1 id="http中谁主动断开tcp连接？"><a href="#http中谁主动断开tcp连接？" class="headerlink" title="http中谁主动断开tcp连接？"></a>http中谁主动断开tcp连接？</h1><p>两方都可以，但是客户端主动比较好。因为主动断开方最后需要等待2msl时间，会占用资源</p>
-<p>如果响应头包含<code>content-length</code>，则客户端知道什么时候接收完毕，客户端主动断开。<br>否则则服务端断开。</p>
-<h1 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h1><ul>
-<li>强缓存：如果资源没过期就使用缓存里的，不向服务器请求，状态码200</li>
-<li>协商缓存：向服务器协商判断，如果资源有变化就向服务器请求，状态码200；没变化就使用缓存，状态码304</li>
-</ul>
+<p>如果响应头包含 <code>content-length</code>，则客户端知道什么时候接收完毕，客户端主动断开。<br>否则则服务端断开。</p>
+<h1 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h1><p>流程：</p>
+<ol>
+<li>第一次请求后缓存response的资源和header，并在下一次请求同一资源时<ol>
+<li>根据expires和cache-control判断是否命中强缓存，如果命中则不再发起真实请求，但是状态码返回200.</li>
+<li>未命中强缓存，则发起请求 .<ol>
+<li>服务器根据请求头的IF-Modified-Since 或 IF-None-Match ， 他们的值分别表示 Last-Modified 缓存文件最晚一次修改时期，Etag 资源唯一标识(一般是hash) , 来判断缓存是否命。如果命中，服务器响应状态码为304。</li>
+<li>未命中：浏览器发送资源以及新的header信息。</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
 <h1 id="tcp粘包"><a href="#tcp粘包" class="headerlink" title="tcp粘包"></a>tcp粘包</h1><p>首先tcp是面向字节流的，在发送数据时需要把数据分成一个个报文</p>
 <p>报文有两种情况：</p>
 <ul>
@@ -630,8 +639,6 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
 </ul>
 <p>可能出现如下情况，就是粘包</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mss1.1 ===&gt; 发送</span><br><span class="line"></span><br><span class="line">mss1.2 + mss2.1 ===&gt; 发送</span><br><span class="line"></span><br><span class="line">mss2.2 + mss3.1 ===&gt; 发送</span><br></pre></td></tr></table></figure>
-
-
 ]]></content>
       <categories>
         <category>技术</category>
@@ -1087,6 +1094,59 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
 ]]></content>
       <tags>
         <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【综合】html+css基础</title>
+    <url>/2024/03/05/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91html-css%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<span id="more"></span>
+
+<h1 id="1-行级元素和块级元素"><a href="#1-行级元素和块级元素" class="headerlink" title="1. 行级元素和块级元素"></a>1. 行级元素和块级元素</h1><h2 id="行级元素"><a href="#行级元素" class="headerlink" title="行级元素"></a>行级元素</h2><ol>
+<li>不会独占一行</li>
+<li>不能包括块级元素</li>
+<li><strong>宽高由内容决定，无法设置</strong></li>
+<li><strong>上下margin和上下padding 不起作用</strong></li>
+</ol>
+<h2 id="块级元素"><a href="#块级元素" class="headerlink" title="块级元素"></a>块级元素</h2><ol>
+<li>独占一行</li>
+<li>可以包含块级和行级元素</li>
+</ol>
+<h2 id="行内块"><a href="#行内块" class="headerlink" title="行内块"></a>行内块</h2><blockquote>
+<p>行内块元素之间有空隙，怎么解决？</p>
+<ol>
+<li>移除代码标签之间的空格</li>
+<li>负margin</li>
+<li><code>font-size: 0</code></li>
+<li><code>letter-spacing: - px </code></li>
+<li><code>word-spacing: - px</code></li>
+</ol>
+</blockquote>
+<h1 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h1><ul>
+<li>行内+行内块<ul>
+<li><code>vertical-align: middle</code> 可以对其图片和表格单元内容</li>
+<li><code>line-height</code>  单行文本</li>
+</ul>
+</li>
+<li>flex<ul>
+<li><code>align-items: center</code></li>
+<li><code>align-self: center</code></li>
+</ul>
+</li>
+<li>grid<ul>
+<li><code>align-items: center</code></li>
+<li><code>align-self: center</code></li>
+</ul>
+</li>
+<li>定位+translate</li>
+<li></li>
+</ul>
+]]></content>
+      <categories>
+        <category>综合</category>
+      </categories>
+      <tags>
+        <tag>html</tag>
+        <tag>css</tag>
       </tags>
   </entry>
   <entry>
@@ -1746,12 +1806,57 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
 <h3 id="2-样式计算"><a href="#2-样式计算" class="headerlink" title="2. 样式计算"></a>2. 样式计算</h3><p>包括css属性值计算，DOM树每个节点获得最终样式</p>
 <h3 id="3-布局"><a href="#3-布局" class="headerlink" title="3. 布局"></a>3. 布局</h3><p>遍历DOM树每个节点，计算每个节点的几何属性（尺寸和位置），得到Layout树</p>
 <h3 id="4-分层"><a href="#4-分层" class="headerlink" title="4. 分层"></a>4. 分层</h3><p>分层后，某一层改变只需要重新计算该层</p>
-<h3 id="5-绘制"><a href="#5-绘制" class="headerlink" title="5. 绘制"></a>5. 绘制</h3>]]></content>
+<h3 id="5-绘制"><a href="#5-绘制" class="headerlink" title="5. 绘制"></a>5. 绘制</h3><h1 id="输入url到渲染页面的过程"><a href="#输入url到渲染页面的过程" class="headerlink" title="输入url到渲染页面的过程"></a>输入url到渲染页面的过程</h1><ol>
+<li>dns解析</li>
+<li>tcp三次握手</li>
+<li>发送http请求</li>
+<li>服务端处理请求发送响应</li>
+<li>浏览器收到响应，<ol>
+<li>根据html文件，构建dom树</li>
+<li>根据css 构建渲染树</li>
+</ol>
+</li>
+<li>浏览器开始页面渲染，同时下载js文件</li>
+</ol>
+<h1 id="script-defer-和-script-async"><a href="#script-defer-和-script-async" class="headerlink" title="script defer 和 script async"></a>script defer 和 script async</h1><ul>
+<li><strong>defer和async只适用于外部脚本</strong></li>
+<li>浏览器在解析html时，遇到script会立即停止解析html，而去执行js。如果script有外部文件，则会等待文件下载。</li>
+<li>async表示：下载js时html会继续解析，下载完js立即停止转而执行js，再回头解析html</li>
+<li>defer表示：不打断html解析的同时下载js，html解析完毕才执行js</li>
+</ul>
+<p><img src="/2023/10/12/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86/async&defer.png" alt="img"></p>
+]]></content>
       <categories>
         <category>技术</category>
       </categories>
       <tags>
         <tag>浏览器渲染原理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>深入理解BFC</title>
+    <url>/2024/03/02/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3BFC/</url>
+    <content><![CDATA[<h1 id="普通流"><a href="#普通流" class="headerlink" title="普通流"></a>普通流</h1><h2 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a>BFC</h2><blockquote>
+<p> 可以看作是一个独立的布局区域</p>
+</blockquote>
+<h3 id="触发条件"><a href="#触发条件" class="headerlink" title="触发条件"></a>触发条件</h3><ol>
+<li><code>&lt;html&gt;</code></li>
+<li><code>float: !none</code></li>
+<li><code>position: absolute | fixed</code></li>
+<li><code>display: inline-block | table ...</code></li>
+<li><code>overflow: !(visible | clip) &amp;&amp; 是块级元素</code></li>
+<li><code>containe: layout | content | paint</code></li>
+<li>多列容器 <code>column-count | column-width</code></li>
+</ol>
+<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><ol>
+<li>避免margin塌陷 （包括水平和垂直）</li>
+<li>清除浮动</li>
+<li>避免被浮动元素覆盖</li>
+</ol>
+<h1 id="浮动流"><a href="#浮动流" class="headerlink" title="浮动流"></a>浮动流</h1><h1 id="绝对定位"><a href="#绝对定位" class="headerlink" title="绝对定位"></a>绝对定位</h1>]]></content>
+      <tags>
+        <tag>BFC</tag>
+        <tag>CSS</tag>
       </tags>
   </entry>
   <entry>
