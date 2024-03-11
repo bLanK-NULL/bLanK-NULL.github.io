@@ -1444,26 +1444,32 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
   <entry>
     <title>原始值和引用值 &amp; typeof和instanceof</title>
     <url>/2023/10/11/%E5%8E%9F%E5%A7%8B%E5%80%BC%E5%92%8C%E5%BC%95%E7%94%A8%E5%80%BC/</url>
-    <content><![CDATA[<h1 id="原始值和引用值"><a href="#原始值和引用值" class="headerlink" title="原始值和引用值"></a>原始值和引用值</h1><ul>
+    <content><![CDATA[<span id="more"></span>
+
+<h1 id="八大基本类型"><a href="#八大基本类型" class="headerlink" title="八大基本类型"></a>八大基本类型</h1><p>Number String Boolean BigInt Symbol Object null undefined</p>
+<blockquote>
+<p>JSON 数据类型：Object Array Number String Boolean Null</p>
+<p>对于undefined，JSON.stringify 会直接忽略</p>
+</blockquote>
+<h1 id="原始值和引用值"><a href="#原始值和引用值" class="headerlink" title="原始值和引用值"></a>原始值和引用值</h1><ul>
 <li>js数据类型分为 原始值和引用值。<ul>
-<li>七大基本类型减去<code>bigInt</code>就属于六大原始类型</li>
+<li>八大基本类型减去 <code>Object</code>就属于七大原始类型</li>
 <li>而引用值其实是一个对象</li>
 </ul>
 </li>
 </ul>
-<h2 id="原始值"><a href="#原始值" class="headerlink" title="原始值"></a>原始值</h2><p>对原始值添加属性是不可以的也不会报错，</p>
-<p>对引用值可以</p>
-<span id="more"></span>
+<h2 id="原始值"><a href="#原始值" class="headerlink" title="原始值"></a>原始值</h2><h3 id="原始值包装类型"><a href="#原始值包装类型" class="headerlink" title="原始值包装类型"></a>原始值包装类型</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> n =<span class="keyword">new</span> <span class="title class_">Number</span>(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//原始值包装类型转成boolean值都为true</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="原始值包装类型"><a href="#原始值包装类型" class="headerlink" title="原始值包装类型"></a>原始值包装类型</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> n =<span class="keyword">new</span> <span class="title class_">Number</span>(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//原始值包装类型转成boolean值都为true</span></span><br></pre></td></tr></table></figure>
-
+<p>对原始值类型上调用方法，是先生成一个包装类对象，再在包装类对象上改造。</p>
 <h2 id="函数传参"><a href="#函数传参" class="headerlink" title="函数传参"></a>函数传参</h2><p>都是按值传递，只不过引用值存的是指针</p>
 <ol>
 <li>原始值传递：复制该值</li>
 <li>引用值传递：复制指针</li>
 </ol>
 <p>p86、p101</p>
-<h2 id="typeof和instanceof"><a href="#typeof和instanceof" class="headerlink" title="typeof和instanceof"></a>typeof和instanceof</h2><p><strong>typeof</strong></p>
+<h2 id="typeof和instanceof"><a href="#typeof和instanceof" class="headerlink" title="typeof和instanceof"></a>typeof和instanceof</h2><ul>
+<li><strong>typeof</strong></li>
+</ul>
 <p>typeof 有哪些返回值：number，string, boolean, bigint, symbol, undefined, object(null,array,set,map,weakmap), function(class)</p>
 <ol>
 <li><p>原始值可以用 : typeof ‘qweqe’ &#x3D;&#x3D;&#x3D; ‘string’</p>
@@ -1472,12 +1478,13 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
 <li><p>原始值包装对象 : new String(“hello”) 会 返回 ‘object’</p>
 </li>
 </ol>
-<p><strong>instanceof</strong> </p>
+<ul>
+<li><strong>instanceof</strong></li>
+</ul>
 <p>A instanceof B : 查找A的原型链，如果查找到B的原型，则返回ture</p>
 <ol>
 <li>原始值用都是返回false</li>
 <li>实例 instanceof Function &#x3D;&#x3D;&#x3D; false, 但是 实例 instanceof 类名 &#x3D;&#x3D;&#x3D; true</li>
-<li>instanceof 右边不能放 Class class</li>
 </ol>
 ]]></content>
       <categories>
@@ -1659,16 +1666,21 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
   <entry>
     <title>枚举和迭代——借由for-in和for-of说明</title>
     <url>/2023/10/11/%E6%9E%9A%E4%B8%BE%E5%92%8C%E8%BF%AD%E4%BB%A3/</url>
-    <content><![CDATA[<p>枚举和迭代有什么区别？</p>
-<ul>
-<li>for-in 是遍历所有可枚举属性(包括原型链上的)<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    <span class="attr">a</span>: <span class="string">&#x27;aaa&#x27;</span>,</span><br><span class="line">    <span class="attr">b</span>: <span class="string">&#x27;bbb&#x27;</span></span><br><span class="line">&#125; </span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">c</span> = <span class="string">&#x27;ccc&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> obj)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(obj,<span class="string">&#x27;d&#x27;</span>,&#123;</span><br><span class="line">    <span class="attr">value</span>: <span class="string">&#x27;ddd&#x27;</span>,</span><br><span class="line">    <span class="attr">enumerable</span>: <span class="literal">false</span></span><br><span class="line">&#125;) <span class="comment">//d属性枚举不到</span></span><br></pre></td></tr></table></figure>
-所以enumberable决定了属性能不能被枚举到<br>而可迭代性是由各种类型里内置的迭代器工厂函数决定的</li>
+    <content><![CDATA[<h1 id="枚举和迭代有什么区别？"><a href="#枚举和迭代有什么区别？" class="headerlink" title="枚举和迭代有什么区别？"></a>枚举和迭代有什么区别？</h1><ul>
+<li>for-in 是遍历所有可枚举属性(包括原型链上的)</li>
 </ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    <span class="attr">a</span>: <span class="string">&#x27;aaa&#x27;</span>,</span><br><span class="line">    <span class="attr">b</span>: <span class="string">&#x27;bbb&#x27;</span></span><br><span class="line">&#125; </span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">c</span> = <span class="string">&#x27;ccc&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> obj)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(obj,<span class="string">&#x27;d&#x27;</span>,&#123;</span><br><span class="line">    <span class="attr">value</span>: <span class="string">&#x27;ddd&#x27;</span>,</span><br><span class="line">    <span class="attr">enumerable</span>: <span class="literal">false</span></span><br><span class="line">&#125;) <span class="comment">//d属性枚举不到</span></span><br></pre></td></tr></table></figure>
+
+<p><a href="./%E4%B8%80%E4%BA%9B%E6%9E%9A%E4%B8%BE%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E6%B3%95">🔗更多关于枚举</a></p>
+<p>所以enumberable决定了属性能不能被枚举到<br>而可迭代性是由各种类型里内置的迭代器工厂函数决定的</p>
 <p>详见：🔗<a href="/2023/10/10/%E8%BF%AD%E4%BB%A3%E5%99%A8-%E7%94%9F%E6%88%90%E5%99%A8">迭代器-生成器</a></p>
 <ul>
-<li>for-of 是迭代，要有迭代器才能用<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//比如迭代一个Object类型会报错，因为Object没有实现Iterable接口不可迭代</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj);   <span class="comment">//&#123;a: &#x27;aaa&#x27;, b: &#x27;bbb&#x27;, d: &#x27;ddd&#x27;&#125;</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> x <span class="keyword">of</span> obj)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(x);</span><br><span class="line">&#125; <span class="comment">//Uncaught TypeError: obj is not iterable</span></span><br></pre></td></tr></table></figure></li>
+<li>for-of 是迭代，要有迭代器才能用</li>
 </ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//比如迭代一个Object类型会报错，因为Object没有实现Iterable接口不可迭代</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj);   <span class="comment">//&#123;a: &#x27;aaa&#x27;, b: &#x27;bbb&#x27;, d: &#x27;ddd&#x27;&#125;</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> x <span class="keyword">of</span> obj)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(x);</span><br><span class="line">&#125; <span class="comment">//Uncaught TypeError: obj is not iterable</span></span><br></pre></td></tr></table></figure>
+
 <h1 id="手写一个伪数组迭代器"><a href="#手写一个伪数组迭代器" class="headerlink" title="手写一个伪数组迭代器"></a>手写一个伪数组迭代器</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; range &#125; = <span class="built_in">require</span>(<span class="string">&quot;lodash&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> fakeArr = &#123;</span><br><span class="line">    <span class="number">0</span>: <span class="string">&#x27;a&#x27;</span>,</span><br><span class="line">    <span class="number">1</span>: <span class="string">&#x27;b&#x27;</span>,</span><br><span class="line">    <span class="number">2</span>: <span class="string">&#x27;c&#x27;</span>,</span><br><span class="line">    <span class="attr">length</span>: <span class="number">3</span>,</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//赋值号右边是一个生成器函数</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>[<span class="title class_">Symbol</span>.<span class="property">iterator</span>] = <span class="keyword">function</span>* () &#123;</span><br><span class="line">    <span class="keyword">for</span> (i <span class="keyword">in</span> <span class="title function_">range</span>(<span class="number">0</span>, <span class="variable language_">this</span>.<span class="property">length</span>)) &#123;</span><br><span class="line">        <span class="keyword">yield</span> <span class="variable language_">this</span>[i]</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> fakeArr) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(item); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
@@ -1862,7 +1874,11 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
   <entry>
     <title>深拷贝</title>
     <url>/2023/10/22/%E6%B7%B1%E6%8B%B7%E8%B4%9D/</url>
-    <content><![CDATA[<h1 id="一个自己写的不成熟deepClone函数"><a href="#一个自己写的不成熟deepClone函数" class="headerlink" title="一个自己写的不成熟deepClone函数"></a>一个自己写的不成熟deepClone函数</h1><ul>
+    <content><![CDATA[<span id="more"></span>
+
+
+
+<h1 id="一个自己写的不成熟deepClone函数"><a href="#一个自己写的不成熟deepClone函数" class="headerlink" title="一个自己写的不成熟deepClone函数"></a>一个自己写的不成熟deepClone函数</h1><ul>
 <li>不能复制 不可枚举属性 （去掉第9行左边的判断可以实现）</li>
 <li>不能复制原型的方法</li>
 <li>不能复制Set Map Symbol</li>
@@ -1876,6 +1892,7 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
 <li>不支持拷贝原型上的方法和变量</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">deepClone</span>(<span class="params">obj</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> &#123; port1, port2 &#125; = <span class="keyword">new</span> <span class="title class_">MessageChannel</span>()</span><br><span class="line">        port1.<span class="title function_">postMessage</span>(obj)</span><br><span class="line">        port2.<span class="property">onmessage</span> = <span class="function"><span class="params">e</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="title function_">resolve</span>(e.<span class="property">data</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//测试</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123; <span class="attr">a</span>: <span class="string">&quot;&quot;</span>, <span class="attr">c</span>: <span class="literal">undefined</span>, <span class="attr">e</span>: <span class="number">0</span>, <span class="attr">f</span>: [], <span class="attr">g</span>: <span class="title class_">NaN</span>, <span class="attr">h</span>: <span class="literal">null</span>,<span class="attr">I</span>:<span class="keyword">new</span> <span class="title class_">Set</span>([<span class="number">1</span>,<span class="number">2</span>]), </span><br><span class="line"><span class="attr">J</span>: <span class="keyword">new</span> <span class="title class_">Map</span>([[<span class="string">&#x27;a&#x27;</span>,<span class="number">1</span>]]) &#125;</span><br><span class="line">obj.<span class="property">b</span>  = obj<span class="comment">//循环引用</span></span><br><span class="line"><span class="title function_">deepClone</span>(obj).<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(res);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <h1 id="structuredClone"><a href="#structuredClone" class="headerlink" title="structuredClone"></a>structuredClone</h1><blockquote>
@@ -1886,7 +1903,7 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
 <h1 id="loadsh的cloneDeep函数"><a href="#loadsh的cloneDeep函数" class="headerlink" title="loadsh的cloneDeep函数"></a>loadsh的cloneDeep函数</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; cloneDeep &#125; <span class="keyword">from</span> <span class="string">&#x27;loadsh&#x27;</span> </span><br></pre></td></tr></table></figure>
 
 <h1 id="JSON实现深拷贝"><a href="#JSON实现深拷贝" class="headerlink" title="JSON实现深拷贝"></a>JSON实现深拷贝</h1><ul>
-<li>不能解决循环引用</li>
+<li>不能解决<strong>循环引用</strong></li>
 <li>NaN被拷贝成null</li>
 <li>Symbol和undefined没被拷贝</li>
 </ul>
@@ -1897,7 +1914,11 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
 <li>支持深拷贝Symbol，Set，Map，fn</li>
 <li>不支持深拷贝Date，RegExp，</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">deepClone</span>(<span class="params">obj, hash = <span class="keyword">new</span> <span class="built_in">WeakMap</span>()</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!obj) <span class="keyword">return</span> obj</span><br><span class="line">    <span class="keyword">let</span> clone;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(hash.<span class="title function_">has</span>(obj))&#123;</span><br><span class="line">        <span class="comment">// 如果在的话</span></span><br><span class="line">        <span class="keyword">return</span> hash.<span class="title function_">get</span>(obj)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> <span class="title class_">Set</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Set</span>([...obj])</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> <span class="title class_">Map</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Map</span>([...obj])</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> <span class="title class_">WeakMap</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="string">&#x27;weakmap类型未作处理&#x27;</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> obj === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">        <span class="comment">//方法不用克隆，直接返回</span></span><br><span class="line">        <span class="keyword">return</span> obj</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> <span class="title class_">Array</span>) &#123; <span class="comment">//obj 是数组</span></span><br><span class="line">        clone = [];</span><br><span class="line">        hash.<span class="title function_">set</span>(obj, clone)</span><br><span class="line">        obj.<span class="title function_">forEach</span>(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">            clone.<span class="title function_">push</span>(<span class="title function_">deepClone</span>(item, hash))</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> obj !== <span class="string">&#x27;object&#x27;</span>) &#123; <span class="comment">//原始值类型</span></span><br><span class="line">        <span class="keyword">return</span> obj</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123; <span class="comment">//obj 是Object对象</span></span><br><span class="line">        clone = &#123;&#125;;</span><br><span class="line">        hash.<span class="title function_">set</span>(obj, clone)</span><br><span class="line">        <span class="comment">//键是字符</span></span><br><span class="line">        <span class="title class_">Object</span>.<span class="title function_">getOwnPropertyNames</span>(obj).<span class="title function_">forEach</span>(<span class="function"><span class="params">propNames</span> =&gt;</span> &#123;</span><br><span class="line">            clone[propNames] = <span class="title function_">deepClone</span>(obj[propNames],hash)</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="comment">//键是Symbol</span></span><br><span class="line">        <span class="title class_">Object</span>.<span class="title function_">getOwnPropertySymbols</span>(obj).<span class="title function_">forEach</span>(<span class="function"><span class="params">syb</span> =&gt;</span> &#123;</span><br><span class="line">            clone[<span class="title class_">Symbol</span>(syb.<span class="property">description</span>)] = <span class="title function_">deepClone</span>(obj[syb],hash)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> clone</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">deepClone</span>(<span class="params">obj, hash = <span class="keyword">new</span> <span class="built_in">WeakMap</span>()</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!obj) <span class="keyword">return</span> obj</span><br><span class="line">    <span class="keyword">let</span> clone;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(hash.<span class="title function_">has</span>(obj))&#123;</span><br><span class="line">        <span class="comment">// 如果在的话</span></span><br><span class="line">        <span class="keyword">return</span> hash.<span class="title function_">get</span>(obj)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> <span class="title class_">Set</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Set</span>([...obj])</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> <span class="title class_">Map</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Map</span>([...obj])</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> <span class="title class_">WeakMap</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="string">&#x27;weakmap类型未作处理&#x27;</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> obj === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">        <span class="comment">//方法不用克隆，直接返回</span></span><br><span class="line">        <span class="keyword">return</span> obj</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> <span class="title class_">Array</span>) &#123; <span class="comment">//obj 是数组</span></span><br><span class="line">        clone = [];</span><br><span class="line">        hash.<span class="title function_">set</span>(obj, clone)</span><br><span class="line">        obj.<span class="title function_">forEach</span>(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">            clone.<span class="title function_">push</span>(<span class="title function_">deepClone</span>(item, hash))</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> obj !== <span class="string">&#x27;object&#x27;</span>) &#123; <span class="comment">//原始值类型</span></span><br><span class="line">        <span class="keyword">return</span> obj</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123; <span class="comment">//obj 是Object对象</span></span><br><span class="line">        clone = &#123;&#125;;</span><br><span class="line">        hash.<span class="title function_">set</span>(obj, clone)</span><br><span class="line">        <span class="comment">//键是字符</span></span><br><span class="line">        <span class="title class_">Object</span>.<span class="title function_">getOwnPropertyNames</span>(obj).<span class="title function_">forEach</span>(<span class="function"><span class="params">propNames</span> =&gt;</span> &#123;</span><br><span class="line">            clone[propNames] = <span class="title function_">deepClone</span>(obj[propNames],hash)</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="comment">//键是Symbol</span></span><br><span class="line">        <span class="title class_">Object</span>.<span class="title function_">getOwnPropertySymbols</span>(obj).<span class="title function_">forEach</span>(<span class="function"><span class="params">syb</span> =&gt;</span> &#123;</span><br><span class="line">            clone[<span class="title class_">Symbol</span>(syb.<span class="property">description</span>)] = <span class="title function_">deepClone</span>(obj[syb],hash)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> clone</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="优化手写深度克隆"><a href="#优化手写深度克隆" class="headerlink" title="优化手写深度克隆"></a>优化手写深度克隆</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">deepClone</span>(<span class="params"></span>)&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
       <categories>
         <category>技术</category>
       </categories>
@@ -2451,7 +2472,8 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
 </ul>
 <span id="more"></span>
 
-<h2 id="怎么实现Iterable接口"><a href="#怎么实现Iterable接口" class="headerlink" title="怎么实现Iterable接口"></a><span style="color:red"><em>怎么实现Iterable接口</em></span></h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Counter</span> &#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">limit</span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">limit</span> = limit</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//1. 工厂函数</span></span><br><span class="line">    [<span class="title class_">Symbol</span>.<span class="property">iterator</span>]() &#123;</span><br><span class="line">        <span class="keyword">let</span> count = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">let</span> limit = <span class="variable language_">this</span>.<span class="property">limit</span></span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="comment">// 2.1 next方法</span></span><br><span class="line">            <span class="title function_">next</span>(<span class="params"></span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (count &lt;= limit)</span><br><span class="line">                    <span class="comment">// 返回IterableResult</span></span><br><span class="line">                    <span class="keyword">return</span> &#123; <span class="attr">done</span>: <span class="literal">false</span>, <span class="attr">value</span>: count++ &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">return</span> &#123; <span class="attr">done</span>: <span class="literal">true</span>, <span class="attr">value</span>: <span class="literal">undefined</span> &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//2.2 可选 提前终止迭代器</span></span><br><span class="line">            <span class="keyword">return</span>() &#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;提前终止...&#x27;</span>)</span><br><span class="line">                <span class="comment">//必须返回IterableResult</span></span><br><span class="line">                <span class="keyword">return</span> &#123; <span class="attr">done</span>: <span class="literal">true</span> &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> counter = <span class="keyword">new</span> <span class="title class_">Counter</span>(<span class="number">3</span>)</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">of</span> counter) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="怎么实现Iterable接口"><a href="#怎么实现Iterable接口" class="headerlink" title="怎么实现Iterable接口"></a><em>怎么实现Iterable接口</em></h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Counter</span> &#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">limit</span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">limit</span> = limit</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//1. 工厂函数</span></span><br><span class="line">    [<span class="title class_">Symbol</span>.<span class="property">iterator</span>]() &#123;</span><br><span class="line">        <span class="keyword">let</span> count = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">let</span> limit = <span class="variable language_">this</span>.<span class="property">limit</span></span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="comment">// 2.1 next方法</span></span><br><span class="line">            <span class="title function_">next</span>(<span class="params"></span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (count &lt;= limit)</span><br><span class="line">                    <span class="comment">// 返回IterableResult</span></span><br><span class="line">                    <span class="keyword">return</span> &#123; <span class="attr">done</span>: <span class="literal">false</span>, <span class="attr">value</span>: count++ &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">return</span> &#123; <span class="attr">done</span>: <span class="literal">true</span>, <span class="attr">value</span>: <span class="literal">undefined</span> &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//2.2 可选 提前终止迭代器</span></span><br><span class="line">            <span class="keyword">return</span>() &#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;提前终止...&#x27;</span>)</span><br><span class="line">                <span class="comment">//必须返回IterableResult</span></span><br><span class="line">                <span class="keyword">return</span> &#123; <span class="attr">done</span>: <span class="literal">true</span> &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> counter = <span class="keyword">new</span> <span class="title class_">Counter</span>(<span class="number">3</span>)</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">of</span> counter) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 提前中断</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">of</span> counter) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(i)</span><br><span class="line">    <span class="keyword">if</span> (i == <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1</span></span><br><span class="line"><span class="comment">2</span></span><br><span class="line"><span class="comment">提前终止...</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
 
 <blockquote>
@@ -2469,7 +2491,7 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
 </ul>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(ita.<span class="title function_">next</span>()); <span class="comment">//&#123; value: &#x27;a&#x27;, done: false &#125; </span></span><br></pre></td></tr></table></figure>
 
-<h2 id="内部实现了Iterable接口的类型"><a href="#内部实现了Iterable接口的类型" class="headerlink" title="内部实现了Iterable接口的类型"></a><span style="color:red"><em>内部实现了Iterable接口的类型</em></span></h2><ol>
+<h2 id="内部实现了Iterable接口的类型"><a href="#内部实现了Iterable接口的类型" class="headerlink" title="内部实现了Iterable接口的类型"></a><em>内部实现了Iterable接口的类型</em></h2><ol>
 <li>String</li>
 <li>Array</li>
 <li>Set</li>
@@ -2479,7 +2501,7 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
 </ol>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> it = arr[<span class="title class_">Symbol</span>.<span class="property">iterator</span>]</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(it);    <span class="comment">//[Function: values] 迭代器的工厂函数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> ita = arr[<span class="title class_">Symbol</span>.<span class="property">iterator</span>]() </span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(ita);   <span class="comment">//Object [Array Iterator] &#123;&#125;  迭代器</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="自动兼容可迭代对象的"><a href="#自动兼容可迭代对象的" class="headerlink" title="自动兼容可迭代对象的"></a><span style="color:red"><em>自动兼容可迭代对象的</em></span></h2><blockquote>
+<h2 id="自动兼容可迭代对象的"><a href="#自动兼容可迭代对象的" class="headerlink" title="自动兼容可迭代对象的"></a><em>自动兼容可迭代对象的</em></h2><blockquote>
 <p>它们会自动调用工厂函数创建迭代器</p>
 </blockquote>
 <ol>
@@ -2488,28 +2510,28 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
 <li>扩展操作符 <code>[1,2,3, ...arr2]</code></li>
 <li>创建Set、Map</li>
 <li>Promise.all()</li>
-<li>Array.from() </li>
+<li>Array.from()</li>
 <li>yield*</li>
 </ol>
-<p><b>伪数组没有迭代器，需要Array.from()转成数组</b></p>
+<p><strong>伪数组没有迭代器，需要Array.from()转成数组</strong> </p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> fakerArr = &#123;</span><br><span class="line">    <span class="number">0</span>: <span class="string">&#x27;a&#x27;</span>,</span><br><span class="line">    <span class="number">1</span>: <span class="string">&#x27;b&#x27;</span>,</span><br><span class="line">    <span class="number">2</span>: <span class="string">&#x27;c&#x27;</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">let</span> i <span class="keyword">in</span> fakerArr)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(fakerArr[i]) <span class="comment">//正常</span></span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">let</span> item <span class="keyword">of</span> fakerArr)&#123; <span class="comment">//TypeError: fakerArr is not iterable</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(item)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ol>
 <li>迭代器会占用一个引用计数，组织垃圾回收可迭代对象</li>
 </ol>
 <h1 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h1><p>拥有在一个函数块内<strong>暂停</strong>和<strong>恢复</strong>代码执行的能力</p>
-<h2 id="生成器函数"><a href="#生成器函数" class="headerlink" title="生成器函数"></a>生成器函数</h2><blockquote>
-<p>调用后返回生成器对象</p>
-</blockquote>
-<p>声明</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> * <span class="title function_">generatorFn</span>(<span class="params"></span>)&#123;&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="生成器函数"><a href="#生成器函数" class="headerlink" title="生成器函数"></a>生成器函数</h2><ul>
+<li>声明生成器函数</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> * <span class="title function_">generatorFn</span>(<span class="params"></span>)&#123;&#125; <span class="comment">//调用后返回生成器对象</span></span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>箭头函数不能声明为生成器函数</p>
 </blockquote>
 <h2 id="生成器对象"><a href="#生成器对象" class="headerlink" title="生成器对象"></a>生成器对象</h2><ul>
 <li>一开始处于suspended状态</li>
 <li><strong>实现了Iterator接口</strong><ul>
-<li>next() <ul>
+<li>next()<ul>
 <li>让生成器开始或恢复执行</li>
 </ul>
 </li>
@@ -2543,28 +2565,23 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
 <li>yield 只能在生成器函数内使用</li>
 </ol>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//用next()继续</span></span><br><span class="line"><span class="keyword">function</span> * <span class="title function_">generatorFn</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">//yield 来输出</span></span><br><span class="line">    <span class="keyword">yield</span> <span class="string">&#x27;a&#x27;</span></span><br><span class="line">    <span class="keyword">yield</span> <span class="string">&#x27;b&#x27;</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;0&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> g = <span class="title function_">generatorFn</span>(); <span class="comment">//生成器对象</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(g.<span class="title function_">next</span>()) <span class="comment">//&#123;value: &#x27;a&#x27;, done: false&#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(g.<span class="title function_">next</span>()) <span class="comment">//&#123;value: &#x27;b&#x27;, done: false&#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(g.<span class="title function_">next</span>()) <span class="comment">//&#123;value: &#x27;0&#x27;, done: true&#125;</span></span><br></pre></td></tr></table></figure>
+
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//生成器对象作为可迭代对象</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">const</span> x <span class="keyword">of</span> <span class="title function_">generatorFn</span>())&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(x)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">a</span></span><br><span class="line"><span class="comment">b</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
 
 <ol start="4">
 <li><strong>yield 实现输入输出</strong></li>
 </ol>
-<p>yield接收next里的参数，除了第一个next起启动生成器其作用</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> * <span class="title function_">generatorFn</span>(<span class="params">initial</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(initial);</span><br><span class="line">    <span class="comment">//yield输入</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">yield</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">yield</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">yield</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> g = <span class="title function_">generatorFn</span>(<span class="string">&#x27;initial&#x27;</span>)</span><br><span class="line">g.<span class="title function_">next</span>(<span class="string">&#x27;a&#x27;</span>)     <span class="comment">//initial ,不会输出a</span></span><br><span class="line">g.<span class="title function_">next</span>(<span class="string">&#x27;b&#x27;</span>)     <span class="comment">//b</span></span><br><span class="line">g.<span class="title function_">next</span>(<span class="string">&#x27;c&#x27;</span>)     <span class="comment">//c</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>yield接收next里的参数，除了第一个next, 其作用是 启动生成器</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> * <span class="title function_">generatorFn</span>(<span class="params">initial</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(initial);</span><br><span class="line">    <span class="comment">//yield输入</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">yield</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">yield</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">yield</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> g = <span class="title function_">generatorFn</span>(<span class="string">&#x27;initial&#x27;</span>)</span><br><span class="line">g.<span class="title function_">next</span>(<span class="string">&#x27;a&#x27;</span>)     <span class="comment">//initial ,不会输出a</span></span><br><span class="line">g.<span class="title function_">next</span>(<span class="string">&#x27;b&#x27;</span>)     <span class="comment">//b</span></span><br><span class="line">g.<span class="title function_">next</span>(<span class="string">&#x27;c&#x27;</span>)     <span class="comment">//c</span></span><br><span class="line">g.<span class="title function_">next</span>(<span class="string">&#x27;d&#x27;</span>)	<span class="comment">//d</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>yield同时输入输出</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> * <span class="title function_">generatorFn</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">yield</span> <span class="string">&#x27;foo&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> g = <span class="title function_">generatorFn</span>()</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(g.<span class="title function_">next</span>());      <span class="comment">//&#123;value: &#x27;foo&#x27;, done: false&#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(g.<span class="title function_">next</span>(<span class="string">&#x27;x00&#x27;</span>)); <span class="comment">//&#123;value: &#x27;x00&#x27;, done: true&#125;</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="yield-1"><a href="#yield-1" class="headerlink" title="yield*"></a><strong>yield</strong>*</h2><p>增强yield行为，让他可以迭代一个可迭代对象</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> * <span class="title function_">generatorFn</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">yield</span>* [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p><strong>适合作默认迭代器</strong></p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Foo</span> &#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">value</span> = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">    &#125;</span><br><span class="line">    * [<span class="title class_">Symbol</span>.<span class="property">iterator</span>]()&#123;</span><br><span class="line">        <span class="keyword">yield</span>* <span class="variable language_">this</span>.<span class="property">value</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> f <span class="keyword">of</span> <span class="keyword">new</span> <span class="title class_">Foo</span>())&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(f)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
 ]]></content>
       <categories>
         <category>js红宝书</category>
@@ -4256,6 +4273,45 @@ if(&quot;serviceWorker&quot; in navigator) &#123;
       </categories>
       <tags>
         <tag>webpack</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>前端性能优化</title>
+    <url>/2024/03/06/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</url>
+    <content><![CDATA[<span id="more"></span>
+
+<h1 id="首屏速度"><a href="#首屏速度" class="headerlink" title="首屏速度"></a>首屏速度</h1><h2 id="减少首屏资源体积"><a href="#减少首屏资源体积" class="headerlink" title="减少首屏资源体积"></a>减少首屏资源体积</h2><ol>
+<li>webpack打包压缩代码</li>
+<li>异步加载 <code>import().then</code></li>
+<li>老版的库更新以支持tree-shaking</li>
+<li>少用第三方库</li>
+<li>静止大图片转base64</li>
+<li>骨架屏&#x2F;loading</li>
+</ol>
+<h1 id="prefetch-和-script"><a href="#prefetch-和-script" class="headerlink" title="prefetch 和 script"></a>prefetch 和 script</h1><ul>
+<li>script加载</li>
+</ul>
+<p>按需引入</p>
+<p>切换需要等待</p>
+<ul>
+<li><code>&lt;link rel=&#39;prefetch&#39; as=&#39;script&#39; href=&#39;&#39; /&gt;</code></li>
+</ul>
+<p>预加载，切换无感</p>
+<p>浪费带宽</p>
+<blockquote>
+<p> prefetch 和 preload 不同， preload是一种<strong>立即</strong>获取资源的策略，prefetch是一种在后台缓存资源的策略，以便在需要时立即使用。</p>
+</blockquote>
+<h1 id="渲染性能"><a href="#渲染性能" class="headerlink" title="渲染性能"></a>渲染性能</h1><ul>
+<li>vue</li>
+</ul>
+<ol>
+<li>keep-alive 缓存</li>
+<li>v-show</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>性能</tag>
+        <tag>优化</tag>
       </tags>
   </entry>
 </search>

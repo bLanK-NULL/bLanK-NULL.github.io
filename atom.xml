@@ -6,7 +6,7 @@
   <link href="https://blank-null.github.io/atom.xml" rel="self"/>
   
   <link href="https://blank-null.github.io/"/>
-  <updated>2024-03-05T09:36:48.781Z</updated>
+  <updated>2024-03-06T10:48:11.853Z</updated>
   <id>https://blank-null.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>前端性能优化</title>
+    <link href="https://blank-null.github.io/2024/03/06/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    <id>https://blank-null.github.io/2024/03/06/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</id>
+    <published>2024-03-06T09:58:04.000Z</published>
+    <updated>2024-03-06T10:48:11.853Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
+
+&lt;h1 id=&quot;首屏速度&quot;&gt;&lt;a href=&quot;#首屏速度&quot; class=&quot;headerlink&quot; title=&quot;首屏速度&quot;&gt;&lt;/a&gt;首屏速度&lt;/h1&gt;&lt;h2 id=&quot;减少首屏资源体积&quot;&gt;&lt;a href=&quot;#减少首屏资源体积&quot; cl</summary>
+      
+    
+    
+    
+    
+    <category term="性能" scheme="https://blank-null.github.io/tags/%E6%80%A7%E8%83%BD/"/>
+    
+    <category term="优化" scheme="https://blank-null.github.io/tags/%E4%BC%98%E5%8C%96/"/>
+    
+  </entry>
   
   <entry>
     <title>【综合】html+css基础</title>
@@ -473,25 +497,6 @@
     
     
     <category term="delete" scheme="https://blank-null.github.io/tags/delete/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>浅聊WeakMap与Map</title>
-    <link href="https://blank-null.github.io/2023/10/22/%E6%B5%85%E8%81%8AWeakMap/"/>
-    <id>https://blank-null.github.io/2023/10/22/%E6%B5%85%E8%81%8AWeakMap/</id>
-    <published>2023-10-22T07:58:12.000Z</published>
-    <updated>2023-10-22T10:37:39.881Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;说到WeakMap不得不说Map了，他们的相同之处在于都是用一个key 对应一个 value&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="技术" scheme="https://blank-null.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-    <category term="WeakMap" scheme="https://blank-null.github.io/tags/WeakMap/"/>
     
   </entry>
   
