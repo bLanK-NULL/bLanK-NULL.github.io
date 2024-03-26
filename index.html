@@ -152,7 +152,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-count">51</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -163,7 +163,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">76</span>
+        <span class="site-state-item-count">80</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -653,6 +653,147 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2024/03/05/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="bLank-L">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/03/05/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">【综合】服务端基础</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-03-05 15:00:30" itemprop="dateCreated datePublished" datetime="2024-03-05T15:00:30+08:00">2024-03-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-03-26 15:05:32" itemprop="dateModified" datetime="2024-03-26T15:05:32+08:00">2024-03-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BB%BC%E5%90%88/" itemprop="url" rel="index"><span itemprop="name">综合</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="【综合】服务端基础" href="/2024/03/05/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%9F%BA%E7%A1%80/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::87659694025ed2d4d1ad22c836b8b827" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>245</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <span id="more"></span>
+
+<h1 id="1-http-状态码"><a href="#1-http-状态码" class="headerlink" title="1. http 状态码"></a>1. http 状态码</h1><ul>
+<li>2XX<ul>
+<li><strong>200</strong>： OK</li>
+<li>204： Not Content， 服务器无返回内容</li>
+</ul>
+</li>
+<li>3XX<ul>
+<li>301： 永久重定向</li>
+<li>302： 临时重定向</li>
+<li><strong>304</strong>： Not Modified， 浏览器可以使用本地缓存</li>
+</ul>
+</li>
+<li>4XX<ul>
+<li><strong>400</strong>： Bad Request，请求报文错误</li>
+<li><strong>401</strong>： Unauthorized</li>
+<li><strong>403</strong>： Forbidden</li>
+<li><strong>404</strong>： Not Found</li>
+<li>405： Method Not Allowed， 请求方法不允许，可以用OPTIONS预检请求查看服务器允许的请求</li>
+</ul>
+</li>
+<li>5XX<ul>
+<li><strong>500</strong> Internal Server Error</li>
+<li><strong>502</strong> Bad Gateway</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2024/03/05/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91html-css%E5%9F%BA%E7%A1%80/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -774,6 +915,278 @@
 </li>
 <li>定位+translate</li>
 <li></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2024/03/04/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91js%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="bLank-L">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/03/04/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91js%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">【综合】js基础</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-03-04 20:15:58" itemprop="dateCreated datePublished" datetime="2024-03-04T20:15:58+08:00">2024-03-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-03-26 15:05:41" itemprop="dateModified" datetime="2024-03-26T15:05:41+08:00">2024-03-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BB%BC%E5%90%88/" itemprop="url" rel="index"><span itemprop="name">综合</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="【综合】js基础" href="/2024/03/04/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91js%E5%9F%BA%E7%A1%80/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::3feac3bd4c95a203c987049221650656" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <span id="more"></span>
+
+<h1 id="1-隐式类型转换"><a href="#1-隐式类型转换" class="headerlink" title="1. 隐式类型转换"></a>1. 隐式类型转换</h1><p><img src="/2024/03/04/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91js%E5%9F%BA%E7%A1%80/jsautotranslate.png" alt="img"></p>
+<ul>
+<li>P 表示toPrimitive<ul>
+<li>先调用 <code>valueOf</code> 若返回不是原始类型</li>
+<li>再调用 <code>toString</code> 若返回不是原始类型</li>
+<li>则报错</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>所有比较都有转化为数字类型的趋势</p>
+</blockquote>
+<h1 id="2-实现函数缓存"><a href="#2-实现函数缓存" class="headerlink" title="2. 实现函数缓存"></a>2. 实现函数缓存</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> memoize = <span class="keyword">function</span> (<span class="params">fun, content</span>) &#123;</span><br><span class="line">	<span class="keyword">let</span> cache = <span class="title class_">Object</span>.<span class="title function_">create</span>(<span class="literal">null</span>)</span><br><span class="line">	content = content || <span class="variable language_">this</span> </span><br><span class="line">	<span class="keyword">return</span> <span class="function">(<span class="params">...key</span>)=&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">if</span>(!cache[key]) </span><br><span class="line">			cache[key] = fun.<span class="title function_">apply</span>(content, key)</span><br><span class="line">		<span class="keyword">return</span> cache[key]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-requestAnimationFrame"><a href="#3-requestAnimationFrame" class="headerlink" title="3. requestAnimationFrame"></a>3. requestAnimationFrame</h1><p>window.requestAnimationFrame(callback)</p>
+<ul>
+<li>作用： 告诉浏览器——你希望执行一个动画，并且要求浏览器在下次重绘之前调用指定的回调函数更新动画</li>
+<li>参数： callback回调函数，第一个参数是回调函数被触发时的时间戳。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;some-element-you-want-to-animate&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> start, previousTimeStamp;</span><br><span class="line"><span class="keyword">let</span> done = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">step</span>(<span class="params">timestamp</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (start === <span class="literal">undefined</span>) &#123;</span><br><span class="line">    start = timestamp;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> elapsed = timestamp - start;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (previousTimeStamp !== timestamp) &#123;</span><br><span class="line">    <span class="comment">// 这里使用 Math.min() 确保元素在恰好位于 200px 时停止运动</span></span><br><span class="line">    <span class="keyword">const</span> count = <span class="title class_">Math</span>.<span class="title function_">min</span>(<span class="number">0.1</span> * elapsed, <span class="number">200</span>);</span><br><span class="line">    element.<span class="property">style</span>.<span class="property">transform</span> = <span class="string">`translateX(<span class="subst">$&#123;count&#125;</span>px)`</span>;</span><br><span class="line">    <span class="keyword">if</span> (count === <span class="number">200</span>) done = <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (elapsed &lt; <span class="number">2000</span>) &#123;</span><br><span class="line">    <span class="comment">// 2 秒之后停止动画</span></span><br><span class="line">    previousTimeStamp = timestamp;</span><br><span class="line">    <span class="keyword">if</span> (!done) &#123;</span><br><span class="line">      <span class="variable language_">window</span>.<span class="title function_">requestAnimationFrame</span>(step);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">requestAnimationFrame</span>(step);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2024/03/04/vue3%E7%9A%84%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="bLank-L">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/03/04/vue3%E7%9A%84%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87/" class="post-title-link" itemprop="url">vue3的性能提升</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-03-04 19:48:43" itemprop="dateCreated datePublished" datetime="2024-03-04T19:48:43+08:00">2024-03-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-03-26 15:06:38" itemprop="dateModified" datetime="2024-03-26T15:06:38+08:00">2024-03-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="vue3的性能提升" href="/2024/03/04/vue3%E7%9A%84%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::a03f4f9e41248c96aca8075ae3c60f07" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <span id="more"></span>
+
+<h1 id="1-diff-算法的优化"><a href="#1-diff-算法的优化" class="headerlink" title="1. diff 算法的优化"></a>1. diff 算法的优化</h1><p>增加了静态标记， 被标记为-1的节点不会参与diff比较</p>
+<h1 id="2-静态提升"><a href="#2-静态提升" class="headerlink" title="2. 静态提升"></a>2. 静态提升</h1><p>对于静态节点，把创建dom节点的放在render函数之外。这样就只用创建一次，多次复用。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">render</span>(<span class="params">_ctx, _cache, $props, $setup, $data, $options</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (<span class="title function_">_openBlock</span>(), <span class="title function_">_createBlock</span>(_Fragment, <span class="literal">null</span>, [</span><br><span class="line">    <span class="title function_">_createVNode</span>(<span class="string">&quot;span&quot;</span>, <span class="literal">null</span>, <span class="string">&quot;你好&quot;</span>),</span><br><span class="line">    <span class="title function_">_createVNode</span>(<span class="string">&quot;div&quot;</span>, <span class="literal">null</span>, <span class="title function_">_toDisplayString</span>(_ctx.<span class="property">message</span>), <span class="number">1</span> <span class="comment">/* TEXT */</span>)</span><br><span class="line">  ], <span class="number">64</span> <span class="comment">/* STABLE_FRAGMENT */</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>提升后</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> _hoisted_1 = <span class="comment">/*#__PURE__*/</span><span class="title function_">_createVNode</span>(<span class="string">&quot;span&quot;</span>, <span class="literal">null</span>, <span class="string">&quot;你好&quot;</span>, -<span class="number">1</span> <span class="comment">/* HOISTED */</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">render</span>(<span class="params">_ctx, _cache, $props, $setup, $data, $options</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (<span class="title function_">_openBlock</span>(), <span class="title function_">_createBlock</span>(_Fragment, <span class="literal">null</span>, [</span><br><span class="line">    _hoisted_1,</span><br><span class="line">    <span class="title function_">_createVNode</span>(<span class="string">&quot;div&quot;</span>, <span class="literal">null</span>, <span class="title function_">_toDisplayString</span>(_ctx.<span class="property">message</span>), <span class="number">1</span> <span class="comment">/* TEXT */</span>)</span><br><span class="line">  ], <span class="number">64</span> <span class="comment">/* STABLE_FRAGMENT */</span>))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Check the console for the AST</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="3-事件监听缓存"><a href="#3-事件监听缓存" class="headerlink" title="3. 事件监听缓存"></a>3. 事件监听缓存</h1><p>用一个cache缓存事件处理函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">render</span>(<span class="params">_ctx, _cache, $props, $setup, $data, $options</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (<span class="title function_">_openBlock</span>(), <span class="title function_">_createBlock</span>(<span class="string">&quot;div&quot;</span>, <span class="literal">null</span>, [</span><br><span class="line">    <span class="title function_">_createVNode</span>(<span class="string">&quot;button&quot;</span>, &#123;</span><br><span class="line">      <span class="attr">onClick</span>: _cache[<span class="number">1</span>] || (_cache[<span class="number">1</span>] = <span class="function">(<span class="params">...args</span>) =&gt;</span> (_ctx.<span class="title function_">onClick</span>(...args)))</span><br><span class="line">    &#125;, <span class="string">&quot;点我&quot;</span>)</span><br><span class="line">  ]))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="4-Tree-shaking"><a href="#4-Tree-shaking" class="headerlink" title="4. Tree shaking"></a>4. Tree shaking</h1><p>tree shaking 是一种清除多于代码的优化打包体积的技术。</p>
+<ul>
+<li>vue2中所有功能代码都被打包，因为vue2是单例模式，所有方法都在vue构造函数生成的单例上，treeshaking无法区分某个属性、方法是否用到。</li>
+<li>vue3利用ES6 module。 静态编译时就可以把未使用的功能排除</li>
+</ul>
+<h1 id="5-响应式系统"><a href="#5-响应式系统" class="headerlink" title="5. 响应式系统"></a>5. 响应式系统</h1><ul>
+<li>vue2 使用 <code>defineProperty</code> 来劫持对象，深度遍历所有属性给每个属性添加 <code>getter setter</code></li>
+<li>vue3 使用 <code>Proxy</code> 代理对象，不需深度遍历对象就可以监听深层属性。<ul>
+<li>这一优点尤其在一些数组方法上体现，vue2重写了一些数组方法一边支持响应式，而vue3则不需要</li>
+</ul>
+</li>
 </ul>
 
       
@@ -1207,391 +1620,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2023/12/24/%E5%87%A0%E7%A7%8DpostMessage/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="bLank-L">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="bLanK's blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | bLanK's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/12/24/%E5%87%A0%E7%A7%8DpostMessage/" class="post-title-link" itemprop="url">几种postMessage</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2023-12-24 01:02:59 / 修改时间：03:22:32" itemprop="dateCreated datePublished" datetime="2023-12-24T01:02:59+08:00">2023-12-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Changyan：</span>
-    
-    <a title="几种postMessage" href="/2023/12/24/%E5%87%A0%E7%A7%8DpostMessage/#SOHUCS" itemprop="discussionUrl">
-      <span id="sourceId::c32248ff69fd4d4b317fcad4570005fd" class="cy_cmt_count" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>2.2k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>4 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>在初见postMessage的时候被其强大的功能震撼到了，可是自己用起来却总是莫名报错</p>
-<p>原来是我把几种postMessage搞混了，现在来和我一起捋清楚吧</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/12/24/%E5%87%A0%E7%A7%8DpostMessage/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2023/12/22/%E6%A0%87%E7%AD%BE%E9%97%B4%E9%80%9A%E4%BF%A1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="bLank-L">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="bLanK's blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | bLanK's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/12/22/%E6%A0%87%E7%AD%BE%E9%97%B4%E9%80%9A%E4%BF%A1/" class="post-title-link" itemprop="url">标签间通信</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-12-22 19:15:34" itemprop="dateCreated datePublished" datetime="2023-12-22T19:15:34+08:00">2023-12-22</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-12-24 16:16:54" itemprop="dateModified" datetime="2023-12-24T16:16:54+08:00">2023-12-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Changyan：</span>
-    
-    <a title="标签间通信" href="/2023/12/22/%E6%A0%87%E7%AD%BE%E9%97%B4%E9%80%9A%E4%BF%A1/#SOHUCS" itemprop="discussionUrl">
-      <span id="sourceId::82d4e5b7fb3a508be1f1645857043d92" class="cy_cmt_count" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>346</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <ol>
-<li>本地存储监听<blockquote>
-<p>监听 <strong>同源</strong> localStorage 的修改</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">onStorage</span> = <span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e.<span class="property">data</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>BroadcastChannel.postMessage<blockquote>
-<p><strong>同源</strong></p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//标签1</span></span><br><span class="line"><span class="keyword">const</span> bc = <span class="keyword">new</span> <span class="title class_">BroadcastChannel</span>(<span class="string">&#x27;common channel&#x27;</span>) </span><br><span class="line">bc.<span class="title function_">postMessage</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line"><span class="comment">//标签2</span></span><br><span class="line"><span class="keyword">const</span> bc = <span class="keyword">new</span> <span class="title class_">BroadcastChannel</span>(<span class="string">&#x27;common channel&#x27;</span>)  </span><br><span class="line">bc.<span class="property">onmessage</span> = <span class="function">(<span class="params">e</span>)=&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e.<span class="property">data</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-详见 <a href="/2023/12/24/%E5%87%A0%E7%A7%8DpostMessage/#BroadcastChannel-postMessage">🔗几种postMessage</a></li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2023/12/01/content-type%E4%B8%80%E4%BA%9B%E7%96%91%E6%83%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="bLank-L">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="bLanK's blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | bLanK's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/12/01/content-type%E4%B8%80%E4%BA%9B%E7%96%91%E6%83%91/" class="post-title-link" itemprop="url">content-type一些疑惑</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2023-12-01 11:58:29 / 修改时间：12:50:32" itemprop="dateCreated datePublished" datetime="2023-12-01T11:58:29+08:00">2023-12-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Changyan：</span>
-    
-    <a title="content-type一些疑惑" href="/2023/12/01/content-type%E4%B8%80%E4%BA%9B%E7%96%91%E6%83%91/#SOHUCS" itemprop="discussionUrl">
-      <span id="sourceId::4898cfdb5c776992c15a5b1d480b9117" class="cy_cmt_count" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>901</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>相信很初学者在使用<code>body-parser</code>时感到疑惑</p>
-<p>我们先说说他的作用，其实很简单，就是把HTTP请求里的请求体传参解析出来</p>
-<p>我们在使用接口测试工具时(例如：<code>postman</code> <code>Apipost</code>)</p>
-<p><img src="/2023/12/01/content-type%E4%B8%80%E4%BA%9B%E7%96%91%E6%83%91/jietu.png" alt="ApiPost"></p>
-<p>可以看到请求体传参有 <code>content-type</code> 分别是 <code>multipart/form-data</code> 和 <code>application/x-www-form-urlencoded</code></p>
-<p><strong>multipart&#x2F;form-data</strong></p>
-<ul>
-<li>一般传送<em>文件</em>或者<em>二进制数据</em>，也可以传文本</li>
-<li>数据以多个part形式传输</li>
-<li>会指定一个boundary来分割不同part</li>
-</ul>
-<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Content-Type</span><span class="punctuation">: </span>multipart/form-data; boundary=</span><br><span class="line">--------------------------460532464492192001772468</span><br><span class="line"><span class="attribute">Content-Disposition</span><span class="punctuation">: </span>form-data; name=&quot;foo&quot;</span><br><span class="line"></span><br><span class="line">this is part 1.</span><br><span class="line">--------------------------460532464492192001772468</span><br><span class="line"><span class="attribute">Content-Disposition</span><span class="punctuation">: </span>form-data; name=&quot;baz&quot;</span><br><span class="line"></span><br><span class="line">this is part 2</span><br><span class="line">--------------------------460532464492192001772468</span><br></pre></td></tr></table></figure>
-
-<p><strong>application&#x2F;x-www-form-urlencoded</strong></p>
-<ul>
-<li>一般传输<em>文本</em></li>
-<li>格式是<code>key=value&amp;key2=value2</code>，其实和<em>query参数一样</em>，只是后者在请求头，前者在请求体里</li>
-<li>字符会经过<em>URL编码</em> <ol>
-<li>转成ASCII码</li>
-<li>用16进制表示</li>
-<li>每个字节前加%</li>
-<li>如果字符不能转成ASCII码，则转成UTF-8编码，<a href="/2023/10/21/%E7%BC%96%E7%A0%81">关于编码详见此处</a><blockquote>
-<p>Eg:  “中”在UTF-8编码中表示为0xE4B8AD –&gt; %E4%B8%AD</p>
-</blockquote>
-</li>
-</ol>
-</li>
-</ul>
-<p><strong>raw</strong></p>
-<ul>
-<li>一般传输图片、视频、音频</li>
-<li>表示原始未经处理的二进制数据，没有特定编码方式</li>
-</ul>
-<h2 id="body-parser"><a href="#body-parser" class="headerlink" title="body-parser"></a>body-parser</h2><p>我们再说回<code>body-parser</code></p>
-<p>它支持解析<code>urlencoded</code>而不支持<code>form-data</code> </p>
-<p>如果想要解析<code>form-data</code>可以使用<code>busboy</code></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
@@ -1613,13 +1643,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">142k</span>
+    <span title="站点总字数">145k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:19</span>
+    <span title="站点阅读时长">4:24</span>
   </span>
 </div>
 <div class="busuanzi-count">

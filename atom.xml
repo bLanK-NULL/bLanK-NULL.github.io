@@ -96,6 +96,35 @@
   </entry>
   
   <entry>
+    <title>【综合】服务端基础</title>
+    <link href="https://blank-null.github.io/2024/03/05/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%9F%BA%E7%A1%80/"/>
+    <id>https://blank-null.github.io/2024/03/05/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%9F%BA%E7%A1%80/</id>
+    <published>2024-03-05T07:00:30.000Z</published>
+    <updated>2024-03-26T07:05:32.219Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
+
+&lt;h1 id=&quot;1-http-状态码&quot;&gt;&lt;a href=&quot;#1-http-状态码&quot; class=&quot;headerlink&quot; title=&quot;1. http 状态码&quot;&gt;&lt;/a&gt;1. http 状态码&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;2XX&lt;u</summary>
+      
+    
+    
+    
+    <category term="综合" scheme="https://blank-null.github.io/categories/%E7%BB%BC%E5%90%88/"/>
+    
+    
+    <category term="服务器" scheme="https://blank-null.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    <category term="网络" scheme="https://blank-null.github.io/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+    <category term="服务端" scheme="https://blank-null.github.io/tags/%E6%9C%8D%E5%8A%A1%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
     <title>【综合】html+css基础</title>
     <link href="https://blank-null.github.io/2024/03/05/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91html-css%E5%9F%BA%E7%A1%80/"/>
     <id>https://blank-null.github.io/2024/03/05/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91html-css%E5%9F%BA%E7%A1%80/</id>
@@ -115,9 +144,57 @@
     <category term="综合" scheme="https://blank-null.github.io/categories/%E7%BB%BC%E5%90%88/"/>
     
     
+    <category term="css" scheme="https://blank-null.github.io/tags/css/"/>
+    
     <category term="html" scheme="https://blank-null.github.io/tags/html/"/>
     
-    <category term="css" scheme="https://blank-null.github.io/tags/css/"/>
+  </entry>
+  
+  <entry>
+    <title>【综合】js基础</title>
+    <link href="https://blank-null.github.io/2024/03/04/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91js%E5%9F%BA%E7%A1%80/"/>
+    <id>https://blank-null.github.io/2024/03/04/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91js%E5%9F%BA%E7%A1%80/</id>
+    <published>2024-03-04T12:15:58.000Z</published>
+    <updated>2024-03-26T07:05:41.903Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
+
+&lt;h1 id=&quot;1-隐式类型转换&quot;&gt;&lt;a href=&quot;#1-隐式类型转换&quot; class=&quot;headerlink&quot; title=&quot;1. 隐式类型转换&quot;&gt;&lt;/a&gt;1. 隐式类型转换&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/2024/03/</summary>
+      
+    
+    
+    
+    <category term="综合" scheme="https://blank-null.github.io/categories/%E7%BB%BC%E5%90%88/"/>
+    
+    
+    <category term="js" scheme="https://blank-null.github.io/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue3的性能提升</title>
+    <link href="https://blank-null.github.io/2024/03/04/vue3%E7%9A%84%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87/"/>
+    <id>https://blank-null.github.io/2024/03/04/vue3%E7%9A%84%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87/</id>
+    <published>2024-03-04T11:48:43.000Z</published>
+    <updated>2024-03-26T07:06:38.367Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
+
+&lt;h1 id=&quot;1-diff-算法的优化&quot;&gt;&lt;a href=&quot;#1-diff-算法的优化&quot; class=&quot;headerlink&quot; title=&quot;1. diff 算法的优化&quot;&gt;&lt;/a&gt;1. diff 算法的优化&lt;/h1&gt;&lt;p&gt;增加了</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="https://blank-null.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="vue" scheme="https://blank-null.github.io/tags/vue/"/>
     
   </entry>
   
@@ -232,6 +309,38 @@
     <category term="标签" scheme="https://blank-null.github.io/tags/%E6%A0%87%E7%AD%BE/"/>
     
     <category term="通信" scheme="https://blank-null.github.io/tags/%E9%80%9A%E4%BF%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>css计算过程</title>
+    <link href="https://blank-null.github.io/2023/12/12/css%E8%AE%A1%E7%AE%97%E8%BF%87%E7%A8%8B/"/>
+    <id>https://blank-null.github.io/2023/12/12/css%E8%AE%A1%E7%AE%97%E8%BF%87%E7%A8%8B/</id>
+    <published>2023-12-12T06:27:36.000Z</published>
+    <updated>2024-03-26T07:06:00.759Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;确定声明值&lt;/li&gt;
+&lt;li&gt;层叠&lt;ol&gt;
+&lt;li&gt;!important 的作者样式&lt;/li&gt;
+&lt;li&gt;!important 的默认样式&lt;/li&gt;
+&lt;li&gt;作者样式&lt;/li&gt;
+&lt;li&gt;默认样式&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;继承&lt;/li&gt;
+&lt;li&gt;默</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="https://blank-null.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="css" scheme="https://blank-null.github.io/tags/css/"/>
     
   </entry>
   
@@ -403,101 +512,6 @@
     
     
     <category term="Service Worker" scheme="https://blank-null.github.io/tags/Service-Worker/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>webpack学习</title>
-    <link href="https://blank-null.github.io/2023/11/05/webpack%E5%AD%A6%E4%B9%A0/"/>
-    <id>https://blank-null.github.io/2023/11/05/webpack%E5%AD%A6%E4%B9%A0/</id>
-    <published>2023-11-05T06:49:32.000Z</published>
-    <updated>2023-11-05T06:51:23.903Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;webpack&quot;&gt;&lt;a href=&quot;#webpack&quot; class=&quot;headerlink&quot; title=&quot;webpack&quot;&gt;&lt;/a&gt;webpack&lt;/h1&gt;&lt;p&gt;webpack本身&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;支持CommonJs语法&lt;/li&gt;
-&lt;li&gt;只能编译js json, &lt;ul&gt;
-&lt;li&gt;js的es语法,这样可以让浏览器识别es语法,但是对于ES6老浏览器不支持，需要用babel转成ES5&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;</summary>
-    
-    
-    
-    <category term="技术" scheme="https://blank-null.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-    <category term="webpack" scheme="https://blank-null.github.io/tags/webpack/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【小玩意】-省略文字显示-vue插件</title>
-    <link href="https://blank-null.github.io/2023/10/30/%E3%80%90%E5%B0%8F%E7%8E%A9%E6%84%8F%E3%80%91-%E7%9C%81%E7%95%A5%E6%96%87%E5%AD%97%E6%98%BE%E7%A4%BA-vue%E6%8F%92%E4%BB%B6/"/>
-    <id>https://blank-null.github.io/2023/10/30/%E3%80%90%E5%B0%8F%E7%8E%A9%E6%84%8F%E3%80%91-%E7%9C%81%E7%95%A5%E6%96%87%E5%AD%97%E6%98%BE%E7%A4%BA-vue%E6%8F%92%E4%BB%B6/</id>
-    <published>2023-10-30T03:10:17.000Z</published>
-    <updated>2023-10-30T03:11:19.193Z</updated>
-    
-    
-      
-      
-    <summary type="html">&lt;hr&gt;
-&lt;h2 id=&quot;title-vue插件-显示省略号内容date-2023-09-25-15-05-38tags&quot;&gt;&lt;a href=&quot;#title-vue插件-显示省略号内容date-2023-09-25-15-05-38tags&quot; class=&quot;headerlink&quot; </summary>
-      
-    
-    
-    
-    
-    <category term="vue" scheme="https://blank-null.github.io/tags/vue/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【小玩意】--伪数组迭代器</title>
-    <link href="https://blank-null.github.io/2023/10/24/%E3%80%90%E5%B0%8F%E7%8E%A9%E6%84%8F%E3%80%91-%E4%BC%AA%E6%95%B0%E7%BB%84%E8%BF%AD%E4%BB%A3%E5%99%A8/"/>
-    <id>https://blank-null.github.io/2023/10/24/%E3%80%90%E5%B0%8F%E7%8E%A9%E6%84%8F%E3%80%91-%E4%BC%AA%E6%95%B0%E7%BB%84%E8%BF%AD%E4%BB%A3%E5%99%A8/</id>
-    <published>2023-10-24T11:32:52.000Z</published>
-    <updated>2023-10-24T11:43:01.000Z</updated>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;对象是没有迭代器的，所以对于伪数组有迭代器需求的情况我可以手动在Object原型上定义一个迭代器，用于迭代伪数组&lt;/p&gt;
-&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=</summary>
-      
-    
-    
-    
-    <category term="小玩意" scheme="https://blank-null.github.io/categories/%E5%B0%8F%E7%8E%A9%E6%84%8F/"/>
-    
-    
-    <category term="迭代器" scheme="https://blank-null.github.io/tags/%E8%BF%AD%E4%BB%A3%E5%99%A8/"/>
-    
-    <category term="生成器" scheme="https://blank-null.github.io/tags/%E7%94%9F%E6%88%90%E5%99%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【小玩意】--3d卡片效果</title>
-    <link href="https://blank-null.github.io/2023/10/24/%E3%80%90%E5%B0%8F%E7%8E%A9%E6%84%8F%E3%80%91-3d%E5%8D%A1%E7%89%87%E6%95%88%E6%9E%9C/"/>
-    <id>https://blank-null.github.io/2023/10/24/%E3%80%90%E5%B0%8F%E7%8E%A9%E6%84%8F%E3%80%91-3d%E5%8D%A1%E7%89%87%E6%95%88%E6%9E%9C/</id>
-    <published>2023-10-24T11:30:07.000Z</published>
-    <updated>2023-10-24T11:34:45.046Z</updated>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;模仿steam卡牌效果，鼠标悬浮会把卡牌按压进去的效果&lt;/p&gt;
-&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span cl</summary>
-      
-    
-    
-    
-    <category term="小玩意" scheme="https://blank-null.github.io/categories/%E5%B0%8F%E7%8E%A9%E6%84%8F/"/>
-    
-    
-    <category term="3d" scheme="https://blank-null.github.io/tags/3d/"/>
     
   </entry>
   

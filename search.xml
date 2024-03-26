@@ -216,6 +216,29 @@
       </tags>
   </entry>
   <entry>
+    <title>css计算过程</title>
+    <url>/2023/12/12/css%E8%AE%A1%E7%AE%97%E8%BF%87%E7%A8%8B/</url>
+    <content><![CDATA[<ol>
+<li>确定声明值</li>
+<li>层叠<ol>
+<li>!important 的作者样式</li>
+<li>!important 的默认样式</li>
+<li>作者样式</li>
+<li>默认样式</li>
+</ol>
+</li>
+<li>继承</li>
+<li>默认</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>css</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>delete使用</title>
     <url>/2023/10/23/delete%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<ol>
@@ -946,6 +969,41 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
       </tags>
   </entry>
   <entry>
+    <title>vue3的性能提升</title>
+    <url>/2024/03/04/vue3%E7%9A%84%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87/</url>
+    <content><![CDATA[<span id="more"></span>
+
+<h1 id="1-diff-算法的优化"><a href="#1-diff-算法的优化" class="headerlink" title="1. diff 算法的优化"></a>1. diff 算法的优化</h1><p>增加了静态标记， 被标记为-1的节点不会参与diff比较</p>
+<h1 id="2-静态提升"><a href="#2-静态提升" class="headerlink" title="2. 静态提升"></a>2. 静态提升</h1><p>对于静态节点，把创建dom节点的放在render函数之外。这样就只用创建一次，多次复用。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">render</span>(<span class="params">_ctx, _cache, $props, $setup, $data, $options</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (<span class="title function_">_openBlock</span>(), <span class="title function_">_createBlock</span>(_Fragment, <span class="literal">null</span>, [</span><br><span class="line">    <span class="title function_">_createVNode</span>(<span class="string">&quot;span&quot;</span>, <span class="literal">null</span>, <span class="string">&quot;你好&quot;</span>),</span><br><span class="line">    <span class="title function_">_createVNode</span>(<span class="string">&quot;div&quot;</span>, <span class="literal">null</span>, <span class="title function_">_toDisplayString</span>(_ctx.<span class="property">message</span>), <span class="number">1</span> <span class="comment">/* TEXT */</span>)</span><br><span class="line">  ], <span class="number">64</span> <span class="comment">/* STABLE_FRAGMENT */</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>提升后</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> _hoisted_1 = <span class="comment">/*#__PURE__*/</span><span class="title function_">_createVNode</span>(<span class="string">&quot;span&quot;</span>, <span class="literal">null</span>, <span class="string">&quot;你好&quot;</span>, -<span class="number">1</span> <span class="comment">/* HOISTED */</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">render</span>(<span class="params">_ctx, _cache, $props, $setup, $data, $options</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (<span class="title function_">_openBlock</span>(), <span class="title function_">_createBlock</span>(_Fragment, <span class="literal">null</span>, [</span><br><span class="line">    _hoisted_1,</span><br><span class="line">    <span class="title function_">_createVNode</span>(<span class="string">&quot;div&quot;</span>, <span class="literal">null</span>, <span class="title function_">_toDisplayString</span>(_ctx.<span class="property">message</span>), <span class="number">1</span> <span class="comment">/* TEXT */</span>)</span><br><span class="line">  ], <span class="number">64</span> <span class="comment">/* STABLE_FRAGMENT */</span>))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Check the console for the AST</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="3-事件监听缓存"><a href="#3-事件监听缓存" class="headerlink" title="3. 事件监听缓存"></a>3. 事件监听缓存</h1><p>用一个cache缓存事件处理函数</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">render</span>(<span class="params">_ctx, _cache, $props, $setup, $data, $options</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (<span class="title function_">_openBlock</span>(), <span class="title function_">_createBlock</span>(<span class="string">&quot;div&quot;</span>, <span class="literal">null</span>, [</span><br><span class="line">    <span class="title function_">_createVNode</span>(<span class="string">&quot;button&quot;</span>, &#123;</span><br><span class="line">      <span class="attr">onClick</span>: _cache[<span class="number">1</span>] || (_cache[<span class="number">1</span>] = <span class="function">(<span class="params">...args</span>) =&gt;</span> (_ctx.<span class="title function_">onClick</span>(...args)))</span><br><span class="line">    &#125;, <span class="string">&quot;点我&quot;</span>)</span><br><span class="line">  ]))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="4-Tree-shaking"><a href="#4-Tree-shaking" class="headerlink" title="4. Tree shaking"></a>4. Tree shaking</h1><p>tree shaking 是一种清除多于代码的优化打包体积的技术。</p>
+<ul>
+<li>vue2中所有功能代码都被打包，因为vue2是单例模式，所有方法都在vue构造函数生成的单例上，treeshaking无法区分某个属性、方法是否用到。</li>
+<li>vue3利用ES6 module。 静态编译时就可以把未使用的功能排除</li>
+</ul>
+<h1 id="5-响应式系统"><a href="#5-响应式系统" class="headerlink" title="5. 响应式系统"></a>5. 响应式系统</h1><ul>
+<li>vue2 使用 <code>defineProperty</code> 来劫持对象，深度遍历所有属性给每个属性添加 <code>getter setter</code></li>
+<li>vue3 使用 <code>Proxy</code> 代理对象，不需深度遍历对象就可以监听深层属性。<ul>
+<li>这一优点尤其在一些数组方法上体现，vue2重写了一些数组方法一边支持响应式，而vue3则不需要</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>vue底层</title>
     <url>/2023/10/20/vue%E5%BA%95%E5%B1%82/</url>
     <content><![CDATA[<h1 id="响应式"><a href="#响应式" class="headerlink" title="响应式"></a>响应式</h1><h2 id="effect"><a href="#effect" class="headerlink" title="effect"></a>effect</h2><p>effect是一个‘桶’， 他收集并触发指定方法</p>
@@ -1169,8 +1227,82 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
         <category>综合</category>
       </categories>
       <tags>
-        <tag>html</tag>
         <tag>css</tag>
+        <tag>html</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【综合】js基础</title>
+    <url>/2024/03/04/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91js%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<span id="more"></span>
+
+<h1 id="1-隐式类型转换"><a href="#1-隐式类型转换" class="headerlink" title="1. 隐式类型转换"></a>1. 隐式类型转换</h1><p><img src="/2024/03/04/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91js%E5%9F%BA%E7%A1%80/jsautotranslate.png" alt="img"></p>
+<ul>
+<li>P 表示toPrimitive<ul>
+<li>先调用 <code>valueOf</code> 若返回不是原始类型</li>
+<li>再调用 <code>toString</code> 若返回不是原始类型</li>
+<li>则报错</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>所有比较都有转化为数字类型的趋势</p>
+</blockquote>
+<h1 id="2-实现函数缓存"><a href="#2-实现函数缓存" class="headerlink" title="2. 实现函数缓存"></a>2. 实现函数缓存</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> memoize = <span class="keyword">function</span> (<span class="params">fun, content</span>) &#123;</span><br><span class="line">	<span class="keyword">let</span> cache = <span class="title class_">Object</span>.<span class="title function_">create</span>(<span class="literal">null</span>)</span><br><span class="line">	content = content || <span class="variable language_">this</span> </span><br><span class="line">	<span class="keyword">return</span> <span class="function">(<span class="params">...key</span>)=&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">if</span>(!cache[key]) </span><br><span class="line">			cache[key] = fun.<span class="title function_">apply</span>(content, key)</span><br><span class="line">		<span class="keyword">return</span> cache[key]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-requestAnimationFrame"><a href="#3-requestAnimationFrame" class="headerlink" title="3. requestAnimationFrame"></a>3. requestAnimationFrame</h1><p>window.requestAnimationFrame(callback)</p>
+<ul>
+<li>作用： 告诉浏览器——你希望执行一个动画，并且要求浏览器在下次重绘之前调用指定的回调函数更新动画</li>
+<li>参数： callback回调函数，第一个参数是回调函数被触发时的时间戳。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> element = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;some-element-you-want-to-animate&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> start, previousTimeStamp;</span><br><span class="line"><span class="keyword">let</span> done = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">step</span>(<span class="params">timestamp</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (start === <span class="literal">undefined</span>) &#123;</span><br><span class="line">    start = timestamp;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> elapsed = timestamp - start;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (previousTimeStamp !== timestamp) &#123;</span><br><span class="line">    <span class="comment">// 这里使用 Math.min() 确保元素在恰好位于 200px 时停止运动</span></span><br><span class="line">    <span class="keyword">const</span> count = <span class="title class_">Math</span>.<span class="title function_">min</span>(<span class="number">0.1</span> * elapsed, <span class="number">200</span>);</span><br><span class="line">    element.<span class="property">style</span>.<span class="property">transform</span> = <span class="string">`translateX(<span class="subst">$&#123;count&#125;</span>px)`</span>;</span><br><span class="line">    <span class="keyword">if</span> (count === <span class="number">200</span>) done = <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (elapsed &lt; <span class="number">2000</span>) &#123;</span><br><span class="line">    <span class="comment">// 2 秒之后停止动画</span></span><br><span class="line">    previousTimeStamp = timestamp;</span><br><span class="line">    <span class="keyword">if</span> (!done) &#123;</span><br><span class="line">      <span class="variable language_">window</span>.<span class="title function_">requestAnimationFrame</span>(step);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">requestAnimationFrame</span>(step);</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>综合</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【综合】服务端基础</title>
+    <url>/2024/03/05/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<span id="more"></span>
+
+<h1 id="1-http-状态码"><a href="#1-http-状态码" class="headerlink" title="1. http 状态码"></a>1. http 状态码</h1><ul>
+<li>2XX<ul>
+<li><strong>200</strong>： OK</li>
+<li>204： Not Content， 服务器无返回内容</li>
+</ul>
+</li>
+<li>3XX<ul>
+<li>301： 永久重定向</li>
+<li>302： 临时重定向</li>
+<li><strong>304</strong>： Not Modified， 浏览器可以使用本地缓存</li>
+</ul>
+</li>
+<li>4XX<ul>
+<li><strong>400</strong>： Bad Request，请求报文错误</li>
+<li><strong>401</strong>： Unauthorized</li>
+<li><strong>403</strong>： Forbidden</li>
+<li><strong>404</strong>： Not Found</li>
+<li>405： Method Not Allowed， 请求方法不允许，可以用OPTIONS预检请求查看服务器允许的请求</li>
+</ul>
+</li>
+<li>5XX<ul>
+<li><strong>500</strong> Internal Server Error</li>
+<li><strong>502</strong> Bad Gateway</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>综合</category>
+      </categories>
+      <tags>
+        <tag>服务器</tag>
+        <tag>网络</tag>
+        <tag>服务端</tag>
       </tags>
   </entry>
   <entry>
@@ -1466,6 +1598,74 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
       </tags>
   </entry>
   <entry>
+    <title>前端性能优化</title>
+    <url>/2024/03/06/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</url>
+    <content><![CDATA[<span id="more"></span>
+
+<h1 id="首屏速度"><a href="#首屏速度" class="headerlink" title="首屏速度"></a>首屏速度</h1><ul>
+<li>源码上</li>
+</ul>
+<ol>
+<li><p>路由懒加载（动态导入） <code>()=&gt;import(&#39;/path&#39;)</code></p>
+<ul>
+<li>不要再导入异步组件了，因为路由组件本身就是动态导入，不需要组件写出异步组件了</li>
+<li>当前跳到了某路由，其对应组件才会下载。</li>
+</ul>
+</li>
+<li><p>异步组件（按需导入） <code>defineAsyncComponent</code></p>
+<ul>
+<li><pre><code class="js">const Some = defineAsyncComponent(()=&gt;import(&#39;/pat&#39;))
+...
+&lt;Some v-if=&quot;isShow&quot;&gt;&lt;/Some&gt;
+</code></pre>
+<p>首屏没有加载，<strong>用到时再向服务器发送请求</strong>。</p>
+</li>
+</ul>
+</li>
+<li><p>webpack打包压缩代码，禁止大图片转base64</p>
+</li>
+<li><p>老版的库更新以支持tree-shaking，少用第三方库</p>
+</li>
+<li><p>服务器渲染</p>
+</li>
+<li><p>服务器gZip压缩</p>
+</li>
+</ol>
+<ul>
+<li>网络上</li>
+</ul>
+<p>静态资源放在cdn上、懒加载</p>
+<ul>
+<li>用户感知上</li>
+</ul>
+<p>骨架屏&#x2F;loading</p>
+<h1 id="prefetch-和-script"><a href="#prefetch-和-script" class="headerlink" title="prefetch 和 script"></a>prefetch 和 script</h1><ul>
+<li>script加载</li>
+</ul>
+<p>按需引入</p>
+<p>切换需要等待</p>
+<ul>
+<li><code>&lt;link rel=&#39;prefetch&#39; as=&#39;script&#39; href=&#39;&#39; /&gt;</code></li>
+</ul>
+<p>预加载，切换无感</p>
+<p>浪费带宽</p>
+<blockquote>
+<p>prefetch 和 preload 不同， preload是一种<strong>立即</strong>获取资源的策略，prefetch是一种在后台缓存资源的策略，以便在需要时立即使用。</p>
+</blockquote>
+<h1 id="渲染性能"><a href="#渲染性能" class="headerlink" title="渲染性能"></a>渲染性能</h1><ul>
+<li>vue</li>
+</ul>
+<ol>
+<li>keep-alive 缓存</li>
+<li>v-show</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>性能</tag>
+        <tag>优化</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>原始值和引用值 &amp; typeof和instanceof</title>
     <url>/2023/10/11/%E5%8E%9F%E5%A7%8B%E5%80%BC%E5%92%8C%E5%BC%95%E7%94%A8%E5%80%BC/</url>
     <content><![CDATA[<span id="more"></span>
@@ -1743,6 +1943,43 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
       </tags>
   </entry>
   <entry>
+    <title>浅尝Web Worker</title>
+    <url>/2024/03/21/%E6%B5%85%E5%B0%9DWeb-Worker/</url>
+    <content><![CDATA[<h1 id="Worker"><a href="#Worker" class="headerlink" title="Worker"></a>Worker</h1><p>创建一个worker对象，可以在浏览器中创建一个新线程不阻塞UI线程渲染。</p>
+<ul>
+<li>必须遵守<strong>同源策略</strong></li>
+<li>深拷贝</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;btn&quot;</span>&gt;</span>send msg<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">id</span>=<span class="string">&quot;msg&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;terminate&quot;</span> <span class="attr">style</span>=<span class="string">&quot;color: red;&quot;</span>&gt;</span>terminate<span class="tag">&lt;/<span class="name">button</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">const</span> btn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#btn&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">const</span> terminate = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#terminate&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">const</span> input = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#msg&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">const</span> worker = <span class="keyword">new</span> <span class="title class_">Worker</span>(<span class="string">&#x27;./worker.js&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">        worker.<span class="property">onmessage</span> = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;我接收到了&#x27;</span>,e.<span class="property">data</span>);</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">        btn.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;我发送了&#x27;</span>,input.<span class="property">value</span>)</span></span><br><span class="line"><span class="language-javascript">            worker.<span class="title function_">postMessage</span>(input.<span class="property">value</span>);</span></span><br><span class="line"><span class="language-javascript">        &#125;)</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        terminate.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">            worker.<span class="title function_">terminate</span>()</span></span><br><span class="line"><span class="language-javascript">        &#125;)</span></span><br><span class="line"><span class="language-javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>worker.js</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">onmessage = <span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;另一个线程监听到了:&#x27;</span>, e.<span class="property">data</span>)</span><br><span class="line">    <span class="title function_">postMessage</span>(<span class="string">&#x27;另一个线程加工了&#x27;</span>+e.<span class="property">data</span>)</span><br><span class="line">&#125;</span><br><span class="line">onerror = <span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;onerror监听到:&#x27;</span>, e)</span><br><span class="line">&#125;</span><br><span class="line">onmessageerror = <span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;onmessageerror监听到:&#x27;</span>,e)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// console.log(self);</span></span><br></pre></td></tr></table></figure>
+
+<p>通过new Worker(‘.&#x2F;worker.js’) 的worker.js 文件处于 <code>DedicatedWorkerGlobalSpace</code>作用域下，可以用 <code>self</code> 访问到这个全局对象。</p>
+<p><strong>所以以上三个方法就是对全局对象的事件处理函数的重写</strong>。</p>
+<h1 id="Shared-Worker"><a href="#Shared-Worker" class="headerlink" title="Shared Worker"></a>Shared Worker</h1><ul>
+<li>必须遵守同源策略</li>
+<li>实现标签页共享</li>
+<li>深拷贝</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> btn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#btn&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> terminate = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#terminate&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> msg = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#msg&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> ul = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.recv&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> worker = <span class="keyword">new</span> <span class="title class_">SharedWorker</span>(<span class="string">&#x27;./sharedWorker.js&#x27;</span>)</span><br><span class="line"><span class="comment">// worker.port.start();</span></span><br><span class="line">btn.<span class="property">onclick</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;我发送了&#x27;</span>, msg.<span class="property">value</span>);</span><br><span class="line">    worker.<span class="property">port</span>.<span class="title function_">postMessage</span>(msg.<span class="property">value</span>);</span><br><span class="line">&#125;</span><br><span class="line">worker.<span class="property">port</span>.<span class="property">onmessage</span> = <span class="keyword">function</span> (<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;我接收到了&#x27;</span>, e.<span class="property">data</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> counter = <span class="number">0</span>; <span class="comment">// 计时器</span></span><br><span class="line"><span class="keyword">const</span> clients = [] <span class="comment">//连接上的用户，注意 无论有几个标签页，e.ports 的长度始终都是0</span></span><br><span class="line">self.<span class="property">onconnect</span> = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> port = e.<span class="property">ports</span>[<span class="number">0</span>];</span><br><span class="line">    <span class="comment">//console.log(e.ports); //⭐这里的内容必须在 edge://inspect/#workers 的inspect 里的控制台查看</span></span><br><span class="line">    <span class="comment">//port.postMessage(&#x27;sharedworker已连接&#x27;); //不能发送e或者  ports 里的任何对象。因为他们is not transferred</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;sharedworker已连接&#x27;</span>)</span><br><span class="line">    clients.<span class="title function_">push</span>(port);</span><br><span class="line">    port.<span class="property">onmessage</span> = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;sharedworker接收到&#x27;</span>, e.<span class="property">data</span>)</span><br><span class="line">        counter++;</span><br><span class="line">        clients.<span class="title function_">forEach</span>(<span class="function"><span class="params">client</span> =&gt;</span> &#123;</span><br><span class="line">            client.<span class="title function_">postMessage</span>(counter)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;; </span><br></pre></td></tr></table></figure>
+
+<p>注意</p>
+<ol>
+<li>同一个name下，且同一个域名下才可以共享</li>
+<li>想实现广播功能要自己保存每个连接（类似websocket）</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>webWorker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>浅聊WeakMap与Map</title>
     <url>/2023/10/22/%E6%B5%85%E8%81%8AWeakMap/</url>
     <content><![CDATA[<p>说到WeakMap不得不说Map了，他们的相同之处在于都是用一个key 对应一个 value</p>
@@ -1948,6 +2185,60 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
       </categories>
       <tags>
         <tag>深拷贝</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>生成器实现异步</title>
+    <url>/2024/03/26/%E7%94%9F%E6%88%90%E5%99%A8%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5/</url>
+    <content><![CDATA[<p>js中实现异步有三大方式: <code>回调</code> <code>Promise</code> <code>generator</code></p>
+<ul>
+<li><p>回调</p>
+<ul>
+<li>优势：简单、语义清晰</li>
+<li>劣势：回调地狱</li>
+</ul>
+</li>
+<li><p>Promise</p>
+<ul>
+<li>优势： 链式调用解决回调地狱、Promise.all 可以处理多个异步</li>
+<li>劣势：需要适用Promise语法</li>
+</ul>
+</li>
+<li><p>Generator</p>
+<ul>
+<li>优势：利用yield编写可读性更强、可以恢复和暂停、是async&#x2F;await的底层原理、</li>
+<li>劣势：不是专门解决异步的，需要搭配Promise、要手动编写生成器和迭代器使得编码更复杂</li>
+</ul>
+</li>
+</ul>
+<p>现在我们来详细聊聊<strong>generator实现异步</strong></p>
+<p><strong>场景</strong></p>
+<p>我要读一个文件dir.txt 这是一部目录，里面记录了 Lzy.json , XXX.json …. 等等 用户文件。</p>
+<p>然后我们要读取Lzy.json 的信息。</p>
+<p><strong>用 <code>async/await</code> 方式解决</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">read</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> dir = <span class="keyword">await</span> <span class="title function_">readFile</span>(<span class="string">&#x27;./txt/dir.txt&#x27;</span>, <span class="string">&#x27;utf8&#x27;</span>);</span><br><span class="line">    <span class="keyword">const</span> userInfo = <span class="keyword">await</span> <span class="title function_">readFile</span>(path.<span class="title function_">resolve</span>(<span class="string">&#x27;./txt&#x27;</span>, dir), <span class="string">&#x27;utf-8&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> userInfo</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">read</span>().<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span><span class="variable language_">console</span>.<span class="title function_">log</span>(res))</span><br></pre></td></tr></table></figure>
+
+<p><strong>用 <code>generator</code>方式解决</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span>* <span class="title function_">read</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> dir = <span class="keyword">yield</span> <span class="title function_">readFile</span>(<span class="string">&#x27;./txt/dir.txt&#x27;</span>, <span class="string">&#x27;utf8&#x27;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(dir)</span><br><span class="line">    <span class="keyword">const</span> userInfo = <span class="keyword">yield</span> <span class="title function_">readFile</span>(path.<span class="title function_">resolve</span>(<span class="string">&#x27;./txt&#x27;</span>, dir), <span class="string">&#x27;utf-8&#x27;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(userInfo)</span><br><span class="line">    <span class="keyword">return</span> userInfo</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> it = <span class="title function_">read</span>() <span class="comment">// 获取生成器对象</span></span><br><span class="line"><span class="keyword">const</span> res1 = it.<span class="title function_">next</span>();</span><br><span class="line">res1.<span class="property">value</span>.<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 相当于dir.txt完成后把值传给read函数的dir变量, 并执行一步生成器</span></span><br><span class="line">    it.<span class="title function_">next</span>(res);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这样只执行了第一步，而我们得到第一步的PromiseResult之后要继续递归的运行next(PromiseResult) 这样才能得到第二步。</p>
+<p>所以我们需要一个执行器 <code>co</code> ， </p>
+</blockquote>
+<p>co的作用就是一步到位，对于多个异步任务拓扑排序时，例如（task3依赖于task2，task2依赖于task1）</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> finalRes= <span class="title function_">co</span>(<span class="title function_">read</span>())</span><br><span class="line">finalRes.<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(res)) <span class="comment">// 一步到位,输出task3完成时的PromiseResult</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>实现 <code>co</code></strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">co</span>(<span class="params">gen</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="title function_">next</span>();</span><br><span class="line">        <span class="keyword">function</span> <span class="title function_">next</span>(<span class="params">context</span>) &#123; <span class="comment">// context 就是上一步异步任务完成的PromiseResult </span></span><br><span class="line">            <span class="keyword">const</span> &#123; value, done &#125; = gen.<span class="title function_">next</span>(context);</span><br><span class="line">            <span class="keyword">if</span> (done)</span><br><span class="line">                <span class="title function_">resolve</span>(value)</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="comment">// Promsie.resolve(value) 为了防止value是普通值。</span></span><br><span class="line">                <span class="title class_">Promise</span>.<span class="title function_">resolve</span>(value).<span class="title function_">then</span>(<span class="function"><span class="params">val</span> =&gt;</span> <span class="title function_">next</span>(val))</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>context 就是上一步yield后面的表达式完成时的PromiseResult </p>
+<p>例如： <code>const dir = yield readFile(&#39;./txt/dir.txt&#39;, &#39;utf8&#39;);</code> 就是把context 赋值给了dir</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>generator</tag>
       </tags>
   </entry>
   <entry>
@@ -4309,165 +4600,6 @@ if(&quot;serviceWorker&quot; in navigator) &#123;
       </categories>
       <tags>
         <tag>webpack</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>前端性能优化</title>
-    <url>/2024/03/06/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</url>
-    <content><![CDATA[<span id="more"></span>
-
-<h1 id="首屏速度"><a href="#首屏速度" class="headerlink" title="首屏速度"></a>首屏速度</h1><ul>
-<li>源码上</li>
-</ul>
-<ol>
-<li><p>路由懒加载（动态导入） <code>()=&gt;import(&#39;/path&#39;)</code></p>
-<ul>
-<li>不要再导入异步组件了，因为路由组件本身就是动态导入，不需要组件写出异步组件了</li>
-<li>当前跳到了某路由，其对应组件才会下载。</li>
-</ul>
-</li>
-<li><p>异步组件（按需导入） <code>defineAsyncComponent</code></p>
-<ul>
-<li><pre><code class="js">const Some = defineAsyncComponent(()=&gt;import(&#39;/pat&#39;))
-...
-&lt;Some v-if=&quot;isShow&quot;&gt;&lt;/Some&gt;
-</code></pre>
-<p>首屏没有加载，<strong>用到时再向服务器发送请求</strong>。</p>
-</li>
-</ul>
-</li>
-<li><p>webpack打包压缩代码，禁止大图片转base64</p>
-</li>
-<li><p>老版的库更新以支持tree-shaking，少用第三方库</p>
-</li>
-<li><p>服务器渲染</p>
-</li>
-<li><p>服务器gZip压缩</p>
-</li>
-</ol>
-<ul>
-<li>网络上</li>
-</ul>
-<p>静态资源放在cdn上、懒加载</p>
-<ul>
-<li>用户感知上</li>
-</ul>
-<p>骨架屏&#x2F;loading</p>
-<h1 id="prefetch-和-script"><a href="#prefetch-和-script" class="headerlink" title="prefetch 和 script"></a>prefetch 和 script</h1><ul>
-<li>script加载</li>
-</ul>
-<p>按需引入</p>
-<p>切换需要等待</p>
-<ul>
-<li><code>&lt;link rel=&#39;prefetch&#39; as=&#39;script&#39; href=&#39;&#39; /&gt;</code></li>
-</ul>
-<p>预加载，切换无感</p>
-<p>浪费带宽</p>
-<blockquote>
-<p>prefetch 和 preload 不同， preload是一种<strong>立即</strong>获取资源的策略，prefetch是一种在后台缓存资源的策略，以便在需要时立即使用。</p>
-</blockquote>
-<h1 id="渲染性能"><a href="#渲染性能" class="headerlink" title="渲染性能"></a>渲染性能</h1><ul>
-<li>vue</li>
-</ul>
-<ol>
-<li>keep-alive 缓存</li>
-<li>v-show</li>
-</ol>
-]]></content>
-      <tags>
-        <tag>性能</tag>
-        <tag>优化</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>浅尝Web Worker</title>
-    <url>/2024/03/21/%E6%B5%85%E5%B0%9DWeb-Worker/</url>
-    <content><![CDATA[<h1 id="Worker"><a href="#Worker" class="headerlink" title="Worker"></a>Worker</h1><p>创建一个worker对象，可以在浏览器中创建一个新线程不阻塞UI线程渲染。</p>
-<ul>
-<li>必须遵守<strong>同源策略</strong></li>
-<li>深拷贝</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;btn&quot;</span>&gt;</span>send msg<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">id</span>=<span class="string">&quot;msg&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;terminate&quot;</span> <span class="attr">style</span>=<span class="string">&quot;color: red;&quot;</span>&gt;</span>terminate<span class="tag">&lt;/<span class="name">button</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">const</span> btn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#btn&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">const</span> terminate = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#terminate&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">const</span> input = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#msg&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">const</span> worker = <span class="keyword">new</span> <span class="title class_">Worker</span>(<span class="string">&#x27;./worker.js&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">        worker.<span class="property">onmessage</span> = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;我接收到了&#x27;</span>,e.<span class="property">data</span>);</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">        btn.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;我发送了&#x27;</span>,input.<span class="property">value</span>)</span></span><br><span class="line"><span class="language-javascript">            worker.<span class="title function_">postMessage</span>(input.<span class="property">value</span>);</span></span><br><span class="line"><span class="language-javascript">        &#125;)</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        terminate.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">            worker.<span class="title function_">terminate</span>()</span></span><br><span class="line"><span class="language-javascript">        &#125;)</span></span><br><span class="line"><span class="language-javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>worker.js</strong></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">onmessage = <span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;另一个线程监听到了:&#x27;</span>, e.<span class="property">data</span>)</span><br><span class="line">    <span class="title function_">postMessage</span>(<span class="string">&#x27;另一个线程加工了&#x27;</span>+e.<span class="property">data</span>)</span><br><span class="line">&#125;</span><br><span class="line">onerror = <span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;onerror监听到:&#x27;</span>, e)</span><br><span class="line">&#125;</span><br><span class="line">onmessageerror = <span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;onmessageerror监听到:&#x27;</span>,e)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// console.log(self);</span></span><br></pre></td></tr></table></figure>
-
-<p>通过new Worker(‘.&#x2F;worker.js’) 的worker.js 文件处于 <code>DedicatedWorkerGlobalSpace</code>作用域下，可以用 <code>self</code> 访问到这个全局对象。</p>
-<p><strong>所以以上三个方法就是对全局对象的事件处理函数的重写</strong>。</p>
-<h1 id="Shared-Worker"><a href="#Shared-Worker" class="headerlink" title="Shared Worker"></a>Shared Worker</h1><ul>
-<li>必须遵守同源策略</li>
-<li>实现标签页共享</li>
-<li>深拷贝</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> btn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#btn&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> terminate = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#terminate&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> msg = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#msg&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> ul = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.recv&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> worker = <span class="keyword">new</span> <span class="title class_">SharedWorker</span>(<span class="string">&#x27;./sharedWorker.js&#x27;</span>)</span><br><span class="line"><span class="comment">// worker.port.start();</span></span><br><span class="line">btn.<span class="property">onclick</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;我发送了&#x27;</span>, msg.<span class="property">value</span>);</span><br><span class="line">    worker.<span class="property">port</span>.<span class="title function_">postMessage</span>(msg.<span class="property">value</span>);</span><br><span class="line">&#125;</span><br><span class="line">worker.<span class="property">port</span>.<span class="property">onmessage</span> = <span class="keyword">function</span> (<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;我接收到了&#x27;</span>, e.<span class="property">data</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> counter = <span class="number">0</span>; <span class="comment">// 计时器</span></span><br><span class="line"><span class="keyword">const</span> clients = [] <span class="comment">//连接上的用户，注意 无论有几个标签页，e.ports 的长度始终都是0</span></span><br><span class="line">self.<span class="property">onconnect</span> = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> port = e.<span class="property">ports</span>[<span class="number">0</span>];</span><br><span class="line">    <span class="comment">//console.log(e.ports); //⭐这里的内容必须在 edge://inspect/#workers 的inspect 里的控制台查看</span></span><br><span class="line">    <span class="comment">//port.postMessage(&#x27;sharedworker已连接&#x27;); //不能发送e或者  ports 里的任何对象。因为他们is not transferred</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;sharedworker已连接&#x27;</span>)</span><br><span class="line">    clients.<span class="title function_">push</span>(port);</span><br><span class="line">    port.<span class="property">onmessage</span> = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;sharedworker接收到&#x27;</span>, e.<span class="property">data</span>)</span><br><span class="line">        counter++;</span><br><span class="line">        clients.<span class="title function_">forEach</span>(<span class="function"><span class="params">client</span> =&gt;</span> &#123;</span><br><span class="line">            client.<span class="title function_">postMessage</span>(counter)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;; </span><br></pre></td></tr></table></figure>
-
-<p>注意</p>
-<ol>
-<li>同一个name下，且同一个域名下才可以共享</li>
-<li>想实现广播功能要自己保存每个连接（类似websocket）</li>
-</ol>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>webWorker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>生成器实现异步</title>
-    <url>/2024/03/26/%E7%94%9F%E6%88%90%E5%99%A8%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5/</url>
-    <content><![CDATA[<p>js中实现异步有三大方式: <code>回调</code> <code>Promise</code> <code>generator</code></p>
-<ul>
-<li><p>回调</p>
-<ul>
-<li>优势：简单、语义清晰</li>
-<li>劣势：回调地狱</li>
-</ul>
-</li>
-<li><p>Promise</p>
-<ul>
-<li>优势： 链式调用解决回调地狱、Promise.all 可以处理多个异步</li>
-<li>劣势：需要适用Promise语法</li>
-</ul>
-</li>
-<li><p>Generator</p>
-<ul>
-<li>优势：利用yield编写可读性更强、可以恢复和暂停、是async&#x2F;await的底层原理、</li>
-<li>劣势：不是专门解决异步的，需要搭配Promise、要手动编写生成器和迭代器使得编码更复杂</li>
-</ul>
-</li>
-</ul>
-<p>现在我们来详细聊聊<strong>generator实现异步</strong></p>
-<p><strong>场景</strong></p>
-<p>我要读一个文件dir.txt 这是一部目录，里面记录了 Lzy.json , XXX.json …. 等等 用户文件。</p>
-<p>然后我们要读取Lzy.json 的信息。</p>
-<p><strong>用 <code>async/await</code> 方式解决</strong></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">read</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> dir = <span class="keyword">await</span> <span class="title function_">readFile</span>(<span class="string">&#x27;./txt/dir.txt&#x27;</span>, <span class="string">&#x27;utf8&#x27;</span>);</span><br><span class="line">    <span class="keyword">const</span> userInfo = <span class="keyword">await</span> <span class="title function_">readFile</span>(path.<span class="title function_">resolve</span>(<span class="string">&#x27;./txt&#x27;</span>, dir), <span class="string">&#x27;utf-8&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> userInfo</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">read</span>().<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span><span class="variable language_">console</span>.<span class="title function_">log</span>(res))</span><br></pre></td></tr></table></figure>
-
-<p><strong>用 <code>generator</code>方式解决</strong></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span>* <span class="title function_">read</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> dir = <span class="keyword">yield</span> <span class="title function_">readFile</span>(<span class="string">&#x27;./txt/dir.txt&#x27;</span>, <span class="string">&#x27;utf8&#x27;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(dir)</span><br><span class="line">    <span class="keyword">const</span> userInfo = <span class="keyword">yield</span> <span class="title function_">readFile</span>(path.<span class="title function_">resolve</span>(<span class="string">&#x27;./txt&#x27;</span>, dir), <span class="string">&#x27;utf-8&#x27;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(userInfo)</span><br><span class="line">    <span class="keyword">return</span> userInfo</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> it = <span class="title function_">read</span>() <span class="comment">// 获取生成器对象</span></span><br><span class="line"><span class="keyword">const</span> res1 = it.<span class="title function_">next</span>();</span><br><span class="line">res1.<span class="property">value</span>.<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 相当于dir.txt完成后把值传给read函数的dir变量, 并执行一步生成器</span></span><br><span class="line">    it.<span class="title function_">next</span>(res);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>这样只执行了第一步，而我们得到第一步的PromiseResult之后要继续递归的运行next(PromiseResult) 这样才能得到第二步。</p>
-<p>所以我们需要一个执行器 <code>co</code> ， </p>
-</blockquote>
-<p>co的作用就是一步到位，对于多个异步任务拓扑排序时，例如（task3依赖于task2，task2依赖于task1）</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> finalRes= <span class="title function_">co</span>(<span class="title function_">read</span>())</span><br><span class="line">finalRes.<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(res)) <span class="comment">// 一步到位,输出task3完成时的PromiseResult</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>实现 <code>co</code></strong></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">co</span>(<span class="params">gen</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="title function_">next</span>();</span><br><span class="line">        <span class="keyword">function</span> <span class="title function_">next</span>(<span class="params">context</span>) &#123; <span class="comment">// context 就是上一步异步任务完成的PromiseResult </span></span><br><span class="line">            <span class="keyword">const</span> &#123; value, done &#125; = gen.<span class="title function_">next</span>(context);</span><br><span class="line">            <span class="keyword">if</span> (done)</span><br><span class="line">                <span class="title function_">resolve</span>(value)</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="comment">// Promsie.resolve(value) 为了防止value是普通值。</span></span><br><span class="line">                <span class="title class_">Promise</span>.<span class="title function_">resolve</span>(value).<span class="title function_">then</span>(<span class="function"><span class="params">val</span> =&gt;</span> <span class="title function_">next</span>(val))</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>context 就是上一步yield后面的表达式完成时的PromiseResult </p>
-<p>例如： <code>const dir = yield readFile(&#39;./txt/dir.txt&#39;, &#39;utf8&#39;);</code> 就是把context 赋值给了dir</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>generator</tag>
       </tags>
   </entry>
 </search>
