@@ -6,7 +6,7 @@
   <link href="https://blank-null.github.io/atom.xml" rel="self"/>
   
   <link href="https://blank-null.github.io/"/>
-  <updated>2024-03-06T10:48:11.853Z</updated>
+  <updated>2024-03-14T05:36:27.137Z</updated>
   <id>https://blank-null.github.io/</id>
   
   <author>
@@ -21,14 +21,18 @@
     <link href="https://blank-null.github.io/2024/03/06/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
     <id>https://blank-null.github.io/2024/03/06/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</id>
     <published>2024-03-06T09:58:04.000Z</published>
-    <updated>2024-03-06T10:48:11.853Z</updated>
+    <updated>2024-03-14T05:36:27.137Z</updated>
     
     
       
       
     <summary type="html">&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
 
-&lt;h1 id=&quot;首屏速度&quot;&gt;&lt;a href=&quot;#首屏速度&quot; class=&quot;headerlink&quot; title=&quot;首屏速度&quot;&gt;&lt;/a&gt;首屏速度&lt;/h1&gt;&lt;h2 id=&quot;减少首屏资源体积&quot;&gt;&lt;a href=&quot;#减少首屏资源体积&quot; cl</summary>
+&lt;h1 id=&quot;首屏速度&quot;&gt;&lt;a href=&quot;#首屏速度&quot; class=&quot;headerlink&quot; title=&quot;首屏速度&quot;&gt;&lt;/a&gt;首屏速度&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;源码上&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;路由懒加</summary>
       
     
     

@@ -631,6 +631,30 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
 </ol>
 </li>
 </ol>
+<h2 id="强制缓存"><a href="#强制缓存" class="headerlink" title="强制缓存"></a>强制缓存</h2><ul>
+<li>第一次响应后，响应头的 <code>Expires</code>和 <code>Cache-Control</code> 被保存起来<ul>
+<li>Expires： 资源过期日期。</li>
+<li>Cache-Control：<ul>
+<li>max-age: 资源有效时长， 结合响应头的 <code>Date</code> 算出资源过期时间。</li>
+<li>no-cache：使用协商缓存策略。</li>
+<li><strong>优先级</strong>高于Expires</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>如果命中，则使用本地资源。</li>
+<li>如果未命中，则走协商缓存策略。</li>
+</ul>
+<h2 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h2><p><img src="/./http%E8%AF%A6%E8%A7%A3/%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98.png" alt="img"></p>
+<ul>
+<li>协商缓存由服务器决定资源是否可用</li>
+<li>主要涉及到两对属性， 第一次响应头里的 <code>last-Modified</code>或 <code>Etag</code> 以及 后续请求头里的 <code>If-Modified-Since</code> 或 <code>If-None-Match</code> ，它们的值对应相等。</li>
+<li>第二次请求时，请求头带上 <code>If-Modified-Since</code> 或 <code>If-None-Match</code> ，服务器通过这两个属性判断资源是否变化，从而判断资源是否可用。<ul>
+<li>如果资源不可用（更新了），则返回200，和最新资源以及新的 <code>last-Modified</code> 或 <code>Etag</code></li>
+<li>如果资源可用（不变），则返回304，表示直接从缓存里拿资源</li>
+</ul>
+</li>
+</ul>
 <h1 id="tcp粘包"><a href="#tcp粘包" class="headerlink" title="tcp粘包"></a>tcp粘包</h1><p>首先tcp是面向字节流的，在发送数据时需要把数据分成一个个报文</p>
 <p>报文有两种情况：</p>
 <ul>
@@ -1673,7 +1697,7 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
 
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(obj,<span class="string">&#x27;d&#x27;</span>,&#123;</span><br><span class="line">    <span class="attr">value</span>: <span class="string">&#x27;ddd&#x27;</span>,</span><br><span class="line">    <span class="attr">enumerable</span>: <span class="literal">false</span></span><br><span class="line">&#125;) <span class="comment">//d属性枚举不到</span></span><br></pre></td></tr></table></figure>
 
-<p><a href="./%E4%B8%80%E4%BA%9B%E6%9E%9A%E4%B8%BE%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E6%B3%95">🔗更多关于枚举</a></p>
+<p><a href="/2023/10/13/%E4%B8%80%E4%BA%9B%E6%9E%9A%E4%B8%BE%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E6%B3%95">🔗更多关于枚举</a></p>
 <p>所以enumberable决定了属性能不能被枚举到<br>而可迭代性是由各种类型里内置的迭代器工厂函数决定的</p>
 <p>详见：🔗<a href="/2023/10/10/%E8%BF%AD%E4%BB%A3%E5%99%A8-%E7%94%9F%E6%88%90%E5%99%A8">迭代器-生成器</a></p>
 <ul>
@@ -1914,7 +1938,7 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
 <li>支持深拷贝Symbol，Set，Map，fn</li>
 <li>不支持深拷贝Date，RegExp，</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">deepClone</span>(<span class="params">obj, hash = <span class="keyword">new</span> <span class="built_in">WeakMap</span>()</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!obj) <span class="keyword">return</span> obj</span><br><span class="line">    <span class="keyword">let</span> clone;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(hash.<span class="title function_">has</span>(obj))&#123;</span><br><span class="line">        <span class="comment">// 如果在的话</span></span><br><span class="line">        <span class="keyword">return</span> hash.<span class="title function_">get</span>(obj)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> <span class="title class_">Set</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Set</span>([...obj])</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> <span class="title class_">Map</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Map</span>([...obj])</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> <span class="title class_">WeakMap</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="string">&#x27;weakmap类型未作处理&#x27;</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> obj === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">        <span class="comment">//方法不用克隆，直接返回</span></span><br><span class="line">        <span class="keyword">return</span> obj</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> <span class="title class_">Array</span>) &#123; <span class="comment">//obj 是数组</span></span><br><span class="line">        clone = [];</span><br><span class="line">        hash.<span class="title function_">set</span>(obj, clone)</span><br><span class="line">        obj.<span class="title function_">forEach</span>(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">            clone.<span class="title function_">push</span>(<span class="title function_">deepClone</span>(item, hash))</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> obj !== <span class="string">&#x27;object&#x27;</span>) &#123; <span class="comment">//原始值类型</span></span><br><span class="line">        <span class="keyword">return</span> obj</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123; <span class="comment">//obj 是Object对象</span></span><br><span class="line">        clone = &#123;&#125;;</span><br><span class="line">        hash.<span class="title function_">set</span>(obj, clone)</span><br><span class="line">        <span class="comment">//键是字符</span></span><br><span class="line">        <span class="title class_">Object</span>.<span class="title function_">getOwnPropertyNames</span>(obj).<span class="title function_">forEach</span>(<span class="function"><span class="params">propNames</span> =&gt;</span> &#123;</span><br><span class="line">            clone[propNames] = <span class="title function_">deepClone</span>(obj[propNames],hash)</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="comment">//键是Symbol</span></span><br><span class="line">        <span class="title class_">Object</span>.<span class="title function_">getOwnPropertySymbols</span>(obj).<span class="title function_">forEach</span>(<span class="function"><span class="params">syb</span> =&gt;</span> &#123;</span><br><span class="line">            clone[<span class="title class_">Symbol</span>(syb.<span class="property">description</span>)] = <span class="title function_">deepClone</span>(obj[syb],hash)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> clone</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">deepClone</span>(<span class="params">obj, hash = <span class="keyword">new</span> <span class="built_in">WeakMap</span>()</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!obj) <span class="keyword">return</span> obj</span><br><span class="line">    <span class="keyword">let</span> clone;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(hash.<span class="title function_">has</span>(obj))&#123;</span><br><span class="line">        <span class="comment">// 如果在的话</span></span><br><span class="line">        <span class="keyword">return</span> hash.<span class="title function_">get</span>(obj)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> <span class="title class_">Set</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Set</span>([...obj]) <span class="comment">//缺陷--解构是浅拷贝</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> <span class="title class_">Map</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Map</span>([...obj])</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> <span class="title class_">WeakMap</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="string">&#x27;weakmap类型未作处理&#x27;</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> obj === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">        <span class="comment">//方法不用克隆，直接返回</span></span><br><span class="line">        <span class="keyword">return</span> obj</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> <span class="title class_">Array</span>) &#123; <span class="comment">//obj 是数组</span></span><br><span class="line">        clone = [];</span><br><span class="line">        hash.<span class="title function_">set</span>(obj, clone)</span><br><span class="line">        obj.<span class="title function_">forEach</span>(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">            clone.<span class="title function_">push</span>(<span class="title function_">deepClone</span>(item, hash))</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> obj !== <span class="string">&#x27;object&#x27;</span>) &#123; <span class="comment">//原始值类型</span></span><br><span class="line">        <span class="keyword">return</span> obj</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123; <span class="comment">//obj 是Object对象</span></span><br><span class="line">        clone = &#123;&#125;;</span><br><span class="line">        hash.<span class="title function_">set</span>(obj, clone)</span><br><span class="line">        <span class="comment">//键是字符</span></span><br><span class="line">        <span class="title class_">Object</span>.<span class="title function_">getOwnPropertyNames</span>(obj).<span class="title function_">forEach</span>(<span class="function"><span class="params">propNames</span> =&gt;</span> &#123;</span><br><span class="line">            clone[propNames] = <span class="title function_">deepClone</span>(obj[propNames],hash)</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="comment">//键是Symbol</span></span><br><span class="line">        <span class="title class_">Object</span>.<span class="title function_">getOwnPropertySymbols</span>(obj).<span class="title function_">forEach</span>(<span class="function"><span class="params">syb</span> =&gt;</span> &#123;</span><br><span class="line">            clone[<span class="title class_">Symbol</span>(syb.<span class="property">description</span>)] = <span class="title function_">deepClone</span>(obj[syb],hash)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> clone</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 <h1 id="优化手写深度克隆"><a href="#优化手写深度克隆" class="headerlink" title="优化手写深度克隆"></a>优化手写深度克隆</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">deepClone</span>(<span class="params"></span>)&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -2513,7 +2537,7 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
 <li>Array.from()</li>
 <li>yield*</li>
 </ol>
-<p><strong>伪数组没有迭代器，需要Array.from()转成数组</strong> </p>
+<p><strong>伪数组没有迭代器，需要Array.from()转成数组</strong></p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> fakerArr = &#123;</span><br><span class="line">    <span class="number">0</span>: <span class="string">&#x27;a&#x27;</span>,</span><br><span class="line">    <span class="number">1</span>: <span class="string">&#x27;b&#x27;</span>,</span><br><span class="line">    <span class="number">2</span>: <span class="string">&#x27;c&#x27;</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">let</span> i <span class="keyword">in</span> fakerArr)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(fakerArr[i]) <span class="comment">//正常</span></span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">let</span> item <span class="keyword">of</span> fakerArr)&#123; <span class="comment">//TypeError: fakerArr is not iterable</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(item)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ol>
@@ -2582,6 +2606,9 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
 
 <p><strong>适合作默认迭代器</strong></p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Foo</span> &#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">value</span> = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">    &#125;</span><br><span class="line">    * [<span class="title class_">Symbol</span>.<span class="property">iterator</span>]()&#123;</span><br><span class="line">        <span class="keyword">yield</span>* <span class="variable language_">this</span>.<span class="property">value</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> f <span class="keyword">of</span> <span class="keyword">new</span> <span class="title class_">Foo</span>())&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(f)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>也可以配合 <code>Promise</code> 实现异步</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span>* <span class="title function_">readFileWithGen</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;  </span><br><span class="line">    <span class="keyword">const</span> content1 = <span class="keyword">yield</span> <span class="title function_">readFileWithPromise</span>(<span class="string">&#x27;/etc/passwd&#x27;</span>, <span class="string">&#x27;utf8&#x27;</span>)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(content1)</span><br><span class="line">    <span class="keyword">const</span> content2 = <span class="keyword">yield</span> <span class="title function_">readFileWithPromise</span>(<span class="string">&#x27;/etc/profile&#x27;</span>, <span class="string">&#x27;utf8&#x27;</span>)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(content2)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;done&#x27;</span></span><br><span class="line">  &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">error</span>(err)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;fail&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">run</span> = generator =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> g = <span class="title function_">generator</span>()</span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">next</span> = res =&gt; &#123;</span><br><span class="line">      <span class="keyword">const</span> result = g.<span class="title function_">next</span>(res)</span><br><span class="line">      <span class="keyword">if</span> (result.<span class="property">done</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_">resolve</span>(result.<span class="property">value</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      result.<span class="property">value</span></span><br><span class="line">        .<span class="title function_">then</span>(</span><br><span class="line">          next,</span><br><span class="line">          <span class="function"><span class="params">err</span> =&gt;</span> <span class="title function_">reject</span>(gen.<span class="keyword">throw</span>(err).<span class="property">value</span>)</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">next</span>()</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">run</span>(readFileWithGen)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(res))</span><br><span class="line">  .<span class="title function_">catch</span>(<span class="function"><span class="params">err</span> =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(err))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>js红宝书</category>
@@ -4280,14 +4307,43 @@ if(&quot;serviceWorker&quot; in navigator) &#123;
     <url>/2024/03/06/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</url>
     <content><![CDATA[<span id="more"></span>
 
-<h1 id="首屏速度"><a href="#首屏速度" class="headerlink" title="首屏速度"></a>首屏速度</h1><h2 id="减少首屏资源体积"><a href="#减少首屏资源体积" class="headerlink" title="减少首屏资源体积"></a>减少首屏资源体积</h2><ol>
-<li>webpack打包压缩代码</li>
-<li>异步加载 <code>import().then</code></li>
-<li>老版的库更新以支持tree-shaking</li>
-<li>少用第三方库</li>
-<li>静止大图片转base64</li>
-<li>骨架屏&#x2F;loading</li>
+<h1 id="首屏速度"><a href="#首屏速度" class="headerlink" title="首屏速度"></a>首屏速度</h1><ul>
+<li>源码上</li>
+</ul>
+<ol>
+<li><p>路由懒加载（动态导入） <code>()=&gt;import(&#39;/path&#39;)</code></p>
+<ul>
+<li>不要再导入异步组件了，因为路由组件本身就是动态导入，不需要组件写出异步组件了</li>
+<li>当前跳到了某路由，其对应组件才会下载。</li>
+</ul>
+</li>
+<li><p>异步组件（按需导入） <code>defineAsyncComponent</code></p>
+<ul>
+<li><pre><code class="js">const Some = defineAsyncComponent(()=&gt;import(&#39;/pat&#39;))
+...
+&lt;Some v-if=&quot;isShow&quot;&gt;&lt;/Some&gt;
+</code></pre>
+<p>首屏没有加载，<strong>用到时再向服务器发送请求</strong>。</p>
+</li>
+</ul>
+</li>
+<li><p>webpack打包压缩代码，禁止大图片转base64</p>
+</li>
+<li><p>老版的库更新以支持tree-shaking，少用第三方库</p>
+</li>
+<li><p>服务器渲染</p>
+</li>
+<li><p>服务器gZip压缩</p>
+</li>
 </ol>
+<ul>
+<li>网络上</li>
+</ul>
+<p>静态资源放在cdn上、懒加载</p>
+<ul>
+<li>用户感知上</li>
+</ul>
+<p>骨架屏&#x2F;loading</p>
 <h1 id="prefetch-和-script"><a href="#prefetch-和-script" class="headerlink" title="prefetch 和 script"></a>prefetch 和 script</h1><ul>
 <li>script加载</li>
 </ul>
@@ -4299,7 +4355,7 @@ if(&quot;serviceWorker&quot; in navigator) &#123;
 <p>预加载，切换无感</p>
 <p>浪费带宽</p>
 <blockquote>
-<p> prefetch 和 preload 不同， preload是一种<strong>立即</strong>获取资源的策略，prefetch是一种在后台缓存资源的策略，以便在需要时立即使用。</p>
+<p>prefetch 和 preload 不同， preload是一种<strong>立即</strong>获取资源的策略，prefetch是一种在后台缓存资源的策略，以便在需要时立即使用。</p>
 </blockquote>
 <h1 id="渲染性能"><a href="#渲染性能" class="headerlink" title="渲染性能"></a>渲染性能</h1><ul>
 <li>vue</li>
