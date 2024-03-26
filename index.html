@@ -152,7 +152,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -163,7 +163,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-count">76</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -192,6 +192,295 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2024/03/26/%E7%94%9F%E6%88%90%E5%99%A8%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="bLank-L">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/03/26/%E7%94%9F%E6%88%90%E5%99%A8%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5/" class="post-title-link" itemprop="url">生成器实现异步</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-03-26 12:01:20 / 修改时间：14:56:50" itemprop="dateCreated datePublished" datetime="2024-03-26T12:01:20+08:00">2024-03-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="生成器实现异步" href="/2024/03/26/%E7%94%9F%E6%88%90%E5%99%A8%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::bcb3e5855910a2b53dfe5859fa2ddfad" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.6k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>js中实现异步有三大方式: <code>回调</code> <code>Promise</code> <code>generator</code></p>
+<ul>
+<li><p>回调</p>
+<ul>
+<li>优势：简单、语义清晰</li>
+<li>劣势：回调地狱</li>
+</ul>
+</li>
+<li><p>Promise</p>
+<ul>
+<li>优势： 链式调用解决回调地狱、Promise.all 可以处理多个异步</li>
+<li>劣势：需要适用Promise语法</li>
+</ul>
+</li>
+<li><p>Generator</p>
+<ul>
+<li>优势：利用yield编写可读性更强、可以恢复和暂停、是async&#x2F;await的底层原理、</li>
+<li>劣势：不是专门解决异步的，需要搭配Promise、要手动编写生成器和迭代器使得编码更复杂</li>
+</ul>
+</li>
+</ul>
+<p>现在我们来详细聊聊<strong>generator实现异步</strong></p>
+<p><strong>场景</strong></p>
+<p>我要读一个文件dir.txt 这是一部目录，里面记录了 Lzy.json , XXX.json …. 等等 用户文件。</p>
+<p>然后我们要读取Lzy.json 的信息。</p>
+<p><strong>用 <code>async/await</code> 方式解决</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">read</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> dir = <span class="keyword">await</span> <span class="title function_">readFile</span>(<span class="string">&#x27;./txt/dir.txt&#x27;</span>, <span class="string">&#x27;utf8&#x27;</span>);</span><br><span class="line">    <span class="keyword">const</span> userInfo = <span class="keyword">await</span> <span class="title function_">readFile</span>(path.<span class="title function_">resolve</span>(<span class="string">&#x27;./txt&#x27;</span>, dir), <span class="string">&#x27;utf-8&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> userInfo</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">read</span>().<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span><span class="variable language_">console</span>.<span class="title function_">log</span>(res))</span><br></pre></td></tr></table></figure>
+
+<p><strong>用 <code>generator</code>方式解决</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span>* <span class="title function_">read</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> dir = <span class="keyword">yield</span> <span class="title function_">readFile</span>(<span class="string">&#x27;./txt/dir.txt&#x27;</span>, <span class="string">&#x27;utf8&#x27;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(dir)</span><br><span class="line">    <span class="keyword">const</span> userInfo = <span class="keyword">yield</span> <span class="title function_">readFile</span>(path.<span class="title function_">resolve</span>(<span class="string">&#x27;./txt&#x27;</span>, dir), <span class="string">&#x27;utf-8&#x27;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(userInfo)</span><br><span class="line">    <span class="keyword">return</span> userInfo</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> it = <span class="title function_">read</span>() <span class="comment">// 获取生成器对象</span></span><br><span class="line"><span class="keyword">const</span> res1 = it.<span class="title function_">next</span>();</span><br><span class="line">res1.<span class="property">value</span>.<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 相当于dir.txt完成后把值传给read函数的dir变量, 并执行一步生成器</span></span><br><span class="line">    it.<span class="title function_">next</span>(res);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这样只执行了第一步，而我们得到第一步的PromiseResult之后要继续递归的运行next(PromiseResult) 这样才能得到第二步。</p>
+<p>所以我们需要一个执行器 <code>co</code> ， </p>
+</blockquote>
+<p>co的作用就是一步到位，对于多个异步任务拓扑排序时，例如（task3依赖于task2，task2依赖于task1）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> finalRes= <span class="title function_">co</span>(<span class="title function_">read</span>())</span><br><span class="line">finalRes.<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(res)) <span class="comment">// 一步到位,输出task3完成时的PromiseResult</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>实现 <code>co</code></strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">co</span>(<span class="params">gen</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="title function_">next</span>();</span><br><span class="line">        <span class="keyword">function</span> <span class="title function_">next</span>(<span class="params">context</span>) &#123; <span class="comment">// context 就是上一步异步任务完成的PromiseResult </span></span><br><span class="line">            <span class="keyword">const</span> &#123; value, done &#125; = gen.<span class="title function_">next</span>(context);</span><br><span class="line">            <span class="keyword">if</span> (done)</span><br><span class="line">                <span class="title function_">resolve</span>(value)</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="comment">// Promsie.resolve(value) 为了防止value是普通值。</span></span><br><span class="line">                <span class="title class_">Promise</span>.<span class="title function_">resolve</span>(value).<span class="title function_">then</span>(<span class="function"><span class="params">val</span> =&gt;</span> <span class="title function_">next</span>(val))</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>context 就是上一步yield后面的表达式完成时的PromiseResult </p>
+<p>例如： <code>const dir = yield readFile(&#39;./txt/dir.txt&#39;, &#39;utf8&#39;);</code> 就是把context 赋值给了dir</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2024/03/21/%E6%B5%85%E5%B0%9DWeb-Worker/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="bLank-L">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/03/21/%E6%B5%85%E5%B0%9DWeb-Worker/" class="post-title-link" itemprop="url">浅尝Web Worker</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-03-21 20:03:49" itemprop="dateCreated datePublished" datetime="2024-03-21T20:03:49+08:00">2024-03-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-03-26 11:14:59" itemprop="dateModified" datetime="2024-03-26T11:14:59+08:00">2024-03-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="浅尝Web Worker" href="/2024/03/21/%E6%B5%85%E5%B0%9DWeb-Worker/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::42195d8a2d8d75b488dc1dfa606e3684" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Worker"><a href="#Worker" class="headerlink" title="Worker"></a>Worker</h1><p>创建一个worker对象，可以在浏览器中创建一个新线程不阻塞UI线程渲染。</p>
+<ul>
+<li>必须遵守<strong>同源策略</strong></li>
+<li>深拷贝</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;btn&quot;</span>&gt;</span>send msg<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">id</span>=<span class="string">&quot;msg&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;terminate&quot;</span> <span class="attr">style</span>=<span class="string">&quot;color: red;&quot;</span>&gt;</span>terminate<span class="tag">&lt;/<span class="name">button</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">const</span> btn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#btn&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">const</span> terminate = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#terminate&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">const</span> input = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#msg&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">const</span> worker = <span class="keyword">new</span> <span class="title class_">Worker</span>(<span class="string">&#x27;./worker.js&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">        worker.<span class="property">onmessage</span> = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;我接收到了&#x27;</span>,e.<span class="property">data</span>);</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">        btn.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;我发送了&#x27;</span>,input.<span class="property">value</span>)</span></span><br><span class="line"><span class="language-javascript">            worker.<span class="title function_">postMessage</span>(input.<span class="property">value</span>);</span></span><br><span class="line"><span class="language-javascript">        &#125;)</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        terminate.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">            worker.<span class="title function_">terminate</span>()</span></span><br><span class="line"><span class="language-javascript">        &#125;)</span></span><br><span class="line"><span class="language-javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>worker.js</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">onmessage = <span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;另一个线程监听到了:&#x27;</span>, e.<span class="property">data</span>)</span><br><span class="line">    <span class="title function_">postMessage</span>(<span class="string">&#x27;另一个线程加工了&#x27;</span>+e.<span class="property">data</span>)</span><br><span class="line">&#125;</span><br><span class="line">onerror = <span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;onerror监听到:&#x27;</span>, e)</span><br><span class="line">&#125;</span><br><span class="line">onmessageerror = <span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;onmessageerror监听到:&#x27;</span>,e)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// console.log(self);</span></span><br></pre></td></tr></table></figure>
+
+<p>通过new Worker(‘.&#x2F;worker.js’) 的worker.js 文件处于 <code>DedicatedWorkerGlobalSpace</code>作用域下，可以用 <code>self</code> 访问到这个全局对象。</p>
+<p><strong>所以以上三个方法就是对全局对象的事件处理函数的重写</strong>。</p>
+<h1 id="Shared-Worker"><a href="#Shared-Worker" class="headerlink" title="Shared Worker"></a>Shared Worker</h1><ul>
+<li>必须遵守同源策略</li>
+<li>实现标签页共享</li>
+<li>深拷贝</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> btn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#btn&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> terminate = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#terminate&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> msg = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#msg&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> ul = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.recv&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> worker = <span class="keyword">new</span> <span class="title class_">SharedWorker</span>(<span class="string">&#x27;./sharedWorker.js&#x27;</span>)</span><br><span class="line"><span class="comment">// worker.port.start();</span></span><br><span class="line">btn.<span class="property">onclick</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;我发送了&#x27;</span>, msg.<span class="property">value</span>);</span><br><span class="line">    worker.<span class="property">port</span>.<span class="title function_">postMessage</span>(msg.<span class="property">value</span>);</span><br><span class="line">&#125;</span><br><span class="line">worker.<span class="property">port</span>.<span class="property">onmessage</span> = <span class="keyword">function</span> (<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;我接收到了&#x27;</span>, e.<span class="property">data</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> counter = <span class="number">0</span>; <span class="comment">// 计时器</span></span><br><span class="line"><span class="keyword">const</span> clients = [] <span class="comment">//连接上的用户，注意 无论有几个标签页，e.ports 的长度始终都是0</span></span><br><span class="line">self.<span class="property">onconnect</span> = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> port = e.<span class="property">ports</span>[<span class="number">0</span>];</span><br><span class="line">    <span class="comment">//console.log(e.ports); //⭐这里的内容必须在 edge://inspect/#workers 的inspect 里的控制台查看</span></span><br><span class="line">    <span class="comment">//port.postMessage(&#x27;sharedworker已连接&#x27;); //不能发送e或者  ports 里的任何对象。因为他们is not transferred</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;sharedworker已连接&#x27;</span>)</span><br><span class="line">    clients.<span class="title function_">push</span>(port);</span><br><span class="line">    port.<span class="property">onmessage</span> = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;sharedworker接收到&#x27;</span>, e.<span class="property">data</span>)</span><br><span class="line">        counter++;</span><br><span class="line">        clients.<span class="title function_">forEach</span>(<span class="function"><span class="params">client</span> =&gt;</span> &#123;</span><br><span class="line">            client.<span class="title function_">postMessage</span>(counter)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;; </span><br></pre></td></tr></table></figure>
+
+<p>注意</p>
+<ol>
+<li>同一个name下，且同一个域名下才可以共享</li>
+<li>想实现广播功能要自己保存每个连接（类似websocket）</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1301,242 +1590,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2023/11/24/IntersectionObserver/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="bLank-L">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="bLanK's blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | bLanK's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/11/24/IntersectionObserver/" class="post-title-link" itemprop="url">IntersectionObserver</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2023-11-24 21:06:54 / 修改时间：21:32:13" itemprop="dateCreated datePublished" datetime="2023-11-24T21:06:54+08:00">2023-11-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Changyan：</span>
-    
-    <a title="IntersectionObserver" href="/2023/11/24/IntersectionObserver/#SOHUCS" itemprop="discussionUrl">
-      <span id="sourceId::4923c54d4e29c413169c9e0d6fa6c605" class="cy_cmt_count" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>559</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">entries</span>&#125; Array 交叉状态数组 </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">observer</span>&#125; Object 实例对象</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">const</span> observer = <span class="keyword">new</span> <span class="title class_">IntersectionObserver</span>(<span class="keyword">function</span>(<span class="params">entries, observer</span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(entries)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(observer)</span><br><span class="line">&#125;, options?)</span><br></pre></td></tr></table></figure>
-
-<p><strong>options:</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">root</span>: elementNode, <span class="comment">//监听元素的祖先元素Element对象，其边界盒将被视作视口</span></span><br><span class="line">    <span class="attr">rootMargin</span>: <span class="string">&quot;0px 0px 0px 0px&quot;</span>, <span class="comment">//计算交叉值时，边框相距rootMargin值也算交叉</span></span><br><span class="line">    <span class="attr">threshold</span>: <span class="number">0.0</span>      <span class="comment">// 0~1 0表示碰到就算交叉，1表示全部进入才算交叉</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h2><h3 id="1-observe"><a href="#1-observe" class="headerlink" title="1. observe"></a>1. observe</h3><p><code>observer.observe(elementNode)</code> </p>
-<h3 id="2-takeRecords"><a href="#2-takeRecords" class="headerlink" title="2. takeRecords"></a>2. takeRecords</h3><p><code>observer.takeRecords()</code> </p>
-<h3 id="3-disconnect"><a href="#3-disconnect" class="headerlink" title="3. disconnect"></a>3. disconnect</h3><p><code>observer.disconnect()</code> 取消监听</p>
-<h3 id="4-unobserve"><a href="#4-unobserve" class="headerlink" title="4. unobserve"></a>4. unobserve</h3><p><code>observer.unobserve(elementNode)</code> 取消对target的监听</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2023/11/24/MutationObserver/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="bLank-L">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="bLanK's blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | bLanK's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/11/24/MutationObserver/" class="post-title-link" itemprop="url">MutationObserver</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2023-11-24 19:55:40 / 修改时间：21:58:41" itemprop="dateCreated datePublished" datetime="2023-11-24T19:55:40+08:00">2023-11-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Changyan：</span>
-    
-    <a title="MutationObserver" href="/2023/11/24/MutationObserver/#SOHUCS" itemprop="discussionUrl">
-      <span id="sourceId::8402b6ec3f585d34872ab3097f5d16f1" class="cy_cmt_count" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>817</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>MutationObserver 用于观察<strong>DOM</strong>的任何变动</p>
-<p>但是DOM的变动是同步的，而此方法是<strong>异步微任务</strong></p>
-<h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">MutationRecord</span>&#125; Array 变动数组</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">obInstance</span>&#125; Object observer实例</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">const</span> observer = <span class="keyword">new</span> <span class="title class_">MutationObserver</span>(<span class="function">(<span class="params">MutationRecord, obInstance</span>)=&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">MutationRecord</span>)  </span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(obInstance)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h2><h3 id="1-observe"><a href="#1-observe" class="headerlink" title="1. observe"></a>1. observe</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">node</span>&#125; DOMnode dom节点</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">options</span>&#125; Object 配置对象</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">observer.<span class="title function_">observe</span>(node, options?)</span><br></pre></td></tr></table></figure>
-
-<p><strong>options：</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">attributes</span>: <span class="literal">true</span>,   <span class="comment">// 监控 属性变化</span></span><br><span class="line">    <span class="attr">characterData</span>: <span class="literal">true</span>,    <span class="comment">// 监听 声明的 target 节点上所有字符的变化</span></span><br><span class="line">    <span class="attr">childList</span>: <span class="literal">true</span>,    <span class="comment">// 监听 target 节点中发生的节点的新增、删除与修改, 包括innerText</span></span><br><span class="line">    <span class="attr">subtree</span>: <span class="literal">true</span>,      <span class="comment">// 监听 作用于该节点的整个子树</span></span><br><span class="line">    <span class="comment">// attributeOldValue: true,    //是否需要记录变动前的属性值</span></span><br><span class="line">    <span class="comment">// characterDataOldValue: true  //是否需要记录变动前的属性值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>注意：</strong></p>
-<blockquote>
-<p>childList 所指的子节点包括 文本内容也是一个节点</p>
-</blockquote>
-<h3 id="2-disconnect"><a href="#2-disconnect" class="headerlink" title="2. disconnect"></a>2. disconnect</h3><p><code>observer.disconnect()</code><br>停止监听</p>
-<h3 id="3-takeRecords"><a href="#3-takeRecords" class="headerlink" title="3. takeRecords"></a>3. takeRecords</h3><p><code>observer.takeRecords</code> 用来清除变动记录，即不再处理未处理的变动。该方法返回变动记录的数组。</p>
-<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><h3 id="1-图片懒加载"><a href="#1-图片懒加载" class="headerlink" title="1. 图片懒加载"></a>1. 图片懒加载</h3><h3 id="2-加载更多"><a href="#2-加载更多" class="headerlink" title="2. 加载更多"></a>2. 加载更多</h3>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1560,13 +1613,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">138k</span>
+    <span title="站点总字数">142k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:10</span>
+    <span title="站点阅读时长">4:19</span>
   </span>
 </div>
 <div class="busuanzi-count">

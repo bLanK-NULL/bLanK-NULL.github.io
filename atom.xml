@@ -6,7 +6,7 @@
   <link href="https://blank-null.github.io/atom.xml" rel="self"/>
   
   <link href="https://blank-null.github.io/"/>
-  <updated>2024-03-14T05:36:27.137Z</updated>
+  <updated>2024-03-26T06:56:50.208Z</updated>
   <id>https://blank-null.github.io/</id>
   
   <author>
@@ -15,6 +15,57 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>生成器实现异步</title>
+    <link href="https://blank-null.github.io/2024/03/26/%E7%94%9F%E6%88%90%E5%99%A8%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5/"/>
+    <id>https://blank-null.github.io/2024/03/26/%E7%94%9F%E6%88%90%E5%99%A8%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5/</id>
+    <published>2024-03-26T04:01:20.000Z</published>
+    <updated>2024-03-26T06:56:50.208Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;js中实现异步有三大方式: &lt;code&gt;回调&lt;/code&gt; &lt;code&gt;Promise&lt;/code&gt; &lt;code&gt;generator&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;回调&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;优势：简单、语义清晰&lt;/li&gt;
+&lt;li&gt;劣势：回调地狱&lt;/li</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="https://blank-null.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="generator" scheme="https://blank-null.github.io/tags/generator/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>浅尝Web Worker</title>
+    <link href="https://blank-null.github.io/2024/03/21/%E6%B5%85%E5%B0%9DWeb-Worker/"/>
+    <id>https://blank-null.github.io/2024/03/21/%E6%B5%85%E5%B0%9DWeb-Worker/</id>
+    <published>2024-03-21T12:03:49.000Z</published>
+    <updated>2024-03-26T03:14:59.684Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Worker&quot;&gt;&lt;a href=&quot;#Worker&quot; class=&quot;headerlink&quot; title=&quot;Worker&quot;&gt;&lt;/a&gt;Worker&lt;/h1&gt;&lt;p&gt;创建一个worker对象，可以在浏览器中创建一个新线程不阻塞UI线程渲染。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;必须遵</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="https://blank-null.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="webWorker" scheme="https://blank-null.github.io/tags/webWorker/"/>
+    
+  </entry>
   
   <entry>
     <title>前端性能优化</title>
@@ -447,60 +498,6 @@
     
     
     <category term="3d" scheme="https://blank-null.github.io/tags/3d/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>node.js基本使用</title>
-    <link href="https://blank-null.github.io/2023/10/24/node-js%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/"/>
-    <id>https://blank-null.github.io/2023/10/24/node-js%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</id>
-    <published>2023-10-24T11:27:25.000Z</published>
-    <updated>2023-10-24T11:28:55.657Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;node中模块分为：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;内置模块：fs，path，os，http&lt;/li&gt;
-&lt;li&gt;自定义&lt;/li&gt;
-&lt;li&gt;第三方&lt;/li&gt;
-&lt;/ul&gt;</summary>
-    
-    
-    
-    <category term="node.js" scheme="https://blank-null.github.io/categories/node-js/"/>
-    
-    
-    <category term="node.js" scheme="https://blank-null.github.io/tags/node-js/"/>
-    
-    <category term="fs" scheme="https://blank-null.github.io/tags/fs/"/>
-    
-    <category term="path" scheme="https://blank-null.github.io/tags/path/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>delete使用</title>
-    <link href="https://blank-null.github.io/2023/10/23/delete%E4%BD%BF%E7%94%A8/"/>
-    <id>https://blank-null.github.io/2023/10/23/delete%E4%BD%BF%E7%94%A8/</id>
-    <published>2023-10-23T02:48:45.000Z</published>
-    <updated>2023-10-23T02:49:46.581Z</updated>
-    
-    
-      
-      
-    <summary type="html">&lt;ol&gt;
-&lt;li&gt;如果你试图删除的属性不存在，那么 delete 将不会起任何作用，但仍会返回 true。&lt;/li&gt;
-&lt;li&gt;delete 只影响自身属性&lt;/li&gt;
-&lt;li&gt;configurable：false的属性不可以delete&lt;/li&gt;
-&lt;li&gt;delete 函数参数永远</summary>
-      
-    
-    
-    
-    <category term="技术" scheme="https://blank-null.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-    <category term="delete" scheme="https://blank-null.github.io/tags/delete/"/>
     
   </entry>
   
