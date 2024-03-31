@@ -6,7 +6,7 @@
   <link href="https://blank-null.github.io/atom.xml" rel="self"/>
   
   <link href="https://blank-null.github.io/"/>
-  <updated>2024-03-26T06:56:50.208Z</updated>
+  <updated>2024-03-31T09:53:13.737Z</updated>
   <id>https://blank-null.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>算法总结</title>
+    <link href="https://blank-null.github.io/2024/03/31/%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/"/>
+    <id>https://blank-null.github.io/2024/03/31/%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/</id>
+    <published>2024-03-31T09:52:01.000Z</published>
+    <updated>2024-03-31T09:53:13.737Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;思想&quot;&gt;&lt;a href=&quot;#思想&quot; class=&quot;headerlink&quot; title=&quot;思想&quot;&gt;&lt;/a&gt;思想&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;大部分算法可以看作对于二叉树的操作&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;二叉树解题的思维模式分两类：&lt;/p&gt;
+&lt;p&gt; &lt;stro</summary>
+      
+    
+    
+    
+    <category term="算法" scheme="https://blank-null.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="算法" scheme="https://blank-null.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>生成器实现异步</title>
@@ -489,29 +513,6 @@
     
     
     <category term="柯里化" scheme="https://blank-null.github.io/tags/%E6%9F%AF%E9%87%8C%E5%8C%96/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>浅谈Service Worker</title>
-    <link href="https://blank-null.github.io/2023/11/05/%E6%B5%85%E8%B0%88Service-Worker/"/>
-    <id>https://blank-null.github.io/2023/11/05/%E6%B5%85%E8%B0%88Service-Worker/</id>
-    <published>2023-11-05T06:50:34.000Z</published>
-    <updated>2023-11-05T06:54:41.313Z</updated>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;很好的一篇博客&lt;a href=&quot;https://www.cnblogs.com/jaycethanks/p/16502676.html#1-service-worker-%E7%AE%80%E4%BB%8B&quot;&gt;Service Worker&lt;/a&gt;&lt;/p&gt;
-</summary>
-      
-    
-    
-    
-    <category term="技术" scheme="https://blank-null.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-    <category term="Service Worker" scheme="https://blank-null.github.io/tags/Service-Worker/"/>
     
   </entry>
   
