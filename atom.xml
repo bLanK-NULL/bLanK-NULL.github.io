@@ -6,7 +6,7 @@
   <link href="https://blank-null.github.io/atom.xml" rel="self"/>
   
   <link href="https://blank-null.github.io/"/>
-  <updated>2024-03-31T09:53:13.737Z</updated>
+  <updated>2024-03-31T15:44:38.854Z</updated>
   <id>https://blank-null.github.io/</id>
   
   <author>
@@ -21,15 +21,33 @@
     <link href="https://blank-null.github.io/2024/03/31/%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/"/>
     <id>https://blank-null.github.io/2024/03/31/%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/</id>
     <published>2024-03-31T09:52:01.000Z</published>
-    <updated>2024-03-31T09:53:13.737Z</updated>
+    <updated>2024-03-31T15:44:38.854Z</updated>
     
     
-      
-      
     <summary type="html">&lt;h1 id=&quot;思想&quot;&gt;&lt;a href=&quot;#思想&quot; class=&quot;headerlink&quot; title=&quot;思想&quot;&gt;&lt;/a&gt;思想&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;大部分算法可以看作对于二叉树的操作&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;二叉树解题的思维模式分两类：&lt;/p&gt;
-&lt;p&gt; &lt;stro</summary>
-      
+&lt;p&gt; &lt;strong&gt;1、是否可以通过遍历一遍二叉树得到答案&lt;/strong&gt; ？如果可以，用一个 &lt;code&gt;traverse&lt;/code&gt; 函数配合外部变量来实现，这叫「遍历」的思维模式。&lt;/p&gt;
+&lt;p&gt; &lt;strong&gt;2、是否可以定义一个递归函数，通过子问题（子树）的答案推导出原问题的答案&lt;/strong&gt; ？如果可以，写出这个递归函数的定义，并充分利用这个函数的返回值，这叫「分解问题」的思维模式。&lt;/p&gt;
+&lt;p&gt;无论使用哪种思维模式，你都需要思考：&lt;/p&gt;
+&lt;p&gt; &lt;strong&gt;如果单独抽出一个二叉树节点，它需要做什么事情？需要在什么时候（前&amp;#x2F;中&amp;#x2F;后序位置）做&lt;/strong&gt; ？其他的节点不用你操心，递归函数会帮你在所有节点上执行相同的操作。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;比如快排是二叉树前序遍历&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;type&quot;&gt;int&lt;/span&gt;[] nums, &lt;span class=&quot;type&quot;&gt;int&lt;/span&gt; lo, &lt;span class=&quot;type&quot;&gt;int&lt;/span&gt; hi)&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;/****** 前序遍历位置 ******/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 通过交换元素构建分界点 p&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;type&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; partition(nums, lo, hi);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;/************************/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    sort(nums, lo, p - &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    sort(nums, p + &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, hi);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+&lt;li&gt;归并排序是二叉树后序遍历&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;type&quot;&gt;int&lt;/span&gt;[] nums, &lt;span class=&quot;type&quot;&gt;int&lt;/span&gt; lo, &lt;span class=&quot;type&quot;&gt;int&lt;/span&gt; hi)&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;type&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;mid&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; (lo + hi) / &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 排序 nums[lo..mid]&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    sort(nums, lo, mid);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 排序 nums[mid+1..hi]&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    sort(nums, mid + &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, hi);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;/****** 后序位置 ******/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 合并 nums[lo..mid] 和 nums[mid+1..hi]&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    merge(nums, lo, mid, hi);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;/*********************/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;前中后序是遍历二叉树过程中处理每一个节点的三个特殊时间点&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;前序位置的代码在刚刚进入一个二叉树节点的时候执行；&lt;/li&gt;
+&lt;li&gt;后序位置的代码在将要离开一个二叉树节点的时候执行；&lt;/li&gt;
+&lt;li&gt;中序位置的代码在一个二叉树节点左子树都遍历完，即将开始遍历右子树的时候执行。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;</summary>
     
     
     
