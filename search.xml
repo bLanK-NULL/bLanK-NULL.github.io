@@ -1926,29 +1926,6 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
       </tags>
   </entry>
   <entry>
-    <title>标签间通信</title>
-    <url>/2023/12/22/%E6%A0%87%E7%AD%BE%E9%97%B4%E9%80%9A%E4%BF%A1/</url>
-    <content><![CDATA[<ol>
-<li>本地存储监听<blockquote>
-<p>监听 <strong>同源</strong> localStorage 的修改</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">onStorage</span> = <span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e.<span class="property">data</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>BroadcastChannel.postMessage<blockquote>
-<p><strong>同源</strong></p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//标签1</span></span><br><span class="line"><span class="keyword">const</span> bc = <span class="keyword">new</span> <span class="title class_">BroadcastChannel</span>(<span class="string">&#x27;common channel&#x27;</span>) </span><br><span class="line">bc.<span class="title function_">postMessage</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line"><span class="comment">//标签2</span></span><br><span class="line"><span class="keyword">const</span> bc = <span class="keyword">new</span> <span class="title class_">BroadcastChannel</span>(<span class="string">&#x27;common channel&#x27;</span>)  </span><br><span class="line">bc.<span class="property">onmessage</span> = <span class="function">(<span class="params">e</span>)=&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e.<span class="property">data</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-详见 <a href="/2023/12/24/%E5%87%A0%E7%A7%8DpostMessage/#BroadcastChannel-postMessage">🔗几种postMessage</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>标签</tag>
-        <tag>通信</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>浅尝Web Worker</title>
     <url>/2024/03/21/%E6%B5%85%E5%B0%9DWeb-Worker/</url>
     <content><![CDATA[<h1 id="Worker"><a href="#Worker" class="headerlink" title="Worker"></a>Worker</h1><p>创建一个worker对象，可以在浏览器中创建一个新线程不阻塞UI线程渲染。</p>
@@ -2104,6 +2081,30 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
 <li>defer表示：不打断html解析的同时下载js，html解析完毕才执行js</li>
 </ul>
 <p><img src="/2023/10/12/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86/async&defer.png" alt="img"></p>
+<h1 id="垃圾回收机制"><a href="#垃圾回收机制" class="headerlink" title="垃圾回收机制"></a>垃圾回收机制</h1><h2 id="引用计数法"><a href="#引用计数法" class="headerlink" title="引用计数法"></a>引用计数法</h2><ul>
+<li>最大缺陷： 循环引用下，计数永远不能归零，无法清除造成内存泄漏</li>
+</ul>
+<h2 id="标记清除"><a href="#标记清除" class="headerlink" title="标记清除"></a>标记清除</h2><ol>
+<li>将所有对象标记0</li>
+<li>从根对象开始遍历，处于上下文的对象标记为1</li>
+<li>清除标记为0的对象</li>
+<li>所有标记为1的对象重新标记为0， 方便下一次垃圾回收</li>
+</ol>
+<p>这样之后存活对象分布比较零散，有三种方式：</p>
+<ol>
+<li>First-fit 放在能放下新对象的第一个块</li>
+<li>Best-fit 放在能放下新对象的最小块<ul>
+<li>容易有内存碎片</li>
+</ul>
+</li>
+<li>Worst-fit 放在最大块</li>
+</ol>
+<p>垃圾回收时必须阻塞js执行，所以诞生了</p>
+<ol>
+<li>多线程并行回收</li>
+<li>增量标记：执行一段js，执行一段垃圾回收</li>
+<li>并发回收：js执行在主线程，垃圾回收执行在辅助线程</li>
+</ol>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -4834,6 +4835,29 @@ if(&quot;serviceWorker&quot; in navigator) &#123;
       </categories>
       <tags>
         <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>跨标签通信</title>
+    <url>/2023/12/22/%E8%B7%A8%E6%A0%87%E7%AD%BE%E9%80%9A%E4%BF%A1/</url>
+    <content><![CDATA[<ol>
+<li>本地存储监听<blockquote>
+<p>监听 <strong>同源</strong> localStorage 的修改</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">onStorage</span> = <span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e.<span class="property">data</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>BroadcastChannel.postMessage<blockquote>
+<p><strong>同源</strong></p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//标签1</span></span><br><span class="line"><span class="keyword">const</span> bc = <span class="keyword">new</span> <span class="title class_">BroadcastChannel</span>(<span class="string">&#x27;common channel&#x27;</span>) </span><br><span class="line">bc.<span class="title function_">postMessage</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line"><span class="comment">//标签2</span></span><br><span class="line"><span class="keyword">const</span> bc = <span class="keyword">new</span> <span class="title class_">BroadcastChannel</span>(<span class="string">&#x27;common channel&#x27;</span>)  </span><br><span class="line">bc.<span class="property">onmessage</span> = <span class="function">(<span class="params">e</span>)=&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e.<span class="property">data</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+详见 <a href="/2023/12/24/%E5%87%A0%E7%A7%8DpostMessage/#BroadcastChannel-postMessage">🔗几种postMessage</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>标签</tag>
+        <tag>通信</tag>
       </tags>
   </entry>
 </search>
