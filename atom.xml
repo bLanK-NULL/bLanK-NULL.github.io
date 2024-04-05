@@ -90,7 +90,7 @@
     <link href="https://blank-null.github.io/2024/03/21/%E6%B5%85%E5%B0%9DWeb-Worker/"/>
     <id>https://blank-null.github.io/2024/03/21/%E6%B5%85%E5%B0%9DWeb-Worker/</id>
     <published>2024-03-21T12:03:49.000Z</published>
-    <updated>2024-03-26T03:14:59.684Z</updated>
+    <updated>2024-04-05T06:57:57.420Z</updated>
     
     
       
@@ -114,18 +114,16 @@
     <link href="https://blank-null.github.io/2024/03/06/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
     <id>https://blank-null.github.io/2024/03/06/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</id>
     <published>2024-03-06T09:58:04.000Z</published>
-    <updated>2024-03-14T05:36:27.137Z</updated>
+    <updated>2024-04-05T16:05:32.681Z</updated>
     
     
       
       
     <summary type="html">&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
 
-&lt;h1 id=&quot;首屏速度&quot;&gt;&lt;a href=&quot;#首屏速度&quot; class=&quot;headerlink&quot; title=&quot;首屏速度&quot;&gt;&lt;/a&gt;首屏速度&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;源码上&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;首屏速度&quot;&gt;&lt;a href=&quot;#首屏速度&quot; class=&quot;headerlink&quot; title=&quot;首屏速度&quot;&gt;&lt;/a&gt;首屏速度&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;源码上&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;路由懒加</summary>
+&lt;li&gt;&lt;p&gt;</summary>
       
     
     
@@ -221,7 +219,7 @@
     <link href="https://blank-null.github.io/2024/03/04/vue3%E7%9A%84%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87/"/>
     <id>https://blank-null.github.io/2024/03/04/vue3%E7%9A%84%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87/</id>
     <published>2024-03-04T11:48:43.000Z</published>
-    <updated>2024-03-26T07:06:38.367Z</updated>
+    <updated>2024-04-05T16:10:44.165Z</updated>
     
     
       
@@ -331,16 +329,16 @@
     <link href="https://blank-null.github.io/2023/12/22/%E8%B7%A8%E6%A0%87%E7%AD%BE%E9%80%9A%E4%BF%A1/"/>
     <id>https://blank-null.github.io/2023/12/22/%E8%B7%A8%E6%A0%87%E7%AD%BE%E9%80%9A%E4%BF%A1/</id>
     <published>2023-12-22T11:15:34.000Z</published>
-    <updated>2024-04-04T18:41:38.916Z</updated>
+    <updated>2024-04-05T07:10:59.890Z</updated>
     
     
       
       
     <summary type="html">&lt;ol&gt;
 &lt;li&gt;本地存储监听&lt;blockquote&gt;
-&lt;p&gt;监听 &lt;strong&gt;同源&lt;/strong&gt; localStorage 的修改&lt;/p&gt;
+&lt;p&gt;监听 &lt;strong&gt;同源&lt;/strong&gt; localStorage 的修改 （如果setItem 的值没变，则不会触发storage事件&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;</summary>
+&lt;figure class=&quot;highl</summary>
       
     
     

@@ -525,7 +525,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-03-26 11:14:59" itemprop="dateModified" datetime="2024-03-26T11:14:59+08:00">2024-03-26</time>
+      <time title="修改时间：2024-04-05 14:57:57" itemprop="dateModified" datetime="2024-04-05T14:57:57+08:00">2024-04-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -595,7 +595,7 @@
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> btn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#btn&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> terminate = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#terminate&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> msg = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#msg&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> ul = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.recv&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> worker = <span class="keyword">new</span> <span class="title class_">SharedWorker</span>(<span class="string">&#x27;./sharedWorker.js&#x27;</span>)</span><br><span class="line"><span class="comment">// worker.port.start();</span></span><br><span class="line">btn.<span class="property">onclick</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;我发送了&#x27;</span>, msg.<span class="property">value</span>);</span><br><span class="line">    worker.<span class="property">port</span>.<span class="title function_">postMessage</span>(msg.<span class="property">value</span>);</span><br><span class="line">&#125;</span><br><span class="line">worker.<span class="property">port</span>.<span class="property">onmessage</span> = <span class="keyword">function</span> (<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;我接收到了&#x27;</span>, e.<span class="property">data</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> counter = <span class="number">0</span>; <span class="comment">// 计时器</span></span><br><span class="line"><span class="keyword">const</span> clients = [] <span class="comment">//连接上的用户，注意 无论有几个标签页，e.ports 的长度始终都是0</span></span><br><span class="line">self.<span class="property">onconnect</span> = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> port = e.<span class="property">ports</span>[<span class="number">0</span>];</span><br><span class="line">    <span class="comment">//console.log(e.ports); //⭐这里的内容必须在 edge://inspect/#workers 的inspect 里的控制台查看</span></span><br><span class="line">    <span class="comment">//port.postMessage(&#x27;sharedworker已连接&#x27;); //不能发送e或者  ports 里的任何对象。因为他们is not transferred</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;sharedworker已连接&#x27;</span>)</span><br><span class="line">    clients.<span class="title function_">push</span>(port);</span><br><span class="line">    port.<span class="property">onmessage</span> = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;sharedworker接收到&#x27;</span>, e.<span class="property">data</span>)</span><br><span class="line">        counter++;</span><br><span class="line">        clients.<span class="title function_">forEach</span>(<span class="function"><span class="params">client</span> =&gt;</span> &#123;</span><br><span class="line">            client.<span class="title function_">postMessage</span>(counter)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;; </span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> counter = <span class="number">0</span>; <span class="comment">// 计时器</span></span><br><span class="line"><span class="keyword">const</span> clients = [] <span class="comment">//连接上的用户，注意 无论有几个标签页，e.ports 的长度始终都是1</span></span><br><span class="line">self.<span class="property">onconnect</span> = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> port = e.<span class="property">ports</span>[<span class="number">0</span>];</span><br><span class="line">    <span class="comment">//console.log(e.ports); //⭐这里的内容必须在 edge://inspect/#workers 的inspect 里的控制台查看</span></span><br><span class="line">    <span class="comment">//port.postMessage(&#x27;sharedworker已连接&#x27;); //不能发送e或者  ports 里的任何对象。因为他们is not transferred</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;sharedworker已连接&#x27;</span>)</span><br><span class="line">    clients.<span class="title function_">push</span>(port);</span><br><span class="line">    port.<span class="property">onmessage</span> = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;sharedworker接收到&#x27;</span>, e.<span class="property">data</span>)</span><br><span class="line">        counter++;</span><br><span class="line">        clients.<span class="title function_">forEach</span>(<span class="function"><span class="params">client</span> =&gt;</span> &#123;</span><br><span class="line">            client.<span class="title function_">postMessage</span>(counter)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;; </span><br></pre></td></tr></table></figure>
 
 <p>注意</p>
 <ol>
@@ -664,7 +664,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-03-14 13:36:27" itemprop="dateModified" datetime="2024-03-14T13:36:27+08:00">2024-03-14</time>
+      <time title="修改时间：2024-04-06 00:05:32" itemprop="dateModified" datetime="2024-04-06T00:05:32+08:00">2024-04-06</time>
     </span>
 
   
@@ -688,7 +688,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>584</span>
+      <span>653</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -708,9 +708,7 @@
     <div class="post-body" itemprop="articleBody">
           <span id="more"></span>
 
-<h1 id="首屏速度"><a href="#首屏速度" class="headerlink" title="首屏速度"></a>首屏速度</h1><ul>
-<li>源码上</li>
-</ul>
+<h1 id="首屏速度"><a href="#首屏速度" class="headerlink" title="首屏速度"></a>首屏速度</h1><p><strong>源码上</strong></p>
 <ol>
 <li><p>路由懒加载（动态导入） <code>()=&gt;import(&#39;/path&#39;)</code></p>
 <ul>
@@ -728,22 +726,18 @@
 </li>
 </ul>
 </li>
-<li><p>webpack打包压缩代码，禁止大图片转base64</p>
-</li>
 <li><p>老版的库更新以支持tree-shaking，少用第三方库</p>
 </li>
-<li><p>服务器渲染</p>
+<li><p>服务器渲染SSR</p>
 </li>
 <li><p>服务器gZip压缩</p>
 </li>
+<li><p>webpack打包压缩代码，禁止大图片转base64</p>
+</li>
 </ol>
-<ul>
-<li>网络上</li>
-</ul>
-<p>静态资源放在cdn上、懒加载</p>
-<ul>
-<li>用户感知上</li>
-</ul>
+<p><strong>网络上</strong></p>
+<p>静态资源放在cdn上<br>注意本地webpack要配置external 排除cdn引入的包</p>
+<p><strong>用户感知上</strong></p>
 <p>骨架屏&#x2F;loading</p>
 <h1 id="prefetch-和-script"><a href="#prefetch-和-script" class="headerlink" title="prefetch 和 script"></a>prefetch 和 script</h1><ul>
 <li>script加载</li>
@@ -756,7 +750,7 @@
 <p>预加载，切换无感</p>
 <p>浪费带宽</p>
 <blockquote>
-<p>prefetch 和 preload 不同， preload是一种<strong>立即</strong>获取资源的策略，prefetch是一种在后台缓存资源的策略，以便在需要时立即使用。</p>
+<p>prefetch 和 preload 不同:<br>preload是一种<strong>立即</strong>获取资源的策略，用来声明一个高优先级资源强制浏览器提前请求。<br>prefetch是一种在后台缓存资源的策略，（缓存的资源并不是当前页面需要的）以便在需要时立即使用。</p>
 </blockquote>
 <h1 id="渲染性能"><a href="#渲染性能" class="headerlink" title="渲染性能"></a>渲染性能</h1><ul>
 <li>vue</li>
@@ -1251,7 +1245,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-03-26 15:06:38" itemprop="dateModified" datetime="2024-03-26T15:06:38+08:00">2024-03-26</time>
+      <time title="修改时间：2024-04-06 00:10:44" itemprop="dateModified" datetime="2024-04-06T00:10:44+08:00">2024-04-06</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1322,7 +1316,7 @@
 <h1 id="5-响应式系统"><a href="#5-响应式系统" class="headerlink" title="5. 响应式系统"></a>5. 响应式系统</h1><ul>
 <li>vue2 使用 <code>defineProperty</code> 来劫持对象，深度遍历所有属性给每个属性添加 <code>getter setter</code></li>
 <li>vue3 使用 <code>Proxy</code> 代理对象，不需深度遍历对象就可以监听深层属性。<ul>
-<li>这一优点尤其在一些数组方法上体现，vue2重写了一些数组方法一边支持响应式，而vue3则不需要</li>
+<li>这一优点尤其在一些数组方法上体现，vue2为了性能考虑<u>没有深度遍历数组而是重写了一些数组方法</u>一边支持响应式，而vue3则不需要</li>
 </ul>
 </li>
 </ul>
