@@ -1197,9 +1197,20 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
 </ol>
 <h2 id="块级元素"><a href="#块级元素" class="headerlink" title="块级元素"></a>块级元素</h2><ol>
 <li>独占一行</li>
-<li>可以包含块级和行级元素</li>
+<li>可以包含块级和行级元素<ul>
+<li>p标签除外，不可以包括块级元素</li>
+</ul>
+</li>
 </ol>
-<h2 id="行内块"><a href="#行内块" class="headerlink" title="行内块"></a>行内块</h2><blockquote>
+<h2 id="行内块"><a href="#行内块" class="headerlink" title="行内块"></a>行内块</h2><ol>
+<li>不独占一行</li>
+<li>可以设置width、height、padding、margin</li>
+<li>宽高默认由内容决定</li>
+</ol>
+<blockquote>
+<p>常见包括: <code>&lt;input&gt;``&lt;img&gt;``&lt;td&gt;``&lt;hr&gt;</code></p>
+</blockquote>
+<blockquote>
 <p>行内块元素之间有空隙，怎么解决？</p>
 <ol>
 <li>移除代码标签之间的空格</li>
@@ -1226,7 +1237,46 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
 </ul>
 </li>
 <li>定位+translate</li>
-<li></li>
+</ul>
+<h1 id="HTML5-新特性"><a href="#HTML5-新特性" class="headerlink" title="HTML5 新特性"></a>HTML5 新特性</h1><p>一、html5新特性之用于绘画的canvas元素<br>二、html5新特性之更加丰富强大的表单<br>三、html5新特性之用于媒介的video和audio元素<br>四、html5新特性之html5地理定位<br>五、html5新特性之html5拖放<br>六：html5新特性之html5 Web存储<br>七、html5新特性之html5应用程序缓存<br>八、html5新特性之html5 Web Workers<br>九、html5新特性之html5服务器发送事件<br>十、html5新特性之html5 WebSocket</p>
+<h1 id="HTML-语义化标签"><a href="#HTML-语义化标签" class="headerlink" title="HTML 语义化标签"></a>HTML 语义化标签</h1><ol>
+<li>article</li>
+<li>section</li>
+<li>aside</li>
+<li>hgroup</li>
+<li>header - main - footer</li>
+<li>nav</li>
+<li>time</li>
+<li>mark</li>
+<li>figure - figcation</li>
+</ol>
+<ul>
+<li>figure代表一段独立的内容</li>
+<li>figcation 定义说明内容</li>
+</ul>
+<ol start="10">
+<li>menu</li>
+</ol>
+<ul>
+<li>与ul没有区别</li>
+<li><code>&lt;menu-item&gt;</code> 已经被完全弃用</li>
+</ul>
+<ol start="11">
+<li>details - summary</li>
+</ol>
+<ul>
+<li>展开和折叠</li>
+</ul>
+<ol start="12">
+<li>fieldset - legend</li>
+</ol>
+<ul>
+<li><code>&lt;fieldset&gt;</code> 元素将一个 HTML 表单的一部分组成一组，内置了一个 <code>&lt;legend&gt;</code> 元素作为 fieldset 的标题</li>
+</ul>
+<p>dl - dt - dd</p>
+<ul>
+<li>包含术语定义以及描述的列表<br>track</li>
+<li>可以当作媒体元素的子元素来使用。它允许指定时序文本字幕（或者基于时间的数据），例如自动处理字幕</li>
 </ul>
 ]]></content>
       <categories>
@@ -2226,7 +2276,6 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
 <p>这样只执行了第一步，而我们得到第一步的PromiseResult之后要继续递归的运行next(PromiseResult) 这样才能得到第二步。</p>
 <p>所以我们需要一个执行器 <code>co</code> ， </p>
 </blockquote>
-<p>co的作用就是一步到位，对于多个异步任务拓扑排序时，例如（task3依赖于task2，task2依赖于task1）</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> finalRes= <span class="title function_">co</span>(<span class="title function_">read</span>())</span><br><span class="line">finalRes.<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(res)) <span class="comment">// 一步到位,输出task3完成时的PromiseResult</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>实现 <code>co</code></strong></p>
