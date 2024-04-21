@@ -34,6 +34,52 @@
       </tags>
   </entry>
   <entry>
+    <title>HTTPS详解</title>
+    <url>/2024/04/21/HTTPS%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<p>HTTPS &#x3D; HTTP + SSL&#x2F;TLS</p>
+<ol>
+<li>http 明文传输，易被劫持，SEO降权</li>
+<li>TLS 传输层安全协议，是SSL的升级方案</li>
+</ol>
+<span id="more"></span>
+
+<h1 id="HTTPS如何加密"><a href="#HTTPS如何加密" class="headerlink" title="HTTPS如何加密"></a>HTTPS如何加密</h1><h2 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h2><ol>
+<li>浏览器给服务器一个随机数</li>
+<li>服务器给浏览器一个随机数</li>
+<li>浏览器和服务器都根据这两个随机数得出一个密钥，他们用这个密钥加密或解密信息。</li>
+</ol>
+<p>缺陷：容易被窃取</p>
+<h2 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h2><ol>
+<li>每个主机都有一对密钥：公钥和私钥。公钥负责加密，私钥负责解密。</li>
+<li>公钥在网络上公开，而私钥是保密的。</li>
+</ol>
+<p>缺陷：计算量大</p>
+<h2 id="混合加密-——-HTTPS的加密方式"><a href="#混合加密-——-HTTPS的加密方式" class="headerlink" title="混合加密 —— HTTPS的加密方式"></a>混合加密 —— HTTPS的加密方式</h2><p>以非对称加密方式得到会话密钥，用会话密钥以对称<br><img src="/2024/04/21/HTTPS%E8%AF%A6%E8%A7%A3/TLS%E6%8F%A1%E6%89%8B.png" alt="TLS四次握手"></p>
+<h3 id="校验证书"><a href="#校验证书" class="headerlink" title="校验证书"></a>校验证书</h3><p><img src="/2024/04/21/HTTPS%E8%AF%A6%E8%A7%A3/%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D.jpg" alt="数字签名"></p>
+<ol>
+<li><strong>证书</strong> &#x3D; 网站信息(包括公钥)+ 数字签名<ol>
+<li><strong>数字签名</strong>是由网站信息计算出的hash值通过CA私钥机密后得到的</li>
+</ol>
+</li>
+<li>公钥解密数字签名后和网站信息hash值比较，如果相同则代表校验通过</li>
+</ol>
+<blockquote>
+<p>数字签名和非对称加密不同。是用公钥解密，私钥加密。</p>
+</blockquote>
+<h3 id="注册证书"><a href="#注册证书" class="headerlink" title="注册证书"></a>注册证书</h3><p><img src="/2024/04/21/HTTPS%E8%AF%A6%E8%A7%A3/%E6%B3%A8%E5%86%8C%E8%AF%81%E4%B9%A6.jpg" alt="注册证书"></p>
+<blockquote>
+<p>证书防止黑客伪造公钥</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>网络</category>
+      </categories>
+      <tags>
+        <tag>http</tag>
+        <tag>https</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>IntersectionObserver</title>
     <url>/2023/11/24/IntersectionObserver/</url>
     <content><![CDATA[<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">entries</span>&#125; Array 交叉状态数组 </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">observer</span>&#125; Object 实例对象</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">const</span> observer = <span class="keyword">new</span> <span class="title class_">IntersectionObserver</span>(<span class="keyword">function</span>(<span class="params">entries, observer</span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(entries)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(observer)</span><br><span class="line">&#125;, options?)</span><br></pre></td></tr></table></figure>
@@ -164,6 +210,78 @@
       </categories>
       <tags>
         <tag>TS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Webpack与Vite的区别与联系</title>
+    <url>/2024/04/21/Webpack%E4%B8%8EVite%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E8%81%94%E7%B3%BB/</url>
+    <content><![CDATA[<h1 id="0-当前工程化痛点"><a href="#0-当前工程化痛点" class="headerlink" title="0. 当前工程化痛点"></a>0. 当前工程化痛点</h1><p>主流webpack需要把<i>整个项目编译好后</i>再交给dev server，因此大型项目devserver启动时间很长，HMR也需要很长时间。<br>因此，Vite应运而生</p>
+<h1 id="Webpack"><a href="#Webpack" class="headerlink" title="Webpack"></a>Webpack</h1><p>当我们使用webpack启动项目时，webpack会根据我们配置文件中的入口文件，</p>
+<ol>
+<li>分析出项目项目所有依赖关系，</li>
+<li>然后打包成一个文件（bundle.js），</li>
+<li>交给浏览器去加载渲染。</li>
+</ol>
+<p>在Webpack中，构建过程大概分为这么几个阶段初始化Init、构建Make、生成Seal</p>
+<ul>
+<li><strong>初始化阶段：</strong> 修整配置参数，创建 Compiler、Compilation 等基础对象，并初始化插件及若干内置工厂、工具类，并最终根据 entry 配置，找到所有入口模块</li>
+<li><strong>构建阶段：</strong> 从entry找到入口，调用loader编译模块，遍历 AST 找出模块依赖的模块，之后递归遍历所有依赖块，构建出 模块依赖关系图 (dependency graph)</li>
+<li><strong>输出阶段：</strong> 根据output的配置，将模块拆解成不同的chunk对象，经过一系列优化，再将代码翻译成产物</li>
+</ul>
+<p>描述得比较简单， 实际完成这些过程是比较复杂的</p>
+<h2 id="HMR"><a href="#HMR" class="headerlink" title="HMR"></a>HMR</h2><p>每次修改文件，webpack要重新分析整个项目的依赖关系。很耗时。<br>三个阶段：</p>
+<ol>
+<li>找出过期的模块</li>
+<li>从缓存中删除过期的模块</li>
+<li>把新模块添加到modules中<ol>
+<li>此时是通过jsonp来拉取更新模块的</li>
+</ol>
+</li>
+</ol>
+<h1 id="Vite"><a href="#Vite" class="headerlink" title="Vite"></a>Vite</h1><p>基于esbuild和rollup，利用浏览器对ESM的支持</p>
+<ul>
+<li>esbuild: 预构建。把不同模块规范统一编译为ESM</li>
+<li>rollup：在build时打包成生产环境代码</li>
+</ul>
+<p><strong>ESM</strong><br>ESM &#x3D;&#x3D;&#x3D; ES module, 大部分浏览器都支持<code>&lt;script type=&#39;module&#39;&gt;</code><br>在<code>&lt;script type=&quot;module&quot;&gt;</code>中，浏览器遇到内部的import引用时，会自动发起<strong>http请求</strong>，去加载对应的模块。</p>
+<h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><ol>
+<li>预构建。<ol>
+<li>针对node_modules中的<i>第三方依赖</i>，由esbuild把所有模块编译为ESM。</li>
+<li>整合模块，对于具有许多内部模块的，整合成一个模块。避免发送太多http请求。</li>
+<li>缓存。把预构建好的ESM存到<code>node_modules/.vite</code>下。</li>
+</ol>
+</li>
+<li>启动devServer。</li>
+<li>按需编译。页面需要某些模块会发送http请求，此时vite再进行编译，编译后发给浏览器。<br> 此时编译是对<i>src源码的编译</i>，包括对ts、less、esm、图片、字体的处理<ol>
+<li>利用http2.0 支持并发请求。</li>
+<li>利用http缓存，<ol>
+<li>node_modules 使用强制缓存</li>
+<li>src 使用协商缓存</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="HMR-1"><a href="#HMR-1" class="headerlink" title="HMR"></a>HMR</h3><p>当修改一个文件时vite精确定位到该模块，使其失活。vite重新编译该模块后再发送给浏览器。浏览器利用动态导入<code>import()</code>来替换。</p>
+<p>原理：利用websocket连接浏览器，建立连接后监听文件变化。服务器向浏览器注入代码用于处理ws消息（重新请求模块、刷新页面）</p>
+<h1 id="为什么vite比webpack快"><a href="#为什么vite比webpack快" class="headerlink" title="为什么vite比webpack快"></a>为什么vite比webpack快</h1><p>从几方面回答：</p>
+<ol>
+<li>vite基于esbuild、rollup<ol>
+<li>esbuild基于Go，善于利用多核cpu</li>
+<li>rollup轻量，打包更快</li>
+</ol>
+</li>
+<li>vite的预构建、按需编译</li>
+<li>HMR的区别</li>
+<li>vite内置功能多，使用成本低</li>
+</ol>
+]]></content>
+      <categories>
+        <category>工程化</category>
+      </categories>
+      <tags>
+        <tag>webpack</tag>
+        <tag>vite</tag>
       </tags>
   </entry>
   <entry>
@@ -4998,124 +5116,6 @@ if(&quot;serviceWorker&quot; in navigator) &#123;
       </categories>
       <tags>
         <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Webpack与Vite的区别与联系</title>
-    <url>/2024/04/21/Webpack%E4%B8%8EVite%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E8%81%94%E7%B3%BB/</url>
-    <content><![CDATA[<h1 id="0-当前工程化痛点"><a href="#0-当前工程化痛点" class="headerlink" title="0. 当前工程化痛点"></a>0. 当前工程化痛点</h1><p>主流webpack需要把<i>整个项目编译好后</i>再交给dev server，因此大型项目devserver启动时间很长，HMR也需要很长时间。<br>因此，Vite应运而生</p>
-<h1 id="Webpack"><a href="#Webpack" class="headerlink" title="Webpack"></a>Webpack</h1><p>当我们使用webpack启动项目时，webpack会根据我们配置文件中的入口文件，</p>
-<ol>
-<li>分析出项目项目所有依赖关系，</li>
-<li>然后打包成一个文件（bundle.js），</li>
-<li>交给浏览器去加载渲染。</li>
-</ol>
-<p>在Webpack中，构建过程大概分为这么几个阶段初始化Init、构建Make、生成Seal</p>
-<ul>
-<li><strong>初始化阶段：</strong> 修整配置参数，创建 Compiler、Compilation 等基础对象，并初始化插件及若干内置工厂、工具类，并最终根据 entry 配置，找到所有入口模块</li>
-<li><strong>构建阶段：</strong> 从entry找到入口，调用loader编译模块，遍历 AST 找出模块依赖的模块，之后递归遍历所有依赖块，构建出 模块依赖关系图 (dependency graph)</li>
-<li><strong>输出阶段：</strong> 根据output的配置，将模块拆解成不同的chunk对象，经过一系列优化，再将代码翻译成产物</li>
-</ul>
-<p>描述得比较简单， 实际完成这些过程是比较复杂的</p>
-<h2 id="HMR"><a href="#HMR" class="headerlink" title="HMR"></a>HMR</h2><p>每次修改文件，webpack要重新分析整个项目的依赖关系。很耗时。<br>三个阶段：</p>
-<ol>
-<li>找出过期的模块</li>
-<li>从缓存中删除过期的模块</li>
-<li>把新模块添加到modules中<ol>
-<li>此时是通过jsonp来拉取更新模块的</li>
-</ol>
-</li>
-</ol>
-<h1 id="Vite"><a href="#Vite" class="headerlink" title="Vite"></a>Vite</h1><p>基于esbuild和rollup，利用浏览器对ESM的支持</p>
-<ul>
-<li>esbuild: 预构建。把不同模块规范统一编译为ESM</li>
-<li>rollup：在build时打包成生产环境代码</li>
-</ul>
-<p><strong>ESM</strong><br>ESM &#x3D;&#x3D;&#x3D; ES module, 大部分浏览器都支持<code>&lt;script type=&#39;module&#39;&gt;</code><br>在<code>&lt;script type=&quot;module&quot;&gt;</code>中，浏览器遇到内部的import引用时，会自动发起<strong>http请求</strong>，去加载对应的模块。</p>
-<h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><ol>
-<li>预构建。<ol>
-<li>针对node_modules中的<i>第三方依赖</i>，由esbuild把所有模块编译为ESM。</li>
-<li>整合模块，对于具有许多内部模块的，整合成一个模块。避免发送太多http请求。</li>
-<li>缓存。把预构建好的ESM存到<code>node_modules/.vite</code>下。</li>
-</ol>
-</li>
-<li>启动devServer。</li>
-<li>按需编译。页面需要某些模块会发送http请求，此时vite再进行编译，编译后发给浏览器。<br> 此时编译是对<i>src源码的编译</i>，包括对ts、less、esm、图片、字体的处理<ol>
-<li>利用http2.0 支持并发请求。</li>
-<li>利用http缓存，<ol>
-<li>node_modules 使用强制缓存</li>
-<li>src 使用协商缓存</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-<h3 id="HMR-1"><a href="#HMR-1" class="headerlink" title="HMR"></a>HMR</h3><p>当修改一个文件时vite精确定位到该模块，使其失活。vite重新编译该模块后再发送给浏览器。浏览器利用动态导入<code>import()</code>来替换。</p>
-<p>原理：利用websocket连接浏览器，建立连接后监听文件变化。服务器向浏览器注入代码用于处理ws消息（重新请求模块、刷新页面）</p>
-<h1 id="为什么vite比webpack快"><a href="#为什么vite比webpack快" class="headerlink" title="为什么vite比webpack快"></a>为什么vite比webpack快</h1><p>从几方面回答：</p>
-<ol>
-<li>vite基于esbuild、rollup<ol>
-<li>esbuild基于Go，善于利用多核cpu</li>
-<li>rollup轻量，打包更快</li>
-</ol>
-</li>
-<li>vite的预构建、按需编译</li>
-<li>HMR的区别</li>
-<li>vite内置功能多，使用成本低</li>
-</ol>
-]]></content>
-      <categories>
-        <category>工程化</category>
-      </categories>
-      <tags>
-        <tag>webpack</tag>
-        <tag>vite</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>HTTPS详解</title>
-    <url>/2024/04/21/HTTPS%E8%AF%A6%E8%A7%A3/</url>
-    <content><![CDATA[<p>HTTPS &#x3D; HTTP + SSL&#x2F;TLS</p>
-<ol>
-<li>http 明文传输，易被劫持，SEO降权</li>
-<li>TLS 传输层安全协议，是SSL的升级方案</li>
-</ol>
-<span id="more"></span>
-
-<h1 id="HTTPS如何加密"><a href="#HTTPS如何加密" class="headerlink" title="HTTPS如何加密"></a>HTTPS如何加密</h1><h2 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h2><ol>
-<li>浏览器给服务器一个随机数</li>
-<li>服务器给浏览器一个随机数</li>
-<li>浏览器和服务器都根据这两个随机数得出一个密钥，他们用这个密钥加密或解密信息。</li>
-</ol>
-<p>缺陷：容易被窃取</p>
-<h2 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h2><ol>
-<li>每个主机都有一对密钥：公钥和私钥。公钥负责加密，私钥负责解密。</li>
-<li>公钥在网络上公开，而私钥是保密的。</li>
-</ol>
-<p>缺陷：计算量大</p>
-<h2 id="混合加密-——-HTTPS的加密方式"><a href="#混合加密-——-HTTPS的加密方式" class="headerlink" title="混合加密 —— HTTPS的加密方式"></a>混合加密 —— HTTPS的加密方式</h2><p>以非对称加密方式得到会话密钥，用会话密钥以对称<br><img src="/2024/04/21/HTTPS%E8%AF%A6%E8%A7%A3/TLS%E6%8F%A1%E6%89%8B.png" alt="TLS四次握手"></p>
-<h3 id="校验证书"><a href="#校验证书" class="headerlink" title="校验证书"></a>校验证书</h3><p><img src="/2024/04/21/HTTPS%E8%AF%A6%E8%A7%A3/%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D.jpg" alt="数字签名"></p>
-<ol>
-<li><strong>证书</strong> &#x3D; 网站信息(包括公钥)+ 数字签名<ol>
-<li><strong>数字签名</strong>是由网站信息计算出的hash值通过CA私钥机密后得到的</li>
-</ol>
-</li>
-<li>公钥解密数字签名后和网站信息hash值比较，如果相同则代表校验通过</li>
-</ol>
-<blockquote>
-<p>数字签名和非对称加密不同。是用公钥解密，私钥加密。</p>
-</blockquote>
-<h3 id="注册证书"><a href="#注册证书" class="headerlink" title="注册证书"></a>注册证书</h3><p><img src="/2024/04/21/HTTPS%E8%AF%A6%E8%A7%A3/%E6%B3%A8%E5%86%8C%E8%AF%81%E4%B9%A6.jpg" alt="注册证书"></p>
-<blockquote>
-<p>证书防止黑客伪造公钥</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>网络</category>
-      </categories>
-      <tags>
-        <tag>http</tag>
-        <tag>https</tag>
       </tags>
   </entry>
 </search>
