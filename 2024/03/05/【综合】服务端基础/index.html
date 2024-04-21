@@ -21,20 +21,22 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"blank-null.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"changyan","storage":true,"lazyload":false,"nav":null,"activeClass":"changyan"},"stickytabs":true,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="1. http 状态码 2XX 200： OK 204： Not Content， 服务器无返回内容   3XX 301： 永久重定向 302： 临时重定向 304： Not Modified， 浏览器可以使用本地缓存   4XX 400： Bad Request，请求报文错误 401： Unauthorized 403： Forbidden 404： Not Found 405： Metho">
+    <meta name="description" content="1. http 状态码 1XX   提示信息 101：允许切换协议   2XX 200： OK 204： Not Content， 服务器无返回内容 206： Partial Content, 无响应体   3XX 301： Moved Permanently，永久重定向 302： Found，临时重定向 304： Not Modified， 浏览器可以使用本地缓存   4XX 400： Ba">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【综合】服务端基础">
 <meta property="og:url" content="https://blank-null.github.io/2024/03/05/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="bLanK&#39;s blog">
-<meta property="og:description" content="1. http 状态码 2XX 200： OK 204： Not Content， 服务器无返回内容   3XX 301： 永久重定向 302： 临时重定向 304： Not Modified， 浏览器可以使用本地缓存   4XX 400： Bad Request，请求报文错误 401： Unauthorized 403： Forbidden 404： Not Found 405： Metho">
+<meta property="og:description" content="1. http 状态码 1XX   提示信息 101：允许切换协议   2XX 200： OK 204： Not Content， 服务器无返回内容 206： Partial Content, 无响应体   3XX 301： Moved Permanently，永久重定向 302： Found，临时重定向 304： Not Modified， 浏览器可以使用本地缓存   4XX 400： Ba">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blank-null.github.io/2024/03/05/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%9F%BA%E7%A1%80/CDN.jpg">
 <meta property="article:published_time" content="2024-03-05T07:00:30.000Z">
-<meta property="article:modified_time" content="2024-03-26T07:05:32.219Z">
+<meta property="article:modified_time" content="2024-04-21T14:36:04.243Z">
 <meta property="article:author" content="bLank-L">
 <meta property="article:tag" content="服务器">
 <meta property="article:tag" content="网络">
 <meta property="article:tag" content="服务端">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blank-null.github.io/2024/03/05/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%9F%BA%E7%A1%80/CDN.jpg">
 
 
 <link rel="canonical" href="https://blank-null.github.io/2024/03/05/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%9F%BA%E7%A1%80/">
@@ -145,7 +147,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-http-%E7%8A%B6%E6%80%81%E7%A0%81"><span class="nav-text">1. http 状态码</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-http-%E7%8A%B6%E6%80%81%E7%A0%81"><span class="nav-text">1. http 状态码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-CDN"><span class="nav-text">2. CDN</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Content-type"><span class="nav-text">3. Content-type</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-http"><span class="nav-text">4. http</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-cookie"><span class="nav-text">5. cookie</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -160,18 +162,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">52</span>
+          <span class="site-state-item-count">54</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">81</span>
+        <span class="site-state-item-count">83</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -246,7 +248,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-03-26 15:05:32" itemprop="dateModified" datetime="2024-03-26T15:05:32+08:00">2024-03-26</time>
+      <time title="修改时间：2024-04-21 22:36:04" itemprop="dateModified" datetime="2024-04-21T22:36:04+08:00">2024-04-21</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -286,7 +288,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>245</span>
+      <span>683</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -306,31 +308,62 @@
     <div class="post-body" itemprop="articleBody"><span id="more"></span>
 
 <h1 id="1-http-状态码"><a href="#1-http-状态码" class="headerlink" title="1. http 状态码"></a>1. http 状态码</h1><ul>
+<li>1XX   提示信息<ul>
+<li>101：允许切换协议</li>
+</ul>
+</li>
 <li>2XX<ul>
 <li><strong>200</strong>： OK</li>
 <li>204： Not Content， 服务器无返回内容</li>
+<li>206： Partial Content, 无响应体</li>
 </ul>
 </li>
 <li>3XX<ul>
-<li>301： 永久重定向</li>
-<li>302： 临时重定向</li>
+<li>301： Moved Permanently，永久重定向</li>
+<li>302： Found，临时重定向</li>
 <li><strong>304</strong>： Not Modified， 浏览器可以使用本地缓存</li>
 </ul>
 </li>
 <li>4XX<ul>
 <li><strong>400</strong>： Bad Request，请求报文错误</li>
-<li><strong>401</strong>： Unauthorized</li>
-<li><strong>403</strong>： Forbidden</li>
-<li><strong>404</strong>： Not Found</li>
+<li><strong>401</strong>： Unauthorized， 未授权</li>
+<li><strong>403</strong>： Forbidden， 禁止访问</li>
+<li><strong>404</strong>： Not Found， 找不到资源</li>
 <li>405： Method Not Allowed， 请求方法不允许，可以用OPTIONS预检请求查看服务器允许的请求</li>
 </ul>
 </li>
 <li>5XX<ul>
-<li><strong>500</strong> Internal Server Error</li>
-<li><strong>502</strong> Bad Gateway</li>
+<li><strong>500</strong>： Internal Server Error，</li>
+<li>501：Not Implement, 客户端请求不支持</li>
+<li><strong>502</strong>： Bad Gateway， 服务器作为网关或代理返回的错误</li>
+<li>503： Service Unavilable, 服务器在忙</li>
 </ul>
 </li>
 </ul>
+<h1 id="2-CDN"><a href="#2-CDN" class="headerlink" title="2. CDN"></a>2. CDN</h1><p><img src="/2024/03/05/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%9F%BA%E7%A1%80/CDN.jpg" alt="CDN"></p>
+<p>CDN的作用：</p>
+<ol>
+<li>加速资源</li>
+<li>负载均衡</li>
+</ol>
+<h1 id="3-Content-type"><a href="#3-Content-type" class="headerlink" title="3. Content-type"></a>3. Content-type</h1><p><a href="/2023/12/01/content-type%E4%B8%80%E4%BA%9B%E7%96%91%E6%83%91">详见🔗content-type</a></p>
+<h1 id="4-http"><a href="#4-http" class="headerlink" title="4. http"></a>4. http</h1><p><a href="/2023/10/16/http%E8%AF%A6%E8%A7%A3">详见🔗http详解</a></p>
+<h1 id="5-cookie"><a href="#5-cookie" class="headerlink" title="5. cookie"></a>5. cookie</h1><ol>
+<li>默认跨域不会发送cookie<br>但是可以通过 <code>withCredentials=true</code> 设置</li>
+<li>expire设置为0，代表仅一次会话有效</li>
+<li>一个cookie大小4KB</li>
+<li><code>secure=true</code>表示只有https才附带cookie</li>
+<li><code>same-site</code><ol>
+<li><code>strict</code> : refer未其他域不发cookie</li>
+<li><code>Lax</code>: get请求可以发，其他不发</li>
+<li><code>None</code>：无限制</li>
+</ol>
+</li>
+<li><code>http-only</code> 表示此cookie对js不可见<ol>
+<li>document.cookie无法获取，可防止xss攻击。</li>
+</ol>
+</li>
+</ol>
 
     </div>
 
@@ -423,13 +456,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">157k</span>
+    <span title="站点总字数">161k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:45</span>
+    <span title="站点阅读时长">4:54</span>
   </span>
 </div>
 <div class="busuanzi-count">

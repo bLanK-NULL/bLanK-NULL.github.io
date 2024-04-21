@@ -152,18 +152,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">52</span>
+          <span class="site-state-item-count">54</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">81</span>
+        <span class="site-state-item-count">83</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -192,6 +192,300 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2024/03/02/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3BFC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="bLank-L">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/03/02/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3BFC/" class="post-title-link" itemprop="url">深入理解BFC</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-03-02 14:59:36 / 修改时间：21:27:45" itemprop="dateCreated datePublished" datetime="2024-03-02T14:59:36+08:00">2024-03-02</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="深入理解BFC" href="/2024/03/02/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3BFC/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::d28bab845af68de529bcf6d014c695b9" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>237</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="普通流"><a href="#普通流" class="headerlink" title="普通流"></a>普通流</h1><h2 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a>BFC</h2><blockquote>
+<p> 可以看作是一个独立的布局区域</p>
+</blockquote>
+<h3 id="触发条件"><a href="#触发条件" class="headerlink" title="触发条件"></a>触发条件</h3><ol>
+<li><code>&lt;html&gt;</code></li>
+<li><code>float: !none</code></li>
+<li><code>position: absolute | fixed</code></li>
+<li><code>display: inline-block | table ...</code></li>
+<li><code>overflow: !(visible | clip) &amp;&amp; 是块级元素</code></li>
+<li><code>containe: layout | content | paint</code></li>
+<li>多列容器 <code>column-count | column-width</code></li>
+</ol>
+<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><ol>
+<li>避免margin塌陷 （包括水平和垂直）</li>
+<li>清除浮动</li>
+<li>避免被浮动元素覆盖</li>
+</ol>
+<h1 id="浮动流"><a href="#浮动流" class="headerlink" title="浮动流"></a>浮动流</h1><h1 id="绝对定位"><a href="#绝对定位" class="headerlink" title="绝对定位"></a>绝对定位</h1>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2024/02/11/v-model/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="bLank-L">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/02/11/v-model/" class="post-title-link" itemprop="url">v-model</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-02-11 23:24:44" itemprop="dateCreated datePublished" datetime="2024-02-11T23:24:44+08:00">2024-02-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-02-12 01:21:20" itemprop="dateModified" datetime="2024-02-12T01:21:20+08:00">2024-02-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="v-model" href="/2024/02/11/v-model/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::8e7a905e6cbe790722d20de22027793f" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="在原生上实现v-model效果"><a href="#在原生上实现v-model效果" class="headerlink" title="在原生上实现v-model效果"></a>在原生上实现v-model效果</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;number&quot;</span> <span class="attr">:value</span>=<span class="string">&quot;msg&quot;</span> @<span class="attr">input</span>=<span class="string">&quot;(e) =&gt; &#123; msg = parseInt(e.target.value) &#125;&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>事件第一个参数是事件对象</p>
+</blockquote>
+<h2 id="Vue3-4以前-在组件上实现v-model效果"><a href="#Vue3-4以前-在组件上实现v-model效果" class="headerlink" title="Vue3.4以前 在组件上实现v-model效果"></a>Vue3.4以前 在组件上实现v-model效果</h2><ul>
+<li>自定义事件<ul>
+<li>事件名为 <code>update:value</code></li>
+</ul>
+</li>
+<li></li>
+</ul>
+<p><strong>App.vue</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Comp</span> <span class="attr">:value</span>=<span class="string">&quot;msg&quot;</span> @<span class="attr">update:value</span>=<span class="string">&quot;val =&gt; msg = val&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">Comp</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>Comp.vue</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">:value</span>=<span class="string">&quot;props.value&quot;</span> @<span class="attr">input</span>=<span class="string">&quot;emits(&#x27;update:value&#x27;, $event.target.value)&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">input</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Vue3-4-defineModel"><a href="#Vue3-4-defineModel" class="headerlink" title="Vue3.4 defineModel"></a>Vue3.4 defineModel</h2><blockquote>
+<p>帮助我们封装组件</p>
+</blockquote>
+<ul>
+<li>可以同步</li>
+<li>一个组件可以同时使用多个v-model</li>
+<li>宏指令<ul>
+<li>用于setup语法糖里</li>
+<li>编译时</li>
+</ul>
+</li>
+</ul>
+<p><strong>App.vue</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Computer</span> <span class="attr">v-model:first-num</span>=<span class="string">&quot;val1&quot;</span> <span class="attr">v-model:second-num</span>=<span class="string">&quot;val2&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">Computer</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>Computer.vue</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">const</span> firstNum = <span class="title function_">defineModel</span>(<span class="string">&#x27;firstNum&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript"><span class="keyword">const</span> secondNum = <span class="title function_">defineModel</span>(<span class="string">&#x27;secondNum&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript"><span class="comment">//如果父组件的v-model没有arg v-model=&quot;val&quot; ， 则 const val = defineModel() </span></span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;number&quot;</span> <span class="attr">v-model.number</span>=<span class="string">&quot;firstNum&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">input</span>&gt;</span> +</span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;number&quot;</span> <span class="attr">v-model.number</span>=<span class="string">&quot;secondNum&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">input</span>&gt;</span> =</span><br><span class="line">      &#123;&#123; firstNum + secondNum &#125;&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="自定义指令手写v-mode"><a href="#自定义指令手写v-mode" class="headerlink" title="自定义指令手写v-mode"></a>自定义指令手写v-mode</h2><p><strong>Question</strong></p>
+<ol>
+<li>为什么不能用 <code>binding.value</code>  <ul>
+<li>因为binding.value <text style="color:red">是值而不是引用</text>，不能实现 view—&gt;model 层的流动</li>
+</ul>
+</li>
+<li>为什么要用  <code>toRef(binding.instance, binding.arg)</code><ol>
+<li>首先不能 <code>binding.instance[binding.arg]</code> 它会被解包成值类型</li>
+<li>所以创建一个ref， 它与 外部传进来的ref 保持同步</li>
+</ol>
+</li>
+<li>为什么要<code>defineExpose(&#123;msg&#125;)</code><ul>
+<li>setup语法糖要手动暴露自身内部变量 </li>
+<li><code>defineExpose</code>暴露出去的变量才会挂载到<code>binding.instance</code> 即这个组件实例上</li>
+</ul>
+</li>
+</ol>
+<p><strong>已解决</strong></p>
+<ol>
+<li>双向绑定</li>
+<li>同时使用多个v-oh-model</li>
+</ol>
+<blockquote>
+<p>依然无法解决的问题</p>
+<ol>
+<li><strong>写法不同</strong> 必须要加args，但是value可以省略。 写成：v-oh-model:msg </li>
+<li><strong>defineExpose</strong> <code>&lt;script setup&gt;</code> 下必须要手动暴露</li>
+</ol>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">setup</span> <span class="attr">lang</span>=<span class="string">&#x27;ts&#x27;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">import</span> &#123; ref, toRef, watchEffect &#125; <span class="keyword">from</span> <span class="string">&quot;vue&quot;</span></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">const</span> <span class="title class_">VOhModel</span> = &#123;</span></span><br><span class="line"><span class="language-javascript">  <span class="title function_">mounted</span>(<span class="params">el, binding</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">const</span> _val = <span class="title function_">toRef</span>(binding.<span class="property">instance</span>, binding.<span class="property">arg</span>)</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// model ---&gt; view</span></span></span><br><span class="line"><span class="language-javascript">    el.<span class="property">$onWatchEffect</span> = <span class="title function_">watchEffect</span>(<span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">      el.<span class="property">value</span> = _val.<span class="property">value</span></span></span><br><span class="line"><span class="language-javascript">    &#125;)</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// view ---&gt; model</span></span></span><br><span class="line"><span class="language-javascript">    el.<span class="property">$onInput</span> = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">      _val.<span class="property">value</span> = el.<span class="property">value</span></span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">    el.<span class="title function_">addEventListener</span>(<span class="string">&#x27;input&#x27;</span>, el.<span class="property">$onInput</span>)</span></span><br><span class="line"><span class="language-javascript">  &#125;,</span></span><br><span class="line"><span class="language-javascript">  <span class="title function_">unmounted</span>(<span class="params">el, binding</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    el.<span class="title function_">removeEventListener</span>(<span class="string">&#x27;input&#x27;</span>, el.<span class="property">$onInput</span>)</span></span><br><span class="line"><span class="language-javascript">    el.$onWatchEffect()</span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript">&#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">const</span> msg = <span class="title function_">ref</span>(<span class="string">&quot;Hello Vue.js&quot;</span>)</span></span><br><span class="line"><span class="language-javascript"><span class="title function_">defineExpose</span>(&#123; msg &#125;)</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">v-oh-model:msg</span>=<span class="string">&quot;msg&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123; msg &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;msg += 1&quot;</span>&gt;</span> + <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>根据这次体验，我感觉自动解包有时候真是副作用。<br>或许这就是Vue的设计模式，但是也确实限制了程序员的发挥。</p>
+<p>如果这里能直接拿到msg变量的引用，哪还需要这么麻烦</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -473,7 +767,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-04-05 15:10:59" itemprop="dateModified" datetime="2024-04-05T15:10:59+08:00">2024-04-05</time>
+      <time title="修改时间：2024-04-21 15:22:36" itemprop="dateModified" datetime="2024-04-21T15:22:36+08:00">2024-04-21</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -506,7 +800,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>375</span>
+      <span>400</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -534,6 +828,8 @@
 </blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//标签1</span></span><br><span class="line"><span class="keyword">const</span> bc = <span class="keyword">new</span> <span class="title class_">BroadcastChannel</span>(<span class="string">&#x27;common channel&#x27;</span>) </span><br><span class="line">bc.<span class="title function_">postMessage</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line"><span class="comment">//标签2</span></span><br><span class="line"><span class="keyword">const</span> bc = <span class="keyword">new</span> <span class="title class_">BroadcastChannel</span>(<span class="string">&#x27;common channel&#x27;</span>)  </span><br><span class="line">bc.<span class="property">onmessage</span> = <span class="function">(<span class="params">e</span>)=&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e.<span class="property">data</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 详见 <a href="/2023/12/24/%E5%87%A0%E7%A7%8DpostMessage/#BroadcastChannel-postMessage">🔗几种postMessage</a></li>
+<li>WebSocket</li>
+<li>shared worker<br><a href="/4000/2024/03/21/%E6%B5%85%E5%B0%9DWeb-Worker/#Shared-Worker">🔗详见</a></li>
 </ol>
 
       
@@ -714,9 +1010,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2023-12-01 11:58:29 / 修改时间：12:50:32" itemprop="dateCreated datePublished" datetime="2023-12-01T11:58:29+08:00">2023-12-01</time>
+      <time title="创建时间：2023-12-01 11:58:29" itemprop="dateCreated datePublished" datetime="2023-12-01T11:58:29+08:00">2023-12-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-04-21 17:39:22" itemprop="dateModified" datetime="2024-04-21T17:39:22+08:00">2024-04-21</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -772,16 +1074,14 @@
 <p>我们在使用接口测试工具时(例如：<code>postman</code> <code>Apipost</code>)</p>
 <p><img src="/2023/12/01/content-type%E4%B8%80%E4%BA%9B%E7%96%91%E6%83%91/jietu.png" alt="ApiPost"></p>
 <p>可以看到请求体传参有 <code>content-type</code> 分别是 <code>multipart/form-data</code> 和 <code>application/x-www-form-urlencoded</code></p>
-<p><strong>multipart&#x2F;form-data</strong></p>
-<ul>
+<h1 id="multipart-form-data"><a href="#multipart-form-data" class="headerlink" title="multipart&#x2F;form-data"></a>multipart&#x2F;form-data</h1><ul>
 <li>一般传送<em>文件</em>或者<em>二进制数据</em>，也可以传文本</li>
 <li>数据以多个part形式传输</li>
 <li>会指定一个boundary来分割不同part</li>
 </ul>
 <figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Content-Type</span><span class="punctuation">: </span>multipart/form-data; boundary=</span><br><span class="line">--------------------------460532464492192001772468</span><br><span class="line"><span class="attribute">Content-Disposition</span><span class="punctuation">: </span>form-data; name=&quot;foo&quot;</span><br><span class="line"></span><br><span class="line">this is part 1.</span><br><span class="line">--------------------------460532464492192001772468</span><br><span class="line"><span class="attribute">Content-Disposition</span><span class="punctuation">: </span>form-data; name=&quot;baz&quot;</span><br><span class="line"></span><br><span class="line">this is part 2</span><br><span class="line">--------------------------460532464492192001772468</span><br></pre></td></tr></table></figure>
 
-<p><strong>application&#x2F;x-www-form-urlencoded</strong></p>
-<ul>
+<h1 id="application-x-www-form-urlencoded"><a href="#application-x-www-form-urlencoded" class="headerlink" title="application&#x2F;x-www-form-urlencoded"></a>application&#x2F;x-www-form-urlencoded</h1><ul>
 <li>一般传输<em>文本</em></li>
 <li>格式是<code>key=value&amp;key2=value2</code>，其实和<em>query参数一样</em>，只是后者在请求头，前者在请求体里</li>
 <li>字符会经过<em>URL编码</em> <ol>
@@ -795,8 +1095,7 @@
 </ol>
 </li>
 </ul>
-<p><strong>raw</strong></p>
-<ul>
+<h1 id="raw"><a href="#raw" class="headerlink" title="raw"></a>raw</h1><ul>
 <li>一般传输图片、视频、音频</li>
 <li>表示原始未经处理的二进制数据，没有特定编码方式</li>
 </ul>
@@ -1178,252 +1477,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2023/11/07/%E6%B5%85%E8%B0%88node%E6%A8%A1%E5%9D%97%E5%BC%95%E5%85%A5%E4%B8%8E%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="bLank-L">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="bLanK's blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | bLanK's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/11/07/%E6%B5%85%E8%B0%88node%E6%A8%A1%E5%9D%97%E5%BC%95%E5%85%A5%E4%B8%8E%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/" class="post-title-link" itemprop="url">浅谈node模块引入与加载机制</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2023-11-07 21:15:30 / 修改时间：21:28:57" itemprop="dateCreated datePublished" datetime="2023-11-07T21:15:30+08:00">2023-11-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Changyan：</span>
-    
-    <a title="浅谈node模块引入与加载机制" href="/2023/11/07/%E6%B5%85%E8%B0%88node%E6%A8%A1%E5%9D%97%E5%BC%95%E5%85%A5%E4%B8%8E%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/#SOHUCS" itemprop="discussionUrl">
-      <span id="sourceId::39992f8ddaad89c2d00ed5c52d6d4d48" class="cy_cmt_count" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>324</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="模块种类"><a href="#模块种类" class="headerlink" title="模块种类"></a>模块种类</h1><ol>
-<li>核心模块: <code>path url file http</code> 等<ul>
-<li>优先级高，重名时优先加载</li>
-<li>直接导入模块名，不需要写路径 <code>require(&#39;moduleName&#39;)</code></li>
-</ul>
-</li>
-<li>文件模块: <ul>
-<li>引入可分为三种<ul>
-<li>绝对路径 <code>require(&#39;/moduleName&#39;)</code></li>
-<li>相对路径 <code>require(&#39;./dir/moduleName&#39;)</code></li>
-<li><strong>第三方加载方式</strong> <code>require(&#39;moduleName&#39;)</code></li>
-</ul>
-</li>
-<li>如果不加拓展名，则按照 <code>.js .json .node</code> 顺序为其加上拓展名</li>
-</ul>
-</li>
-</ol>
-<h1 id="加载机制"><a href="#加载机制" class="headerlink" title="加载机制"></a>加载机制</h1><ol>
-<li>优先从缓存中加载</li>
-<li>对于 <code>require(&#39;moduleName&#39;)</code> 方式导入先当作核心模块加载，如果没有则<strong>再当作第三方模块加载</strong></li>
-</ol>
-<blockquote>
-<p>第三方模块加载会一层一层的向外查找。</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2023/11/05/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96-Currying/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="bLank-L">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="bLanK's blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | bLanK's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/11/05/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96-Currying/" class="post-title-link" itemprop="url">函数柯里化 Currying</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2023-11-05 15:04:07 / 修改时间：16:06:07" itemprop="dateCreated datePublished" datetime="2023-11-05T15:04:07+08:00">2023-11-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Changyan：</span>
-    
-    <a title="函数柯里化 Currying" href="/2023/11/05/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96-Currying/#SOHUCS" itemprop="discussionUrl">
-      <span id="sourceId::722ba958a591bc0aff1492a1cbc34937" class="cy_cmt_count" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.2k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="什么是函数柯里化"><a href="#什么是函数柯里化" class="headerlink" title="什么是函数柯里化"></a>什么是函数柯里化</h1><p>是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术</p>
-<h1 id="实际应用"><a href="#实际应用" class="headerlink" title="实际应用"></a>实际应用</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 函数封装后</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">check</span>(<span class="params">reg, txt</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> reg.<span class="title function_">test</span>(txt)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 即使是相同的正则表达式，也需要重新传递一次</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">check</span>(<span class="regexp">/\d+/g</span>, <span class="string">&#x27;test1&#x27;</span>)); <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">check</span>(<span class="regexp">/\d+/g</span>, <span class="string">&#x27;testtest&#x27;</span>)); <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">check</span>(<span class="regexp">/[a-z]+/g</span>, <span class="string">&#x27;test&#x27;</span>)); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>Currying后</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">curryingCheck</span>(<span class="params">reg</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">function</span> (<span class="params">txt</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> reg.<span class="title function_">test</span>(txt)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 正则表达式通过闭包保存了起来</span></span><br><span class="line"><span class="keyword">var</span> hasNumber = <span class="title function_">curryingCheck</span>(<span class="regexp">/\d+/g</span>)</span><br><span class="line"><span class="keyword">var</span> hasLetter = <span class="title function_">curryingCheck</span>(<span class="regexp">/[a-z]+/g</span>)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">hasNumber</span>(<span class="string">&#x27;test1&#x27;</span>)); <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">hasNumber</span>(<span class="string">&#x27;testtest&#x27;</span>));  <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">hasLetter</span>(<span class="string">&#x27;21212&#x27;</span>)); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="经典面试题"><a href="#经典面试题" class="headerlink" title="经典面试题"></a>经典面试题</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">写一个add函数 要求: </span><br><span class="line">add(1)(2) == 3</span><br><span class="line">add(1)(2)(3) == 6;</span><br><span class="line">add(1, 2)(3) == 6; </span><br><span class="line">tip: </span><br><span class="line">    由add(1)(2)(3)可知 add(1)(2) 应该是返回函数的</span><br><span class="line">    但是又add(1)(2) == 3 ，可知 里面有隐式转换，重写toString()</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">//空参数默认为0</span></span><br><span class="line">    <span class="comment">//这个数组利用了闭包的特性，所有加数都会push进这个数组</span></span><br><span class="line">    <span class="keyword">const</span> _args = <span class="variable language_">arguments</span>.<span class="property">length</span> ? [...<span class="variable language_">arguments</span>] : [<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">_adder</span>(<span class="params"></span>) &#123;</span><br><span class="line">        _args.<span class="title function_">push</span>(...<span class="variable language_">arguments</span> || <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> _adder</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//隐式转换时调用toString()</span></span><br><span class="line">    _adder.<span class="property">toString</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> _args.<span class="title function_">reduce</span>(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a + b)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//返回一个函数是一定的</span></span><br><span class="line">    <span class="keyword">return</span> _adder</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">add</span>(<span class="number">1</span>, <span class="number">2</span>)(<span class="number">3</span>, <span class="number">4</span>).<span class="title function_">toString</span>());</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1447,13 +1500,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">157k</span>
+    <span title="站点总字数">161k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:45</span>
+    <span title="站点阅读时长">4:54</span>
   </span>
 </div>
 <div class="busuanzi-count">

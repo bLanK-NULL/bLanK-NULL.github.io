@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://blank-null.github.io/2023/10/20/vue%E5%BA%95%E5%B1%82/effect2.png">
 <meta property="og:image" content="https://blank-null.github.io/2023/10/20/vue%E5%BA%95%E5%B1%82/compiler.png">
 <meta property="article:published_time" content="2023-10-20T04:20:16.000Z">
-<meta property="article:modified_time" content="2024-03-30T04:27:58.546Z">
+<meta property="article:modified_time" content="2024-04-19T05:16:56.848Z">
 <meta property="article:author" content="bLank-L">
 <meta property="article:tag" content="vue">
 <meta property="article:tag" content="reactive">
@@ -151,7 +151,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E8%99%9A%E6%8B%9Fdom"><span class="nav-text">为什么需要虚拟dom</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%93%8D%E5%BA%94%E5%BC%8F"><span class="nav-text">响应式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#effect"><span class="nav-text">effect</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reactive"><span class="nav-text">reactive</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ref"><span class="nav-text">ref</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF"><span class="nav-text">模板</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#keepAlive"><span class="nav-text">keepAlive</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Teleport"><span class="nav-text">Teleport</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transition"><span class="nav-text">Transition</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BC%96%E8%BE%91%E5%99%A8"><span class="nav-text">编辑器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BFDSL"><span class="nav-text">模板DSL</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#diff%E7%AE%97%E6%B3%95"><span class="nav-text">diff算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#v-for-key-%E7%9A%84%E6%84%8F%E4%B9%89"><span class="nav-text">v-for key 的意义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#diff-%E7%AE%97%E6%B3%95%E4%BA%94%E5%A4%A7%E6%AD%A5%E9%AA%A4"><span class="nav-text">diff 算法五大步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E8%99%9A%E6%8B%9Fdom"><span class="nav-text">为什么需要虚拟dom</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%93%8D%E5%BA%94%E5%BC%8F"><span class="nav-text">响应式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#effect"><span class="nav-text">effect</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reactive"><span class="nav-text">reactive</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%A8Reflect"><span class="nav-text">为什么用Reflect</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ref"><span class="nav-text">ref</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF"><span class="nav-text">模板</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#keepAlive"><span class="nav-text">keepAlive</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Teleport"><span class="nav-text">Teleport</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transition"><span class="nav-text">Transition</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BC%96%E8%BE%91%E5%99%A8"><span class="nav-text">编辑器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BFDSL"><span class="nav-text">模板DSL</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#diff%E7%AE%97%E6%B3%95"><span class="nav-text">diff算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#v-for-key-%E7%9A%84%E6%84%8F%E4%B9%89"><span class="nav-text">v-for key 的意义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#diff-%E7%AE%97%E6%B3%95%E4%BA%94%E5%A4%A7%E6%AD%A5%E9%AA%A4"><span class="nav-text">diff 算法五大步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -166,18 +166,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">52</span>
+          <span class="site-state-item-count">54</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">81</span>
+        <span class="site-state-item-count">83</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -252,7 +252,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-03-30 12:27:58" itemprop="dateModified" datetime="2024-03-30T12:27:58+08:00">2024-03-30</time>
+      <time title="修改时间：2024-04-19 13:16:56" itemprop="dateModified" datetime="2024-04-19T13:16:56+08:00">2024-04-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -292,14 +292,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>7.7k</span>
+      <span>8.3k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>14 分钟</span>
+      <span>15 分钟</span>
     </span>
 </div>
 
@@ -326,6 +326,12 @@
 <p>reactive 只能监听复杂数据类型，因为proxy只能监听负责数据类型的getter和setter</p>
 </blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">reactive</span>(<span class="params">obj</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Proxy</span>(obj, &#123;</span><br><span class="line">        <span class="title function_">get</span>(<span class="params">target, key, recv</span>)&#123;</span><br><span class="line">            <span class="keyword">const</span> res = <span class="title class_">Reflect</span>.<span class="title function_">get</span>(...<span class="variable language_">arguments</span>)</span><br><span class="line">            <span class="comment">//收集依赖</span></span><br><span class="line">            <span class="title function_">track</span>(target, key)</span><br><span class="line">            <span class="keyword">return</span> res</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="title function_">set</span>(<span class="params">target, key, newValue, recv</span>)&#123;</span><br><span class="line">            <span class="keyword">const</span> res = <span class="title class_">Reflect</span>.<span class="title function_">set</span>(...<span class="variable language_">arguments</span>)</span><br><span class="line">            <span class="comment">//触发依赖</span></span><br><span class="line">            <span class="title function_">trigger</span>(target, key)</span><br><span class="line">            <span class="keyword">return</span> res</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="为什么用Reflect"><a href="#为什么用Reflect" class="headerlink" title="为什么用Reflect"></a>为什么用Reflect</h3><p>Reflect 就是反射，可以直接调用对象的基本方法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    <span class="attr">a</span>: <span class="string">&#x27;a&#x27;</span>,</span><br><span class="line">    <span class="attr">b</span>: <span class="string">&#x27;b&#x27;</span>,</span><br><span class="line">    <span class="keyword">get</span> <span class="title function_">c</span>()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">a</span>+<span class="variable language_">this</span>.<span class="property">b</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> proxy = <span class="keyword">new</span> <span class="title class_">Proxy</span>(obj, &#123;</span><br><span class="line">    <span class="title function_">get</span>(<span class="params">target, key, receiver</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;读：&#x27;</span>, target[key]);</span><br><span class="line">        <span class="keyword">return</span> target[key]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">proxy.<span class="property">c</span>; <span class="comment">//只输出， 读：&#x27;ab&#x27;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> proxy = <span class="keyword">new</span> <span class="title class_">Proxy</span>(obj, &#123;</span><br><span class="line">    <span class="title function_">get</span>(<span class="params">target, key, receiver</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;读：&#x27;</span>, target[key]);</span><br><span class="line">        <span class="keyword">return</span> <span class="title class_">Reflect</span>.<span class="title function_">get</span>(...<span class="variable language_">arguments</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">proxy.<span class="property">c</span>; </span><br><span class="line"><span class="comment">//读：&#x27;ab&#x27;</span></span><br><span class="line"><span class="comment">//读：&#x27;a&#x27;</span></span><br><span class="line"><span class="comment">//读：&#x27;b&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
 
 <h2 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h2><blockquote>
 <p>那么ref怎么监听原始值类型？</p>
@@ -502,13 +508,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">157k</span>
+    <span title="站点总字数">161k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:45</span>
+    <span title="站点阅读时长">4:54</span>
   </span>
 </div>
 <div class="busuanzi-count">

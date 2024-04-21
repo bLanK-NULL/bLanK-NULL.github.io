@@ -6,7 +6,7 @@
   <link href="https://blank-null.github.io/atom.xml" rel="self"/>
   
   <link href="https://blank-null.github.io/"/>
-  <updated>2024-03-31T15:44:38.854Z</updated>
+  <updated>2024-04-21T16:09:29.814Z</updated>
   <id>https://blank-null.github.io/</id>
   
   <author>
@@ -15,6 +15,55 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>HTTPS详解</title>
+    <link href="https://blank-null.github.io/2024/04/21/HTTPS%E8%AF%A6%E8%A7%A3/"/>
+    <id>https://blank-null.github.io/2024/04/21/HTTPS%E8%AF%A6%E8%A7%A3/</id>
+    <published>2024-04-21T15:35:00.000Z</published>
+    <updated>2024-04-21T16:09:29.814Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;HTTPS &amp;#x3D; HTTP + SSL&amp;#x2F;TLS&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;http 明文传输，易被劫持，SEO降权&lt;/li&gt;
+&lt;li&gt;TLS 传输层安全协议，是SSL的升级方案&lt;/li&gt;
+&lt;/ol&gt;</summary>
+    
+    
+    
+    <category term="网络" scheme="https://blank-null.github.io/categories/%E7%BD%91%E7%BB%9C/"/>
+    
+    
+    <category term="http" scheme="https://blank-null.github.io/tags/http/"/>
+    
+    <category term="https" scheme="https://blank-null.github.io/tags/https/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Webpack与Vite的区别与联系</title>
+    <link href="https://blank-null.github.io/2024/04/21/Webpack%E4%B8%8EVite%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E8%81%94%E7%B3%BB/"/>
+    <id>https://blank-null.github.io/2024/04/21/Webpack%E4%B8%8EVite%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E8%81%94%E7%B3%BB/</id>
+    <published>2024-04-21T07:25:17.000Z</published>
+    <updated>2024-04-21T09:28:56.358Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;0-当前工程化痛点&quot;&gt;&lt;a href=&quot;#0-当前工程化痛点&quot; class=&quot;headerlink&quot; title=&quot;0. 当前工程化痛点&quot;&gt;&lt;/a&gt;0. 当前工程化痛点&lt;/h1&gt;&lt;p&gt;主流webpack需要把&lt;i&gt;整个项目编译好后&lt;/i&gt;再交给dev server</summary>
+      
+    
+    
+    
+    <category term="工程化" scheme="https://blank-null.github.io/categories/%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+    
+    <category term="webpack" scheme="https://blank-null.github.io/tags/webpack/"/>
+    
+    <category term="vite" scheme="https://blank-null.github.io/tags/vite/"/>
+    
+  </entry>
   
   <entry>
     <title>算法总结</title>
@@ -140,7 +189,7 @@
     <link href="https://blank-null.github.io/2024/03/05/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%9F%BA%E7%A1%80/"/>
     <id>https://blank-null.github.io/2024/03/05/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%9F%BA%E7%A1%80/</id>
     <published>2024-03-05T07:00:30.000Z</published>
-    <updated>2024-03-26T07:05:32.219Z</updated>
+    <updated>2024-04-21T14:36:04.243Z</updated>
     
     
       
@@ -148,7 +197,7 @@
     <summary type="html">&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
 
 &lt;h1 id=&quot;1-http-状态码&quot;&gt;&lt;a href=&quot;#1-http-状态码&quot; class=&quot;headerlink&quot; title=&quot;1. http 状态码&quot;&gt;&lt;/a&gt;1. http 状态码&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;2XX&lt;u</summary>
+&lt;li&gt;1XX  </summary>
       
     
     
@@ -169,7 +218,7 @@
     <link href="https://blank-null.github.io/2024/03/05/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91html-css%E5%9F%BA%E7%A1%80/"/>
     <id>https://blank-null.github.io/2024/03/05/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91html-css%E5%9F%BA%E7%A1%80/</id>
     <published>2024-03-05T06:08:24.000Z</published>
-    <updated>2024-04-08T16:33:29.403Z</updated>
+    <updated>2024-04-08T16:56:17.260Z</updated>
     
     
       
@@ -195,7 +244,7 @@
     <link href="https://blank-null.github.io/2024/03/04/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91js%E5%9F%BA%E7%A1%80/"/>
     <id>https://blank-null.github.io/2024/03/04/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91js%E5%9F%BA%E7%A1%80/</id>
     <published>2024-03-04T12:15:58.000Z</published>
-    <updated>2024-03-26T07:05:41.903Z</updated>
+    <updated>2024-04-21T07:16:31.998Z</updated>
     
     
       
@@ -329,7 +378,7 @@
     <link href="https://blank-null.github.io/2023/12/22/%E8%B7%A8%E6%A0%87%E7%AD%BE%E9%80%9A%E4%BF%A1/"/>
     <id>https://blank-null.github.io/2023/12/22/%E8%B7%A8%E6%A0%87%E7%AD%BE%E9%80%9A%E4%BF%A1/</id>
     <published>2023-12-22T11:15:34.000Z</published>
-    <updated>2024-04-05T07:10:59.890Z</updated>
+    <updated>2024-04-21T07:22:36.171Z</updated>
     
     
       
@@ -389,7 +438,7 @@
     <link href="https://blank-null.github.io/2023/12/01/content-type%E4%B8%80%E4%BA%9B%E7%96%91%E6%83%91/"/>
     <id>https://blank-null.github.io/2023/12/01/content-type%E4%B8%80%E4%BA%9B%E7%96%91%E6%83%91/</id>
     <published>2023-12-01T03:58:29.000Z</published>
-    <updated>2023-12-01T04:50:32.680Z</updated>
+    <updated>2024-04-21T09:39:22.530Z</updated>
     
     
       
@@ -481,54 +530,6 @@
     
     
     <category term="插槽" scheme="https://blank-null.github.io/tags/%E6%8F%92%E6%A7%BD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>浅谈node模块引入与加载机制</title>
-    <link href="https://blank-null.github.io/2023/11/07/%E6%B5%85%E8%B0%88node%E6%A8%A1%E5%9D%97%E5%BC%95%E5%85%A5%E4%B8%8E%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/"/>
-    <id>https://blank-null.github.io/2023/11/07/%E6%B5%85%E8%B0%88node%E6%A8%A1%E5%9D%97%E5%BC%95%E5%85%A5%E4%B8%8E%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/</id>
-    <published>2023-11-07T13:15:30.000Z</published>
-    <updated>2023-11-07T13:28:57.870Z</updated>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;模块种类&quot;&gt;&lt;a href=&quot;#模块种类&quot; class=&quot;headerlink&quot; title=&quot;模块种类&quot;&gt;&lt;/a&gt;模块种类&lt;/h1&gt;&lt;ol&gt;
-&lt;li&gt;核心模块: &lt;code&gt;path url file http&lt;/code&gt; 等&lt;ul&gt;
-&lt;li&gt;优先级高，重名时</summary>
-      
-    
-    
-    
-    <category term="技术" scheme="https://blank-null.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-    <category term="npm" scheme="https://blank-null.github.io/tags/npm/"/>
-    
-    <category term="import" scheme="https://blank-null.github.io/tags/import/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>函数柯里化 Currying</title>
-    <link href="https://blank-null.github.io/2023/11/05/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96-Currying/"/>
-    <id>https://blank-null.github.io/2023/11/05/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96-Currying/</id>
-    <published>2023-11-05T07:04:07.000Z</published>
-    <updated>2023-11-05T08:06:07.277Z</updated>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;什么是函数柯里化&quot;&gt;&lt;a href=&quot;#什么是函数柯里化&quot; class=&quot;headerlink&quot; title=&quot;什么是函数柯里化&quot;&gt;&lt;/a&gt;什么是函数柯里化&lt;/h1&gt;&lt;p&gt;是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下</summary>
-      
-    
-    
-    
-    <category term="技术" scheme="https://blank-null.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-    <category term="柯里化" scheme="https://blank-null.github.io/tags/%E6%9F%AF%E9%87%8C%E5%8C%96/"/>
     
   </entry>
   

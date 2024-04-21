@@ -174,16 +174,14 @@
 <p>我们在使用接口测试工具时(例如：<code>postman</code> <code>Apipost</code>)</p>
 <p><img src="/2023/12/01/content-type%E4%B8%80%E4%BA%9B%E7%96%91%E6%83%91/jietu.png" alt="ApiPost"></p>
 <p>可以看到请求体传参有 <code>content-type</code> 分别是 <code>multipart/form-data</code> 和 <code>application/x-www-form-urlencoded</code></p>
-<p><strong>multipart&#x2F;form-data</strong></p>
-<ul>
+<h1 id="multipart-form-data"><a href="#multipart-form-data" class="headerlink" title="multipart&#x2F;form-data"></a>multipart&#x2F;form-data</h1><ul>
 <li>一般传送<em>文件</em>或者<em>二进制数据</em>，也可以传文本</li>
 <li>数据以多个part形式传输</li>
 <li>会指定一个boundary来分割不同part</li>
 </ul>
 <figure class="highlight http"><table><tr><td class="code"><pre><span class="line"><span class="attribute">Content-Type</span><span class="punctuation">: </span>multipart/form-data; boundary=</span><br><span class="line">--------------------------460532464492192001772468</span><br><span class="line"><span class="attribute">Content-Disposition</span><span class="punctuation">: </span>form-data; name=&quot;foo&quot;</span><br><span class="line"></span><br><span class="line">this is part 1.</span><br><span class="line">--------------------------460532464492192001772468</span><br><span class="line"><span class="attribute">Content-Disposition</span><span class="punctuation">: </span>form-data; name=&quot;baz&quot;</span><br><span class="line"></span><br><span class="line">this is part 2</span><br><span class="line">--------------------------460532464492192001772468</span><br></pre></td></tr></table></figure>
 
-<p><strong>application&#x2F;x-www-form-urlencoded</strong></p>
-<ul>
+<h1 id="application-x-www-form-urlencoded"><a href="#application-x-www-form-urlencoded" class="headerlink" title="application&#x2F;x-www-form-urlencoded"></a>application&#x2F;x-www-form-urlencoded</h1><ul>
 <li>一般传输<em>文本</em></li>
 <li>格式是<code>key=value&amp;key2=value2</code>，其实和<em>query参数一样</em>，只是后者在请求头，前者在请求体里</li>
 <li>字符会经过<em>URL编码</em> <ol>
@@ -197,8 +195,7 @@
 </ol>
 </li>
 </ul>
-<p><strong>raw</strong></p>
-<ul>
+<h1 id="raw"><a href="#raw" class="headerlink" title="raw"></a>raw</h1><ul>
 <li>一般传输图片、视频、音频</li>
 <li>表示原始未经处理的二进制数据，没有特定编码方式</li>
 </ul>
@@ -609,24 +606,61 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
   <entry>
     <title>http详解</title>
     <url>/2023/10/16/http%E8%AF%A6%E8%A7%A3/</url>
-    <content><![CDATA[<h1 id="http-1-0"><a href="#http-1-0" class="headerlink" title="http 1.0"></a>http 1.0</h1><p>默认关闭 <code>keepalive</code>，每次请求都建立一次tcp连接，服务器处理后立即断开tcp连接</p>
-<p>服务器不记录客户的任何请求（<strong>无状态</strong>）</p>
-<p>但是，可以借助session和cookie来做身份认证</p>
+    <content><![CDATA[<h1 id="http-1-0"><a href="#http-1-0" class="headerlink" title="http 1.0"></a>http 1.0</h1><ul>
+<li>简单、灵活、易扩展、跨平台<ol>
+<li>基本格式：header+body </li>
+<li>header、status 都可以自定义</li>
+<li>https &#x3D; http + tls&#x2F;ssl</li>
+</ol>
+</li>
+<li>无状态： 服务器不会记录请求的状态</li>
+<li>默认关闭 <code>keepalive</code>，每次请求都建立一次tcp连接，服务器处理后立即断开tcp连接</li>
+</ul>
 <blockquote>
-<p>问题：http1.0有队头阻塞， 即没收到第一个请求对应的响应 就不能发送第二个请求</p>
+<p>http1.0有队头阻塞， 即没收到第一个请求对应的响应 就不能发送第二个请求</p>
 </blockquote>
 <span id="more"></span>
 
-<h1 id="http-1-1"><a href="#http-1-1" class="headerlink" title="http 1.1"></a>http 1.1</h1><p>默认 <code>流水线</code> <code>keepalive|持久连接</code></p>
+<h1 id="http-1-1"><a href="#http-1-1" class="headerlink" title="http 1.1"></a>http 1.1</h1><ul>
+<li>默认<code>keepalive|长连接</code></li>
+<li><code>流水线模式</code>基于长连接，但是默认关闭</li>
+</ul>
 <blockquote>
-<p>流水线模式解决了队头阻塞</p>
+<p>流水线模式解决了请求阻塞，不用等待前一个请求收到响应就可以发送下一个请求<br>但是对于响应队头阻塞没有解决。例如，服务器依次收到A和B，但是先完成了B却需要等待A完成先发送A。</p>
 </blockquote>
 <h2 id="keepalive的缺点"><a href="#keepalive的缺点" class="headerlink" title="keepalive的缺点"></a>keepalive的缺点</h2><p>keepalive会保持tcp连接一段时间，如果服务器要响应<strong>大量不同用</strong>户一次性的请求，会造成服务器同时保活多个tcp连接</p>
-<h1 id="http-2-0"><a href="#http-2-0" class="headerlink" title="http 2.0"></a>http 2.0</h1><p><strong>二进制分帧</strong>: 把传输消息分成更小的帧，并使用二进制格式编码。</p>
-<p><strong>多路复用</strong>：一个http2连接可以发起多重请求响应，在同一tcp连接上双向传递。</p>
-<p>首部压缩：减小首部大小。先给对方一份 首部各字段和对应值 的编码表，之后首部只需要填入对应编码就可以</p>
-<p>服务端推送： 对于一个请求可以发送多个响应。</p>
-<h1 id="http-3-0"><a href="#http-3-0" class="headerlink" title="http 3.0"></a>http 3.0</h1><p>整合了tcp握手和tls握手</p>
+<h1 id="http-2-0"><a href="#http-2-0" class="headerlink" title="http 2.0"></a>http 2.0</h1><ol>
+<li>二进制格式: 把传输消息分成更小的帧，并使用二进制格式编码。头部和数据体都是二进制格式</li>
+<li>并发传输：引入Stream概念，每个请求分配到唯一的StreamID，多个Stream复用一条Tcp连接。每个Stream的帧之间是有序的，不同stream的帧是可以乱序的。</li>
+<li>首部压缩：减小首部大小。先给对方一份 首部各字段和对应值 的编码表，之后首部只需要填入对应编码就可以。</li>
+<li>服务端推送： 收到用户的请求后，预测用户可能会请求其他资源，主动将这些资源发送给客户端。</li>
+</ol>
+<blockquote>
+<p>解决了响应队头阻塞<br>但是没有解决tcp层面的队头阻塞</p>
+</blockquote>
+<h2 id="tcp的队头阻塞"><a href="#tcp的队头阻塞" class="headerlink" title="tcp的队头阻塞"></a>tcp的队头阻塞</h2><p><img src="/./http%E8%AF%A6%E8%A7%A3/tcp%E9%98%9F%E5%A4%B4%E9%98%BB%E5%A1%9E1.jpg"><br><img src="/./http%E8%AF%A6%E8%A7%A3/tcp%E9%98%9F%E5%A4%B4%E9%98%BB%E5%A1%9E2.jpg"><br>多个Stream共用一个Tcp连接，即共用一个滑动窗口。那么当某个前面的stream的某个帧丢失，tcp协议规定必须按顺序读取，所以此时后面的stream全部被阻塞。</p>
+<h1 id="http-3-0"><a href="#http-3-0" class="headerlink" title="http 3.0"></a>http 3.0</h1><p>回顾http1.1 未解决响应队头阻塞<br>回顾http2.0 未解决tcp层次的队头阻塞。<br>所以http3.0采用 <code>UDP + QUIC</code></p>
+<ul>
+<li>UDP: <ul>
+<li>无序</li>
+<li>不可靠</li>
+</ul>
+</li>
+<li>QUIC：<ul>
+<li>无队头阻塞</li>
+<li>更快建立连接</li>
+<li>连接迁移</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>无队头阻塞？<br>  也有类似Stream与多路复用的概念，可以在同一条连接上并发传输多个Stream。当某个Stream丢包只阻塞这个Stream不影响其他Stream</li>
+<li>更快的建立连接<br>  QUIC握手整合了TLS握手</li>
+<li>连接迁移<br>  http2.0采用TCP四元组来标识一个连接，当用户切换网络就要重新建立连接。<br>  http3.0采用<strong>连接ID</strong>来标识，只要还有TLS密钥就可以无缝连接<blockquote>
+<p>TCP四元组：（源IP+源端口+目的IP+目的端口）</p>
+</blockquote>
+</li>
+</ol>
 <h1 id="轮询"><a href="#轮询" class="headerlink" title="轮询"></a>轮询</h1><p>先思考一个场景，服务器需要主动给用户发送请求，而http貌似只能由用户发起请求，服务器在响应该请求</p>
 <p>要解决这个痛点，有两种办法</p>
 <ol>
@@ -688,7 +722,7 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mss1.1 ===&gt; 发送</span><br><span class="line"></span><br><span class="line">mss1.2 + mss2.1 ===&gt; 发送</span><br><span class="line"></span><br><span class="line">mss2.2 + mss3.1 ===&gt; 发送</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>技术</category>
+        <category>网络</category>
       </categories>
       <tags>
         <tag>http</tag>
@@ -728,6 +762,11 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
 <li>停止nignx   <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nginx -s quit   <span class="comment">#优雅停止</span></span><br><span class="line">nginx -s stop   <span class="comment">#立即停止</span></span><br><span class="line">nginx -s reload <span class="comment">#重载配置文件</span></span><br></pre></td></tr></table></figure></li>
 <li>查看配置  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nginx -V <span class="comment">#查看配置</span></span><br><span class="line">nginx -t <span class="comment">#检查配置是否出错</span></span><br></pre></td></tr></table></figure></li>
 </ul>
+<h1 id="nginx-基本配置"><a href="#nginx-基本配置" class="headerlink" title="nginx 基本配置"></a>nginx 基本配置</h1><figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">event</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="section">http</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">include</span> /etc/nginx/mime.types;     <span class="comment">#导入文件MIME类型</span></span><br><span class="line">    <span class="attribute">include</span> /etc/nginx/conf.d/<span class="regexp">*.conf</span>;</span><br><span class="line"></span><br><span class="line">    <span class="section">server</span> &#123;</span><br><span class="line">        <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">        <span class="attribute">server_name</span> localhost;</span><br><span class="line">        <span class="attribute">root</span>  /dist; <span class="comment"># 访问80端口返回root页面</span></span><br><span class="line">        <span class="attribute">index</span> egg.html; <span class="comment">#默认访问index.html，配置后以配置优先 </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="location-的使用"><a href="#location-的使用" class="headerlink" title="location 的使用"></a>location 的使用</h2><figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span> localhost;</span><br><span class="line">    <span class="section">location</span> / &#123;        <span class="comment"># 访问根目录下的请求都从/dist目录下开始寻找资源</span></span><br><span class="line">        <span class="attribute">root</span> /dist;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 完全指定请求地址对应的资源地址</span></span><br><span class="line"><span class="section">location</span> = /app/index.html &#123; </span><br><span class="line">    <span class="attribute">root</span> /dist;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 也可以开启正则</span></span><br><span class="line"><span class="section">location</span> <span class="regexp">~ /videos/video[6-9].avi</span> &#123;</span><br><span class="line">    <span class="attribute">root</span> /videos/</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
         <category>技术</category>
@@ -1023,6 +1062,12 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
 <p>reactive 只能监听复杂数据类型，因为proxy只能监听负责数据类型的getter和setter</p>
 </blockquote>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">reactive</span>(<span class="params">obj</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Proxy</span>(obj, &#123;</span><br><span class="line">        <span class="title function_">get</span>(<span class="params">target, key, recv</span>)&#123;</span><br><span class="line">            <span class="keyword">const</span> res = <span class="title class_">Reflect</span>.<span class="title function_">get</span>(...<span class="variable language_">arguments</span>)</span><br><span class="line">            <span class="comment">//收集依赖</span></span><br><span class="line">            <span class="title function_">track</span>(target, key)</span><br><span class="line">            <span class="keyword">return</span> res</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="title function_">set</span>(<span class="params">target, key, newValue, recv</span>)&#123;</span><br><span class="line">            <span class="keyword">const</span> res = <span class="title class_">Reflect</span>.<span class="title function_">set</span>(...<span class="variable language_">arguments</span>)</span><br><span class="line">            <span class="comment">//触发依赖</span></span><br><span class="line">            <span class="title function_">trigger</span>(target, key)</span><br><span class="line">            <span class="keyword">return</span> res</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="为什么用Reflect"><a href="#为什么用Reflect" class="headerlink" title="为什么用Reflect"></a>为什么用Reflect</h3><p>Reflect 就是反射，可以直接调用对象的基本方法。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    <span class="attr">a</span>: <span class="string">&#x27;a&#x27;</span>,</span><br><span class="line">    <span class="attr">b</span>: <span class="string">&#x27;b&#x27;</span>,</span><br><span class="line">    <span class="keyword">get</span> <span class="title function_">c</span>()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">a</span>+<span class="variable language_">this</span>.<span class="property">b</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> proxy = <span class="keyword">new</span> <span class="title class_">Proxy</span>(obj, &#123;</span><br><span class="line">    <span class="title function_">get</span>(<span class="params">target, key, receiver</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;读：&#x27;</span>, target[key]);</span><br><span class="line">        <span class="keyword">return</span> target[key]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">proxy.<span class="property">c</span>; <span class="comment">//只输出， 读：&#x27;ab&#x27;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> proxy = <span class="keyword">new</span> <span class="title class_">Proxy</span>(obj, &#123;</span><br><span class="line">    <span class="title function_">get</span>(<span class="params">target, key, receiver</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;读：&#x27;</span>, target[key]);</span><br><span class="line">        <span class="keyword">return</span> <span class="title class_">Reflect</span>.<span class="title function_">get</span>(...<span class="variable language_">arguments</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">proxy.<span class="property">c</span>; </span><br><span class="line"><span class="comment">//读：&#x27;ab&#x27;</span></span><br><span class="line"><span class="comment">//读：&#x27;a&#x27;</span></span><br><span class="line"><span class="comment">//读：&#x27;b&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
 
 <h2 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h2><blockquote>
 <p>那么ref怎么监听原始值类型？</p>
@@ -1195,6 +1240,9 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
 <li><strong>宽高由内容决定，无法设置</strong></li>
 <li><strong>上下margin和上下padding 不起作用</strong></li>
 </ol>
+<blockquote>
+<p>特殊<code>&lt;a&gt;</code>， 它的祖先元素可以放块级元素，那么它也可以放块级元素</p>
+</blockquote>
 <h2 id="块级元素"><a href="#块级元素" class="headerlink" title="块级元素"></a>块级元素</h2><ol>
 <li>独占一行</li>
 <li>可以包含块级和行级元素<ul>
@@ -1295,7 +1343,10 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
 <h1 id="1-隐式类型转换"><a href="#1-隐式类型转换" class="headerlink" title="1. 隐式类型转换"></a>1. 隐式类型转换</h1><p><img src="/2024/03/04/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91js%E5%9F%BA%E7%A1%80/jsautotranslate.png" alt="img"></p>
 <ul>
 <li>P 表示toPrimitive<ul>
-<li>先调用 <code>valueOf</code> 若返回不是原始类型</li>
+<li>先调用 <code>valueOf</code> 若返回不是原始类型<ul>
+<li>原始类型的包装类型调用<code>valueOf</code>会返回原始类型(例如String，BigInt)</li>
+</ul>
+</li>
 <li>再调用 <code>toString</code> 若返回不是原始类型</li>
 <li>则报错</li>
 </ul>
@@ -1312,6 +1363,38 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
 <li>参数： callback回调函数，第一个参数是回调函数被触发时的时间戳。</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> element = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;some-element-you-want-to-animate&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> start, previousTimeStamp;</span><br><span class="line"><span class="keyword">let</span> done = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">step</span>(<span class="params">timestamp</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (start === <span class="literal">undefined</span>) &#123;</span><br><span class="line">    start = timestamp;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> elapsed = timestamp - start;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (previousTimeStamp !== timestamp) &#123;</span><br><span class="line">    <span class="comment">// 这里使用 Math.min() 确保元素在恰好位于 200px 时停止运动</span></span><br><span class="line">    <span class="keyword">const</span> count = <span class="title class_">Math</span>.<span class="title function_">min</span>(<span class="number">0.1</span> * elapsed, <span class="number">200</span>);</span><br><span class="line">    element.<span class="property">style</span>.<span class="property">transform</span> = <span class="string">`translateX(<span class="subst">$&#123;count&#125;</span>px)`</span>;</span><br><span class="line">    <span class="keyword">if</span> (count === <span class="number">200</span>) done = <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (elapsed &lt; <span class="number">2000</span>) &#123;</span><br><span class="line">    <span class="comment">// 2 秒之后停止动画</span></span><br><span class="line">    previousTimeStamp = timestamp;</span><br><span class="line">    <span class="keyword">if</span> (!done) &#123;</span><br><span class="line">      <span class="variable language_">window</span>.<span class="title function_">requestAnimationFrame</span>(step);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">requestAnimationFrame</span>(step);</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="4-严格模式"><a href="#4-严格模式" class="headerlink" title="4. 严格模式"></a>4. 严格模式</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="meta">&quot;use strict&quot;</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>禁止使用关键字声明变量</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> x = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">if</span>(x)&#123;</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">g</span>(<span class="params"></span>) &#123;&#125; <span class="comment">// 相当于没有用关键字声明变量</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(g) <span class="comment">//</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="5-this指向"><a href="#5-this指向" class="headerlink" title="5. this指向"></a>5. this指向</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">(obj.<span class="property">fn2</span>)(); <span class="comment">// 函数内this指向obj</span></span><br><span class="line">(obj.<span class="property">fn2</span> = obj.<span class="property">fn2</span>)(); <span class="comment">//函数内this指向全局作用域</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>获取url参数<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> searchUrl = link.<span class="property">search</span>.<span class="title function_">substr</span>(<span class="number">1</span>); <span class="comment">// 获取问号后面字符串</span></span><br><span class="line"><span class="keyword">let</span> hashUrl = link.<span class="property">hash</span>.<span class="title function_">substr</span>(<span class="number">1</span>); <span class="comment">// 获取#后面的值</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="variable constant_">URL</span> = <span class="string">&quot;http://www.baidu.com?name=elephant&amp;age=25&amp;sex=male&amp;num=100&quot;</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">queryURLParams</span>(<span class="params">URL</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> url = <span class="variable constant_">URL</span>.<span class="title function_">split</span>(<span class="string">&quot;?&quot;</span>)[<span class="number">1</span>];</span><br><span class="line">  <span class="keyword">const</span> urlSearchParams = <span class="keyword">new</span> <span class="title class_">URLSearchParams</span>(url);</span><br><span class="line">  <span class="keyword">const</span> params = <span class="title class_">Object</span>.<span class="title function_">fromEntries</span>(urlSearchParams.<span class="title function_">entries</span>());</span><br><span class="line">  <span class="keyword">return</span> params</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="6-闭包"><a href="#6-闭包" class="headerlink" title="6. 闭包"></a>6. 闭包</h1><h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><ol>
+<li>模拟私有变量</li>
+<li>阻止变量被回收</li>
+</ol>
+<h2 id="闭包导致的内存泄露"><a href="#闭包导致的内存泄露" class="headerlink" title="闭包导致的内存泄露"></a>闭包导致的内存泄露</h2><ol>
+<li><p>持有不需要的函数引用，导致函数关联词法环境无法销毁</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">useArr</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="keyword">const</span> arr = [<span class="number">1</span>];</span><br><span class="line">  <span class="keyword">return</span> <span class="function">()=&gt;</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> arr = <span class="title function_">useArr</span>();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当多个函数共享词法环境，导致出现无法触及也无法回收的内存</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">useArr</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="keyword">const</span> arr = [<span class="number">1</span>];</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>)&#123;</span><br><span class="line">    arr;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="function">()=&gt;</span> [];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> arr = <span class="title function_">useArr</span>();</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p><a href="/2023/10/15/%E5%87%A0%E7%A7%8D%E7%BB%A7%E6%89%BF%E6%96%B9%E5%BC%8F">🔗几种继承方式</a></p>
+<h1 id="7-class"><a href="#7-class" class="headerlink" title="7. class"></a>7. class</h1><p>class 是ES6的新的实现继承的方式，他的本质还是寄生式组合继承</p>
+<p>特点：</p>
+<ol>
+<li>class 必须用new调用</li>
+<li>class 没有变量提升</li>
+</ol>
 ]]></content>
       <categories>
         <category>综合</category>
@@ -1326,31 +1409,62 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
     <content><![CDATA[<span id="more"></span>
 
 <h1 id="1-http-状态码"><a href="#1-http-状态码" class="headerlink" title="1. http 状态码"></a>1. http 状态码</h1><ul>
+<li>1XX   提示信息<ul>
+<li>101：允许切换协议</li>
+</ul>
+</li>
 <li>2XX<ul>
 <li><strong>200</strong>： OK</li>
 <li>204： Not Content， 服务器无返回内容</li>
+<li>206： Partial Content, 无响应体</li>
 </ul>
 </li>
 <li>3XX<ul>
-<li>301： 永久重定向</li>
-<li>302： 临时重定向</li>
+<li>301： Moved Permanently，永久重定向</li>
+<li>302： Found，临时重定向</li>
 <li><strong>304</strong>： Not Modified， 浏览器可以使用本地缓存</li>
 </ul>
 </li>
 <li>4XX<ul>
 <li><strong>400</strong>： Bad Request，请求报文错误</li>
-<li><strong>401</strong>： Unauthorized</li>
-<li><strong>403</strong>： Forbidden</li>
-<li><strong>404</strong>： Not Found</li>
+<li><strong>401</strong>： Unauthorized， 未授权</li>
+<li><strong>403</strong>： Forbidden， 禁止访问</li>
+<li><strong>404</strong>： Not Found， 找不到资源</li>
 <li>405： Method Not Allowed， 请求方法不允许，可以用OPTIONS预检请求查看服务器允许的请求</li>
 </ul>
 </li>
 <li>5XX<ul>
-<li><strong>500</strong> Internal Server Error</li>
-<li><strong>502</strong> Bad Gateway</li>
+<li><strong>500</strong>： Internal Server Error，</li>
+<li>501：Not Implement, 客户端请求不支持</li>
+<li><strong>502</strong>： Bad Gateway， 服务器作为网关或代理返回的错误</li>
+<li>503： Service Unavilable, 服务器在忙</li>
 </ul>
 </li>
 </ul>
+<h1 id="2-CDN"><a href="#2-CDN" class="headerlink" title="2. CDN"></a>2. CDN</h1><p><img src="/2024/03/05/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%9F%BA%E7%A1%80/CDN.jpg" alt="CDN"></p>
+<p>CDN的作用：</p>
+<ol>
+<li>加速资源</li>
+<li>负载均衡</li>
+</ol>
+<h1 id="3-Content-type"><a href="#3-Content-type" class="headerlink" title="3. Content-type"></a>3. Content-type</h1><p><a href="/2023/12/01/content-type%E4%B8%80%E4%BA%9B%E7%96%91%E6%83%91">详见🔗content-type</a></p>
+<h1 id="4-http"><a href="#4-http" class="headerlink" title="4. http"></a>4. http</h1><p><a href="/2023/10/16/http%E8%AF%A6%E8%A7%A3">详见🔗http详解</a></p>
+<h1 id="5-cookie"><a href="#5-cookie" class="headerlink" title="5. cookie"></a>5. cookie</h1><ol>
+<li>默认跨域不会发送cookie<br>但是可以通过 <code>withCredentials=true</code> 设置</li>
+<li>expire设置为0，代表仅一次会话有效</li>
+<li>一个cookie大小4KB</li>
+<li><code>secure=true</code>表示只有https才附带cookie</li>
+<li><code>same-site</code><ol>
+<li><code>strict</code> : refer未其他域不发cookie</li>
+<li><code>Lax</code>: get请求可以发，其他不发</li>
+<li><code>None</code>：无限制</li>
+</ol>
+</li>
+<li><code>http-only</code> 表示此cookie对js不可见<ol>
+<li>document.cookie无法获取，可防止xss攻击。</li>
+</ol>
+</li>
+</ol>
 ]]></content>
       <categories>
         <category>综合</category>
@@ -1572,44 +1686,41 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
 <li>寄生式组合继承</li>
 </ul>
 <span id="more"></span>
+<h1 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h1><p><strong>原理</strong>：子类的__proto__指向父类的一个实例当作原型对象<br><strong>缺陷</strong>：<br>    1. 原型对象上的引用值会在所有子实例间共享<br>    2. 子类实例化时无法给父构造函数传参</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Father</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Son</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line"><span class="title class_">Son</span>.<span class="property"><span class="keyword">prototype</span></span> = <span class="keyword">new</span> <span class="title class_">Father</span>(); <span class="comment">//继承</span></span><br><span class="line"><span class="keyword">const</span> son = <span class="keyword">new</span> <span class="title class_">Son</span>();</span><br></pre></td></tr></table></figure>
 
-<h1 id="组合继承"><a href="#组合继承" class="headerlink" title="组合继承"></a>组合继承</h1><p>原理： 原型链 + 盗用构造函数</p>
-<p>要继承的属性用构造函数</p>
-<p>要继承的方法写在原型上</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Father</span>(<span class="params">name</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">colors</span> = [<span class="string">&#x27;a&#x27;</span>]</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//定义方法</span></span><br><span class="line"><span class="comment">// Father.prototype.sayName = function() &#123;</span></span><br><span class="line"><span class="comment">//     console.log(this.name);</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Son</span>(<span class="params">name, age</span>)&#123;</span><br><span class="line">    <span class="title class_">Father</span>.<span class="title function_">call</span>(<span class="variable language_">this</span>, name)     <span class="comment">//第二次调用父类构造函数 --继承属性</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">age</span> = age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Son</span>.<span class="property"><span class="keyword">prototype</span></span> = <span class="keyword">new</span> <span class="title class_">Father</span>()    <span class="comment">//第一次调用父类构造函数 --继承方法</span></span><br><span class="line"><span class="title class_">Son</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">constructor</span> = <span class="title class_">Son</span></span><br></pre></td></tr></table></figure>
+<h1 id="盗用构造函数"><a href="#盗用构造函数" class="headerlink" title="盗用构造函数"></a>盗用构造函数</h1><p><strong>原理</strong>： 在子类中调用父类构造函数<br><strong>缺陷</strong>：无法继承到父类的方法</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params">name</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Student</span>(<span class="params">name</span>) &#123;</span><br><span class="line">    <span class="title class_">Person</span>.<span class="title function_">call</span>(<span class="variable language_">this</span>, name)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> instance = <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&#x27;son&#x27;</span>);</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> son = <span class="keyword">new</span> <span class="title class_">Son</span>(<span class="string">&#x27;blank&#x27;</span>,<span class="number">14</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//可以发现实例和它的原型都有 name 和 colors， 这是调用俩次父类构造函数的结果</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">getOwnPropertyNames</span>(son));   <span class="comment">//[&#x27;name&#x27;, &#x27;colors&#x27;, &#x27;age&#x27;]</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">getOwnPropertyNames</span>(<span class="title class_">Son</span>.<span class="property"><span class="keyword">prototype</span></span>)); <span class="comment">//[&#x27;name&#x27;, &#x27;colors&#x27;, &#x27;constructor&#x27;]</span></span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>这是最大缺陷：调用两次父类构造函数，导致子类实例和子类原型都有同名属性—— 寄生式组合继承解决了该问题</p>
-</blockquote>
-<h1 id="原型式继承"><a href="#原型式继承" class="headerlink" title="原型式继承"></a>原型式继承</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">object</span>(<span class="params">o</span>) &#123;</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">F</span>(<span class="params"></span>) &#123; &#125;</span><br><span class="line">    F.<span class="property"><span class="keyword">prototype</span></span> = o;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title function_">F</span>(); <span class="comment">//返回对象的原型是o</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="组合继承"><a href="#组合继承" class="headerlink" title="组合继承"></a>组合继承</h1><p><strong>原理</strong>： 原型链 + 盗用构造函数<br>要继承的属性用构造函数<br>要继承的方法写在原型上<br><strong>缺陷</strong>：调用两次父类构造函数，导致原型对象和子实例上都有父类属性<br><strong>优势</strong>：同时解决了继承引用值属性和方法的继承问题</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Father</span>(<span class="params">name</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">colors</span> = [<span class="string">&#x27;a&#x27;</span>]</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//父类方法</span></span><br><span class="line"><span class="comment">// Father.prototype.sayName = function() &#123;</span></span><br><span class="line"><span class="comment">//     console.log(this.name);</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Son</span>(<span class="params">name, age</span>)&#123;</span><br><span class="line">    <span class="title class_">Father</span>.<span class="title function_">call</span>(<span class="variable language_">this</span>, name)     <span class="comment">//第二次调用父类构造函数 --继承属性</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">age</span> = age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Son</span>.<span class="property"><span class="keyword">prototype</span></span> = <span class="keyword">new</span> <span class="title class_">Father</span>()    <span class="comment">//第一次调用父类构造函数 --继承方法</span></span><br><span class="line"><span class="title class_">Son</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">constructor</span> = <span class="title class_">Son</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> son = <span class="keyword">new</span> <span class="title class_">Son</span>(<span class="string">&#x27;blank&#x27;</span>,<span class="number">14</span>)</span><br><span class="line"><span class="comment">//可以发现实例和它的原型都有 name 和 colors， 这是调用俩次父类构造函数的结果</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">getOwnPropertyNames</span>(son));   <span class="comment">//[&#x27;name&#x27;, &#x27;colors&#x27;, &#x27;age&#x27;]</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">getOwnPropertyNames</span>(<span class="title class_">Son</span>.<span class="property"><span class="keyword">prototype</span></span>)); <span class="comment">//[&#x27;name&#x27;, &#x27;colors&#x27;, &#x27;constructor&#x27;]</span></span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>最大缺陷： 父类原型上的引用值被子类实例共享同一地址。 如下：</p>
+<p>这是最大缺陷：调用两次父类构造函数，导致子类实例和子类原型都有同名属性—— <strong>寄生式组合继承解决了该问题</strong></p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> father = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;blank&#x27;</span>,</span><br><span class="line">    <span class="attr">friends</span>: [<span class="string">&#x27;a&#x27;</span>]  <span class="comment">//问题：对于引用型对象，子对象继承的是同一地址</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> son1 = <span class="title function_">object</span>(father)</span><br><span class="line">son1.<span class="property">name</span> = <span class="string">&#x27;son1&#x27;</span></span><br><span class="line">son1.<span class="property">friends</span>.<span class="title function_">push</span>(<span class="string">&#x27;b&#x27;</span>)</span><br><span class="line"><span class="keyword">let</span> son2 = <span class="title function_">object</span>(father)</span><br><span class="line">son2.<span class="property">name</span> = <span class="string">&#x27;son2&#x27;</span></span><br><span class="line">son2.<span class="property">friends</span>.<span class="title function_">push</span>(<span class="string">&#x27;c&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(father);<span class="comment">//&#123; name: &#x27;blank&#x27;, friends: [ &#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27; ] &#125;</span></span><br></pre></td></tr></table></figure>
+<h1 id="原型式继承"><a href="#原型式继承" class="headerlink" title="原型式继承"></a>原型式继承</h1><p><strong>原理</strong>：利用<code>Object.create</code> 实现继承，无需定义构造函数<br><strong>缺陷</strong>：同原型链继承，原型对象上的引用值会在所有子实例间共享</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">object</span>(<span class="params">o</span>) &#123;</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">F</span>(<span class="params"></span>) &#123; &#125;</span><br><span class="line">    F.<span class="property"><span class="keyword">prototype</span></span> = o;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title function_">F</span>(); <span class="comment">//返回对象的原型是o</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Object-create"><a href="#Object-create" class="headerlink" title="Object.create()"></a>Object.create()</h2><p>ES5实现的一个方法</p>
 <p><code>Object.create(param1 [, param2])</code></p>
 <ul>
 <li>param1: 和object方法一样，返回一个对象，该对象原型是param1</li>
 <li>param2: 和defineProperties一样， 可选</li>
 </ul>
-<h1 id="寄生式继承"><a href="#寄生式继承" class="headerlink" title="寄生式继承"></a>寄生式继承</h1><p>和工厂函数类似</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">createAnother</span>(<span class="params">original</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> clone = <span class="title class_">Object</span>.<span class="title function_">create</span>(original) <span class="comment">//返回一个对象，这个对象的原型是original</span></span><br><span class="line">    clone.<span class="property">sayHi</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;  <span class="comment">//增强该对象</span></span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;hi&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> clone</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="寄生式继承"><a href="#寄生式继承" class="headerlink" title="寄生式继承"></a>寄生式继承</h1><p><strong>原理</strong>：和工厂函数类似，创建一个继承的函数，以某种方式增强对象再返回这个对象<br><strong>缺陷</strong>：同原型式继承，原型对象上的引用值会在所有子实例间共享</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">createAnother</span>(<span class="params">original</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> clone = <span class="title class_">Object</span>.<span class="title function_">create</span>(original) <span class="comment">//原型式继承的做法</span></span><br><span class="line">    clone.<span class="property">sayHi</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;  <span class="comment">//增强该对象</span></span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;hi&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> clone</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> person = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;blank&#x27;</span>,</span><br><span class="line">    <span class="attr">friends</span>: [<span class="string">&#x27;a&#x27;</span>]  <span class="comment">//和子对象共享地址！</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> anotherPerson = <span class="title function_">createAnother</span>(person)</span><br><span class="line"><span class="keyword">let</span> yetAnotherPerson = <span class="title function_">createAnother</span>(person)</span><br><span class="line"></span><br><span class="line">anotherPerson.<span class="property">name</span> = <span class="string">&#x27;another&#x27;</span></span><br><span class="line">anotherPerson.<span class="property">friends</span>.<span class="title function_">push</span>(<span class="string">&#x27;another&#x27;</span>)</span><br><span class="line"></span><br><span class="line">yetAnotherPerson.<span class="property">name</span> = <span class="string">&#x27;yet&#x27;</span></span><br><span class="line">yetAnotherPerson.<span class="property">friends</span>.<span class="title function_">push</span>(<span class="string">&#x27;yet&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(person); <span class="comment">//&#123; name: &#x27;blank&#x27;, friends: [ &#x27;a&#x27;, &#x27;another&#x27;, &#x27;yet&#x27; ] &#125;</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>问题： 父类原型上的引用值被子类实例共享同一地址（同原型式继承）</p>
-</blockquote>
-<h1 id="寄生式组合继承"><a href="#寄生式组合继承" class="headerlink" title="寄生式组合继承"></a>寄生式组合继承</h1><p>最有效方式</p>
-<p>最大特点是： 用一个函数实现两个类的继承关系</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">inheritPrototype</span>(<span class="params">Son, Father</span>)&#123;</span><br><span class="line">    <span class="keyword">let</span> prototype = <span class="title class_">Object</span>.<span class="title function_">create</span>(<span class="title class_">Father</span>.<span class="property"><span class="keyword">prototype</span></span>)</span><br><span class="line">    <span class="comment">//下面两行是建立起构造函数和原型对象之间的双向箭头</span></span><br><span class="line">    prototype.<span class="property">constructor</span> = <span class="title class_">Son</span></span><br><span class="line">    <span class="title class_">Son</span>.<span class="property"><span class="keyword">prototype</span></span> = prototype;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h1 id="寄生式组合继承（最优）"><a href="#寄生式组合继承（最优）" class="headerlink" title="寄生式组合继承（最优）"></a>寄生式组合继承（最优）</h1><p>最大特点是： 用一个函数实现两个类的继承关系</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">inheritPrototype</span>(<span class="params">Son, Father</span>)&#123;</span><br><span class="line">    <span class="keyword">let</span> prototype = <span class="title class_">Object</span>.<span class="title function_">create</span>(<span class="title class_">Father</span>.<span class="property"><span class="keyword">prototype</span></span>) <span class="comment">//避免调用父构造函数</span></span><br><span class="line">    <span class="comment">//下面两行是建立起构造函数和原型对象之间的双向箭头</span></span><br><span class="line">    prototype.<span class="property">constructor</span> = <span class="title class_">Son</span></span><br><span class="line">    <span class="title class_">Son</span>.<span class="property"><span class="keyword">prototype</span></span> = prototype;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Father</span>(<span class="params">name</span>) &#123;</span><br><span class="line">    <span class="comment">//定义实例属性</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span>  =name</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">colors</span> = [<span class="string">&#x27;a&#x27;</span>]</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Son</span>(<span class="params">name, age</span>) &#123;</span><br><span class="line">    <span class="title class_">Father</span>.<span class="title function_">call</span>(<span class="variable language_">this</span>, name) <span class="comment">//调用一次父类构造函数</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">age</span> = age</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 建立继承关系</span></span><br><span class="line"><span class="title function_">inheritPrototype</span>(<span class="title class_">Son</span>, <span class="title class_">Father</span>) </span><br><span class="line"><span class="comment">// 定义父类方法</span></span><br><span class="line"><span class="title class_">Father</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">sayName</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">name</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 定义子类方法 -- 必须在inheritPrototype后面</span></span><br><span class="line"><span class="title class_">Son</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">sayAge</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">age</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ol>
 <li>只调用一次父类构造函数，属性不重复</li>
 <li>引用值不共享<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 实例化</span></span><br><span class="line"><span class="keyword">let</span> son = <span class="keyword">new</span> <span class="title class_">Son</span>(<span class="string">&#x27;blank&#x27;</span>,<span class="number">22</span>)</span><br><span class="line"><span class="comment">//1. 只调用了一次父类构造函数, 所以子类原型上没有实例属性</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">getOwnPropertyNames</span>(son)); <span class="comment">//[ &#x27;name&#x27;, &#x27;colors&#x27;, &#x27;age&#x27; ]</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">getOwnPropertyNames</span>(son.<span class="property">__proto__</span>)); <span class="comment">//[ &#x27;constructor&#x27;, &#x27;sayAge&#x27; ]</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">getOwnPropertyNames</span>(<span class="title class_">Father</span>.<span class="property"><span class="keyword">prototype</span></span>));  <span class="comment">//[ &#x27;constructor&#x27;, &#x27;sayName&#x27; ]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//2. 引用值不共享</span></span><br><span class="line"><span class="keyword">let</span> son2 = <span class="keyword">new</span> <span class="title class_">Son</span>(<span class="string">&#x27;lzy2&#x27;</span>, <span class="number">23</span>)</span><br><span class="line">son.<span class="property">colors</span>.<span class="title function_">push</span>(<span class="string">&#x27;b&#x27;</span>)</span><br><span class="line">son2.<span class="property">colors</span>.<span class="title function_">push</span>(<span class="string">&#x27;c&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(son.<span class="property">colors</span>);    <span class="comment">// [ &#x27;a&#x27;, &#x27;b&#x27; ]</span></span><br></pre></td></tr></table></figure></li>
 </ol>
+<blockquote>
+<p><strong>如何理解寄生？</strong><br>就是把继承这一操作用函数封装起来</p>
+</blockquote>
 <h1 id="ES6-类继承——extends"><a href="#ES6-类继承——extends" class="headerlink" title="ES6 类继承——extends"></a>ES6 类继承——extends</h1><h2 id="extends"><a href="#extends" class="headerlink" title="extends"></a>extends</h2><p>可以继承任何拥有<code>[[Constructor]]</code>和原型的对象</p>
 <ul>
 <li>实例拥有constructor指向构造函数</li>
@@ -1855,7 +1966,7 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
 
 <h1 id="设置-SSH-使用-hexo-deploy-时免输用户名密码"><a href="#设置-SSH-使用-hexo-deploy-时免输用户名密码" class="headerlink" title="设置 SSH 使用 hexo deploy 时免输用户名密码"></a>设置 SSH 使用 hexo deploy 时免输用户名密码</h1><p>原文：<a href="https://www.jianshu.com/p/a7167e26b086">https://www.jianshu.com/p/a7167e26b086</a></p>
 <p>SSH 验证就是我们键入命令 <code>hexo deploy</code> 以后，当那些需要提交的内容显示完成过后会弹出的一个小窗口提示我们输入用户名、密码。此处我们设置ssh公钥，实现<code>hexo deploy</code>时免密登陆。</p>
-<h6 id="1-生成-SSH-密钥"><a href="#1-生成-SSH-密钥" class="headerlink" title="1. 生成 SSH 密钥"></a>1. 生成 SSH 密钥</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br></pre></td></tr></table></figure>
+<h2 id="1-生成-SSH-密钥"><a href="#1-生成-SSH-密钥" class="headerlink" title="1. 生成 SSH 密钥"></a>1. 生成 SSH 密钥</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br></pre></td></tr></table></figure>
 
 <p>使用 <code>ssh-keygen</code> 生成密钥</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;your_email@example.com&quot;</span></span><br></pre></td></tr></table></figure>
@@ -1864,16 +1975,16 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
 <p>密钥生成成功</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Your identification has been saved <span class="keyword">in</span> /home/you/.ssh/id_rsa.</span><br><span class="line">Your public key has been saved <span class="keyword">in</span> /home/you/.ssh/id_rsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">…………………此处是密钥内容…………………… your_email@example.com</span><br></pre></td></tr></table></figure>
 
-<h6 id="2-设置-Github-项目的-SSH-keys"><a href="#2-设置-Github-项目的-SSH-keys" class="headerlink" title="2. 设置 Github 项目的 SSH keys"></a>2. 设置 Github 项目的 SSH keys</h6><p>！如何设置自行搜索，很简单</p>
+<h2 id="2-设置-Github-项目的-SSH-keys"><a href="#2-设置-Github-项目的-SSH-keys" class="headerlink" title="2. 设置 Github 项目的 SSH keys"></a>2. 设置 Github 项目的 SSH keys</h2><p>！如何设置自行搜索，很简单</p>
 <p>接下来测试配置是否成功</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -T git@Gitee.com</span><br></pre></td></tr></table></figure>
 
 <p>如果出现以下内容即表示配置完成并且成功！</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">The authenticity of host <span class="string">&#x27;gitee.com (xx.xx.xx.xx)&#x27;</span> can<span class="string">&#x27;t be established.</span></span><br><span class="line"><span class="string">ECDSA key fingerprint is SHA256:FQGC9Kn/eye1W8icdBgrQp+KkGYoFgbVr17bmjey0Wc.</span></span><br><span class="line"><span class="string">ECDSA key fingerprint is MD5:27:e5:d3:f7:2a:9e:eb:6c:93:cd:1f:c1:47:a3:54:b1.</span></span><br><span class="line"><span class="string">Are you sure you want to continue connecting (yes/no)? yes</span></span><br><span class="line"><span class="string">Warning: Permanently added &#x27;</span>gitee.com,xx.xx.xx.xx<span class="string">&#x27; (ECDSA) to the list of known hosts.</span></span><br><span class="line"><span class="string">Hi xxx! You&#x27;</span>ve successfully authenticated, but GITEE.COM does not provide shell access.</span><br></pre></td></tr></table></figure>
 
-<h6 id="3-修改博客Git远程提交地址"><a href="#3-修改博客Git远程提交地址" class="headerlink" title="3.修改博客Git远程提交地址"></a>3.修改博客Git远程提交地址</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 修改 https 协议为 ssh 协议(仓库的ssh地址)</span></span><br><span class="line">git remote set-url origin git@gitee.com:xxx/xxx.git</span><br></pre></td></tr></table></figure>
+<h2 id="3-修改博客Git远程提交地址"><a href="#3-修改博客Git远程提交地址" class="headerlink" title="3.修改博客Git远程提交地址"></a>3.修改博客Git远程提交地址</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 修改 https 协议为 ssh 协议(仓库的ssh地址)</span></span><br><span class="line">git remote set-url origin git@gitee.com:xxx/xxx.git</span><br></pre></td></tr></table></figure>
 
-<h6 id="4-修改hexo根目录下-config-yml中的远程仓库设置"><a href="#4-修改hexo根目录下-config-yml中的远程仓库设置" class="headerlink" title="4.修改hexo根目录下_config.yml中的远程仓库设置"></a>4.修改hexo根目录下<code>_config.yml</code>中的远程仓库设置</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/deployment.html</span></span><br><span class="line"></span><br><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repo: git@gitee.com:xxx/xxx.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<h2 id="4-修改hexo根目录下-config-yml中的远程仓库设置"><a href="#4-修改hexo根目录下-config-yml中的远程仓库设置" class="headerlink" title="4.修改hexo根目录下_config.yml中的远程仓库设置"></a>4.修改hexo根目录下<code>_config.yml</code>中的远程仓库设置</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/deployment.html</span></span><br><span class="line"></span><br><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repo: git@gitee.com:xxx/xxx.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
 
 <p>最后部署到远程就可以了</p>
 <p>注：如果使用的是码云作为远程仓库部署，还需要在对应仓库的服务中手动部署一下</p>
@@ -1889,24 +2000,9 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
 <li><p>categories 赋予文章</p>
 <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">title: </span><br><span class="line">data: </span><br><span class="line">categories: </span><br><span class="line"><span class="bullet">   -</span> 分类1</span><br><span class="line"><span class="bullet">   -</span> 分类2</span><br><span class="line">tags: </span><br><span class="line"><span class="bullet">   -</span> 标签1</span><br><span class="line"><span class="bullet">   -</span> 标签2</span><br></pre></td></tr></table></figure></li>
 </ol>
-<h2 id="note"><a href="#note" class="headerlink" title="note"></a>note</h2><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% note default %&#125;default&#123;% endnote %&#125;</span><br><span class="line">&#123;% note primary %&#125;primary&#123;% endnote %&#125;</span><br><span class="line">&#123;% note success %&#125;success&#123;% endnote %&#125;</span><br><span class="line">&#123;% note info %&#125;info&#123;% endnote %&#125;</span><br><span class="line">&#123;% note warning %&#125;warning&#123;% endnote %&#125;</span><br><span class="line">&#123;% note danger %&#125;danger&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="hexo-特殊样式：note"><a href="#hexo-特殊样式：note" class="headerlink" title="hexo 特殊样式：note"></a>hexo 特殊样式：note</h2><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% note default %&#125;default&#123;% endnote %&#125;</span><br><span class="line">&#123;% note primary %&#125;primary&#123;% endnote %&#125;</span><br><span class="line">&#123;% note success %&#125;success&#123;% endnote %&#125;</span><br><span class="line">&#123;% note info %&#125;info&#123;% endnote %&#125;</span><br><span class="line">&#123;% note warning %&#125;warning&#123;% endnote %&#125;</span><br><span class="line">&#123;% note danger %&#125;danger&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure>
 
-<div class="note default"><p>default</p>
-</div>
-<div class="note primary"><p>primary</p>
-</div>
-<div class="note success"><p>success</p>
-</div>
-<div class="note info"><p>info</p>
-</div>
-<div class="note warning"><p>warning</p>
-</div>
-<div class="note danger"><p>danger</p>
-</div>
-
-<h2 id="tabs"><a href="#tabs" class="headerlink" title="tabs"></a>tabs</h2><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% tabs name %&#125;</span><br><span class="line">&lt;!-- tab --&gt;</span><br><span class="line"><span class="strong">**This is Tab 1.**</span></span><br><span class="line">&lt;!-- endtab --&gt;</span><br><span class="line">&lt;!-- tab --&gt;</span><br><span class="line"><span class="strong">**This is Tab 2.**</span></span><br><span class="line">&lt;!-- endtab --&gt;</span><br><span class="line">&lt;!-- tab --&gt;</span><br><span class="line"><span class="strong">**This is Tab 3.**</span></span><br><span class="line">&lt;!-- endtab --&gt;</span><br><span class="line">&#123;% endtabs %&#125;</span><br></pre></td></tr></table></figure>
-
-<div class="tabs" id="name"><ul class="nav-tabs"><li class="tab active"><a href="#name-1">name 1</a></li><li class="tab"><a href="#name-2">name 2</a></li><li class="tab"><a href="#name-3">name 3</a></li></ul><div class="tab-content"><div class="tab-pane active" id="name-1"><p><strong>This is Tab 1.</strong></p></div><div class="tab-pane" id="name-2"><p><strong>This is Tab 2.</strong></p></div><div class="tab-pane" id="name-3"><p><strong>This is Tab 3.</strong></p></div></div></div>
+<h2 id="hexo-特殊样式：tabs"><a href="#hexo-特殊样式：tabs" class="headerlink" title="hexo 特殊样式：tabs"></a>hexo 特殊样式：tabs</h2><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% tabs name %&#125;</span><br><span class="line">&lt;!-- tab --&gt;</span><br><span class="line"><span class="strong">**This is Tab 1.**</span></span><br><span class="line">&lt;!-- endtab --&gt;</span><br><span class="line">&lt;!-- tab --&gt;</span><br><span class="line"><span class="strong">**This is Tab 2.**</span></span><br><span class="line">&lt;!-- endtab --&gt;</span><br><span class="line">&lt;!-- tab --&gt;</span><br><span class="line"><span class="strong">**This is Tab 3.**</span></span><br><span class="line">&lt;!-- endtab --&gt;</span><br><span class="line">&#123;% endtabs %&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>遇到任何问题，要善于运用搜索引擎，网上相关解决方法很多。当然也欢迎留言、讨论，一起进步吧！</p>
 <h1 id="更新–日常使用遇到的BUG"><a href="#更新–日常使用遇到的BUG" class="headerlink" title="更新–日常使用遇到的BUG"></a>更新–日常使用遇到的BUG</h1><p>这里我放一下常见的问题</p>
 <ol>
@@ -2129,10 +2225,9 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
 <li>最大缺陷： 循环引用下，计数永远不能归零，无法清除造成内存泄漏</li>
 </ul>
 <h2 id="标记清除"><a href="#标记清除" class="headerlink" title="标记清除"></a>标记清除</h2><ol>
-<li>将所有对象标记0</li>
-<li>从根对象开始遍历，处于上下文的对象标记为1</li>
-<li>清除标记为0的对象</li>
-<li>所有标记为1的对象重新标记为0， 方便下一次垃圾回收</li>
+<li>将所有对象标记</li>
+<li>从根作用域开始遍历，处于上下文的对象去除标记</li>
+<li><strong>清除带标记</strong>的对象</li>
 </ol>
 <p>这样之后存活对象分布比较零散，有三种方式：</p>
 <ol>
@@ -2841,6 +2936,8 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
 </blockquote>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//标签1</span></span><br><span class="line"><span class="keyword">const</span> bc = <span class="keyword">new</span> <span class="title class_">BroadcastChannel</span>(<span class="string">&#x27;common channel&#x27;</span>) </span><br><span class="line">bc.<span class="title function_">postMessage</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line"><span class="comment">//标签2</span></span><br><span class="line"><span class="keyword">const</span> bc = <span class="keyword">new</span> <span class="title class_">BroadcastChannel</span>(<span class="string">&#x27;common channel&#x27;</span>)  </span><br><span class="line">bc.<span class="property">onmessage</span> = <span class="function">(<span class="params">e</span>)=&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e.<span class="property">data</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 详见 <a href="/2023/12/24/%E5%87%A0%E7%A7%8DpostMessage/#BroadcastChannel-postMessage">🔗几种postMessage</a></li>
+<li>WebSocket</li>
+<li>shared worker<br><a href="/4000/2024/03/21/%E6%B5%85%E5%B0%9DWeb-Worker/#Shared-Worker">🔗详见</a></li>
 </ol>
 ]]></content>
       <categories>
@@ -4901,6 +4998,124 @@ if(&quot;serviceWorker&quot; in navigator) &#123;
       </categories>
       <tags>
         <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Webpack与Vite的区别与联系</title>
+    <url>/2024/04/21/Webpack%E4%B8%8EVite%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E8%81%94%E7%B3%BB/</url>
+    <content><![CDATA[<h1 id="0-当前工程化痛点"><a href="#0-当前工程化痛点" class="headerlink" title="0. 当前工程化痛点"></a>0. 当前工程化痛点</h1><p>主流webpack需要把<i>整个项目编译好后</i>再交给dev server，因此大型项目devserver启动时间很长，HMR也需要很长时间。<br>因此，Vite应运而生</p>
+<h1 id="Webpack"><a href="#Webpack" class="headerlink" title="Webpack"></a>Webpack</h1><p>当我们使用webpack启动项目时，webpack会根据我们配置文件中的入口文件，</p>
+<ol>
+<li>分析出项目项目所有依赖关系，</li>
+<li>然后打包成一个文件（bundle.js），</li>
+<li>交给浏览器去加载渲染。</li>
+</ol>
+<p>在Webpack中，构建过程大概分为这么几个阶段初始化Init、构建Make、生成Seal</p>
+<ul>
+<li><strong>初始化阶段：</strong> 修整配置参数，创建 Compiler、Compilation 等基础对象，并初始化插件及若干内置工厂、工具类，并最终根据 entry 配置，找到所有入口模块</li>
+<li><strong>构建阶段：</strong> 从entry找到入口，调用loader编译模块，遍历 AST 找出模块依赖的模块，之后递归遍历所有依赖块，构建出 模块依赖关系图 (dependency graph)</li>
+<li><strong>输出阶段：</strong> 根据output的配置，将模块拆解成不同的chunk对象，经过一系列优化，再将代码翻译成产物</li>
+</ul>
+<p>描述得比较简单， 实际完成这些过程是比较复杂的</p>
+<h2 id="HMR"><a href="#HMR" class="headerlink" title="HMR"></a>HMR</h2><p>每次修改文件，webpack要重新分析整个项目的依赖关系。很耗时。<br>三个阶段：</p>
+<ol>
+<li>找出过期的模块</li>
+<li>从缓存中删除过期的模块</li>
+<li>把新模块添加到modules中<ol>
+<li>此时是通过jsonp来拉取更新模块的</li>
+</ol>
+</li>
+</ol>
+<h1 id="Vite"><a href="#Vite" class="headerlink" title="Vite"></a>Vite</h1><p>基于esbuild和rollup，利用浏览器对ESM的支持</p>
+<ul>
+<li>esbuild: 预构建。把不同模块规范统一编译为ESM</li>
+<li>rollup：在build时打包成生产环境代码</li>
+</ul>
+<p><strong>ESM</strong><br>ESM &#x3D;&#x3D;&#x3D; ES module, 大部分浏览器都支持<code>&lt;script type=&#39;module&#39;&gt;</code><br>在<code>&lt;script type=&quot;module&quot;&gt;</code>中，浏览器遇到内部的import引用时，会自动发起<strong>http请求</strong>，去加载对应的模块。</p>
+<h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><ol>
+<li>预构建。<ol>
+<li>针对node_modules中的<i>第三方依赖</i>，由esbuild把所有模块编译为ESM。</li>
+<li>整合模块，对于具有许多内部模块的，整合成一个模块。避免发送太多http请求。</li>
+<li>缓存。把预构建好的ESM存到<code>node_modules/.vite</code>下。</li>
+</ol>
+</li>
+<li>启动devServer。</li>
+<li>按需编译。页面需要某些模块会发送http请求，此时vite再进行编译，编译后发给浏览器。<br> 此时编译是对<i>src源码的编译</i>，包括对ts、less、esm、图片、字体的处理<ol>
+<li>利用http2.0 支持并发请求。</li>
+<li>利用http缓存，<ol>
+<li>node_modules 使用强制缓存</li>
+<li>src 使用协商缓存</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="HMR-1"><a href="#HMR-1" class="headerlink" title="HMR"></a>HMR</h3><p>当修改一个文件时vite精确定位到该模块，使其失活。vite重新编译该模块后再发送给浏览器。浏览器利用动态导入<code>import()</code>来替换。</p>
+<p>原理：利用websocket连接浏览器，建立连接后监听文件变化。服务器向浏览器注入代码用于处理ws消息（重新请求模块、刷新页面）</p>
+<h1 id="为什么vite比webpack快"><a href="#为什么vite比webpack快" class="headerlink" title="为什么vite比webpack快"></a>为什么vite比webpack快</h1><p>从几方面回答：</p>
+<ol>
+<li>vite基于esbuild、rollup<ol>
+<li>esbuild基于Go，善于利用多核cpu</li>
+<li>rollup轻量，打包更快</li>
+</ol>
+</li>
+<li>vite的预构建、按需编译</li>
+<li>HMR的区别</li>
+<li>vite内置功能多，使用成本低</li>
+</ol>
+]]></content>
+      <categories>
+        <category>工程化</category>
+      </categories>
+      <tags>
+        <tag>webpack</tag>
+        <tag>vite</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HTTPS详解</title>
+    <url>/2024/04/21/HTTPS%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<p>HTTPS &#x3D; HTTP + SSL&#x2F;TLS</p>
+<ol>
+<li>http 明文传输，易被劫持，SEO降权</li>
+<li>TLS 传输层安全协议，是SSL的升级方案</li>
+</ol>
+<span id="more"></span>
+
+<h1 id="HTTPS如何加密"><a href="#HTTPS如何加密" class="headerlink" title="HTTPS如何加密"></a>HTTPS如何加密</h1><h2 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h2><ol>
+<li>浏览器给服务器一个随机数</li>
+<li>服务器给浏览器一个随机数</li>
+<li>浏览器和服务器都根据这两个随机数得出一个密钥，他们用这个密钥加密或解密信息。</li>
+</ol>
+<p>缺陷：容易被窃取</p>
+<h2 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h2><ol>
+<li>每个主机都有一对密钥：公钥和私钥。公钥负责加密，私钥负责解密。</li>
+<li>公钥在网络上公开，而私钥是保密的。</li>
+</ol>
+<p>缺陷：计算量大</p>
+<h2 id="混合加密-——-HTTPS的加密方式"><a href="#混合加密-——-HTTPS的加密方式" class="headerlink" title="混合加密 —— HTTPS的加密方式"></a>混合加密 —— HTTPS的加密方式</h2><p>以非对称加密方式得到会话密钥，用会话密钥以对称<br><img src="/2024/04/21/HTTPS%E8%AF%A6%E8%A7%A3/TLS%E6%8F%A1%E6%89%8B.png" alt="TLS四次握手"></p>
+<h3 id="校验证书"><a href="#校验证书" class="headerlink" title="校验证书"></a>校验证书</h3><p><img src="/2024/04/21/HTTPS%E8%AF%A6%E8%A7%A3/%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D.jpg" alt="数字签名"></p>
+<ol>
+<li><strong>证书</strong> &#x3D; 网站信息(包括公钥)+ 数字签名<ol>
+<li><strong>数字签名</strong>是由网站信息计算出的hash值通过CA私钥机密后得到的</li>
+</ol>
+</li>
+<li>公钥解密数字签名后和网站信息hash值比较，如果相同则代表校验通过</li>
+</ol>
+<blockquote>
+<p>数字签名和非对称加密不同。是用公钥解密，私钥加密。</p>
+</blockquote>
+<h3 id="注册证书"><a href="#注册证书" class="headerlink" title="注册证书"></a>注册证书</h3><p><img src="/2024/04/21/HTTPS%E8%AF%A6%E8%A7%A3/%E6%B3%A8%E5%86%8C%E8%AF%81%E4%B9%A6.jpg" alt="注册证书"></p>
+<blockquote>
+<p>证书防止黑客伪造公钥</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>网络</category>
+      </categories>
+      <tags>
+        <tag>http</tag>
+        <tag>https</tag>
       </tags>
   </entry>
 </search>

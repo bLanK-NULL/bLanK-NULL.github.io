@@ -29,7 +29,7 @@
 <meta property="og:description" content="在nignx.exe所在目录启动nginx   1nginx 查看所有进程信息  1ps -ef | grep nginx 查看nginx所有进程信息 查看端口占用情况  12#80表示查看80端口的lsof -i:80 停止nignx   123nginx -s quit   #优雅停止nginx -s stop   #立即停止nginx -s reload #重载配置文件 查看配置  12n">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-10-11T03:27:01.000Z">
-<meta property="article:modified_time" content="2023-10-11T03:32:06.293Z">
+<meta property="article:modified_time" content="2024-04-14T05:57:21.436Z">
 <meta property="article:author" content="bLank-L">
 <meta property="article:tag" content="nginx">
 <meta name="twitter:card" content="summary">
@@ -130,7 +130,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -143,6 +143,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#nginx-%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="nav-text">nginx 基本配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#location-%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-text">location 的使用</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -157,18 +158,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">52</span>
+          <span class="site-state-item-count">54</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">81</span>
+        <span class="site-state-item-count">83</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -235,9 +236,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2023-10-11 11:27:01 / 修改时间：11:32:06" itemprop="dateCreated datePublished" datetime="2023-10-11T11:27:01+08:00">2023-10-11</time>
+      <time title="创建时间：2023-10-11 11:27:01" itemprop="dateCreated datePublished" datetime="2023-10-11T11:27:01+08:00">2023-10-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-04-14 13:57:21" itemprop="dateModified" datetime="2024-04-14T13:57:21+08:00">2024-04-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -277,7 +284,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>191</span>
+      <span>691</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -301,6 +308,11 @@
 <li>停止nignx   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nginx -s quit   <span class="comment">#优雅停止</span></span><br><span class="line">nginx -s stop   <span class="comment">#立即停止</span></span><br><span class="line">nginx -s reload <span class="comment">#重载配置文件</span></span><br></pre></td></tr></table></figure></li>
 <li>查看配置  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nginx -V <span class="comment">#查看配置</span></span><br><span class="line">nginx -t <span class="comment">#检查配置是否出错</span></span><br></pre></td></tr></table></figure></li>
 </ul>
+<h1 id="nginx-基本配置"><a href="#nginx-基本配置" class="headerlink" title="nginx 基本配置"></a>nginx 基本配置</h1><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">event</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="section">http</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">include</span> /etc/nginx/mime.types;     <span class="comment">#导入文件MIME类型</span></span><br><span class="line">    <span class="attribute">include</span> /etc/nginx/conf.d/<span class="regexp">*.conf</span>;</span><br><span class="line"></span><br><span class="line">    <span class="section">server</span> &#123;</span><br><span class="line">        <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">        <span class="attribute">server_name</span> localhost;</span><br><span class="line">        <span class="attribute">root</span>  /dist; <span class="comment"># 访问80端口返回root页面</span></span><br><span class="line">        <span class="attribute">index</span> egg.html; <span class="comment">#默认访问index.html，配置后以配置优先 </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="location-的使用"><a href="#location-的使用" class="headerlink" title="location 的使用"></a>location 的使用</h2><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span> localhost;</span><br><span class="line">    <span class="section">location</span> / &#123;        <span class="comment"># 访问根目录下的请求都从/dist目录下开始寻找资源</span></span><br><span class="line">        <span class="attribute">root</span> /dist;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 完全指定请求地址对应的资源地址</span></span><br><span class="line"><span class="section">location</span> = /app/index.html &#123; </span><br><span class="line">    <span class="attribute">root</span> /dist;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 也可以开启正则</span></span><br><span class="line"><span class="section">location</span> <span class="regexp">~ /videos/video[6-9].avi</span> &#123;</span><br><span class="line">    <span class="attribute">root</span> /videos/</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
     </div>
 
@@ -391,13 +403,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">157k</span>
+    <span title="站点总字数">161k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:45</span>
+    <span title="站点阅读时长">4:54</span>
   </span>
 </div>
 <div class="busuanzi-count">

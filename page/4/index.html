@@ -152,18 +152,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">52</span>
+          <span class="site-state-item-count">54</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">81</span>
+        <span class="site-state-item-count">83</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -192,6 +192,284 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2023/10/22/%E6%B7%B1%E6%8B%B7%E8%B4%9D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="bLank-L">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/10/22/%E6%B7%B1%E6%8B%B7%E8%B4%9D/" class="post-title-link" itemprop="url">深拷贝</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-10-22 00:08:21" itemprop="dateCreated datePublished" datetime="2023-10-22T00:08:21+08:00">2023-10-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-03-12 00:26:45" itemprop="dateModified" datetime="2024-03-12T00:26:45+08:00">2024-03-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="深拷贝" href="/2023/10/22/%E6%B7%B1%E6%8B%B7%E8%B4%9D/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::c88f8441331a696a0107a6fbb1190a65" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <span id="more"></span>
+
+
+
+<h1 id="一个自己写的不成熟deepClone函数"><a href="#一个自己写的不成熟deepClone函数" class="headerlink" title="一个自己写的不成熟deepClone函数"></a>一个自己写的不成熟deepClone函数</h1><ul>
+<li>不能复制 不可枚举属性 （去掉第9行左边的判断可以实现）</li>
+<li>不能复制原型的方法</li>
+<li>不能复制Set Map Symbol</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">deepClone</span>(<span class="params">obj</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!obj) <span class="keyword">return</span> obj</span><br><span class="line">    <span class="keyword">let</span> clone;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> obj !== <span class="string">&#x27;object&#x27;</span>) <span class="keyword">return</span> obj</span><br><span class="line">    <span class="comment">//是数组</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="title class_">Array</span>.<span class="title function_">isArray</span>(obj)) clone = []</span><br><span class="line">    <span class="keyword">else</span> clone = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">        <span class="keyword">if</span> (obj.<span class="title function_">hasOwnProperty</span>(key) &amp;&amp; (<span class="keyword">typeof</span> obj[key] === <span class="string">&#x27;object&#x27;</span>)) &#123;</span><br><span class="line">            clone[key] = <span class="title function_">deepClone</span>(obj[key])</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            clone[key] = obj[key]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> clone</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="看到利用MessageChannel实现深拷贝的神操作"><a href="#看到利用MessageChannel实现深拷贝的神操作" class="headerlink" title="看到利用MessageChannel实现深拷贝的神操作"></a>看到利用MessageChannel实现深拷贝的神操作</h1><ul>
+<li>可以完美解决循环引用的问题</li>
+<li>不可以复制函数</li>
+<li>不可以复制Symbol</li>
+<li>不支持拷贝原型上的方法和变量</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">deepClone</span>(<span class="params">obj</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> &#123; port1, port2 &#125; = <span class="keyword">new</span> <span class="title class_">MessageChannel</span>()</span><br><span class="line">        port1.<span class="title function_">postMessage</span>(obj)</span><br><span class="line">        port2.<span class="property">onmessage</span> = <span class="function"><span class="params">e</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="title function_">resolve</span>(e.<span class="property">data</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//测试</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123; <span class="attr">a</span>: <span class="string">&quot;&quot;</span>, <span class="attr">c</span>: <span class="literal">undefined</span>, <span class="attr">e</span>: <span class="number">0</span>, <span class="attr">f</span>: [], <span class="attr">g</span>: <span class="title class_">NaN</span>, <span class="attr">h</span>: <span class="literal">null</span>,<span class="attr">I</span>:<span class="keyword">new</span> <span class="title class_">Set</span>([<span class="number">1</span>,<span class="number">2</span>]), </span><br><span class="line"><span class="attr">J</span>: <span class="keyword">new</span> <span class="title class_">Map</span>([[<span class="string">&#x27;a&#x27;</span>,<span class="number">1</span>]]) &#125;</span><br><span class="line">obj.<span class="property">b</span>  = obj<span class="comment">//循环引用</span></span><br><span class="line"><span class="title function_">deepClone</span>(obj).<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(res);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h1 id="structuredClone"><a href="#structuredClone" class="headerlink" title="structuredClone"></a>structuredClone</h1><blockquote>
+<p>适用范围同 MessageChannel 方法的</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">deepClone</span>(<span class="params">obj</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">structuredClone</span>(obj)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="loadsh的cloneDeep函数"><a href="#loadsh的cloneDeep函数" class="headerlink" title="loadsh的cloneDeep函数"></a>loadsh的cloneDeep函数</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; cloneDeep &#125; <span class="keyword">from</span> <span class="string">&#x27;loadsh&#x27;</span> </span><br></pre></td></tr></table></figure>
+
+<h1 id="JSON实现深拷贝"><a href="#JSON实现深拷贝" class="headerlink" title="JSON实现深拷贝"></a>JSON实现深拷贝</h1><ul>
+<li>不能解决<strong>循环引用</strong></li>
+<li>NaN被拷贝成null</li>
+<li>Symbol和undefined没被拷贝</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> newObj = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(obj))</span><br></pre></td></tr></table></figure>
+
+<h1 id="最后自己重新手搓一个终极版的deepClone"><a href="#最后自己重新手搓一个终极版的deepClone" class="headerlink" title="最后自己重新手搓一个终极版的deepClone"></a>最后自己重新手搓一个终极版的deepClone</h1><ul>
+<li>解决了循环引用 – 利用WeakMap</li>
+<li>支持深拷贝Symbol，Set，Map，fn</li>
+<li>不支持深拷贝Date，RegExp，</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">deepClone</span>(<span class="params">obj, hash = <span class="keyword">new</span> <span class="built_in">WeakMap</span>()</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!obj) <span class="keyword">return</span> obj</span><br><span class="line">    <span class="keyword">let</span> clone;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(hash.<span class="title function_">has</span>(obj))&#123;</span><br><span class="line">        <span class="comment">// 如果在的话</span></span><br><span class="line">        <span class="keyword">return</span> hash.<span class="title function_">get</span>(obj)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> <span class="title class_">Set</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Set</span>([...obj]) <span class="comment">//缺陷--解构是浅拷贝</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> <span class="title class_">Map</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Map</span>([...obj])</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> <span class="title class_">WeakMap</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="string">&#x27;weakmap类型未作处理&#x27;</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> obj === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">        <span class="comment">//方法不用克隆，直接返回</span></span><br><span class="line">        <span class="keyword">return</span> obj</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> <span class="title class_">Array</span>) &#123; <span class="comment">//obj 是数组</span></span><br><span class="line">        clone = [];</span><br><span class="line">        hash.<span class="title function_">set</span>(obj, clone)</span><br><span class="line">        obj.<span class="title function_">forEach</span>(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">            clone.<span class="title function_">push</span>(<span class="title function_">deepClone</span>(item, hash))</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> obj !== <span class="string">&#x27;object&#x27;</span>) &#123; <span class="comment">//原始值类型</span></span><br><span class="line">        <span class="keyword">return</span> obj</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123; <span class="comment">//obj 是Object对象</span></span><br><span class="line">        clone = &#123;&#125;;</span><br><span class="line">        hash.<span class="title function_">set</span>(obj, clone)</span><br><span class="line">        <span class="comment">//键是字符</span></span><br><span class="line">        <span class="title class_">Object</span>.<span class="title function_">getOwnPropertyNames</span>(obj).<span class="title function_">forEach</span>(<span class="function"><span class="params">propNames</span> =&gt;</span> &#123;</span><br><span class="line">            clone[propNames] = <span class="title function_">deepClone</span>(obj[propNames],hash)</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="comment">//键是Symbol</span></span><br><span class="line">        <span class="title class_">Object</span>.<span class="title function_">getOwnPropertySymbols</span>(obj).<span class="title function_">forEach</span>(<span class="function"><span class="params">syb</span> =&gt;</span> &#123;</span><br><span class="line">            clone[<span class="title class_">Symbol</span>(syb.<span class="property">description</span>)] = <span class="title function_">deepClone</span>(obj[syb],hash)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> clone</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="优化手写深度克隆"><a href="#优化手写深度克隆" class="headerlink" title="优化手写深度克隆"></a>优化手写深度克隆</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">deepClone</span>(<span class="params"></span>)&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2023/10/21/CommonJs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="bLank-L">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/10/21/CommonJs/" class="post-title-link" itemprop="url">CommonJs</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-10-21 23:40:51" itemprop="dateCreated datePublished" datetime="2023-10-21T23:40:51+08:00">2023-10-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-10-24 20:25:27" itemprop="dateModified" datetime="2023-10-24T20:25:27+08:00">2023-10-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="CommonJs" href="/2023/10/21/CommonJs/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::fbd4e62ed3e091e1a413113b862a43a4" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>require的伪代码如下：</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/10/21/CommonJs/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -343,7 +621,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-03-30 12:27:58" itemprop="dateModified" datetime="2024-03-30T12:27:58+08:00">2024-03-30</time>
+      <time title="修改时间：2024-04-19 13:16:56" itemprop="dateModified" datetime="2024-04-19T13:16:56+08:00">2024-04-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -376,14 +654,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>7.7k</span>
+      <span>8.3k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>14 分钟</span>
+      <span>15 分钟</span>
     </span>
 </div>
 
@@ -411,6 +689,12 @@
 <p>reactive 只能监听复杂数据类型，因为proxy只能监听负责数据类型的getter和setter</p>
 </blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">reactive</span>(<span class="params">obj</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Proxy</span>(obj, &#123;</span><br><span class="line">        <span class="title function_">get</span>(<span class="params">target, key, recv</span>)&#123;</span><br><span class="line">            <span class="keyword">const</span> res = <span class="title class_">Reflect</span>.<span class="title function_">get</span>(...<span class="variable language_">arguments</span>)</span><br><span class="line">            <span class="comment">//收集依赖</span></span><br><span class="line">            <span class="title function_">track</span>(target, key)</span><br><span class="line">            <span class="keyword">return</span> res</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="title function_">set</span>(<span class="params">target, key, newValue, recv</span>)&#123;</span><br><span class="line">            <span class="keyword">const</span> res = <span class="title class_">Reflect</span>.<span class="title function_">set</span>(...<span class="variable language_">arguments</span>)</span><br><span class="line">            <span class="comment">//触发依赖</span></span><br><span class="line">            <span class="title function_">trigger</span>(target, key)</span><br><span class="line">            <span class="keyword">return</span> res</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="为什么用Reflect"><a href="#为什么用Reflect" class="headerlink" title="为什么用Reflect"></a>为什么用Reflect</h3><p>Reflect 就是反射，可以直接调用对象的基本方法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    <span class="attr">a</span>: <span class="string">&#x27;a&#x27;</span>,</span><br><span class="line">    <span class="attr">b</span>: <span class="string">&#x27;b&#x27;</span>,</span><br><span class="line">    <span class="keyword">get</span> <span class="title function_">c</span>()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">a</span>+<span class="variable language_">this</span>.<span class="property">b</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> proxy = <span class="keyword">new</span> <span class="title class_">Proxy</span>(obj, &#123;</span><br><span class="line">    <span class="title function_">get</span>(<span class="params">target, key, receiver</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;读：&#x27;</span>, target[key]);</span><br><span class="line">        <span class="keyword">return</span> target[key]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">proxy.<span class="property">c</span>; <span class="comment">//只输出， 读：&#x27;ab&#x27;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> proxy = <span class="keyword">new</span> <span class="title class_">Proxy</span>(obj, &#123;</span><br><span class="line">    <span class="title function_">get</span>(<span class="params">target, key, receiver</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;读：&#x27;</span>, target[key]);</span><br><span class="line">        <span class="keyword">return</span> <span class="title class_">Reflect</span>.<span class="title function_">get</span>(...<span class="variable language_">arguments</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">proxy.<span class="property">c</span>; </span><br><span class="line"><span class="comment">//读：&#x27;ab&#x27;</span></span><br><span class="line"><span class="comment">//读：&#x27;a&#x27;</span></span><br><span class="line"><span class="comment">//读：&#x27;b&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
 
 <h2 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h2><blockquote>
 <p>那么ref怎么监听原始值类型？</p>
@@ -681,7 +965,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-03-15 15:11:33" itemprop="dateModified" datetime="2024-03-15T15:11:33+08:00">2024-03-15</time>
+      <time title="修改时间：2024-04-21 23:35:35" itemprop="dateModified" datetime="2024-04-21T23:35:35+08:00">2024-04-21</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -689,7 +973,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+          <a href="/categories/%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">网络</span></a>
         </span>
     </span>
 
@@ -714,14 +998,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.6k</span>
+      <span>2.2k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
+      <span>4 分钟</span>
     </span>
 </div>
 
@@ -732,11 +1016,18 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="http-1-0"><a href="#http-1-0" class="headerlink" title="http 1.0"></a>http 1.0</h1><p>默认关闭 <code>keepalive</code>，每次请求都建立一次tcp连接，服务器处理后立即断开tcp连接</p>
-<p>服务器不记录客户的任何请求（<strong>无状态</strong>）</p>
-<p>但是，可以借助session和cookie来做身份认证</p>
+          <h1 id="http-1-0"><a href="#http-1-0" class="headerlink" title="http 1.0"></a>http 1.0</h1><ul>
+<li>简单、灵活、易扩展、跨平台<ol>
+<li>基本格式：header+body </li>
+<li>header、status 都可以自定义</li>
+<li>https &#x3D; http + tls&#x2F;ssl</li>
+</ol>
+</li>
+<li>无状态： 服务器不会记录请求的状态</li>
+<li>默认关闭 <code>keepalive</code>，每次请求都建立一次tcp连接，服务器处理后立即断开tcp连接</li>
+</ul>
 <blockquote>
-<p>问题：http1.0有队头阻塞， 即没收到第一个请求对应的响应 就不能发送第二个请求</p>
+<p>http1.0有队头阻塞， 即没收到第一个请求对应的响应 就不能发送第二个请求</p>
 </blockquote>
           <!--noindex-->
             <div class="post-button">
@@ -799,9 +1090,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2023-10-15 14:45:05 / 修改时间：17:10:39" itemprop="dateCreated datePublished" datetime="2023-10-15T14:45:05+08:00">2023-10-15</time>
+      <time title="创建时间：2023-10-15 14:45:05" itemprop="dateCreated datePublished" datetime="2023-10-15T14:45:05+08:00">2023-10-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-04-21 15:11:19" itemprop="dateModified" datetime="2024-04-21T15:11:19+08:00">2024-04-21</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -834,14 +1131,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>3.5k</span>
+      <span>3.6k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>6 分钟</span>
+      <span>7 分钟</span>
     </span>
 </div>
 
@@ -1206,7 +1503,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-04-05 02:53:29" itemprop="dateModified" datetime="2024-04-05T02:53:29+08:00">2024-04-05</time>
+      <time title="修改时间：2024-04-14 19:27:46" itemprop="dateModified" datetime="2024-04-14T19:27:46+08:00">2024-04-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1239,7 +1536,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>938</span>
+      <span>912</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -1261,256 +1558,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/10/12/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2023/10/11/%E6%9E%9A%E4%B8%BE%E5%92%8C%E8%BF%AD%E4%BB%A3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="bLank-L">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="bLanK's blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | bLanK's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/10/11/%E6%9E%9A%E4%B8%BE%E5%92%8C%E8%BF%AD%E4%BB%A3/" class="post-title-link" itemprop="url">枚举和迭代——借由for-in和for-of说明</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-10-11 21:39:19" itemprop="dateCreated datePublished" datetime="2023-10-11T21:39:19+08:00">2023-10-11</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-03-11 23:49:12" itemprop="dateModified" datetime="2024-03-11T23:49:12+08:00">2024-03-11</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Changyan：</span>
-    
-    <a title="枚举和迭代——借由for-in和for-of说明" href="/2023/10/11/%E6%9E%9A%E4%B8%BE%E5%92%8C%E8%BF%AD%E4%BB%A3/#SOHUCS" itemprop="discussionUrl">
-      <span id="sourceId::3538185d2a2585651e2c804740d923be" class="cy_cmt_count" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>944</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="枚举和迭代有什么区别？"><a href="#枚举和迭代有什么区别？" class="headerlink" title="枚举和迭代有什么区别？"></a>枚举和迭代有什么区别？</h1><ul>
-<li>for-in 是遍历所有可枚举属性(包括原型链上的)</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    <span class="attr">a</span>: <span class="string">&#x27;aaa&#x27;</span>,</span><br><span class="line">    <span class="attr">b</span>: <span class="string">&#x27;bbb&#x27;</span></span><br><span class="line">&#125; </span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">c</span> = <span class="string">&#x27;ccc&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> obj)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(obj,<span class="string">&#x27;d&#x27;</span>,&#123;</span><br><span class="line">    <span class="attr">value</span>: <span class="string">&#x27;ddd&#x27;</span>,</span><br><span class="line">    <span class="attr">enumerable</span>: <span class="literal">false</span></span><br><span class="line">&#125;) <span class="comment">//d属性枚举不到</span></span><br></pre></td></tr></table></figure>
-
-<p><a href="/2023/10/13/%E4%B8%80%E4%BA%9B%E6%9E%9A%E4%B8%BE%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E6%B3%95">🔗更多关于枚举</a></p>
-<p>所以enumberable决定了属性能不能被枚举到<br>而可迭代性是由各种类型里内置的迭代器工厂函数决定的</p>
-<p>详见：🔗<a href="/2023/10/10/%E8%BF%AD%E4%BB%A3%E5%99%A8-%E7%94%9F%E6%88%90%E5%99%A8">迭代器-生成器</a></p>
-<ul>
-<li>for-of 是迭代，要有迭代器才能用</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//比如迭代一个Object类型会报错，因为Object没有实现Iterable接口不可迭代</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj);   <span class="comment">//&#123;a: &#x27;aaa&#x27;, b: &#x27;bbb&#x27;, d: &#x27;ddd&#x27;&#125;</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> x <span class="keyword">of</span> obj)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(x);</span><br><span class="line">&#125; <span class="comment">//Uncaught TypeError: obj is not iterable</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="手写一个伪数组迭代器"><a href="#手写一个伪数组迭代器" class="headerlink" title="手写一个伪数组迭代器"></a>手写一个伪数组迭代器</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; range &#125; = <span class="built_in">require</span>(<span class="string">&quot;lodash&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> fakeArr = &#123;</span><br><span class="line">    <span class="number">0</span>: <span class="string">&#x27;a&#x27;</span>,</span><br><span class="line">    <span class="number">1</span>: <span class="string">&#x27;b&#x27;</span>,</span><br><span class="line">    <span class="number">2</span>: <span class="string">&#x27;c&#x27;</span>,</span><br><span class="line">    <span class="attr">length</span>: <span class="number">3</span>,</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//赋值号右边是一个生成器函数</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>[<span class="title class_">Symbol</span>.<span class="property">iterator</span>] = <span class="keyword">function</span>* () &#123;</span><br><span class="line">    <span class="keyword">for</span> (i <span class="keyword">in</span> <span class="title function_">range</span>(<span class="number">0</span>, <span class="variable language_">this</span>.<span class="property">length</span>)) &#123;</span><br><span class="line">        <span class="keyword">yield</span> <span class="variable language_">this</span>[i]</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> fakeArr) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(item); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2023/10/11/promise%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="bLank-L">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="bLanK's blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | bLanK's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/10/11/promise%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">promise笔记</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2023-10-11 11:32:55 / 修改时间：12:25:41" itemprop="dateCreated datePublished" datetime="2023-10-11T11:32:55+08:00">2023-10-11</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Changyan：</span>
-    
-    <a title="promise笔记" href="/2023/10/11/promise%E7%AC%94%E8%AE%B0/#SOHUCS" itemprop="discussionUrl">
-      <span id="sourceId::38babac384b9c7060cd6a040e20a7832" class="cy_cmt_count" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>3.5k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>6 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Porimise-resolve-obj-Promise-reject-obj"><a href="#Porimise-resolve-obj-Promise-reject-obj" class="headerlink" title="Porimise.resolve(obj) Promise.reject(obj)"></a>Porimise.resolve(obj) Promise.reject(obj)</h1><ol>
-<li>obj是非Promise对象,其状态PromiseState一定是 fulfilled</li>
-<li>obj是Promise对象, 则根据obj的状态PromiseState是 fulfilled或 rejected 来决定整体的</li>
-<li>resolve或 reject 本质是把 PromiseState 从 pending –&gt; fulfilled&#x2F; rejected</li>
-<li>状态不为pending 就会调用then</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> p = <span class="title class_">Promise</span>.<span class="title function_">resolve</span>(</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="title function_">reject</span>(<span class="string">&quot;ok!&quot;</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/10/11/promise%E7%AC%94%E8%AE%B0/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1556,13 +1603,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">157k</span>
+    <span title="站点总字数">161k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:45</span>
+    <span title="站点阅读时长">4:54</span>
   </span>
 </div>
 <div class="busuanzi-count">
