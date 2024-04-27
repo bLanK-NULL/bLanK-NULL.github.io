@@ -1029,10 +1029,13 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
 </ul>
 <h1 id="5-响应式系统"><a href="#5-响应式系统" class="headerlink" title="5. 响应式系统"></a>5. 响应式系统</h1><ul>
 <li>vue2 使用 <code>defineProperty</code> 来劫持对象，深度遍历所有属性给每个属性添加 <code>getter setter</code></li>
-<li>vue3 使用 <code>Proxy</code> 代理对象，不需深度遍历对象就可以监听深层属性。<ul>
-<li>这一优点尤其在一些数组方法上体现，vue2为了性能考虑<u>没有深度遍历数组而是重写了一些数组方法</u>一边支持响应式，而vue3则不需要</li>
+<li>vue3 使用 <code>Proxy</code> 代理对象。<ul>
+<li><code>defineProperty</code> 只能劫持对象属性，所以需要遍历所有属性。而<code>Proxy</code>是直接代理对象。</li>
+<li>vue2由于<code>defineProperty</code> 而不能监听数组，所以要重写数组方法。</li>
+<li>当一个对象的属性还是一个对象时，<code>Proxy</code> 采用懒递归，在getter发现读到的属性时对象时才会创建该对象的代理并返回。</li>
 </ul>
 </li>
+<li></li>
 </ul>
 ]]></content>
       <categories>
