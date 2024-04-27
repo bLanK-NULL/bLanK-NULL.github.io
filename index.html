@@ -152,18 +152,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-count">55</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">83</span>
+        <span class="site-state-item-count">84</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -192,6 +192,150 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2024/04/27/%E5%9B%9E%E6%B5%81%E9%87%8D%E7%BB%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="bLank-L">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/04/27/%E5%9B%9E%E6%B5%81%E9%87%8D%E7%BB%98/" class="post-title-link" itemprop="url">回流重绘</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-04-27 14:04:08 / 修改时间：15:54:48" itemprop="dateCreated datePublished" datetime="2024-04-27T14:04:08+08:00">2024-04-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%B5%8F%E8%A7%88%E5%99%A8/" itemprop="url" rel="index"><span itemprop="name">浏览器</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="回流重绘" href="/2024/04/27/%E5%9B%9E%E6%B5%81%E9%87%8D%E7%BB%98/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::127f19c1e1fdae4174b6502ab19eaef3" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="什么是回流重绘"><a href="#什么是回流重绘" class="headerlink" title="什么是回流重绘"></a>什么是回流重绘</h1><p>HTML中每个元素都可视为一个盒子，在浏览器解析时</p>
+<ul>
+<li><strong>回流</strong>：当元素的尺寸、位置或某些属性发生变化时，浏览器需要重新计算元素的几何属性，然后再将计算的结果绘制出来。这个过程就叫做回流。例如，修改元素的宽度、高度、或者添加或删除可见的DOM元素，都会触发回流。</li>
+<li><strong>重绘</strong>：当页面中元素样式的改变并不影响它在文档流中的位置时（例如：color、background-color、visibility等），浏览器会将新样式赋予给元素并重新绘制它，这个过程称为重绘。</li>
+</ul>
+<p><strong>回流必将引起重绘，而重绘不一定会引起回流</strong></p>
+<h2 id="回流触发时机"><a href="#回流触发时机" class="headerlink" title="回流触发时机"></a>回流触发时机</h2><p>回流一般在于元素的几何信息（大小、位置）发生变化时触发。</p>
+<ol>
+<li>添加或删除节点</li>
+<li>元素大小或位置改变</li>
+<li>页面初次渲染</li>
+<li>浏览器窗口尺寸变化（因为回流根据视口来计算的）</li>
+</ol>
+<p>除此之外一些获取几何信息的属性也会触发回流</p>
+<blockquote>
+<p>offsetTop offsetLeft  offsetWidth offsetHeight<br>scroll-<br>client-<br>getBoundingClientRect() getComputedStyle()</p>
+</blockquote>
+<h2 id="重绘触发时机"><a href="#重绘触发时机" class="headerlink" title="重绘触发时机"></a>重绘触发时机</h2><ol>
+<li>颜色、阴影的修改</li>
+<li>通过visibility、opacity 显示和隐藏</li>
+<li>文本对齐方向</li>
+</ol>
+<blockquote>
+<p>修改文本排列方向是会回流的，修改对齐方向不回流</p>
+</blockquote>
+<h1 id="浏览器优化"><a href="#浏览器优化" class="headerlink" title="浏览器优化"></a>浏览器优化</h1><p>由于每次重排都会造成额外的计算消耗，因此大多数浏览器都会通过队列化修改并批量执行来优化重排过程。浏览器会将修改操作放入到队列里，直到过了一段时间或者操作达到了一个阈值，才清空队列</p>
+<p>当你获取布局信息的操作的时候，会强制队列刷新，包括前面讲到的offsetTop等方法都会返回最新的数据</p>
+<p>因此浏览器不得不清空队列，触发回流重绘来返回正确的值</p>
+<h1 id="如何减少回流重绘"><a href="#如何减少回流重绘" class="headerlink" title="如何减少回流重绘"></a>如何减少回流重绘</h1><ol>
+<li>通过改变元素的 class 类名设定元素的样式：这样做可以一次性地应用多个样式，而不需要逐个修改样式属性。这样可以减少浏览器重新计算样式和布局的次数，从而减少回流和重绘。</li>
+<li>避免设置多项内联样式：内联样式会直接修改元素的样式，每修改一次都可能触发回流和重绘。使用class类名可以一次性地应用多个样式，减少回流和重绘的次数。</li>
+<li>应用元素的动画，使用 position 属性的 fixed 值或 absolute 值：这样可以使元素脱离文档流，其位置的改变不会影响到其他元素的布局，从而减少回流。但是，这可能会增加重绘的次数，因为元素的位置改变可能会改变其可见性。</li>
+<li>避免使用 table 布局：table 中每个元素的大小以及内容的改动，都会导致整个 table 的重新计算，从而触发回流。使用其他布局方式，如 flex 或 grid，可以减少回流的次数。</li>
+<li>对于那些复杂的动画，对其设置 position: fixed&#x2F;absolute：这样可以使元素脱离文档流，其位置的改变不会影响到其他元素的布局，从而减少回流。但是，这可能会增加重绘的次数，因为元素的位置改变可能会改变其可见性。</li>
+<li>使用css3硬件加速：硬件加速可以让一些复杂的动画（如 transform、opacity、filters）在 GPU 而不是 CPU 上运行，这可以避免触发回流和重绘，从而提高性能。</li>
+<li>避免使用 CSS 的 JavaScript 表达式：CSS 的 JavaScript 表达式会在每次页面渲染时都被重新计算，这可能会触发大量的回流和重绘。避免使用它们可以减少回流和重绘的次数。</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -521,9 +665,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2024-03-31 17:52:01 / 修改时间：23:44:38" itemprop="dateCreated datePublished" datetime="2024-03-31T17:52:01+08:00">2024-03-31</time>
+      <time title="创建时间：2024-03-31 17:52:01" itemprop="dateCreated datePublished" datetime="2024-03-31T17:52:01+08:00">2024-03-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-04-24 12:51:40" itemprop="dateModified" datetime="2024-04-24T12:51:40+08:00">2024-04-24</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -556,7 +706,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>10k</span>
+      <span>11k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -1623,143 +1773,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2024/03/04/vue3%E7%9A%84%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="bLank-L">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="bLanK's blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | bLanK's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/03/04/vue3%E7%9A%84%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87/" class="post-title-link" itemprop="url">vue3的性能提升</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-03-04 19:48:43" itemprop="dateCreated datePublished" datetime="2024-03-04T19:48:43+08:00">2024-03-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-04-06 00:10:44" itemprop="dateModified" datetime="2024-04-06T00:10:44+08:00">2024-04-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Changyan：</span>
-    
-    <a title="vue3的性能提升" href="/2024/03/04/vue3%E7%9A%84%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87/#SOHUCS" itemprop="discussionUrl">
-      <span id="sourceId::a03f4f9e41248c96aca8075ae3c60f07" class="cy_cmt_count" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.3k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <span id="more"></span>
-
-<h1 id="1-diff-算法的优化"><a href="#1-diff-算法的优化" class="headerlink" title="1. diff 算法的优化"></a>1. diff 算法的优化</h1><p>增加了静态标记， 被标记为-1的节点不会参与diff比较</p>
-<h1 id="2-静态提升"><a href="#2-静态提升" class="headerlink" title="2. 静态提升"></a>2. 静态提升</h1><p>对于静态节点，把创建dom节点的放在render函数之外。这样就只用创建一次，多次复用。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">render</span>(<span class="params">_ctx, _cache, $props, $setup, $data, $options</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (<span class="title function_">_openBlock</span>(), <span class="title function_">_createBlock</span>(_Fragment, <span class="literal">null</span>, [</span><br><span class="line">    <span class="title function_">_createVNode</span>(<span class="string">&quot;span&quot;</span>, <span class="literal">null</span>, <span class="string">&quot;你好&quot;</span>),</span><br><span class="line">    <span class="title function_">_createVNode</span>(<span class="string">&quot;div&quot;</span>, <span class="literal">null</span>, <span class="title function_">_toDisplayString</span>(_ctx.<span class="property">message</span>), <span class="number">1</span> <span class="comment">/* TEXT */</span>)</span><br><span class="line">  ], <span class="number">64</span> <span class="comment">/* STABLE_FRAGMENT */</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>提升后</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> _hoisted_1 = <span class="comment">/*#__PURE__*/</span><span class="title function_">_createVNode</span>(<span class="string">&quot;span&quot;</span>, <span class="literal">null</span>, <span class="string">&quot;你好&quot;</span>, -<span class="number">1</span> <span class="comment">/* HOISTED */</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">render</span>(<span class="params">_ctx, _cache, $props, $setup, $data, $options</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (<span class="title function_">_openBlock</span>(), <span class="title function_">_createBlock</span>(_Fragment, <span class="literal">null</span>, [</span><br><span class="line">    _hoisted_1,</span><br><span class="line">    <span class="title function_">_createVNode</span>(<span class="string">&quot;div&quot;</span>, <span class="literal">null</span>, <span class="title function_">_toDisplayString</span>(_ctx.<span class="property">message</span>), <span class="number">1</span> <span class="comment">/* TEXT */</span>)</span><br><span class="line">  ], <span class="number">64</span> <span class="comment">/* STABLE_FRAGMENT */</span>))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Check the console for the AST</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="3-事件监听缓存"><a href="#3-事件监听缓存" class="headerlink" title="3. 事件监听缓存"></a>3. 事件监听缓存</h1><p>用一个cache缓存事件处理函数</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">render</span>(<span class="params">_ctx, _cache, $props, $setup, $data, $options</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (<span class="title function_">_openBlock</span>(), <span class="title function_">_createBlock</span>(<span class="string">&quot;div&quot;</span>, <span class="literal">null</span>, [</span><br><span class="line">    <span class="title function_">_createVNode</span>(<span class="string">&quot;button&quot;</span>, &#123;</span><br><span class="line">      <span class="attr">onClick</span>: _cache[<span class="number">1</span>] || (_cache[<span class="number">1</span>] = <span class="function">(<span class="params">...args</span>) =&gt;</span> (_ctx.<span class="title function_">onClick</span>(...args)))</span><br><span class="line">    &#125;, <span class="string">&quot;点我&quot;</span>)</span><br><span class="line">  ]))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="4-Tree-shaking"><a href="#4-Tree-shaking" class="headerlink" title="4. Tree shaking"></a>4. Tree shaking</h1><p>tree shaking 是一种清除多于代码的优化打包体积的技术。</p>
-<ul>
-<li>vue2中所有功能代码都被打包，因为vue2是单例模式，所有方法都在vue构造函数生成的单例上，treeshaking无法区分某个属性、方法是否用到。</li>
-<li>vue3利用ES6 module。 静态编译时就可以把未使用的功能排除</li>
-</ul>
-<h1 id="5-响应式系统"><a href="#5-响应式系统" class="headerlink" title="5. 响应式系统"></a>5. 响应式系统</h1><ul>
-<li>vue2 使用 <code>defineProperty</code> 来劫持对象，深度遍历所有属性给每个属性添加 <code>getter setter</code></li>
-<li>vue3 使用 <code>Proxy</code> 代理对象，不需深度遍历对象就可以监听深层属性。<ul>
-<li>这一优点尤其在一些数组方法上体现，vue2为了性能考虑<u>没有深度遍历数组而是重写了一些数组方法</u>一边支持响应式，而vue3则不需要</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1783,13 +1796,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">162k</span>
+    <span title="站点总字数">164k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:55</span>
+    <span title="站点阅读时长">4:57</span>
   </span>
 </div>
 <div class="busuanzi-count">
