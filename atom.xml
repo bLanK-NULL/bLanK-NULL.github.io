@@ -6,7 +6,7 @@
   <link href="https://blank-null.github.io/atom.xml" rel="self"/>
   
   <link href="https://blank-null.github.io/"/>
-  <updated>2024-04-27T07:54:48.422Z</updated>
+  <updated>2024-05-10T08:33:22.870Z</updated>
   <id>https://blank-null.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【综合】工程化</title>
+    <link href="https://blank-null.github.io/2024/05/10/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    <id>https://blank-null.github.io/2024/05/10/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91%E5%B7%A5%E7%A8%8B%E5%8C%96/</id>
+    <published>2024-05-10T08:31:54.000Z</published>
+    <updated>2024-05-10T08:33:22.870Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;包管理&quot;&gt;&lt;a href=&quot;#包管理&quot; class=&quot;headerlink&quot; title=&quot;包管理&quot;&gt;&lt;/a&gt;包管理&lt;/h1&gt;&lt;h2 id=&quot;npm&quot;&gt;&lt;a href=&quot;#npm&quot; class=&quot;headerlink&quot; title=&quot;npm&quot;&gt;&lt;/a&gt;npm&lt;/h</summary>
+      
+    
+    
+    
+    <category term="综合" scheme="https://blank-null.github.io/categories/%E7%BB%BC%E5%90%88/"/>
+    
+    
+    <category term="工程化" scheme="https://blank-null.github.io/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+  </entry>
   
   <entry>
     <title>回流重绘</title>
@@ -213,7 +235,7 @@
     <link href="https://blank-null.github.io/2024/03/05/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%9F%BA%E7%A1%80/"/>
     <id>https://blank-null.github.io/2024/03/05/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%9F%BA%E7%A1%80/</id>
     <published>2024-03-05T07:00:30.000Z</published>
-    <updated>2024-04-21T14:36:04.243Z</updated>
+    <updated>2024-05-10T09:10:51.435Z</updated>
     
     
       
@@ -292,7 +314,7 @@
     <link href="https://blank-null.github.io/2024/03/04/vue3%E7%9A%84%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87/"/>
     <id>https://blank-null.github.io/2024/03/04/vue3%E7%9A%84%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87/</id>
     <published>2024-03-04T11:48:43.000Z</published>
-    <updated>2024-04-27T16:23:35.608Z</updated>
+    <updated>2024-05-10T09:32:46.423Z</updated>
     
     
       
@@ -504,30 +526,6 @@
     
     
     <category term="IntersectionObserver" scheme="https://blank-null.github.io/tags/IntersectionObserver/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MutationObserver</title>
-    <link href="https://blank-null.github.io/2023/11/24/MutationObserver/"/>
-    <id>https://blank-null.github.io/2023/11/24/MutationObserver/</id>
-    <published>2023-11-24T11:55:40.000Z</published>
-    <updated>2023-11-24T13:58:41.768Z</updated>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;MutationObserver 用于观察&lt;strong&gt;DOM&lt;/strong&gt;的任何变动&lt;/p&gt;
-&lt;p&gt;但是DOM的变动是同步的，而此方法是&lt;strong&gt;异步微任务&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id=&quot;构造函数&quot;&gt;&lt;a href=&quot;#构造函数&quot; class=&quot;h</summary>
-      
-    
-    
-    
-    <category term="技术" scheme="https://blank-null.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-    <category term="MutationObserver" scheme="https://blank-null.github.io/tags/MutationObserver/"/>
     
   </entry>
   

@@ -1012,7 +1012,19 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
     <url>/2024/03/04/vue3%E7%9A%84%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87/</url>
     <content><![CDATA[<span id="more"></span>
 
-<h1 id="1-diff-算法的优化"><a href="#1-diff-算法的优化" class="headerlink" title="1. diff 算法的优化"></a>1. diff 算法的优化</h1><p>增加了静态标记， 被标记为-1的节点不会参与diff比较</p>
+<h1 id="1-diff-算法的优化"><a href="#1-diff-算法的优化" class="headerlink" title="1. diff 算法的优化"></a>1. diff 算法的优化</h1><p>增加了静态标记， 被标记为-1的节点不会参与diff比较。</p>
+<p>因为为vue3可以实现精准定位到动态节点，即那些可能需要重新渲染的节点。</p>
+<p>曾经diff需要一层层比较整个新旧虚拟dom树找到哪些值改变。</p>
+<ul>
+<li>现在vue3在编译时，利用静态标记patchFlag 标记节点的动态属性。</li>
+</ul>
+<p>例如class、style、props，含有动态属性的节点就是动态节点。</p>
+<ul>
+<li><p>每个组件的顶层vnode会有一个<code>dynamicChildren</code>属性，以数组形式存放该节点下所有动态节点。</p>
+</li>
+<li><p>在运行render后，会遍历这个数组进行靶向更新。也就是说只需要比较动态节点的新旧变化了</p>
+</li>
+</ul>
 <h1 id="2-静态提升"><a href="#2-静态提升" class="headerlink" title="2. 静态提升"></a>2. 静态提升</h1><p>对于静态节点，把创建dom节点的放在render函数之外。这样就只用创建一次，多次复用。</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">render</span>(<span class="params">_ctx, _cache, $props, $setup, $data, $options</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (<span class="title function_">_openBlock</span>(), <span class="title function_">_createBlock</span>(_Fragment, <span class="literal">null</span>, [</span><br><span class="line">    <span class="title function_">_createVNode</span>(<span class="string">&quot;span&quot;</span>, <span class="literal">null</span>, <span class="string">&quot;你好&quot;</span>),</span><br><span class="line">    <span class="title function_">_createVNode</span>(<span class="string">&quot;div&quot;</span>, <span class="literal">null</span>, <span class="title function_">_toDisplayString</span>(_ctx.<span class="property">message</span>), <span class="number">1</span> <span class="comment">/* TEXT */</span>)</span><br><span class="line">  ], <span class="number">64</span> <span class="comment">/* STABLE_FRAGMENT */</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -1347,6 +1359,26 @@ let decode = this.app.jwt.verify(token, this.app.config.jwt.secret)
 <li>document.cookie无法获取，可防止xss攻击。</li>
 </ol>
 </li>
+</ol>
+<h1 id="JWT"><a href="#JWT" class="headerlink" title="JWT"></a>JWT</h1><p>jwt常用于身份认证和信息交换。jwt生成的token由header+payload+signature组成。可以加密信息并防止篡改。</p>
+<p>为什么要使用token？</p>
+<p>以前用cookie+session模式，cookie存放sessionID，服务器拿到sessionID在数据库里查找对应用户的登录信息。这样做的缺点是：</p>
+<ol>
+<li>用户信息存在服务端，增加服务器负担。</li>
+<li>cookie历史包袱重，空间大小只有4KB，携带cookie的规则复杂，跨站不携带cookie。不灵活。容易遭受csrf、xss攻击</li>
+<li>在分布式服务架构上，一个服务器上的session不方便与其他服务器共享</li>
+</ol>
+<p>而token</p>
+<ol>
+<li>存储在localstorage里相对安全。</li>
+<li>使用更加灵活</li>
+<li>便于在微前端中传输用户信息。</li>
+</ol>
+<h1 id="history路由模式【pushed】"><a href="#history路由模式【pushed】" class="headerlink" title="history路由模式【pushed】"></a>history路由模式【pushed】</h1><p>vue利用history.pushState来管理路由状态。当刷新页面时，浏览器把地址栏当作请求地址向服务器发起请求，服务器没有对应路由则出现404错误</p>
+<p><strong>解决：</strong></p>
+<ol>
+<li>修改为hash模式，hash值是指以＃开头的一串，是不会发送给服务器的</li>
+<li>设置nginx和express所有未匹配到的路由都返回index.html。这样，当刷新页面时，服务器将始终返回<code>index.html</code>，然后由Vue Router接管路由处理</li>
 </ol>
 ]]></content>
       <categories>
@@ -5091,7 +5123,7 @@ if(&quot;serviceWorker&quot; in navigator) &#123;
 <blockquote>
 <p>一个虚拟Dom节点至少包括三个属性：type、attr、children</p>
 </blockquote>
-<h1 id="响应式"><a href="#响应式" class="headerlink" title="响应式"></a>响应式</h1><h2 id="effect"><a href="#effect" class="headerlink" title="effect"></a>effect</h2><p>effect是一个‘桶’， 他收集并触发指定方法</p>
+<h1 id="响应式"><a href="#响应式" class="headerlink" title="响应式"></a>响应式</h1><h2 id="effect-副作用"><a href="#effect-副作用" class="headerlink" title="effect 副作用"></a>effect 副作用</h2><p>effect是一个‘桶’， 他收集并触发指定方法</p>
 <p><img src="/2023/10/20/vue%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/effect.png"><br><img src="/2023/10/20/vue%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/effect2.png"></p>
 <!-- more -->
 
@@ -5130,24 +5162,6 @@ if(&quot;serviceWorker&quot; in navigator) &#123;
 <blockquote>
 <p>上述effect函数和activeEffect都是简化后的，没有判断该副作用到底依赖了谁</p>
 </blockquote>
-<h1 id="内置组件"><a href="#内置组件" class="headerlink" title="内置组件"></a>内置组件</h1><h2 id="keepAlive"><a href="#keepAlive" class="headerlink" title="keepAlive"></a>keepAlive</h2><p>保活，避免组件被不断创建和销毁</p>
-<p>原理：</p>
-<ul>
-<li>组件被卸载时：不去真正卸载，而是存在一个容器中</li>
-<li>组件被挂载时：从容其中取出挂载</li>
-</ul>
-<h2 id="Teleport"><a href="#Teleport" class="headerlink" title="Teleport"></a>Teleport</h2><p>把插槽内容渲染到其他地方</p>
-<p>原理：</p>
-<ul>
-<li>把Teleport组件的渲染逻辑从渲染器中抽离</li>
-<li>在指定地方进行渲染</li>
-</ul>
-<h2 id="Transition"><a href="#Transition" class="headerlink" title="Transition"></a>Transition</h2><p>实现动画</p>
-<p>原理：</p>
-<ul>
-<li>DOM挂载时，将动效附加到DOM元素</li>
-<li>被卸载时，等动效执行结束后，执行卸载DOM操作</li>
-</ul>
 <h1 id="编辑器"><a href="#编辑器" class="headerlink" title="编辑器"></a>编辑器</h1><h2 id="模板DSL"><a href="#模板DSL" class="headerlink" title="模板DSL"></a>模板DSL</h2><p>把template模板编译为render函数</p>
 <p><img src="/2023/10/20/vue%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/compiler.png"></p>
 <p>三大流程：</p>
@@ -5160,9 +5174,66 @@ if(&quot;serviceWorker&quot; in navigator) &#123;
 <p>得到的AST如下</p>
 <figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span> <span class="comment">// NodeTypes.ROOT</span></span><br><span class="line">  <span class="attr">&quot;children&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="comment">// NodeTypes.ELEMENT</span></span><br><span class="line">      <span class="attr">&quot;ns&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;tag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;div&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;tagType&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;props&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="number">7</span><span class="punctuation">,</span> <span class="comment">// NodeTypes.DIRECTIVE</span></span><br><span class="line">          <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;if&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;exp&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="number">4</span><span class="punctuation">,</span> <span class="comment">// NodeTypes.SIMPLE_EXPRESSION</span></span><br><span class="line">            <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;isShow&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;isStatic&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;constType&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;loc&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">              <span class="attr">&quot;start&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="attr">&quot;column&quot;</span><span class="punctuation">:</span> <span class="number">12</span><span class="punctuation">,</span> <span class="attr">&quot;line&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span> <span class="attr">&quot;offset&quot;</span><span class="punctuation">:</span> <span class="number">12</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">              <span class="attr">&quot;end&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="attr">&quot;column&quot;</span><span class="punctuation">:</span> <span class="number">18</span><span class="punctuation">,</span> <span class="attr">&quot;line&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span> <span class="attr">&quot;offset&quot;</span><span class="punctuation">:</span> <span class="number">18</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">              <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;isShow&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">          <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;modifiers&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;loc&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;start&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="attr">&quot;column&quot;</span><span class="punctuation">:</span> <span class="number">6</span><span class="punctuation">,</span> <span class="attr">&quot;line&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span> <span class="attr">&quot;offset&quot;</span><span class="punctuation">:</span> <span class="number">6</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;end&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="attr">&quot;column&quot;</span><span class="punctuation">:</span> <span class="number">19</span><span class="punctuation">,</span> <span class="attr">&quot;line&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span> <span class="attr">&quot;offset&quot;</span><span class="punctuation">:</span> <span class="number">19</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;v-if=&quot;</span>isShow<span class="string">&quot;&quot;</span></span><br><span class="line">          <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">      <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;isSelfClosing&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;children&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="comment">// NodeTypes.ELEMENT</span></span><br><span class="line">          <span class="attr">&quot;ns&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;tag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;p&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;tagType&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;props&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">            <span class="punctuation">&#123;</span></span><br><span class="line">              <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="number">6</span><span class="punctuation">,</span> <span class="comment">// NodeTypes.ATTRIBUTE</span></span><br><span class="line">              <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;class&quot;</span><span class="punctuation">,</span></span><br><span class="line">              <span class="attr">&quot;value&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span> <span class="comment">// NodeTypes.TEXT</span></span><br><span class="line">                <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;title&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;loc&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                  <span class="attr">&quot;start&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="attr">&quot;column&quot;</span><span class="punctuation">:</span> <span class="number">12</span><span class="punctuation">,</span> <span class="attr">&quot;line&quot;</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">,</span> <span class="attr">&quot;offset&quot;</span><span class="punctuation">:</span> <span class="number">32</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">                  <span class="attr">&quot;end&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="attr">&quot;column&quot;</span><span class="punctuation">:</span> <span class="number">19</span><span class="punctuation">,</span> <span class="attr">&quot;line&quot;</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">,</span> <span class="attr">&quot;offset&quot;</span><span class="punctuation">:</span> <span class="number">39</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">                  <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span>title<span class="string">&quot;&quot;</span></span><br><span class="line">                <span class="punctuation">&#125;</span></span><br><span class="line">              <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">              <span class="attr">&quot;loc&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;start&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="attr">&quot;column&quot;</span><span class="punctuation">:</span> <span class="number">6</span><span class="punctuation">,</span> <span class="attr">&quot;line&quot;</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">,</span> <span class="attr">&quot;offset&quot;</span><span class="punctuation">:</span> <span class="number">26</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;end&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="attr">&quot;column&quot;</span><span class="punctuation">:</span> <span class="number">19</span><span class="punctuation">,</span> <span class="attr">&quot;line&quot;</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">,</span> <span class="attr">&quot;offset&quot;</span><span class="punctuation">:</span> <span class="number">39</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;class=&quot;</span>title<span class="string">&quot;&quot;</span></span><br><span class="line">              <span class="punctuation">&#125;</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">          <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;isSelfClosing&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;children&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">            <span class="punctuation">&#123;</span></span><br><span class="line">              <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span> <span class="comment">// NodeTypes.ELEMENT</span></span><br><span class="line">              <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;hello world&quot;</span><span class="punctuation">,</span></span><br><span class="line">              <span class="attr">&quot;loc&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;start&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="attr">&quot;column&quot;</span><span class="punctuation">:</span> <span class="number">20</span><span class="punctuation">,</span> <span class="attr">&quot;line&quot;</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">,</span> <span class="attr">&quot;offset&quot;</span><span class="punctuation">:</span> <span class="number">40</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;end&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="attr">&quot;column&quot;</span><span class="punctuation">:</span> <span class="number">31</span><span class="punctuation">,</span> <span class="attr">&quot;line&quot;</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">,</span> <span class="attr">&quot;offset&quot;</span><span class="punctuation">:</span> <span class="number">51</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;hello world&quot;</span></span><br><span class="line">              <span class="punctuation">&#125;</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">          <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;loc&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;start&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="attr">&quot;column&quot;</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">,</span> <span class="attr">&quot;line&quot;</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">,</span> <span class="attr">&quot;offset&quot;</span><span class="punctuation">:</span> <span class="number">23</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;end&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="attr">&quot;column&quot;</span><span class="punctuation">:</span> <span class="number">35</span><span class="punctuation">,</span> <span class="attr">&quot;line&quot;</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">,</span> <span class="attr">&quot;offset&quot;</span><span class="punctuation">:</span> <span class="number">55</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&lt;p class=&quot;</span>title<span class="string">&quot;&gt;hello world&lt;/p&gt;&quot;</span></span><br><span class="line">          <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">      <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;loc&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;start&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="attr">&quot;column&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="attr">&quot;line&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span> <span class="attr">&quot;offset&quot;</span><span class="punctuation">:</span> <span class="number">1</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;end&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="attr">&quot;column&quot;</span><span class="punctuation">:</span> <span class="number">7</span><span class="punctuation">,</span> <span class="attr">&quot;line&quot;</span><span class="punctuation">:</span> <span class="number">4</span><span class="punctuation">,</span> <span class="attr">&quot;offset&quot;</span><span class="punctuation">:</span> <span class="number">64</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&lt;div v-if=&quot;</span>isShow<span class="string">&quot;&gt;\n  &lt;p class=&quot;</span>title<span class="string">&quot;&gt;hello world&lt;/p&gt;  \n&lt;/div&gt;&quot;</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;helpers&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;components&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;directives&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;hoists&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;imports&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;cached&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;temps&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;loc&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;start&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="attr">&quot;column&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="attr">&quot;line&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="attr">&quot;offset&quot;</span><span class="punctuation">:</span> <span class="number">0</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;end&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="attr">&quot;column&quot;</span><span class="punctuation">:</span> <span class="number">5</span><span class="punctuation">,</span> <span class="attr">&quot;line&quot;</span><span class="punctuation">:</span> <span class="number">5</span><span class="punctuation">,</span> <span class="attr">&quot;offset&quot;</span><span class="punctuation">:</span> <span class="number">69</span> <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;\n&lt;div v-if=&quot;</span>isShow<span class="string">&quot;&gt;\n  &lt;p class=&quot;</span>title<span class="string">&quot;&gt;hello world&lt;/p&gt;  \n&lt;/div&gt;\n    &quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+<h1 id="v-model原理"><a href="#v-model原理" class="headerlink" title="v-model原理"></a>v-model原理</h1><p><strong>在原生元素上</strong></p>
+<p>transform之后不会生成modelValue属性，但会生成onUpdate:modelValue回调函数和<code>vModelText</code>自定义指令</p>
+<p><em>vModelText</em>指令在create钩子里监听input或change事件，来调用onUpdate:modelValue实现view流向vm; 在mount和beforeUpdate钩子里修改原生元素的value实现 model-&gt;view</p>
+<p><strong>在组件上</strong></p>
+<blockquote>
+<p>const model &#x3D; defineModel() &#x2F;&#x2F; 返回一个ref</p>
+</blockquote>
+<p>首先在vue编译阶段</p>
+<ol>
+<li>解析出AST</li>
+</ol>
+<p>此时v-model当作一个属性名</p>
+<ol start="2">
+<li>调用transform函数处理AST</li>
+</ol>
+<p>transform函数内部调用不同的函数来解析各种指令。经过transform处理AST，表示该节点的对象的属性<code>codeGenNode</code> 从 undefined 变成一个对象</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2b7798b241964ebbaf37025205950415~tplv-k3u1fbpfcp-jj-mark:3024:0:0:0:q75.awebp#?w=2036&h=962&s=258049&e=png&b=191919" alt="经过transform处理后AST"><br><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/dadead8a189549e3aa59fe4213f402df~tplv-k3u1fbpfcp-jj-mark:3024:0:0:0:q75.awebp#?w=2230&h=1424&s=384254&e=png&b=191919" alt="经过transform处理后AST"></p>
+<p>两张图片看到经过处理后的codeGenNode对象内部。其中properties数组里每一个item都是有key和value。modelValue对应值，onUpdate:modelValue对应方法。</p>
+<p>他们都用在后续步骤拼接成render函数。</p>
+<blockquote>
+<p>例如： transformModel、transformIf</p>
+</blockquote>
+<ol start="3">
+<li>调用generate生成render函数</li>
+</ol>
+<p>把上面两个放入组件实例里</p>
+<p>此时v-model最终被编译成了 <code>:modelValue</code>属性 和 <code>@update:modelValue</code>事件</p>
+<p><a href="https://juejin.cn/post/7349936384512131107">参考🔗</a></p>
+<h1 id="vue-工作流程"><a href="#vue-工作流程" class="headerlink" title="vue 工作流程"></a>vue 工作流程</h1><ol start="0">
+<li>编译<ol>
+<li>通过 parse 方法进行解析，得到 AST（抽象语法树）</li>
+<li>通过 transform 方法对 AST 进行转化，得到 JavaScript AST(大部分和AST相同)</li>
+<li>通过 generate 方法根据 JavaScript AST 生成 render 函数</li>
+</ol>
+</li>
+<li>创建Vue实例</li>
+<li>处理响应式数据</li>
+<li>挂载阶段 <ol>
+<li>调用render生成虚拟dom</li>
+<li>生成真实dom并插入dom树指定位置</li>
+<li>记录vnode为preVnode</li>
+</ol>
+</li>
+</ol>
+<p>至此初次渲染完成，如果改变了响应式数据导致需要更新视图则会进入更新阶段</p>
+<ol start="4">
+<li>更新阶段<ol>
+<li>重新调用render生成新虚拟dom</li>
+<li>调用patch方法<ol>
+<li>利用diff算法比较新旧虚拟dom找到差异</li>
+<li>根据差异更新真实dom</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
 <h1 id="diff算法"><a href="#diff算法" class="headerlink" title="diff算法"></a>diff算法</h1><p>本质是一个对比算法，旧DOM更新为新DOM时怎么提高效率</p>
 <p><strong>但是不是DOM更新了就会触发diff，而是DOM挂载、卸载或变换顺序才会触发diff</strong></p>
 <p>原本两个树的完全的 diff 算法是一个时间复杂度为 O(n3) , Vue 进行了优化转换成 <strong>O(n)</strong> 复杂度的问题(只比较同级不考虑跨级问题)</p>
+<p>节点比较：首先，Vue.js会比较新旧两个虚拟DOM树的根节点。如果根节点类型不同（例如，一个是div，另一个是p），那么Vue.js会直接替换旧的根节点及其所有子节点。如果根节点类型相同，那么Vue.js会保留该节点，并进一步比较其属性和子节点。<br>属性比较：Vue.js会比较同一节点的新旧属性，包括样式、类名、事件监听器等。如果新旧属性不同，那么Vue.js会更新这些属性。<br>子节点比较：如果节点类型相同并且属性也相同，那么Vue.js会进一步比较节点的子节点。这是一个递归过程，Vue.js会继续比较子节点的节点类型、属性和子节点，直到所有节点都被比较。<br>列表优化：在比较子节点时，Vue.js使用了一种称为keyed diffing的优化策略。通过给每个子节点分配一个唯一的key，Vue.js可以更快地找到新旧子节点列表中相同的节点，从而避免不必要的节点创建和删除操作。</p>
 <h2 id="v-for-key-的意义"><a href="#v-for-key-的意义" class="headerlink" title="v-for key 的意义"></a>v-for key 的意义</h2><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 原本 item = [&#123;id=1,title=&#x27;a&#x27;&#125;,&#123;id=2,title=&#x27;b&#x27;&#125;,&#123;id=3,title=&#x27;c&#x27;&#125;] --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">&#x27;item in items&#x27;</span> <span class="attr">:key</span>=<span class="string">&#x27;item.id&#x27;</span>&gt;</span>&#123;&#123;item.title&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span> </span><br><span class="line"><span class="comment">&lt;!-- 修改后 item = [&#123;id=1, title=&#x27;a&#x27;&#125;,&#123;id=2, title=&#x27;b&#x27;&#125;,&#123;id=4, title=&#x27;d&#x27;&#125;] --&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>此时diff算法开始工作，</p>
@@ -5207,6 +5278,38 @@ if(&quot;serviceWorker&quot; in navigator) &#123;
         <tag>ref</tag>
         <tag>AST</tag>
         <tag>diff</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【综合】工程化</title>
+    <url>/2024/05/10/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91%E5%B7%A5%E7%A8%8B%E5%8C%96/</url>
+    <content><![CDATA[<h1 id="包管理"><a href="#包管理" class="headerlink" title="包管理"></a>包管理</h1><h2 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h2><p><a href="https://juejin.cn/post/7286362110211489855?searchId=2024050820041652E4E88131751129A528">pnpm、npm、yarn 包管理工具『优劣对比』及『环境迁移』 - 掘金 (juejin.cn)</a></p>
+<p>v2 早期<strong>递归依赖</strong>，导致重复安装问题</p>
+<p>v3 <strong>扁平化</strong>解决递归依赖， <strong>扁平化依赖算法耗时长</strong>，下载需要更长时间</p>
+<ul>
+<li>因为如果两个模块依赖同一个模块但版本不同，npm v3会尝试将其中一个版本的模块安装在顶层，另一个版本的模块安装在依赖它的模块下面</li>
+</ul>
+<p>v5 <strong>package-lock.json</strong>解决扁平化耗时长问题, 此文件描述了生成的确切包树，因此无论中间依赖关系如何更新，后续安装都能生成完全相同的包</p>
+<blockquote>
+<p>package-lock.json 的作用</p>
+<ol>
+<li>记录项目所有依赖的精确版本号</li>
+<li>提供生成确切的依赖树，可视化</li>
+<li>优化依赖安装过程，跳过重复依赖</li>
+<li>防止依赖意外更新</li>
+</ol>
+</blockquote>
+<h2 id="pnpm"><a href="#pnpm" class="headerlink" title="pnpm"></a>pnpm</h2><ol>
+<li>采用了<strong>硬链接</strong>来直接指向依赖磁盘地址，避免重复安装依赖</li>
+<li>默认支持monorepo 多项目管理</li>
+<li>替代nvm <code>pnpm env use --global [version]</code></li>
+</ol>
+]]></content>
+      <categories>
+        <category>综合</category>
+      </categories>
+      <tags>
+        <tag>工程化</tag>
       </tags>
   </entry>
 </search>

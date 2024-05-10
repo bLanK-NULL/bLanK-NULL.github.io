@@ -152,7 +152,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-count">56</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -163,7 +163,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-count">85</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -192,6 +192,134 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2024/05/10/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91%E5%B7%A5%E7%A8%8B%E5%8C%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="bLank-L">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/05/10/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="post-title-link" itemprop="url">【综合】工程化</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-05-10 16:31:54 / 修改时间：16:33:22" itemprop="dateCreated datePublished" datetime="2024-05-10T16:31:54+08:00">2024-05-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BB%BC%E5%90%88/" itemprop="url" rel="index"><span itemprop="name">综合</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="【综合】工程化" href="/2024/05/10/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91%E5%B7%A5%E7%A8%8B%E5%8C%96/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::0834d71f3e0132b36f4f8050ce9861f6" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>386</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="包管理"><a href="#包管理" class="headerlink" title="包管理"></a>包管理</h1><h2 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h2><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7286362110211489855?searchId=2024050820041652E4E88131751129A528">pnpm、npm、yarn 包管理工具『优劣对比』及『环境迁移』 - 掘金 (juejin.cn)</a></p>
+<p>v2 早期<strong>递归依赖</strong>，导致重复安装问题</p>
+<p>v3 <strong>扁平化</strong>解决递归依赖， <strong>扁平化依赖算法耗时长</strong>，下载需要更长时间</p>
+<ul>
+<li>因为如果两个模块依赖同一个模块但版本不同，npm v3会尝试将其中一个版本的模块安装在顶层，另一个版本的模块安装在依赖它的模块下面</li>
+</ul>
+<p>v5 <strong>package-lock.json</strong>解决扁平化耗时长问题, 此文件描述了生成的确切包树，因此无论中间依赖关系如何更新，后续安装都能生成完全相同的包</p>
+<blockquote>
+<p>package-lock.json 的作用</p>
+<ol>
+<li>记录项目所有依赖的精确版本号</li>
+<li>提供生成确切的依赖树，可视化</li>
+<li>优化依赖安装过程，跳过重复依赖</li>
+<li>防止依赖意外更新</li>
+</ol>
+</blockquote>
+<h2 id="pnpm"><a href="#pnpm" class="headerlink" title="pnpm"></a>pnpm</h2><ol>
+<li>采用了<strong>硬链接</strong>来直接指向依赖磁盘地址，避免重复安装依赖</li>
+<li>默认支持monorepo 多项目管理</li>
+<li>替代nvm <code>pnpm env use --global [version]</code></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1297,7 +1425,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-04-21 22:36:04" itemprop="dateModified" datetime="2024-04-21T22:36:04+08:00">2024-04-21</time>
+      <time title="修改时间：2024-05-10 17:10:51" itemprop="dateModified" datetime="2024-05-10T17:10:51+08:00">2024-05-10</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1330,14 +1458,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>683</span>
+      <span>1.2k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>2 分钟</span>
     </span>
 </div>
 
@@ -1406,6 +1534,26 @@
 <li>document.cookie无法获取，可防止xss攻击。</li>
 </ol>
 </li>
+</ol>
+<h1 id="JWT"><a href="#JWT" class="headerlink" title="JWT"></a>JWT</h1><p>jwt常用于身份认证和信息交换。jwt生成的token由header+payload+signature组成。可以加密信息并防止篡改。</p>
+<p>为什么要使用token？</p>
+<p>以前用cookie+session模式，cookie存放sessionID，服务器拿到sessionID在数据库里查找对应用户的登录信息。这样做的缺点是：</p>
+<ol>
+<li>用户信息存在服务端，增加服务器负担。</li>
+<li>cookie历史包袱重，空间大小只有4KB，携带cookie的规则复杂，跨站不携带cookie。不灵活。容易遭受csrf、xss攻击</li>
+<li>在分布式服务架构上，一个服务器上的session不方便与其他服务器共享</li>
+</ol>
+<p>而token</p>
+<ol>
+<li>存储在localstorage里相对安全。</li>
+<li>使用更加灵活</li>
+<li>便于在微前端中传输用户信息。</li>
+</ol>
+<h1 id="history路由模式【pushed】"><a href="#history路由模式【pushed】" class="headerlink" title="history路由模式【pushed】"></a>history路由模式【pushed】</h1><p>vue利用history.pushState来管理路由状态。当刷新页面时，浏览器把地址栏当作请求地址向服务器发起请求，服务器没有对应路由则出现404错误</p>
+<p><strong>解决：</strong></p>
+<ol>
+<li>修改为hash模式，hash值是指以＃开头的一串，是不会发送给服务器的</li>
+<li>设置nginx和express所有未匹配到的路由都返回index.html。这样，当刷新页面时，服务器将始终返回<code>index.html</code>，然后由Vue Router接管路由处理</li>
 </ol>
 
       
@@ -1632,176 +1780,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2024/03/04/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91js%E5%9F%BA%E7%A1%80/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="bLank-L">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="bLanK's blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | bLanK's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/03/04/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91js%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">【综合】js基础</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-03-04 20:15:58" itemprop="dateCreated datePublished" datetime="2024-03-04T20:15:58+08:00">2024-03-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-04-21 15:16:31" itemprop="dateModified" datetime="2024-04-21T15:16:31+08:00">2024-04-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BB%BC%E5%90%88/" itemprop="url" rel="index"><span itemprop="name">综合</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Changyan：</span>
-    
-    <a title="【综合】js基础" href="/2024/03/04/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91js%E5%9F%BA%E7%A1%80/#SOHUCS" itemprop="discussionUrl">
-      <span id="sourceId::3feac3bd4c95a203c987049221650656" class="cy_cmt_count" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>2k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>4 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <span id="more"></span>
-
-<h1 id="1-隐式类型转换"><a href="#1-隐式类型转换" class="headerlink" title="1. 隐式类型转换"></a>1. 隐式类型转换</h1><p><img src="/2024/03/04/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91js%E5%9F%BA%E7%A1%80/jsautotranslate.png" alt="img"></p>
-<ul>
-<li>P 表示toPrimitive<ul>
-<li>先调用 <code>valueOf</code> 若返回不是原始类型<ul>
-<li>原始类型的包装类型调用<code>valueOf</code>会返回原始类型(例如String，BigInt)</li>
-</ul>
-</li>
-<li>再调用 <code>toString</code> 若返回不是原始类型</li>
-<li>则报错</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>所有比较都有转化为数字类型的趋势</p>
-</blockquote>
-<h1 id="2-实现函数缓存"><a href="#2-实现函数缓存" class="headerlink" title="2. 实现函数缓存"></a>2. 实现函数缓存</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> memoize = <span class="keyword">function</span> (<span class="params">fun, content</span>) &#123;</span><br><span class="line">	<span class="keyword">let</span> cache = <span class="title class_">Object</span>.<span class="title function_">create</span>(<span class="literal">null</span>)</span><br><span class="line">	content = content || <span class="variable language_">this</span> </span><br><span class="line">	<span class="keyword">return</span> <span class="function">(<span class="params">...key</span>)=&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">if</span>(!cache[key]) </span><br><span class="line">			cache[key] = fun.<span class="title function_">apply</span>(content, key)</span><br><span class="line">		<span class="keyword">return</span> cache[key]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="3-requestAnimationFrame"><a href="#3-requestAnimationFrame" class="headerlink" title="3. requestAnimationFrame"></a>3. requestAnimationFrame</h1><p>window.requestAnimationFrame(callback)</p>
-<ul>
-<li>作用： 告诉浏览器——你希望执行一个动画，并且要求浏览器在下次重绘之前调用指定的回调函数更新动画</li>
-<li>参数： callback回调函数，第一个参数是回调函数被触发时的时间戳。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;some-element-you-want-to-animate&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> start, previousTimeStamp;</span><br><span class="line"><span class="keyword">let</span> done = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">step</span>(<span class="params">timestamp</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (start === <span class="literal">undefined</span>) &#123;</span><br><span class="line">    start = timestamp;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> elapsed = timestamp - start;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (previousTimeStamp !== timestamp) &#123;</span><br><span class="line">    <span class="comment">// 这里使用 Math.min() 确保元素在恰好位于 200px 时停止运动</span></span><br><span class="line">    <span class="keyword">const</span> count = <span class="title class_">Math</span>.<span class="title function_">min</span>(<span class="number">0.1</span> * elapsed, <span class="number">200</span>);</span><br><span class="line">    element.<span class="property">style</span>.<span class="property">transform</span> = <span class="string">`translateX(<span class="subst">$&#123;count&#125;</span>px)`</span>;</span><br><span class="line">    <span class="keyword">if</span> (count === <span class="number">200</span>) done = <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (elapsed &lt; <span class="number">2000</span>) &#123;</span><br><span class="line">    <span class="comment">// 2 秒之后停止动画</span></span><br><span class="line">    previousTimeStamp = timestamp;</span><br><span class="line">    <span class="keyword">if</span> (!done) &#123;</span><br><span class="line">      <span class="variable language_">window</span>.<span class="title function_">requestAnimationFrame</span>(step);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">requestAnimationFrame</span>(step);</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="4-严格模式"><a href="#4-严格模式" class="headerlink" title="4. 严格模式"></a>4. 严格模式</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&quot;use strict&quot;</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li>禁止使用关键字声明变量</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> x = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">if</span>(x)&#123;</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">g</span>(<span class="params"></span>) &#123;&#125; <span class="comment">// 相当于没有用关键字声明变量</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(g) <span class="comment">//</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="5-this指向"><a href="#5-this指向" class="headerlink" title="5. this指向"></a>5. this指向</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(obj.<span class="property">fn2</span>)(); <span class="comment">// 函数内this指向obj</span></span><br><span class="line">(obj.<span class="property">fn2</span> = obj.<span class="property">fn2</span>)(); <span class="comment">//函数内this指向全局作用域</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>获取url参数<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> searchUrl = link.<span class="property">search</span>.<span class="title function_">substr</span>(<span class="number">1</span>); <span class="comment">// 获取问号后面字符串</span></span><br><span class="line"><span class="keyword">let</span> hashUrl = link.<span class="property">hash</span>.<span class="title function_">substr</span>(<span class="number">1</span>); <span class="comment">// 获取#后面的值</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="variable constant_">URL</span> = <span class="string">&quot;http://www.baidu.com?name=elephant&amp;age=25&amp;sex=male&amp;num=100&quot;</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">queryURLParams</span>(<span class="params">URL</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> url = <span class="variable constant_">URL</span>.<span class="title function_">split</span>(<span class="string">&quot;?&quot;</span>)[<span class="number">1</span>];</span><br><span class="line">  <span class="keyword">const</span> urlSearchParams = <span class="keyword">new</span> <span class="title class_">URLSearchParams</span>(url);</span><br><span class="line">  <span class="keyword">const</span> params = <span class="title class_">Object</span>.<span class="title function_">fromEntries</span>(urlSearchParams.<span class="title function_">entries</span>());</span><br><span class="line">  <span class="keyword">return</span> params</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h1 id="6-闭包"><a href="#6-闭包" class="headerlink" title="6. 闭包"></a>6. 闭包</h1><h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><ol>
-<li>模拟私有变量</li>
-<li>阻止变量被回收</li>
-</ol>
-<h2 id="闭包导致的内存泄露"><a href="#闭包导致的内存泄露" class="headerlink" title="闭包导致的内存泄露"></a>闭包导致的内存泄露</h2><ol>
-<li><p>持有不需要的函数引用，导致函数关联词法环境无法销毁</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">useArr</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="keyword">const</span> arr = [<span class="number">1</span>];</span><br><span class="line">  <span class="keyword">return</span> <span class="function">()=&gt;</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> arr = <span class="title function_">useArr</span>();</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>当多个函数共享词法环境，导致出现无法触及也无法回收的内存</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">useArr</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="keyword">const</span> arr = [<span class="number">1</span>];</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>)&#123;</span><br><span class="line">    arr;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="function">()=&gt;</span> [];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> arr = <span class="title function_">useArr</span>();</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p><a href="/2023/10/15/%E5%87%A0%E7%A7%8D%E7%BB%A7%E6%89%BF%E6%96%B9%E5%BC%8F">🔗几种继承方式</a></p>
-<h1 id="7-class"><a href="#7-class" class="headerlink" title="7. class"></a>7. class</h1><p>class 是ES6的新的实现继承的方式，他的本质还是寄生式组合继承</p>
-<p>特点：</p>
-<ol>
-<li>class 必须用new调用</li>
-<li>class 没有变量提升</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1825,13 +1803,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">164k</span>
+    <span title="站点总字数">167k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:59</span>
+    <span title="站点阅读时长">5:03</span>
   </span>
 </div>
 <div class="busuanzi-count">

@@ -152,7 +152,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-count">56</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -163,7 +163,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-count">85</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -192,6 +192,176 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2024/03/04/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91js%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="bLank-L">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/03/04/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91js%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">【综合】js基础</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-03-04 20:15:58" itemprop="dateCreated datePublished" datetime="2024-03-04T20:15:58+08:00">2024-03-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-04-21 15:16:31" itemprop="dateModified" datetime="2024-04-21T15:16:31+08:00">2024-04-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BB%BC%E5%90%88/" itemprop="url" rel="index"><span itemprop="name">综合</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="【综合】js基础" href="/2024/03/04/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91js%E5%9F%BA%E7%A1%80/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::3feac3bd4c95a203c987049221650656" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <span id="more"></span>
+
+<h1 id="1-隐式类型转换"><a href="#1-隐式类型转换" class="headerlink" title="1. 隐式类型转换"></a>1. 隐式类型转换</h1><p><img src="/2024/03/04/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91js%E5%9F%BA%E7%A1%80/jsautotranslate.png" alt="img"></p>
+<ul>
+<li>P 表示toPrimitive<ul>
+<li>先调用 <code>valueOf</code> 若返回不是原始类型<ul>
+<li>原始类型的包装类型调用<code>valueOf</code>会返回原始类型(例如String，BigInt)</li>
+</ul>
+</li>
+<li>再调用 <code>toString</code> 若返回不是原始类型</li>
+<li>则报错</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>所有比较都有转化为数字类型的趋势</p>
+</blockquote>
+<h1 id="2-实现函数缓存"><a href="#2-实现函数缓存" class="headerlink" title="2. 实现函数缓存"></a>2. 实现函数缓存</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> memoize = <span class="keyword">function</span> (<span class="params">fun, content</span>) &#123;</span><br><span class="line">	<span class="keyword">let</span> cache = <span class="title class_">Object</span>.<span class="title function_">create</span>(<span class="literal">null</span>)</span><br><span class="line">	content = content || <span class="variable language_">this</span> </span><br><span class="line">	<span class="keyword">return</span> <span class="function">(<span class="params">...key</span>)=&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">if</span>(!cache[key]) </span><br><span class="line">			cache[key] = fun.<span class="title function_">apply</span>(content, key)</span><br><span class="line">		<span class="keyword">return</span> cache[key]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-requestAnimationFrame"><a href="#3-requestAnimationFrame" class="headerlink" title="3. requestAnimationFrame"></a>3. requestAnimationFrame</h1><p>window.requestAnimationFrame(callback)</p>
+<ul>
+<li>作用： 告诉浏览器——你希望执行一个动画，并且要求浏览器在下次重绘之前调用指定的回调函数更新动画</li>
+<li>参数： callback回调函数，第一个参数是回调函数被触发时的时间戳。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;some-element-you-want-to-animate&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> start, previousTimeStamp;</span><br><span class="line"><span class="keyword">let</span> done = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">step</span>(<span class="params">timestamp</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (start === <span class="literal">undefined</span>) &#123;</span><br><span class="line">    start = timestamp;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> elapsed = timestamp - start;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (previousTimeStamp !== timestamp) &#123;</span><br><span class="line">    <span class="comment">// 这里使用 Math.min() 确保元素在恰好位于 200px 时停止运动</span></span><br><span class="line">    <span class="keyword">const</span> count = <span class="title class_">Math</span>.<span class="title function_">min</span>(<span class="number">0.1</span> * elapsed, <span class="number">200</span>);</span><br><span class="line">    element.<span class="property">style</span>.<span class="property">transform</span> = <span class="string">`translateX(<span class="subst">$&#123;count&#125;</span>px)`</span>;</span><br><span class="line">    <span class="keyword">if</span> (count === <span class="number">200</span>) done = <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (elapsed &lt; <span class="number">2000</span>) &#123;</span><br><span class="line">    <span class="comment">// 2 秒之后停止动画</span></span><br><span class="line">    previousTimeStamp = timestamp;</span><br><span class="line">    <span class="keyword">if</span> (!done) &#123;</span><br><span class="line">      <span class="variable language_">window</span>.<span class="title function_">requestAnimationFrame</span>(step);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">requestAnimationFrame</span>(step);</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="4-严格模式"><a href="#4-严格模式" class="headerlink" title="4. 严格模式"></a>4. 严格模式</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&quot;use strict&quot;</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>禁止使用关键字声明变量</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> x = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">if</span>(x)&#123;</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">g</span>(<span class="params"></span>) &#123;&#125; <span class="comment">// 相当于没有用关键字声明变量</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(g) <span class="comment">//</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="5-this指向"><a href="#5-this指向" class="headerlink" title="5. this指向"></a>5. this指向</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(obj.<span class="property">fn2</span>)(); <span class="comment">// 函数内this指向obj</span></span><br><span class="line">(obj.<span class="property">fn2</span> = obj.<span class="property">fn2</span>)(); <span class="comment">//函数内this指向全局作用域</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>获取url参数<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> searchUrl = link.<span class="property">search</span>.<span class="title function_">substr</span>(<span class="number">1</span>); <span class="comment">// 获取问号后面字符串</span></span><br><span class="line"><span class="keyword">let</span> hashUrl = link.<span class="property">hash</span>.<span class="title function_">substr</span>(<span class="number">1</span>); <span class="comment">// 获取#后面的值</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="variable constant_">URL</span> = <span class="string">&quot;http://www.baidu.com?name=elephant&amp;age=25&amp;sex=male&amp;num=100&quot;</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">queryURLParams</span>(<span class="params">URL</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> url = <span class="variable constant_">URL</span>.<span class="title function_">split</span>(<span class="string">&quot;?&quot;</span>)[<span class="number">1</span>];</span><br><span class="line">  <span class="keyword">const</span> urlSearchParams = <span class="keyword">new</span> <span class="title class_">URLSearchParams</span>(url);</span><br><span class="line">  <span class="keyword">const</span> params = <span class="title class_">Object</span>.<span class="title function_">fromEntries</span>(urlSearchParams.<span class="title function_">entries</span>());</span><br><span class="line">  <span class="keyword">return</span> params</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="6-闭包"><a href="#6-闭包" class="headerlink" title="6. 闭包"></a>6. 闭包</h1><h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><ol>
+<li>模拟私有变量</li>
+<li>阻止变量被回收</li>
+</ol>
+<h2 id="闭包导致的内存泄露"><a href="#闭包导致的内存泄露" class="headerlink" title="闭包导致的内存泄露"></a>闭包导致的内存泄露</h2><ol>
+<li><p>持有不需要的函数引用，导致函数关联词法环境无法销毁</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">useArr</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="keyword">const</span> arr = [<span class="number">1</span>];</span><br><span class="line">  <span class="keyword">return</span> <span class="function">()=&gt;</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> arr = <span class="title function_">useArr</span>();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当多个函数共享词法环境，导致出现无法触及也无法回收的内存</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">useArr</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="keyword">const</span> arr = [<span class="number">1</span>];</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>)&#123;</span><br><span class="line">    arr;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="function">()=&gt;</span> [];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> arr = <span class="title function_">useArr</span>();</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p><a href="/2023/10/15/%E5%87%A0%E7%A7%8D%E7%BB%A7%E6%89%BF%E6%96%B9%E5%BC%8F">🔗几种继承方式</a></p>
+<h1 id="7-class"><a href="#7-class" class="headerlink" title="7. class"></a>7. class</h1><p>class 是ES6的新的实现继承的方式，他的本质还是寄生式组合继承</p>
+<p>特点：</p>
+<ol>
+<li>class 必须用new调用</li>
+<li>class 没有变量提升</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -237,7 +407,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-04-28 00:23:35" itemprop="dateModified" datetime="2024-04-28T00:23:35+08:00">2024-04-28</time>
+      <time title="修改时间：2024-05-10 17:32:46" itemprop="dateModified" datetime="2024-05-10T17:32:46+08:00">2024-05-10</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -270,7 +440,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.4k</span>
+      <span>1.6k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -290,7 +460,19 @@
     <div class="post-body" itemprop="articleBody">
           <span id="more"></span>
 
-<h1 id="1-diff-算法的优化"><a href="#1-diff-算法的优化" class="headerlink" title="1. diff 算法的优化"></a>1. diff 算法的优化</h1><p>增加了静态标记， 被标记为-1的节点不会参与diff比较</p>
+<h1 id="1-diff-算法的优化"><a href="#1-diff-算法的优化" class="headerlink" title="1. diff 算法的优化"></a>1. diff 算法的优化</h1><p>增加了静态标记， 被标记为-1的节点不会参与diff比较。</p>
+<p>因为为vue3可以实现精准定位到动态节点，即那些可能需要重新渲染的节点。</p>
+<p>曾经diff需要一层层比较整个新旧虚拟dom树找到哪些值改变。</p>
+<ul>
+<li>现在vue3在编译时，利用静态标记patchFlag 标记节点的动态属性。</li>
+</ul>
+<p>例如class、style、props，含有动态属性的节点就是动态节点。</p>
+<ul>
+<li><p>每个组件的顶层vnode会有一个<code>dynamicChildren</code>属性，以数组形式存放该节点下所有动态节点。</p>
+</li>
+<li><p>在运行render后，会遍历这个数组进行靶向更新。也就是说只需要比较动态节点的新旧变化了</p>
+</li>
+</ul>
 <h1 id="2-静态提升"><a href="#2-静态提升" class="headerlink" title="2. 静态提升"></a>2. 静态提升</h1><p>对于静态节点，把创建dom节点的放在render函数之外。这样就只用创建一次，多次复用。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">render</span>(<span class="params">_ctx, _cache, $props, $setup, $data, $options</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (<span class="title function_">_openBlock</span>(), <span class="title function_">_createBlock</span>(_Fragment, <span class="literal">null</span>, [</span><br><span class="line">    <span class="title function_">_createVNode</span>(<span class="string">&quot;span&quot;</span>, <span class="literal">null</span>, <span class="string">&quot;你好&quot;</span>),</span><br><span class="line">    <span class="title function_">_createVNode</span>(<span class="string">&quot;div&quot;</span>, <span class="literal">null</span>, <span class="title function_">_toDisplayString</span>(_ctx.<span class="property">message</span>), <span class="number">1</span> <span class="comment">/* TEXT */</span>)</span><br><span class="line">  ], <span class="number">64</span> <span class="comment">/* STABLE_FRAGMENT */</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -1375,127 +1557,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2023/11/24/MutationObserver/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="bLank-L">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="bLanK's blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | bLanK's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/11/24/MutationObserver/" class="post-title-link" itemprop="url">MutationObserver</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2023-11-24 19:55:40 / 修改时间：21:58:41" itemprop="dateCreated datePublished" datetime="2023-11-24T19:55:40+08:00">2023-11-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Changyan：</span>
-    
-    <a title="MutationObserver" href="/2023/11/24/MutationObserver/#SOHUCS" itemprop="discussionUrl">
-      <span id="sourceId::8402b6ec3f585d34872ab3097f5d16f1" class="cy_cmt_count" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>817</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>MutationObserver 用于观察<strong>DOM</strong>的任何变动</p>
-<p>但是DOM的变动是同步的，而此方法是<strong>异步微任务</strong></p>
-<h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">MutationRecord</span>&#125; Array 变动数组</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">obInstance</span>&#125; Object observer实例</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">const</span> observer = <span class="keyword">new</span> <span class="title class_">MutationObserver</span>(<span class="function">(<span class="params">MutationRecord, obInstance</span>)=&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">MutationRecord</span>)  </span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(obInstance)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h2><h3 id="1-observe"><a href="#1-observe" class="headerlink" title="1. observe"></a>1. observe</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">node</span>&#125; DOMnode dom节点</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">options</span>&#125; Object 配置对象</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">observer.<span class="title function_">observe</span>(node, options?)</span><br></pre></td></tr></table></figure>
-
-<p><strong>options：</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">attributes</span>: <span class="literal">true</span>,   <span class="comment">// 监控 属性变化</span></span><br><span class="line">    <span class="attr">characterData</span>: <span class="literal">true</span>,    <span class="comment">// 监听 声明的 target 节点上所有字符的变化</span></span><br><span class="line">    <span class="attr">childList</span>: <span class="literal">true</span>,    <span class="comment">// 监听 target 节点中发生的节点的新增、删除与修改, 包括innerText</span></span><br><span class="line">    <span class="attr">subtree</span>: <span class="literal">true</span>,      <span class="comment">// 监听 作用于该节点的整个子树</span></span><br><span class="line">    <span class="comment">// attributeOldValue: true,    //是否需要记录变动前的属性值</span></span><br><span class="line">    <span class="comment">// characterDataOldValue: true  //是否需要记录变动前的属性值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>注意：</strong></p>
-<blockquote>
-<p>childList 所指的子节点包括 文本内容也是一个节点</p>
-</blockquote>
-<h3 id="2-disconnect"><a href="#2-disconnect" class="headerlink" title="2. disconnect"></a>2. disconnect</h3><p><code>observer.disconnect()</code><br>停止监听</p>
-<h3 id="3-takeRecords"><a href="#3-takeRecords" class="headerlink" title="3. takeRecords"></a>3. takeRecords</h3><p><code>observer.takeRecords</code> 用来清除变动记录，即不再处理未处理的变动。该方法返回变动记录的数组。</p>
-<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><h3 id="1-图片懒加载"><a href="#1-图片懒加载" class="headerlink" title="1. 图片懒加载"></a>1. 图片懒加载</h3><h3 id="2-加载更多"><a href="#2-加载更多" class="headerlink" title="2. 加载更多"></a>2. 加载更多</h3>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1519,13 +1580,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">164k</span>
+    <span title="站点总字数">167k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:59</span>
+    <span title="站点阅读时长">5:03</span>
   </span>
 </div>
 <div class="busuanzi-count">
