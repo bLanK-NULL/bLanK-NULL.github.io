@@ -700,7 +700,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2023/10/20/vue%E5%BA%95%E5%B1%82/">
+    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2023/10/20/vue%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -718,7 +718,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/10/20/vue%E5%BA%95%E5%B1%82/" class="post-title-link" itemprop="url">vue底层原理</a>
+          <a href="/2023/10/20/vue%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/" class="post-title-link" itemprop="url">vue底层原理</a>
         </h2>
 
         <div class="post-meta-container">
@@ -757,8 +757,8 @@
       </span>
       <span class="post-meta-item-text">Changyan：</span>
     
-    <a title="vue底层原理" href="/2023/10/20/vue%E5%BA%95%E5%B1%82/#SOHUCS" itemprop="discussionUrl">
-      <span id="sourceId::58648633d3e1022452cbe03089f5e1b7" class="cy_cmt_count" itemprop="commentCount"></span>
+    <a title="vue底层原理" href="/2023/10/20/vue%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::6b14060e0f0dc0350e7087528a3b3a8f" class="cy_cmt_count" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -798,13 +798,13 @@
 <p>一个虚拟Dom节点至少包括三个属性：type、attr、children</p>
 </blockquote>
 <h1 id="响应式"><a href="#响应式" class="headerlink" title="响应式"></a>响应式</h1><h2 id="effect"><a href="#effect" class="headerlink" title="effect"></a>effect</h2><p>effect是一个‘桶’， 他收集并触发指定方法</p>
-<p><img src="/2023/10/20/vue%E5%BA%95%E5%B1%82/effect.png"><br><img src="/2023/10/20/vue%E5%BA%95%E5%B1%82/effect2.png"></p>
+<p><img src="/2023/10/20/vue%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/effect.png"><br><img src="/2023/10/20/vue%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/effect2.png"></p>
 <!-- more -->
 
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 1. </span></span><br><span class="line"><span class="comment"> * effect 函数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> fn 执行方法</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns</span> 以 ReactiveEffect 实例为 this 的执行函数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">effect</span>(<span class="params">fn</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> _effect = <span class="keyword">new</span> <span class="title class_">ReactiveEffect</span>(fn)</span><br><span class="line">    _effect.<span class="title function_">run</span>()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 2. </span></span><br><span class="line"><span class="comment"> * 响应性触发依赖时的执行类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">let</span> activeEffect <span class="comment">//当前副作用</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ReactiveEffect</span> &#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">fn</span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">fn</span> = fn</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">run</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="comment">//告诉全局当前执行的 ReactiveEffect 的实例</span></span><br><span class="line">        activeEffect = <span class="variable language_">this</span></span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="title function_">fn</span>()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>计算属性的实现流程</strong></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fullName = <span class="title function_">computed</span>(<span class="function">()=&gt;</span> firstName.<span class="property">value</span> + lastName.<span class="property">value</span>)</span><br><span class="line"><span class="comment">//计算属性创建了一个Ref，并且这个Ref的getter会调用此函数。</span></span><br><span class="line"><span class="comment">//内部有一个dirty代表值是不是脏的，初始为true。用作缓存功能。</span></span><br><span class="line"><span class="comment">//本质上调用了</span></span><br><span class="line"><span class="title function_">effect</span>(<span class="function">()=&gt;</span>firstName.<span class="property">value</span> + lastName.<span class="property">value</span>)</span><br><span class="line"><span class="comment">//此时读取了firstName和lastName，触发了依赖收集。且此时activeEffect指向此箭头函数</span></span><br><span class="line"><span class="comment">//此函数作为依赖被收集进了set里，每当firstName或lastName改变，就会触发trigger重新调用此箭头函数，并把dirty=true</span></span><br><span class="line"><span class="comment">//如果下一次读取计算属性，且dirty==true，那么会重新调用此函数，如果false则使用缓存。但是对于在模板里使用的计算属性则会响应式的更新而不是等待下一次读取。</span></span><br></pre></td></tr></table></figure>
-<h3 id="响应式系统设计"><a href="#响应式系统设计" class="headerlink" title="响应式系统设计"></a>响应式系统设计</h3><p><img src="/2023/10/20/vue%E5%BA%95%E5%B1%82/reactiveSys.jpg"></p>
+<h3 id="响应式系统设计"><a href="#响应式系统设计" class="headerlink" title="响应式系统设计"></a>响应式系统设计</h3><p><img src="/2023/10/20/vue%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/reactiveSys.jpg"></p>
 <ul>
 <li>依赖，就是需要重复调用的函数</li>
 <li>用set保存依赖，防止重复调用</li>
@@ -855,7 +855,7 @@
 <li>被卸载时，等动效执行结束后，执行卸载DOM操作</li>
 </ul>
 <h1 id="编辑器"><a href="#编辑器" class="headerlink" title="编辑器"></a>编辑器</h1><h2 id="模板DSL"><a href="#模板DSL" class="headerlink" title="模板DSL"></a>模板DSL</h2><p>把template模板编译为render函数</p>
-<p><img src="/2023/10/20/vue%E5%BA%95%E5%B1%82/compiler.png"></p>
+<p><img src="/2023/10/20/vue%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/compiler.png"></p>
 <p>三大流程：</p>
 <ol>
 <li>通过 parse 方法进行解析，得到 AST（抽象语法树）</li>
