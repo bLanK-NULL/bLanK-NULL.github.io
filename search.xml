@@ -5289,7 +5289,12 @@ if(&quot;serviceWorker&quot; in navigator) &#123;
 <ul>
 <li>因为如果两个模块依赖同一个模块但版本不同，npm v3会尝试将其中一个版本的模块安装在顶层，另一个版本的模块安装在依赖它的模块下面</li>
 </ul>
-<p>v5 <strong>package-lock.json</strong>解决扁平化耗时长问题, 此文件描述了生成的确切包树，因此无论中间依赖关系如何更新，后续安装都能生成完全相同的包</p>
+<p>v5 <strong>package-lock.json</strong>解决扁平化耗时长问题：</p>
+<ol>
+<li>锁定包精确版本</li>
+<li>锁定下载地址</li>
+<li>锁定包直接依赖关系</li>
+</ol>
 <blockquote>
 <p>package-lock.json 的作用</p>
 <ol>
