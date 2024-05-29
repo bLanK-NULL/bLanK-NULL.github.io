@@ -6,7 +6,7 @@
   <link href="https://blank-null.github.io/atom.xml" rel="self"/>
   
   <link href="https://blank-null.github.io/"/>
-  <updated>2024-05-17T08:06:51.563Z</updated>
+  <updated>2024-05-29T07:00:45.927Z</updated>
   <id>https://blank-null.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>React学习笔记</title>
+    <link href="https://blank-null.github.io/2024/05/29/React%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>https://blank-null.github.io/2024/05/29/React%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
+    <published>2024-05-29T07:00:04.000Z</published>
+    <updated>2024-05-29T07:00:45.927Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
+
+&lt;h2 id=&quot;jsx-本质&quot;&gt;&lt;a href=&quot;#jsx-本质&quot; class=&quot;headerlink&quot; title=&quot;jsx 本质&quot;&gt;&lt;/a&gt;jsx 本质&lt;/h2&gt;&lt;p&gt;再js里写html &amp;#x3D;&amp;gt;  编译为 Rea</summary>
+      
+    
+    
+    
+    <category term="技术" scheme="https://blank-null.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="react" scheme="https://blank-null.github.io/tags/react/"/>
+    
+  </entry>
   
   <entry>
     <title>【综合】工程化</title>
@@ -504,28 +528,6 @@
     <category term="content-type" scheme="https://blank-null.github.io/tags/content-type/"/>
     
     <category term="body-parser" scheme="https://blank-null.github.io/tags/body-parser/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>IntersectionObserver</title>
-    <link href="https://blank-null.github.io/2023/11/24/IntersectionObserver/"/>
-    <id>https://blank-null.github.io/2023/11/24/IntersectionObserver/</id>
-    <published>2023-11-24T13:06:54.000Z</published>
-    <updated>2023-11-24T13:32:13.548Z</updated>
-    
-    
-      
-      
-    <summary type="html">&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;l</summary>
-      
-    
-    
-    
-    <category term="技术" scheme="https://blank-null.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-    <category term="IntersectionObserver" scheme="https://blank-null.github.io/tags/IntersectionObserver/"/>
     
   </entry>
   
