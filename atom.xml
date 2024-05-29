@@ -6,7 +6,7 @@
   <link href="https://blank-null.github.io/atom.xml" rel="self"/>
   
   <link href="https://blank-null.github.io/"/>
-  <updated>2024-05-29T07:03:04.736Z</updated>
+  <updated>2024-05-29T07:04:33.633Z</updated>
   <id>https://blank-null.github.io/</id>
   
   <author>
@@ -21,15 +21,22 @@
     <link href="https://blank-null.github.io/2024/05/29/React%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>https://blank-null.github.io/2024/05/29/React%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
     <published>2024-05-29T07:00:04.000Z</published>
-    <updated>2024-05-29T07:03:04.736Z</updated>
+    <updated>2024-05-29T07:04:33.633Z</updated>
     
     
-      
-      
-    <summary type="html">&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
-
-&lt;h2 id=&quot;jsx-本质&quot;&gt;&lt;a href=&quot;#jsx-本质&quot; class=&quot;headerlink&quot; title=&quot;jsx 本质&quot;&gt;&lt;/a&gt;jsx 本质&lt;/h2&gt;&lt;p&gt;再js里写html &amp;#x3D;&amp;gt;  编译为 Rea</summary>
-      
+    <summary type="html">&lt;h2 id=&quot;jsx-本质&quot;&gt;&lt;a href=&quot;#jsx-本质&quot; class=&quot;headerlink&quot; title=&quot;jsx 本质&quot;&gt;&lt;/a&gt;jsx 本质&lt;/h2&gt;&lt;p&gt;再js里写html &amp;#x3D;&amp;gt;  编译为 ReactDom对象，&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;使用React.creatElement() 同样可以创建ReactDom对象&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;jsx里的模板解析&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;String, Number: 直接渲染&lt;/li&gt;
+&lt;li&gt;Boolean: 不渲染&lt;/li&gt;
+&lt;li&gt;null， undefined， function： 不渲染&lt;/li&gt;
+&lt;li&gt;Object：只能渲染&lt;strong&gt;ReactDom&lt;/strong&gt; 对象&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Array&lt;/strong&gt;: &lt;strong&gt;每一项&lt;/strong&gt;都单独渲染&lt;/li&gt;
+&lt;li&gt;表达式： 会运行&lt;/li&gt;
+&lt;/ul&gt;</summary>
     
     
     

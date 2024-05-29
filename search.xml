@@ -5320,9 +5320,7 @@ if(&quot;serviceWorker&quot; in navigator) &#123;
   <entry>
     <title>React学习笔记</title>
     <url>/2024/05/29/React%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<span id="more"></span>
-
-<h2 id="jsx-本质"><a href="#jsx-本质" class="headerlink" title="jsx 本质"></a>jsx 本质</h2><p>再js里写html &#x3D;&gt;  编译为 ReactDom对象，</p>
+    <content><![CDATA[<h2 id="jsx-本质"><a href="#jsx-本质" class="headerlink" title="jsx 本质"></a>jsx 本质</h2><p>再js里写html &#x3D;&gt;  编译为 ReactDom对象，</p>
 <blockquote>
 <p>使用React.creatElement() 同样可以创建ReactDom对象</p>
 </blockquote>
@@ -5335,6 +5333,9 @@ if(&quot;serviceWorker&quot; in navigator) &#123;
 <li><strong>Array</strong>: <strong>每一项</strong>都单独渲染</li>
 <li>表达式： 会运行</li>
 </ul>
+<span id="more"></span>
+
+
 <h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">&lt;p onClick=&#123; handleClick.<span class="title function_">bind</span>(<span class="variable language_">this</span>) &#125;&gt;<span class="title class_">App</span>&lt;/p&gt;</span><br></pre></td></tr></table></figure>
 
 <ul>
