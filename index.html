@@ -152,7 +152,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">57</span>
+          <span class="site-state-item-count">58</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -192,6 +192,131 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2024/06/13/vue2%E5%92%8Cvue3%E9%83%BD%E9%87%8D%E5%86%99%E4%BA%86%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="bLank-L">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/06/13/vue2%E5%92%8Cvue3%E9%83%BD%E9%87%8D%E5%86%99%E4%BA%86%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">vue2和vue3都重写了数组方法</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-06-13 21:09:22 / 修改时间：21:10:07" itemprop="dateCreated datePublished" datetime="2024-06-13T21:09:22+08:00">2024-06-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="vue2和vue3都重写了数组方法" href="/2024/06/13/vue2%E5%92%8Cvue3%E9%83%BD%E9%87%8D%E5%86%99%E4%BA%86%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::227097cfa848cf7367e32cb0acdcb73f" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="vue2和vue3都重写了数组方法"><a href="#vue2和vue3都重写了数组方法" class="headerlink" title="vue2和vue3都重写了数组方法"></a>vue2和vue3都重写了数组方法</h1><h2 id="vue2的defineProperty"><a href="#vue2的defineProperty" class="headerlink" title="vue2的defineProperty"></a>vue2的defineProperty</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">defineReactive</span>(<span class="params">obj, key</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> _val = obj[key];</span><br><span class="line">    <span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(obj, key, &#123;</span><br><span class="line">        <span class="title function_">get</span>(<span class="params"></span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;get&#x27;</span>)</span><br><span class="line">            <span class="keyword">return</span> _val;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="title function_">set</span>(<span class="params">newVal</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;set&#x27;</span>)</span><br><span class="line">            _val = newVal;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>defineProperty利用闭包， 对_val进行set和get，称为数据劫持。</p>
+</blockquote>
+<ul>
+<li>defineProperty的缺陷</li>
+</ul>
+<p>由此可见defineProperty的响应式粒度是key级别的。也就是说，已知的属性才有办法劫持其getter和setter，所以其根本没有办法对<strong>未知的key</strong>劫持做响应。</p>
+<ul>
+<li>为什么vue2不对数组进行劫持？而是重写数组方法？</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/06/13/vue2%E5%92%8Cvue3%E9%83%BD%E9%87%8D%E5%86%99%E4%BA%86%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1519,198 +1644,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2024/03/05/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%9F%BA%E7%A1%80/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="bLank-L">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="bLanK's blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | bLanK's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/03/05/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">【综合】服务端基础</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-03-05 15:00:30" itemprop="dateCreated datePublished" datetime="2024-03-05T15:00:30+08:00">2024-03-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-05-10 17:10:51" itemprop="dateModified" datetime="2024-05-10T17:10:51+08:00">2024-05-10</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BB%BC%E5%90%88/" itemprop="url" rel="index"><span itemprop="name">综合</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Changyan：</span>
-    
-    <a title="【综合】服务端基础" href="/2024/03/05/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%9F%BA%E7%A1%80/#SOHUCS" itemprop="discussionUrl">
-      <span id="sourceId::87659694025ed2d4d1ad22c836b8b827" class="cy_cmt_count" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.2k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <span id="more"></span>
-
-<h1 id="1-http-状态码"><a href="#1-http-状态码" class="headerlink" title="1. http 状态码"></a>1. http 状态码</h1><ul>
-<li>1XX   提示信息<ul>
-<li>101：允许切换协议</li>
-</ul>
-</li>
-<li>2XX<ul>
-<li><strong>200</strong>： OK</li>
-<li>204： Not Content， 服务器无返回内容</li>
-<li>206： Partial Content, 无响应体</li>
-</ul>
-</li>
-<li>3XX<ul>
-<li>301： Moved Permanently，永久重定向</li>
-<li>302： Found，临时重定向</li>
-<li><strong>304</strong>： Not Modified， 浏览器可以使用本地缓存</li>
-</ul>
-</li>
-<li>4XX<ul>
-<li><strong>400</strong>： Bad Request，请求报文错误</li>
-<li><strong>401</strong>： Unauthorized， 未授权</li>
-<li><strong>403</strong>： Forbidden， 禁止访问</li>
-<li><strong>404</strong>： Not Found， 找不到资源</li>
-<li>405： Method Not Allowed， 请求方法不允许，可以用OPTIONS预检请求查看服务器允许的请求</li>
-</ul>
-</li>
-<li>5XX<ul>
-<li><strong>500</strong>： Internal Server Error，</li>
-<li>501：Not Implement, 客户端请求不支持</li>
-<li><strong>502</strong>： Bad Gateway， 服务器作为网关或代理返回的错误</li>
-<li>503： Service Unavilable, 服务器在忙</li>
-</ul>
-</li>
-</ul>
-<h1 id="2-CDN"><a href="#2-CDN" class="headerlink" title="2. CDN"></a>2. CDN</h1><p><img src="/2024/03/05/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%9F%BA%E7%A1%80/CDN.jpg" alt="CDN"></p>
-<p>CDN的作用：</p>
-<ol>
-<li>加速资源</li>
-<li>负载均衡</li>
-</ol>
-<h1 id="3-Content-type"><a href="#3-Content-type" class="headerlink" title="3. Content-type"></a>3. Content-type</h1><p><a href="/2023/12/01/content-type%E4%B8%80%E4%BA%9B%E7%96%91%E6%83%91">详见🔗content-type</a></p>
-<h1 id="4-http"><a href="#4-http" class="headerlink" title="4. http"></a>4. http</h1><p><a href="/2023/10/16/http%E8%AF%A6%E8%A7%A3">详见🔗http详解</a></p>
-<h1 id="5-cookie"><a href="#5-cookie" class="headerlink" title="5. cookie"></a>5. cookie</h1><ol>
-<li>默认跨域不会发送cookie<br>但是可以通过 <code>withCredentials=true</code> 设置</li>
-<li>expire设置为0，代表仅一次会话有效</li>
-<li>一个cookie大小4KB</li>
-<li><code>secure=true</code>表示只有https才附带cookie</li>
-<li><code>same-site</code><ol>
-<li><code>strict</code> : refer未其他域不发cookie</li>
-<li><code>Lax</code>: get请求可以发，其他不发</li>
-<li><code>None</code>：无限制</li>
-</ol>
-</li>
-<li><code>http-only</code> 表示此cookie对js不可见<ol>
-<li>document.cookie无法获取，可防止xss攻击。</li>
-</ol>
-</li>
-</ol>
-<h1 id="JWT"><a href="#JWT" class="headerlink" title="JWT"></a>JWT</h1><p>jwt常用于身份认证和信息交换。jwt生成的token由header+payload+signature组成。可以加密信息并防止篡改。</p>
-<p>为什么要使用token？</p>
-<p>以前用cookie+session模式，cookie存放sessionID，服务器拿到sessionID在数据库里查找对应用户的登录信息。这样做的缺点是：</p>
-<ol>
-<li>用户信息存在服务端，增加服务器负担。</li>
-<li>cookie历史包袱重，空间大小只有4KB，携带cookie的规则复杂，跨站不携带cookie。不灵活。容易遭受csrf、xss攻击</li>
-<li>在分布式服务架构上，一个服务器上的session不方便与其他服务器共享</li>
-</ol>
-<p>而token</p>
-<ol>
-<li>存储在localstorage里相对安全。</li>
-<li>使用更加灵活</li>
-<li>便于在微前端中传输用户信息。</li>
-</ol>
-<h1 id="history路由模式【pushed】"><a href="#history路由模式【pushed】" class="headerlink" title="history路由模式【pushed】"></a>history路由模式【pushed】</h1><p>vue利用history.pushState来管理路由状态。当刷新页面时，浏览器把地址栏当作请求地址向服务器发起请求，服务器没有对应路由则出现404错误</p>
-<p><strong>解决：</strong></p>
-<ol>
-<li>修改为hash模式，hash值是指以＃开头的一串，是不会发送给服务器的</li>
-<li>设置nginx和express所有未匹配到的路由都返回index.html。这样，当刷新页面时，服务器将始终返回<code>index.html</code>，然后由Vue Router接管路由处理</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1734,13 +1667,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">179k</span>
+    <span title="站点总字数">181k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:26</span>
+    <span title="站点阅读时长">5:29</span>
   </span>
 </div>
 <div class="busuanzi-count">

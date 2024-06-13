@@ -6,7 +6,7 @@
   <link href="https://blank-null.github.io/atom.xml" rel="self"/>
   
   <link href="https://blank-null.github.io/"/>
-  <updated>2024-05-29T07:04:33.633Z</updated>
+  <updated>2024-06-13T13:10:07.874Z</updated>
   <id>https://blank-null.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue2和vue3都重写了数组方法</title>
+    <link href="https://blank-null.github.io/2024/06/13/vue2%E5%92%8Cvue3%E9%83%BD%E9%87%8D%E5%86%99%E4%BA%86%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/"/>
+    <id>https://blank-null.github.io/2024/06/13/vue2%E5%92%8Cvue3%E9%83%BD%E9%87%8D%E5%86%99%E4%BA%86%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/</id>
+    <published>2024-06-13T13:09:22.000Z</published>
+    <updated>2024-06-13T13:10:07.874Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;vue2和vue3都重写了数组方法&quot;&gt;&lt;a href=&quot;#vue2和vue3都重写了数组方法&quot; class=&quot;headerlink&quot; title=&quot;vue2和vue3都重写了数组方法&quot;&gt;&lt;/a&gt;vue2和vue3都重写了数组方法&lt;/h1&gt;&lt;h2 id=&quot;vue2的defineProperty&quot;&gt;&lt;a href=&quot;#vue2的defineProperty&quot; class=&quot;headerlink&quot; title=&quot;vue2的defineProperty&quot;&gt;&lt;/a&gt;vue2的defineProperty&lt;/h2&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;defineReactive&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;obj, key&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; _val = obj[key];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;title class_&quot;&gt;Object&lt;/span&gt;.&lt;span class=&quot;title function_&quot;&gt;defineProperty&lt;/span&gt;(obj, key, &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;title function_&quot;&gt;get&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;variable language_&quot;&gt;console&lt;/span&gt;.&lt;span class=&quot;title function_&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&amp;#x27;get&amp;#x27;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; _val;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;title function_&quot;&gt;set&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;newVal&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;variable language_&quot;&gt;console&lt;/span&gt;.&lt;span class=&quot;title function_&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&amp;#x27;set&amp;#x27;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            _val = newVal;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;defineProperty利用闭包， 对_val进行set和get，称为数据劫持。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;defineProperty的缺陷&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;由此可见defineProperty的响应式粒度是key级别的。也就是说，已知的属性才有办法劫持其getter和setter，所以其根本没有办法对&lt;strong&gt;未知的key&lt;/strong&gt;劫持做响应。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;为什么vue2不对数组进行劫持？而是重写数组方法？&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="技术" scheme="https://blank-null.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="vue" scheme="https://blank-null.github.io/tags/vue/"/>
+    
+  </entry>
   
   <entry>
     <title>React学习笔记</title>
@@ -507,34 +536,6 @@
     
     
     <category term="css" scheme="https://blank-null.github.io/tags/css/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>content-type一些疑惑</title>
-    <link href="https://blank-null.github.io/2023/12/01/content-type%E4%B8%80%E4%BA%9B%E7%96%91%E6%83%91/"/>
-    <id>https://blank-null.github.io/2023/12/01/content-type%E4%B8%80%E4%BA%9B%E7%96%91%E6%83%91/</id>
-    <published>2023-12-01T03:58:29.000Z</published>
-    <updated>2024-04-21T09:39:22.530Z</updated>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;相信很初学者在使用&lt;code&gt;body-parser&lt;/code&gt;时感到疑惑&lt;/p&gt;
-&lt;p&gt;我们先说说他的作用，其实很简单，就是把HTTP请求里的请求体传参解析出来&lt;/p&gt;
-&lt;p&gt;我们在使用接口测试工具时(例如：&lt;code&gt;postman&lt;/code&gt; &lt;code&gt;Apip</summary>
-      
-    
-    
-    
-    <category term="技术" scheme="https://blank-null.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-    <category term="http" scheme="https://blank-null.github.io/tags/http/"/>
-    
-    <category term="content-type" scheme="https://blank-null.github.io/tags/content-type/"/>
-    
-    <category term="body-parser" scheme="https://blank-null.github.io/tags/body-parser/"/>
     
   </entry>
   

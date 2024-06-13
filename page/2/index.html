@@ -152,7 +152,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">57</span>
+          <span class="site-state-item-count">58</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -192,6 +192,198 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2024/03/05/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="bLank-L">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | bLanK's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/03/05/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">【综合】服务端基础</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-03-05 15:00:30" itemprop="dateCreated datePublished" datetime="2024-03-05T15:00:30+08:00">2024-03-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-05-10 17:10:51" itemprop="dateModified" datetime="2024-05-10T17:10:51+08:00">2024-05-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BB%BC%E5%90%88/" itemprop="url" rel="index"><span itemprop="name">综合</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="【综合】服务端基础" href="/2024/03/05/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%9F%BA%E7%A1%80/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::87659694025ed2d4d1ad22c836b8b827" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <span id="more"></span>
+
+<h1 id="1-http-状态码"><a href="#1-http-状态码" class="headerlink" title="1. http 状态码"></a>1. http 状态码</h1><ul>
+<li>1XX   提示信息<ul>
+<li>101：允许切换协议</li>
+</ul>
+</li>
+<li>2XX<ul>
+<li><strong>200</strong>： OK</li>
+<li>204： Not Content， 服务器无返回内容</li>
+<li>206： Partial Content, 无响应体</li>
+</ul>
+</li>
+<li>3XX<ul>
+<li>301： Moved Permanently，永久重定向</li>
+<li>302： Found，临时重定向</li>
+<li><strong>304</strong>： Not Modified， 浏览器可以使用本地缓存</li>
+</ul>
+</li>
+<li>4XX<ul>
+<li><strong>400</strong>： Bad Request，请求报文错误</li>
+<li><strong>401</strong>： Unauthorized， 未授权</li>
+<li><strong>403</strong>： Forbidden， 禁止访问</li>
+<li><strong>404</strong>： Not Found， 找不到资源</li>
+<li>405： Method Not Allowed， 请求方法不允许，可以用OPTIONS预检请求查看服务器允许的请求</li>
+</ul>
+</li>
+<li>5XX<ul>
+<li><strong>500</strong>： Internal Server Error，</li>
+<li>501：Not Implement, 客户端请求不支持</li>
+<li><strong>502</strong>： Bad Gateway， 服务器作为网关或代理返回的错误</li>
+<li>503： Service Unavilable, 服务器在忙</li>
+</ul>
+</li>
+</ul>
+<h1 id="2-CDN"><a href="#2-CDN" class="headerlink" title="2. CDN"></a>2. CDN</h1><p><img src="/2024/03/05/%E3%80%90%E7%BB%BC%E5%90%88%E3%80%91%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%9F%BA%E7%A1%80/CDN.jpg" alt="CDN"></p>
+<p>CDN的作用：</p>
+<ol>
+<li>加速资源</li>
+<li>负载均衡</li>
+</ol>
+<h1 id="3-Content-type"><a href="#3-Content-type" class="headerlink" title="3. Content-type"></a>3. Content-type</h1><p><a href="/2023/12/01/content-type%E4%B8%80%E4%BA%9B%E7%96%91%E6%83%91">详见🔗content-type</a></p>
+<h1 id="4-http"><a href="#4-http" class="headerlink" title="4. http"></a>4. http</h1><p><a href="/2023/10/16/http%E8%AF%A6%E8%A7%A3">详见🔗http详解</a></p>
+<h1 id="5-cookie"><a href="#5-cookie" class="headerlink" title="5. cookie"></a>5. cookie</h1><ol>
+<li>默认跨域不会发送cookie<br>但是可以通过 <code>withCredentials=true</code> 设置</li>
+<li>expire设置为0，代表仅一次会话有效</li>
+<li>一个cookie大小4KB</li>
+<li><code>secure=true</code>表示只有https才附带cookie</li>
+<li><code>same-site</code><ol>
+<li><code>strict</code> : refer未其他域不发cookie</li>
+<li><code>Lax</code>: get请求可以发，其他不发</li>
+<li><code>None</code>：无限制</li>
+</ol>
+</li>
+<li><code>http-only</code> 表示此cookie对js不可见<ol>
+<li>document.cookie无法获取，可防止xss攻击。</li>
+</ol>
+</li>
+</ol>
+<h1 id="JWT"><a href="#JWT" class="headerlink" title="JWT"></a>JWT</h1><p>jwt常用于身份认证和信息交换。jwt生成的token由header+payload+signature组成。可以加密信息并防止篡改。</p>
+<p>为什么要使用token？</p>
+<p>以前用cookie+session模式，cookie存放sessionID，服务器拿到sessionID在数据库里查找对应用户的登录信息。这样做的缺点是：</p>
+<ol>
+<li>用户信息存在服务端，增加服务器负担。</li>
+<li>cookie历史包袱重，空间大小只有4KB，携带cookie的规则复杂，跨站不携带cookie。不灵活。容易遭受csrf、xss攻击</li>
+<li>在分布式服务架构上，一个服务器上的session不方便与其他服务器共享</li>
+</ol>
+<p>而token</p>
+<ol>
+<li>存储在localstorage里相对安全。</li>
+<li>使用更加灵活</li>
+<li>便于在微前端中传输用户信息。</li>
+</ol>
+<h1 id="history路由模式【pushed】"><a href="#history路由模式【pushed】" class="headerlink" title="history路由模式【pushed】"></a>history路由模式【pushed】</h1><p>vue利用history.pushState来管理路由状态。当刷新页面时，浏览器把地址栏当作请求地址向服务器发起请求，服务器没有对应路由则出现404错误</p>
+<p><strong>解决：</strong></p>
+<ol>
+<li>修改为hash模式，hash值是指以＃开头的一串，是不会发送给服务器的</li>
+<li>设置nginx和express所有未匹配到的路由都返回index.html。这样，当刷新页面时，服务器将始终返回<code>index.html</code>，然后由Vue Router接管路由处理</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1503,152 +1695,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blank-null.github.io/2023/12/01/content-type%E4%B8%80%E4%BA%9B%E7%96%91%E6%83%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="bLank-L">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="bLanK's blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | bLanK's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/12/01/content-type%E4%B8%80%E4%BA%9B%E7%96%91%E6%83%91/" class="post-title-link" itemprop="url">content-type一些疑惑</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-12-01 11:58:29" itemprop="dateCreated datePublished" datetime="2023-12-01T11:58:29+08:00">2023-12-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-04-21 17:39:22" itemprop="dateModified" datetime="2024-04-21T17:39:22+08:00">2024-04-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Changyan：</span>
-    
-    <a title="content-type一些疑惑" href="/2023/12/01/content-type%E4%B8%80%E4%BA%9B%E7%96%91%E6%83%91/#SOHUCS" itemprop="discussionUrl">
-      <span id="sourceId::4898cfdb5c776992c15a5b1d480b9117" class="cy_cmt_count" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>901</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>相信很初学者在使用<code>body-parser</code>时感到疑惑</p>
-<p>我们先说说他的作用，其实很简单，就是把HTTP请求里的请求体传参解析出来</p>
-<p>我们在使用接口测试工具时(例如：<code>postman</code> <code>Apipost</code>)</p>
-<p><img src="/2023/12/01/content-type%E4%B8%80%E4%BA%9B%E7%96%91%E6%83%91/jietu.png" alt="ApiPost"></p>
-<p>可以看到请求体传参有 <code>content-type</code> 分别是 <code>multipart/form-data</code> 和 <code>application/x-www-form-urlencoded</code></p>
-<h1 id="multipart-form-data"><a href="#multipart-form-data" class="headerlink" title="multipart&#x2F;form-data"></a>multipart&#x2F;form-data</h1><ul>
-<li>一般传送<em>文件</em>或者<em>二进制数据</em>，也可以传文本</li>
-<li>数据以多个part形式传输</li>
-<li>会指定一个boundary来分割不同part</li>
-</ul>
-<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Content-Type</span><span class="punctuation">: </span>multipart/form-data; boundary=</span><br><span class="line">--------------------------460532464492192001772468</span><br><span class="line"><span class="attribute">Content-Disposition</span><span class="punctuation">: </span>form-data; name=&quot;foo&quot;</span><br><span class="line"></span><br><span class="line">this is part 1.</span><br><span class="line">--------------------------460532464492192001772468</span><br><span class="line"><span class="attribute">Content-Disposition</span><span class="punctuation">: </span>form-data; name=&quot;baz&quot;</span><br><span class="line"></span><br><span class="line">this is part 2</span><br><span class="line">--------------------------460532464492192001772468</span><br></pre></td></tr></table></figure>
-
-<h1 id="application-x-www-form-urlencoded"><a href="#application-x-www-form-urlencoded" class="headerlink" title="application&#x2F;x-www-form-urlencoded"></a>application&#x2F;x-www-form-urlencoded</h1><ul>
-<li>一般传输<em>文本</em></li>
-<li>格式是<code>key=value&amp;key2=value2</code>，其实和<em>query参数一样</em>，只是后者在请求头，前者在请求体里</li>
-<li>字符会经过<em>URL编码</em> <ol>
-<li>转成ASCII码</li>
-<li>用16进制表示</li>
-<li>每个字节前加%</li>
-<li>如果字符不能转成ASCII码，则转成UTF-8编码，<a href="/2023/10/21/%E7%BC%96%E7%A0%81">关于编码详见此处</a><blockquote>
-<p>Eg:  “中”在UTF-8编码中表示为0xE4B8AD –&gt; %E4%B8%AD</p>
-</blockquote>
-</li>
-</ol>
-</li>
-</ul>
-<h1 id="raw"><a href="#raw" class="headerlink" title="raw"></a>raw</h1><ul>
-<li>一般传输图片、视频、音频</li>
-<li>表示原始未经处理的二进制数据，没有特定编码方式</li>
-</ul>
-<h2 id="body-parser"><a href="#body-parser" class="headerlink" title="body-parser"></a>body-parser</h2><p>我们再说回<code>body-parser</code></p>
-<p>它支持解析<code>urlencoded</code>而不支持<code>form-data</code> </p>
-<p>如果想要解析<code>form-data</code>可以使用<code>busboy</code></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1672,13 +1718,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">179k</span>
+    <span title="站点总字数">181k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:26</span>
+    <span title="站点阅读时长">5:29</span>
   </span>
 </div>
 <div class="busuanzi-count">
